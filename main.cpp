@@ -1,7 +1,8 @@
 #include <iostream>
+#include "Song.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
-    std::cout << "See if commit works, Elias was here" << std::endl;
+    Song songtest("title1","artist1","year1",180);
+    std::cout << songtest.toString();
     return 0;
 }
