@@ -16,7 +16,9 @@ private:
 
 
 public:
+
     Song(std::string& songStr);
+
     int getLengthl();
 
     const std::string &getTitle() const;
