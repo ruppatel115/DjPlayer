@@ -21,7 +21,11 @@ int main() {
 
 
 
-
-    //forrest was here, testing commit
+    std::string mystr = "empty";
+    while(mystr != "done") {
+        std::cout << "Enter your command or help:";
+        getline(std::cin, mystr);
+        std::cout << mystr<<'\n';
+    }
     return 0;
 }
