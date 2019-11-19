@@ -3,4 +3,4 @@ project(DjPlayer)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(DjPlayer main.cpp Song.h Song.cpp)
+add_executable(DjPlayer main.cpp Song.cpp Song.h Playlist.h)

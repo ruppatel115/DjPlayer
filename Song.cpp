@@ -1,22 +1,35 @@
 //
-// Created by Elias on 11/18/2019.
+// Created by Forrest Wargo on 11/18/19.
 //
 #include "Song.h"
+#include <iostream>
+#include <fstream>
+#include <sstream>
+Song::Song(std::string& songStr) {
+    std::stringstream splitter (songStr);
+    std::string yearStr, lengthStr;
 
-Song::Song(std::string titleIn, std::string artistIn, std::string yearIn, int lengthInSecIn) {
-    title = titleIn;
-    artist = artistIn;
-    year = yearIn;
-    lengthInSec = lengthInSecIn;
+    getline(splitter, title, ',');
+    getline(splitter, artist, ',');
+    getline(splitter, lengthStr, ',');
+    getline(splitter, yearStr, ',');
+    length = std::stoi(lengthStr);
+    year = std::stoi(yearStr);
 }
 
-std::string Song::toString() {
-    std::string result;
-    result+=this->title + ",";
-    result+=this->artist + ",";
-    result+=this->year + ",";
-    result+=std::to_string(lengthInSec);
-
-    return result;
-
+const std::string &Song::getTitle() const {
+    return title;
 }
+
+const std::string &Song::getArtist() const {
+    return artist;
+}
+
+int Song::getLength() const {
+    return length;
+}
+
+int Song::getYear() const {
+    return year;
+}
+
