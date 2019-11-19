@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Song.h"
 #include "CommandHandler.h"
+#include "Playlist.h"
 
 
 int main() {
@@ -67,6 +68,9 @@ int main() {
         }
 
         }
-    }
+
+
+
     return 0;
-}
+    }
+

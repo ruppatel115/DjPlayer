@@ -17,6 +17,7 @@ private:
     std::string artist;
     int duration;
     int year;
+    LinkedNode *front;
 
     Playlist(const Playlist& playlistToCopy);
     Playlist& operator=(const Playlist& playlistToCopy);
