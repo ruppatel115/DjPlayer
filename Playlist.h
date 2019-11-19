@@ -18,13 +18,20 @@ private:
     int duration;
     int year;
 
+    Playlist(const Playlist& playlistToCopy);
+    Playlist& operator=(const Playlist& playlistToCopy);
+
 
 //testing commit rup
-//would we use this if we are using LinkedLists?
+//need to change linkedlist/list ?
 
 public:
 
-    virtual std::string &getTitle()=0;
+    Playlist(std::string titleIn, std::string artistIn, int durationIn, int yearIn);
+
+    ~Playlist();
+
+    virtual std::string getTitle()=0;
 
     virtual void calcDuration()=0;
 

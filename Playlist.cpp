@@ -2,24 +2,37 @@
 // Created by Elias on 11/19/2019.
 //
 #include "Playlist.h"
-std::string &getTitle(){
+
+Playlist::Playlist(std::string titleIn, std::string artistIn, int durationIn, int yearIn) {
+    title=titleIn;
+    artist=artistIn;
+    duration=durationIn;
+    year=yearIn;
+
+}
+Playlist::~Playlist() {
 
 }
 
-void calcDuration(){
-
-}
-std::string playNext() { //after next song is played will call remove song
-
-}
-bool isEmpty(){
-
+std::string Playlist::getTitle(){
+    return "test";
 }
 
-std::string removeSong() { //returns song information
+void Playlist::calcDuration(){
 
 }
-void insertAtEnd(Song &songStr){
+std::string Playlist::playNext() { //after next song is played will call remove song
+return "";
+}
+bool Playlist::isEmpty(){
+    return true;
+}
+
+std::string Playlist::removeSong() { //returns song information
+return "";
+}
+void Playlist::insertAtEnd(Song &songStr){
 
 }
+
 

@@ -91,7 +91,7 @@ public:
      * @param index the location in which to insert this item
      * @post the list has an additional value in it at the specified index,
      *        all further values have been shifted down by one index
-     * @throws out_of_range exception if index is invalid (< 0 or > currItemCount)
+     * @throws out_of_range exception if index is invalid (< 0 or > currSongCount)
      */
     virtual void insertAt(int itemToAdd, int index)=0;
 

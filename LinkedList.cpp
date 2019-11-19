@@ -12,12 +12,12 @@
 LinkedList::LinkedList(){
     end = nullptr;
     front = nullptr;
-    currItemCount = 0;
+    currSongCount = 0;
 }
 
 //Destructor, O(n)
 LinkedList::~LinkedList(){
-    while (currItemCount != 0){
+    while (currSongCount != 0){
         removeValueAtFront();
     }
     front = nullptr;
@@ -31,7 +31,7 @@ LinkedList::~LinkedList(){
  * @post the list has an additional value in it, at the end
  */
  //O(1)
-void LinkedList::insertAtEnd(int itemToAdd){
+void LinkedList::insertAtEnd(Song songToAdd){
     LinkedNode* newNode = new LinkedNode(itemToAdd);
     if (end != nullptr && front != nullptr) {   //if it is not the first item
         end->setNext(newNode);
@@ -41,7 +41,7 @@ void LinkedList::insertAtEnd(int itemToAdd){
         end=newNode;
         front=newNode;
     }
-    currItemCount++;
+    currSongCount++;
 }
 
 /**
@@ -52,7 +52,7 @@ void LinkedList::insertAtEnd(int itemToAdd){
  */
  //O(n)
 int LinkedList::getValueAt(int index){
-    if (index > currItemCount-1 || index < 0){// || front == nullptr){
+    if (index > currSongCount-1 || index < 0){// || front == nullptr){
         throw std::out_of_range ("Index is invalid");
     }
     LinkedNode * tempNode = front;
@@ -104,7 +104,7 @@ bool LinkedList::isEmpty(){
  */
  //O(1)
 int LinkedList::itemCount(){
-    return currItemCount;
+    return currSongCount;
 
 }
 
@@ -119,10 +119,10 @@ void LinkedList::clearList(){
         tempNode=front->getNext();
         delete front;
         front=tempNode;
-        currItemCount--;
+        currSongCount--;
     }
     if (isEmpty()){
-        currItemCount=0; //not a great solution, fixed a problem with last test of clearlist
+        currSongCount=0; //not a great solution, fixed a problem with last test of clearlist
     }
 
 
@@ -136,7 +136,7 @@ void LinkedList::clearList(){
 int LinkedList::find(int numToFind) {
     LinkedNode *tempNode = front;
     int idx;
-    for (idx = 0; idx < currItemCount; idx++) {   //Goes through the entire linked list
+    for (idx = 0; idx < currSongCount; idx++) {   //Goes through the entire linked list
         if (tempNode->getItem() == numToFind) {
             return idx; //returns the index
         }
@@ -154,7 +154,7 @@ int LinkedList::find(int numToFind) {
 int LinkedList::findLast(int numToFind){
     LinkedNode *tempNode = front;
     int idx = -1;
-    for (int i = 0; i < currItemCount; i++) {   //Goes through the entire linked list, can't go backwards
+    for (int i = 0; i < currSongCount; i++) {   //Goes through the entire linked list, can't go backwards
         if (tempNode->getItem() == numToFind) {
             idx = i; //saves each successive index of numToFind
         }
@@ -178,7 +178,7 @@ int LinkedList::findMaxIndex(){
     LinkedNode *tempNode = front;
     int idx = 0;
     int maxTemp = tempNode->getItem();
-    for (int i = 0; i < currItemCount; i++) {   //Goes through the entire linked list
+    for (int i = 0; i < currSongCount; i++) {   //Goes through the entire linked list
         if (tempNode->getItem() > maxTemp) {    //only > so will not return index of repeated max
             maxTemp = tempNode->getItem();
             idx = i; //saves each successive index of maxTemp
@@ -208,7 +208,7 @@ void LinkedList::insertAtFront(int itemToAdd){
         end = newNode;
     }
 
-    currItemCount++;
+    currSongCount++;
 }
 
 /**
@@ -216,12 +216,12 @@ void LinkedList::insertAtFront(int itemToAdd){
  * @param index the location in which to insert this item
  * @post the list has an additional value in it at the specified index,
  *        all further values have been shifted down by one index
- * @throws out_of_range exception if index is invalid (< 0 or > currItemCount)
+ * @throws out_of_range exception if index is invalid (< 0 or > currSongCount)
  */
  //Big O depends on the index, but it is O(n) most of the time
 void LinkedList::insertAt(int itemToAdd, int index){
 
-    if (index < 0 || index > currItemCount){
+    if (index < 0 || index > currSongCount){
         throw std::out_of_range ("index is invalid");
     }
     if (isEmpty()){
@@ -232,7 +232,7 @@ void LinkedList::insertAt(int itemToAdd, int index){
     else {
         if (index == 0){
             insertAtFront(itemToAdd);
-            currItemCount--;
+            currSongCount--;
         }
         else {
             LinkedNode *newNode = new LinkedNode(itemToAdd);
@@ -252,7 +252,7 @@ void LinkedList::insertAt(int itemToAdd, int index){
     }
 
 
-    currItemCount++;
+    currSongCount++;
 }
 
 /**
@@ -271,7 +271,7 @@ int LinkedList::removeValueAtEnd(){
     int removedItem = end->getItem();
     LinkedNode* iterateNode = front;
 
-    for (int i = 0; i < currItemCount;i++) {    //Goes through the entire linked list
+    for (int i = 0; i < currSongCount;i++) {    //Goes through the entire linked list
         if (iterateNode->getNext() != end){
         iterateNode=iterateNode->getNext();
         }
@@ -281,8 +281,8 @@ int LinkedList::removeValueAtEnd(){
         }
     }
 
-    currItemCount--;
-    if (currItemCount == 0){
+    currSongCount--;
+    if (currSongCount == 0){
         front = nullptr;
     }
     return removedItem;
@@ -307,8 +307,8 @@ int LinkedList::removeValueAtFront(){
     delete front;
     front = tempNode;
 
-    currItemCount--;
-    if (currItemCount == 0){
+    currSongCount--;
+    if (currSongCount == 0){
         end = nullptr;
         front = nullptr;
     }
@@ -324,7 +324,7 @@ int LinkedList::removeValueAtFront(){
  */
  //Big O depends on index again, but usually O(n)
 int LinkedList::removeValueAt(int index){
-    if (front == nullptr || index > currItemCount-1 || index < 0){
+    if (front == nullptr || index > currSongCount-1 || index < 0){
         throw std::out_of_range("Invalid index given to removeValueAt");
     }
     if (index == 0){
@@ -347,8 +347,8 @@ int LinkedList::removeValueAt(int index){
         }
     }
 
-    currItemCount--;
-    if (currItemCount == 0){
+    currSongCount--;
+    if (currSongCount == 0){
         front = nullptr;
         end = nullptr;
     }

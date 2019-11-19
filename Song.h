@@ -17,9 +17,9 @@ private:
 
 public:
 
-    Song(std::string& songStr);
+    Song(); //default constructor
 
-    int getLengthl();
+    Song(std::string& songStr);
 
     const std::string &getTitle() const;
 

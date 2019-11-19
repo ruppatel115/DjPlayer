@@ -8,12 +8,13 @@
 
 #include "List.h"
 #include "LinkedNode.h"
+#include "song.h"
 
 class LinkedList : public List{
 private:
     LinkedNode* end;
     LinkedNode* front;
-    int currItemCount;
+    int currSongCount;
 
     //Private to disable copying and assigning from outside class, don't implement these methods
     LinkedList(const LinkedList& arrayListToCopy);
@@ -31,7 +32,7 @@ public:
      * appends the new item to the end of the list
      * @post the list has an additional value in it, at the end
      */
-    virtual void insertAtEnd(int itemToAdd);
+    void insertAtEnd(Song songtoAdd);
 
     /**
      * gets a value from the list
@@ -58,7 +59,7 @@ public:
      * returns a count of valid items currently in the list
      * @returns the number of valid items in the list
      */
-    int itemCount();
+    int songCount();
 
     /**
      * makes the list empty of valid items
@@ -70,13 +71,13 @@ public:
      * Searches an int array for a certain value
      * @return the index of the first occurrence of numToFind if it is present, otherwise returns -1
      */
-    int find(int numToFind);
+    int find(Song songToFind);
 
     /**
      * Searches an int array for a certain value
      * @return the index of the last occurrence of numToFind if it is present, otherwise returns -1
      */
-    int findLast(int numToFind);
+    int findLast(Song songToFind);
 
     /**
      * finds the largest value in the array
@@ -97,7 +98,7 @@ public:
      * @param index the location in which to insert this item
      * @post the list has an additional value in it at the specified index,
      *        all further values have been shifted down by one index
-     * @throws out_of_range exception if index is invalid (< 0 or > currItemCount)
+     * @throws out_of_range exception if index is invalid (< 0 or > currSongCount)
      */
     void insertAt(int itemToAdd, int index);
 
