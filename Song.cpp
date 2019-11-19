@@ -5,6 +5,13 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+Song::Song(){  //default constructor
+    title = "";
+    artist = "";
+    length = 0;
+    year = 0;
+}
+
 Song::Song(std::string& songStr) {
     std::stringstream splitter (songStr);
     std::string yearStr, lengthStr;
