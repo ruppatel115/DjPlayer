@@ -7,6 +7,7 @@
 
 #include <string>
 #include "Song.h"
+#include "LinkedList.h"
 #include <iostream>
 
 class Playlist{
@@ -19,6 +20,7 @@ private:
 
 
 //testing commit rup
+//would we use this if we are using LinkedLists?
 
 public:
 
