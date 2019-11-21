@@ -3,7 +3,9 @@
 //
 #include "CommandHandler.h"
 
-CommandHandler::CommandHandler(){}
+CommandHandler::CommandHandler(){
+    songLibrary = new SongArrayList(10);
+}
 
 void CommandHandler::help(){}
 

@@ -5,9 +5,12 @@
 #ifndef DJPLAYER_COMMANDHANDLER_H
 #define DJPLAYER_COMMANDHANDLER_H
 #include <iostream>
+#include "SongList.h"
+#include "SongArrayList.h"
 
 class CommandHandler {
 private:
+SongArrayList* songLibrary;
 public:
     CommandHandler();
     void help();
