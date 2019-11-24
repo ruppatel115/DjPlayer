@@ -13,22 +13,17 @@
 class Playlist{
 
 private:
-    std::string title;
-    std::string artist;
-    int duration;
-    int year;
     LinkedNode *front;
-
+    LinkedNode *end;
     Playlist(const Playlist& playlistToCopy);
     Playlist& operator=(const Playlist& playlistToCopy);
 
 
-//testing commit rup
-//need to change linkedlist/list ?
+
 
 public:
 
-    Playlist(std::string titleIn, std::string artistIn, int durationIn, int yearIn);
+    Playlist();
 
     ~Playlist();
 
@@ -38,10 +33,11 @@ public:
 
     virtual std::string playNext()=0; //after next song is played will call remove song
 
+    virtual int itemCount()=0; //O(n) must run through all items of list
 
     virtual bool isEmpty()=0;
 
-    virtual std::string removeSong()=0; //returns song information
+    virtual std::string removeSong(int index)=0; //returns song information
 
     virtual void insertAtEnd(Song &songStr)=0;
 
