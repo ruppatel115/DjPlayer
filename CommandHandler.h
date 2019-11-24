@@ -13,6 +13,7 @@ private:
 SongArrayList* songLibrary;
 public:
     CommandHandler();
+    void promptUser();
     void help();
     void library();
     void displayArtist(std::string  artist);
