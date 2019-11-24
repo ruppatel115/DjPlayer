@@ -99,7 +99,7 @@ public:
      * @return the first index of the maximum value
      * @throws out_of_range exception if there is no item to remove
      */
-    int findMaxIndex();
+    //int findMaxIndex();
 
     /**
      * appends the new item to the beginning of the list

@@ -1,10 +1,12 @@
 #include <iostream>
 #include "Song.h"
 #include "CommandHandler.h"
-#include "Playlist.h"
+
 
 
 int main() {
+    CommandHandler* test = new CommandHandler();
+    /*
     std::cout << "See if commit works, Elias was here" << std::endl;
     std::string holder = "her comes the sun, beatles, 3, 1967";
     std::string song2 = "Billie Jean, Michael Jackson, 5, 1980";
@@ -70,7 +72,7 @@ int main() {
         }
 
 
-
+*/
     return 0;
     }
 

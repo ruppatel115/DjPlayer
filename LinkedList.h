@@ -8,7 +8,7 @@
 
 #include "List.h"
 #include "LinkedNode.h"
-#include "song.h"
+#include "Song.h"
 
 class LinkedList : public List{
 private:
@@ -40,7 +40,7 @@ public:
      * @return a copy of the item at index
      * @throws out_of_range exception if index is invalid
      */
-    int getValueAt(int index);
+    Song getValueAt(int index);
 
     /**
      * gives a string representation of the current list

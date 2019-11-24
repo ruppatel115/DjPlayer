@@ -9,10 +9,11 @@
 CommandHandler::CommandHandler(){
     songLibrary = new SongArrayList(10);
 
+
     promptUser();
 }
 void CommandHandler::promptUser(){
-    CommandHandler* handler = new CommandHandler();
+
     std::string mystr = "empty";
     while(mystr != "done") {
         std::cout << "Enter your command or help:";
@@ -22,15 +23,19 @@ void CommandHandler::promptUser(){
 
         if(mystr == "help"){
         }else if(mystr == "library"){
-            handler->library();
+            std::cout << "in library";
+
+            this->library();
         }else if(mystr == "artist"){
-            handler->displayArtist("holder");
+            //handler->displayArtist("holder");
 
         }else if(mystr == "song"){
             //handler->song();
 
         }else if(mystr == "import"){
-            //handler->import();
+            std::cout << "Enter file name:";
+            getline(std::cin, mystr);
+            this->import(mystr);
 
         }else if(mystr == "discontinue"){
             //handler->discontinue();
@@ -65,7 +70,9 @@ void CommandHandler::promptUser(){
 void CommandHandler::help(){
 }
 
-void CommandHandler::library(){}
+void CommandHandler::library(){
+
+}
 
 void CommandHandler::displayArtist(std::string  artist){}
 
@@ -77,11 +84,12 @@ void CommandHandler::import(std::string fileName){
         while (infile) {
             std::string strInput;
             getline(infile, strInput);
+            songLibrary->insertAtFront(new Song(strInput))
             std::cout << strInput << std::endl;
         }
     }
     else {
-        std::cerr << "File not found." << std::endl;
+        std::cerr << fileName<< " not found." << std::endl;
     }
 }
 
