@@ -7,9 +7,9 @@
 
 
 int main() {
-    CommandHandler* test = new CommandHandler();
-    test->import("/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/importTest.txt");
-    /*
+    //CommandHandler* test = new CommandHandler();
+    //test->import("/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/importTest.txt");
+
     std::cout << "See if commit works, Elias was here" << std::endl;
     Library mainLibrary;
 
