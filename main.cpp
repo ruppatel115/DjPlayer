@@ -2,10 +2,12 @@
 #include "Song.h"
 #include "CommandHandler.h"
 #include "Playlist.h"
+#include "Library.h"
 
 
 int main() {
-    std::cout << "See if commit works, Elias was here" << std::endl;
+    Library mainLibrary;
+
     std::string holder = "her comes the sun, beatles, 3, 1967";
     std::string song2 = "Billie Jean, Michael Jackson, 5, 1980";
     Song* test = new Song(holder);
@@ -21,8 +23,8 @@ int main() {
     std::cout<<"year = "<<test2->getYear()<<"\n";
 
 
-    CommandHandler* handler = new CommandHandler();
-    std::string mystr = "empty";
+    CommandHandler* handler = new CommandHandler(&mainLibrary);
+    std::string mystr;
     while(mystr != "done") {
         std::cout << "Enter your command or help:";
         getline(std::cin, mystr);
@@ -33,37 +35,97 @@ int main() {
             handler->help();
         }else if(mystr == "library"){
             handler->library();
-        }else if(mystr == "artist"){
-            handler->displayArtist();
+
+        }else if(mystr == "artist") {
+            std::cout << "Enter artist:" << std::endl;
+            std::string artist = "";
+            getline(std::cin, artist);
+            std::cout << "Displaying all songs by " + artist << std::endl;
+
+            handler->displayArtist(artist);
 
         }else if(mystr == "song"){
-            handler->song();
+            std::cout << "Enter artist:" << std::endl;
+            std::string artist = "";
+            getline(std::cin, artist);
+            std::cout << "Enter title:" << std::endl;
+            std::string title = "";
+            getline(std::cin, title);
+
+            handler->song(artist, title);
 
         }else if(mystr == "import"){
-            handler->import();
+            std::cout << "Enter filename:" << std::endl;
+            std::string filename = "";
+            getline(std::cin, filename);
+
+            handler->import(filename);
 
         }else if(mystr == "discontinue"){
-            handler->discontinue();
+            std::cout << "Enter filename:" << std::endl;
+            std::string filename = "";
+            getline(std::cin, filename);
+
+            handler->discontinue(filename);
 
         }else if(mystr == "list playlists"){
             handler->listPlaylists();
 
         }else if(mystr == "playlist"){
-            handler->playlist();
+            std::cout << "Enter playlist title:" << std::endl;
+            std::string playlistTitle = "";
+            getline(std::cin, playlistTitle);
+            handler->playlist(playlistTitle);
 
-        }else if(mystr == "newPlaylist"){
-            handler->newPlaylist();
+        }else if(mystr == "new"){
+            std::cout << "Enter playlist title:" << std::endl;
+            std::string playlistTitle = "";
+            getline(std::cin, playlistTitle);
 
-        }else if(mystr == "addToPlaylist"){
-            handler->addToPlaylist();
+            handler->newPlaylist(playlistTitle);
+
+        }else if(mystr == "add"){
+            std::cout << "Enter playlist title:" << std::endl;
+            std::string playlistTitle = "";
+            getline(std::cin, playlistTitle);
+            std::cout << "Enter artist name:" << std::endl;
+            std::string artistName = "";
+            getline(std::cin, artistName);
+            std::cout << "Enter song title:" << std::endl;
+            std::string songTitle = "";
+            getline(std::cin, songTitle);
+
+            handler->addToPlaylist(playlistTitle, artistName, songTitle);
 
         }else if(mystr == "remove"){
+            std::cout << "Enter playlist title:" << std::endl;
+            std::string playlistTitle = "";
+            getline(std::cin, playlistTitle);
+            std::cout << "Enter artist name:" << std::endl;
+            std::string artistName = "";
+            getline(std::cin, artistName);
+            std::cout << "Enter song title:" << std::endl;
+            std::string songTitle = "";
+            getline(std::cin, songTitle);
+
+            handler->removeFromPlaylist(playlistTitle, artistName, songTitle);
 
         }else if(mystr == "play next"){
-            handler->playNext();
+            std::cout << "Enter playlist title:" << std::endl;
+            std::string playlistTitle = "";
+            getline(std::cin, playlistTitle);
+
+            handler->playNext(playlistTitle);
 
         }else if(mystr == "new random"){
-            handler->newRandomPlaylist();
+            std::cout << "Enter playlist title:" << std::endl;
+            std::string playlistTitle = "";
+            getline(std::cin, playlistTitle);
+            std::cout << "Enter max duration:" << std::endl;
+            std::string duration = ""; //TODO different type?
+            getline(std::cin, duration);
+
+            handler->newRandomPlaylist(playlistTitle, duration);
 
         }
 
