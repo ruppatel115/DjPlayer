@@ -39,6 +39,7 @@ bool Playlist::isEmpty() {
     if (front == nullptr) {
         return true;
     }
+    return false;
 }
 
 int Playlist::itemCount(){//O(n) must run through all items of list

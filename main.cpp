@@ -1,12 +1,27 @@
 #include <iostream>
 #include "Song.h"
-#include "CommandHandler.h"
-
-#include "Playlist.h"
+#include "ArtistMap.h"
 #include "Library.h"
+#include "CommandHandler.h"
+using namespace std;
+
+
+void artistMapTester(){
+    string song1 = "her comes the sun, beatles, 3, 1967";
+    string song2 = "Billie Jean, Michael Jackson, 5, 1980";
+    string song3 = "rap god, eminem, 5, 2013";
+    string song4 = "lucy in thr sky with diamonds, beatles, 3, 1967";
+    string song5 = "hey jude, beatles, 3, 1968";
+    cout<<"=======ArtistNode Tests=======";
+    ArtistMapNode* testNode = new ArtistMapNode(*new Song(song1));
+    testNode->addSong(song4);
+    testNode->addSong(song1);
+    testNode->addSong(song5);
+}
 
 
 int main() {
+    artistMapTester();
     //CommandHandler* test = new CommandHandler();
     //test->import("/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/importTest.txt");
 
