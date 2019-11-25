@@ -23,6 +23,7 @@ void ArtistMapNode::addSong(Song song){
         int comparison = song.getTitle().compare(songList->getValueAt(i).getArtist());
         if(comparison > 0){
             songList->insertAt(song,i);
+            break;
 
         }else if (comparison == 0){
             cout<<"duplicate song"<< song.getTitle()<<endl;
