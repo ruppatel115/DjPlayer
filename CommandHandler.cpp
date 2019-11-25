@@ -5,12 +5,13 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include "ArtistMap.h"
 
 CommandHandler::CommandHandler(){
-    songLibrary = new SongArrayList(10);
+    songLibrary = new ArtistMap();
 
 
-    promptUser();
+    //promptUser();
 }
 void CommandHandler::promptUser(){
 
@@ -84,8 +85,10 @@ void CommandHandler::import(std::string fileName){
         while (infile) {
             std::string strInput;
             getline(infile, strInput);
-            songLibrary->insertAtFront(new Song(strInput))
-            std::cout << strInput << std::endl;
+            if(strInput != "") {
+                songLibrary->put(*new Song(strInput));
+                std::cout << strInput << std::endl;
+            }
         }
     }
     else {

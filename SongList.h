@@ -1,5 +1,5 @@
 //
-// Created by Toby Dragon on 9/30/16.
+// Created by Forrest on 9/30/16.
 //
 
 #ifndef COMP220_LIST_H

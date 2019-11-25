@@ -7,10 +7,11 @@
 #include <iostream>
 #include "SongList.h"
 #include "SongArrayList.h"
+#include "ArtistMap.h"
 
 class CommandHandler {
 private:
-SongArrayList* songLibrary;
+ArtistMap* songLibrary;
 public:
     CommandHandler();
     void promptUser();

@@ -21,6 +21,7 @@ Song::Song(std::string& songStr) {
     getline(splitter, artist, ',');
     getline(splitter, lengthStr, ',');
     getline(splitter, yearStr, ',');
+    //TODO add error handling for when all info is not there
     length = std::stoi(lengthStr);
     year = std::stoi(yearStr);
 }
