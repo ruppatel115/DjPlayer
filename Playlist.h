@@ -7,7 +7,7 @@
 
 #include <string>
 #include "Song.h"
-#include "LinkedList.h"
+#include "LinkedNode.h"
 #include <iostream>
 
 class Playlist{
@@ -17,6 +17,7 @@ private:
     LinkedNode *end;
     Playlist(const Playlist& playlistToCopy);
     Playlist& operator=(const Playlist& playlistToCopy);
+    std::string title;
 
 
 

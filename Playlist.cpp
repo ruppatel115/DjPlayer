@@ -19,7 +19,7 @@ Playlist::~Playlist() {
 }
 
 std::string Playlist::getTitle(){
-    return "test";
+    return title;
 }
 
 void Playlist::calcDuration(){
