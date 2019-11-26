@@ -19,16 +19,18 @@ std::string ArtistMapNode::getArtist() {
     return artist;
 }
 void ArtistMapNode::addSong(Song song){
-
+//cout<<songList->itemCount()<<endl;
     for(int i=0; i<songList->itemCount();i++){
-        int comparison = song.getTitle().compare(songList->getValueAt(i).getArtist());
+        //cout<<song.getTitle()<<endl;
+        int comparison = song.getTitle().compare(songList->getValueAt(i).getTitle());
+        //cout<<"comparison: "<<comparison<< song.getTitle()<<songList->getValueAt(i).getArtist()<<endl;
         if(comparison > 0){
             songList->insertAt(song,i);
 
             break;
 
         }else if (comparison == 0){
-            cout<<"duplicate song"<< song.getTitle()<<endl;
+            cout<<"duplicate song: "<< song.getTitle()<<endl;
             break;
         }
     }

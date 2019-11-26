@@ -18,8 +18,11 @@ void artistMapTester(){
     testNode->addSong(song4);
     testNode->addSong(song1);
     testNode->addSong(song5);
-    cout<<"expecting hey jude:";
+    cout<<"expecting 'duplicate song hey jude', actual: ";
     testNode->addSong(song5);
+    cout<<"\n";
+    cout<<"done\n";
+
 
 }
 
