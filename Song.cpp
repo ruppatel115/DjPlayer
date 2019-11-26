@@ -15,11 +15,14 @@ Song::Song(){  //default constructor
 Song::Song(std::string& songStr) {
     //song string should be in form: title, artist, length, year
     std::stringstream splitter (songStr);
-    std::string yearStr, lengthStr;
+    std::string yearStr, lengthStr, space;
 
     getline(splitter, title, ',');
+    getline(splitter, space, ' ');
     getline(splitter, artist, ',');
+    getline(splitter, space, ' ');
     getline(splitter, lengthStr, ',');
+    getline(splitter, space, ' ');
     getline(splitter, yearStr, ',');
     //TODO add error handling for when all info is not there
     length = std::stoi(lengthStr);

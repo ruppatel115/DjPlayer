@@ -19,22 +19,32 @@ std::string ArtistMapNode::getArtist() {
     return artist;
 }
 void ArtistMapNode::addSong(Song song){
-    //TODO this is adding songs in reverse order
+    //cout<<this->tooString()<<endl;
+    //TODO make it work with caps
 //cout<<songList->itemCount()<<endl;
+bool songAdded = false;
     for(int i=0; i<songList->itemCount();i++){
         //cout<<song.getTitle()<<endl;
         int comparison = song.getTitle().compare(songList->getValueAt(i).getTitle());
-        //cout<<"comparison: "<<comparison<< song.getTitle()<<songList->getValueAt(i).getArtist()<<endl;
+        //cout<<"comparison: "<<comparison<<" "<< song.getTitle()<<" "<<songList->getValueAt(i).getTitle()<<endl;
         if(comparison < 0){
+            //cout<<song.getTitle()<<" orgininal: "<<songList->getValueAt(i).getTitle()<<endl;
             songList->insertAt(song,i);
-
+            songAdded = true;
             break;
 
         }else if (comparison == 0){
+            //cout<<"in duplicate "<<song.getTitle()<<" orgininal: "<<songList->getValueAt(i).getTitle()<<endl;
+
             cout<<"duplicate song: "<< song.getTitle()<<endl;
+            songAdded = true;
             break;
         }
     }
+    if(!songAdded) {
+        songList->insertAtEnd(song);
+    }
+
 
 }
 void ArtistMapNode::setNext(ArtistMapNode* nextNode) {

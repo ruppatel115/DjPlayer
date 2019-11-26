@@ -2,6 +2,7 @@
 // Created by Forrest Wargo on 11/24/19.
 //
 #include "ArtistMap.h"
+using namespace std;
 
 ArtistMap::ArtistMap(){
     this->front = nullptr;
@@ -38,4 +39,23 @@ ArtistMapNode* ArtistMap::getArtist(std::string artist) {
 
 ArtistMapNode* ArtistMap::getFront() {
     return front;
+}
+string tooString(string songString, ArtistMapNode* node){
+    if(node->getNext() == nullptr){
+        return songString + node->getArtist()+": "+node->tooString()+"\n";
+    }
+    return node->getArtist()+": "+node->tooString()+"\n" + tooString(songString, node->getNext());
+
+}
+string ArtistMap::tooString() {
+    string songString = "{";
+    if(front == nullptr){
+        songString += "}";
+        return songString;
+    }
+    songString+="\n";
+    ::tooString(songString, front);
+    songString+="}";
+
+
 }

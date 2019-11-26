@@ -15,7 +15,7 @@ private:
     ArtistMapNode* front;
 public:
     ArtistMap();
-
+    std::string tooString();
     void put(Song song);
     ArtistMapNode* getArtist(std::string artist);
     ArtistMapNode* getFront();

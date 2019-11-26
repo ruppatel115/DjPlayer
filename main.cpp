@@ -7,22 +7,42 @@ using namespace std;
 
 
 void artistMapTester(){
-    string song1 = "A her comes the sun, beatles, 3, 1967";
+    string song1 = "here comes the sun, beatles, 3, 1967";
     string song2 = "Billie Jean, Michael Jackson, 5, 1980";
     string song3 = "rap god, eminem, 5, 2013";
-    string song4 = "b  lucy in thr sky with diamonds, beatles, 3, 1967";
-    string song5 = "c  hey jude, beatles, 3, 1968";
-    cout<<"=======ArtistNode Tests=======\n";
+    string song4 = "lucy in thr sky with diamonds, beatles, 3, 1967";
+    string song5 = "a hard days night, beatles, 3, 1964";
+    cout<<"=======ArtistMapNode Tests=======\n";
     ArtistMapNode* testNode = new ArtistMapNode(*new Song(song1));
 
     testNode->addSong(song4);
-    testNode->addSong(song1);
     testNode->addSong(song5);
-    cout<<"expecting 'duplicate song hey jude', actual: ";
+    cout<<"expecting 'duplicate song a hard days night', actual: ";
     testNode->addSong(song5);
     cout<<"\n";
-    cout<<"expecting {'lucy in thr sky with diamonds, her comes the sun, beatles, hey jude, beatles}, actual ="<< testNode->tooString()<<'\n';
-    cout<<"done\n";
+    cout<<"expecting {a hard days night, here comes the sun, lucy in thr sky with diamonds}, actual ="<< testNode->tooString()<<'\n';
+
+    cout<<"=======ArtistAmp Tests=======\n";
+    ArtistMap* testMap = new ArtistMap();
+    testMap->put(song1);
+    testMap->put(song2);
+    testMap->put(song3);
+    testMap->put(song4);
+    testMap->put(song5);
+    cout<<"expecting 'duplicate song a hard days night', actual: ";
+    testMap->put(song5);
+    if( testMap->getArtist("beatles") == nullptr){
+        cout<<"fail\n";
+    }
+    cout<<"expecting {a hard days night, here comes the sun, lucy in thr sky with diamonds}, actual ="<< testMap->getArtist("beatles")->tooString()<<'\n';
+    cout<<testMap->tooString();
+
+
+
+
+
+
+
 
 
 }
