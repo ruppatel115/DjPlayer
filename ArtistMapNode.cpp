@@ -19,7 +19,7 @@ std::string ArtistMapNode::getArtist() {
     return artist;
 }
 void ArtistMapNode::addSong(Song song){
-    //cout<<this->tooString()<<endl;
+    //cout<<this->toString()<<endl;
     //TODO make it work with caps
 //cout<<songList->itemCount()<<endl;
 bool songAdded = false;

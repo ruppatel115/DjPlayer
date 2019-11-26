@@ -48,22 +48,23 @@ ArtistMapNode* ArtistMap::getArtist(std::string artist) {
 ArtistMapNode* ArtistMap::getFront() {
     return front;
 }
-string tooString(string songString, ArtistMapNode* node){
+string toString( ArtistMapNode* node){
     if(node->getNext() == nullptr){
-        return songString + node->getArtist()+": "+node->tooString()+"\n";
+        return  node->getArtist()+": "+node->tooString()+"\n";
     }
-    return node->getArtist()+": "+node->tooString()+"\n" + tooString(songString, node->getNext());
+    return node->getArtist() + ": " + node->tooString() + "\n" + toString( node->getNext());
 
 }
-string ArtistMap::tooString() {
-    string songString = "{";
+string ArtistMap::toString() {
+    string songString = "[";
     if(front == nullptr){
         songString += "}";
         return songString;
     }
     songString+="\n";
-    ::tooString(songString, front);
-    songString+="}";
+    songString +=::toString( front);
+    songString+="]";
+    return  songString;
 
 
 }

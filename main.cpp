@@ -37,7 +37,7 @@ void artistMapTester(){
         cout<<"fail\n";
     }
     cout<<"expecting {a hard days night, here comes the sun, lucy in thr sky with diamonds}, actual ="<< testMap->getArtist("beatles")->tooString()<<'\n';
-    cout<<testMap->tooString();
+    cout<< testMap->toString();
 
 
 
