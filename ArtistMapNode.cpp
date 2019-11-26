@@ -19,10 +19,12 @@ std::string ArtistMapNode::getArtist() {
     return artist;
 }
 void ArtistMapNode::addSong(Song song){
+
     for(int i=0; i<songList->itemCount();i++){
         int comparison = song.getTitle().compare(songList->getValueAt(i).getArtist());
         if(comparison > 0){
             songList->insertAt(song,i);
+
             break;
 
         }else if (comparison == 0){

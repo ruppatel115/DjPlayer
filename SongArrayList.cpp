@@ -10,8 +10,9 @@
 void SongArrayList::doubleCapacity() {
     currCapacity = currCapacity*2;
     Song* holder = new Song[currCapacity];
-    for(int i=0; i<currItemCount; i++){
-        holder[i] = array[i];
+    for(int i=0; i<currItemCount-1; i++){
+
+        holder[i] = this->array[i];
     }
     delete[] array;
     array = holder;
@@ -154,15 +155,22 @@ void SongArrayList::insertAtFront(Song itemToAdd) {
 }
 
 void SongArrayList::insertAt(Song itemToAdd, int index) {
+
     if(index <0 || index > currItemCount){
         throw std::out_of_range("Exception");
     }
     currItemCount+=1;
+
     if(currItemCount > currCapacity){
+
         doubleCapacity();
+
     }
+
     Song* holder = new Song[currCapacity];
+
     int arrayIdx =0;
+
     for(int i=0;i<currCapacity;i++){
         if(i == index){
             holder[i] = itemToAdd;

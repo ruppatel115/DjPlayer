@@ -12,16 +12,21 @@ void artistMapTester(){
     string song3 = "rap god, eminem, 5, 2013";
     string song4 = "lucy in thr sky with diamonds, beatles, 3, 1967";
     string song5 = "hey jude, beatles, 3, 1968";
-    cout<<"=======ArtistNode Tests=======";
+    cout<<"=======ArtistNode Tests=======\n";
     ArtistMapNode* testNode = new ArtistMapNode(*new Song(song1));
+
     testNode->addSong(song4);
     testNode->addSong(song1);
     testNode->addSong(song5);
+    cout<<"expecting hey jude:";
+    testNode->addSong(song5);
+
 }
 
 
 int main() {
     artistMapTester();
+    /*
     //CommandHandler* test = new CommandHandler();
     //test->import("/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/importTest.txt");
 
@@ -151,7 +156,7 @@ int main() {
 
         }
 
-
+*/
 
     return 0;
     }
