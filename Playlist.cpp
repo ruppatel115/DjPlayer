@@ -95,10 +95,9 @@ std::string Playlist::removeSong(int index) { //returns song information
 
 
 
-void Playlist::insertAtEnd(Song &songStr){
+void Playlist::insertAtEnd(Song songStr){
     LinkedNode *newNode = new LinkedNode(songStr);
     newNode->setNext(nullptr);
-
     if (front == nullptr) {
         front = newNode;
 

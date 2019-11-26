@@ -3,8 +3,10 @@
 #include "ArtistMap.h"
 #include "Library.h"
 #include "CommandHandler.h"
+#include "Playlist.h"
 using namespace std;
-
+#include <stdexcept>
+#include <string>
 
 void artistMapTester(){
     string song1 = "here comes the sun, beatles, 3, 1967";
@@ -47,9 +49,38 @@ void artistMapTester(){
 
 }
 
+void PlayListTester(Playlist& playList){
+    string song1 = "A her comes the sun, beatles, 3, 1967";
+    string song2 = "Billie Jean, Michael Jackson, 5, 1980";
+    string song3 = "rap god, eminem, 5, 2013";
+    string song4 = "b  lucy in thr sky with diamonds, beatles, 3, 1967";
+    string song5 = "c  hey jude, beatles, 3, 1968";
+
+    std::cout << "-------isEmptyTest---------" <<std::endl;
+    playList.isEmpty();
+    cout<<"expecting true, actual: ";
+    playList.insertAtEnd(song1);
+    playList.insertAtEnd(song2);
+    cout<<"expecting false, actual: ";
+    playList.isEmpty();
+    playList.insertAtEnd(song3);
+    playList.insertAtEnd(song4);
+    playList.itemCount();
+    cout<<"expecting 4 actual: ";
+    playList.itemCount();
+    cout<<"expecting rap god, actual: ";
+    playList.removeSong(2);
+    cout<<"expecting 3 actual: ";
+    playList.itemCount();
+    std::cout << "--done--" <<std::endl;
+    }
+
+
 
 int main() {
     artistMapTester();
+    //TODO this isn't letting me reference list to test functions
+    //PlayListTester();
     /*
     //CommandHandler* test = new CommandHandler();
     //test->import("/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/importTest.txt");

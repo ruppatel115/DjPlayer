@@ -21,6 +21,7 @@ void Library::load(){
 
 }
 std::string Library::getArtistSongs(std::string artist) {
+
     return "A list of songs by artist";
 }
 std::string Library::getSongs(){
