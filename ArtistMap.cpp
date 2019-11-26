@@ -2,6 +2,7 @@
 // Created by Forrest Wargo on 11/24/19.
 //
 #include "ArtistMap.h"
+#include "LinkedNode.h"
 
 ArtistMap::ArtistMap(){
     this->front = nullptr;
@@ -21,8 +22,15 @@ void ArtistMap::put(Song song) {
     }else{
         checkNext(song, *front);
     }
+}
 
-
+void ArtistMap::removeAll(){
+    ArtistMapNode *node = front;
+    while(node != nullptr){
+        front = front->getNext();
+        delete node;
+    }
+    node->setNext(nullptr);
 }
 
 ArtistMapNode* ArtistMap::getArtist(std::string artist) {

@@ -40,7 +40,7 @@ public:
 
     virtual std::string removeSong(int index)=0; //returns song information
 
-    virtual void insertAtEnd(Song &songStr)=0;
+    virtual void insertAtEnd(Song songStr)=0;
 
 
 
