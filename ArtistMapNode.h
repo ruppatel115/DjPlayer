@@ -13,9 +13,9 @@ private:
     SongArrayList* songList;
 public:
     ArtistMapNode(Song song);
-
+    std::string tooString();
     std::string getArtist();
-    SongArrayList getSongList();
+    SongArrayList* getSongList();
     void addSong(Song song);
     ArtistMapNode* getNext();
     void setNext(ArtistMapNode* nextNode);

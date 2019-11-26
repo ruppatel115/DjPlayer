@@ -12,19 +12,20 @@ ArtistMapNode::ArtistMapNode(Song song){
     this->songList  = new SongArrayList(2);
     songList->insertAtFront(song);
 }
-SongArrayList ArtistMapNode::getSongList() {
-    return *songList;
+SongArrayList* ArtistMapNode::getSongList() {
+    return songList;
 }
 std::string ArtistMapNode::getArtist() {
     return artist;
 }
 void ArtistMapNode::addSong(Song song){
+    //TODO this is adding songs in reverse order
 //cout<<songList->itemCount()<<endl;
     for(int i=0; i<songList->itemCount();i++){
         //cout<<song.getTitle()<<endl;
         int comparison = song.getTitle().compare(songList->getValueAt(i).getTitle());
         //cout<<"comparison: "<<comparison<< song.getTitle()<<songList->getValueAt(i).getArtist()<<endl;
-        if(comparison > 0){
+        if(comparison < 0){
             songList->insertAt(song,i);
 
             break;
@@ -42,4 +43,20 @@ void ArtistMapNode::setNext(ArtistMapNode* nextNode) {
 }
 ArtistMapNode* ArtistMapNode::getNext() {
     return next;
+}
+
+std::string ArtistMapNode::tooString(){
+
+    std::string songString = "{";
+    for(int i=0; i<songList->itemCount(); i++){
+        //std::cout<<"here\n";
+        songString += " "+songList->getValueAt(i).getTitle();
+        //std::cout<<songString;
+        if(i+1 < songList->itemCount()){
+            songString+=",";
+        }
+    }
+    songString += "}";
+    return songString;
+
 }
