@@ -30,7 +30,7 @@ public:
     void addToPlaylist(std::string  playlist, std::string  title, std::string  artist);
     void removeFromPlaylist(std::string  playlist, std::string  title, std::string  artist);
     void playNext(std::string  name);
-    void newRandomPlaylist(std::string name, std::string duration);
+    ArtistMap *getSongLibrary();
 
 
 };

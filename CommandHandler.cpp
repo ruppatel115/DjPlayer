@@ -16,6 +16,11 @@ CommandHandler::CommandHandler(){
 CommandHandler::CommandHandler(Library* mainLibrary){
     this->mainLibrary = mainLibrary;
 }
+
+ArtistMap *CommandHandler::getSongLibrary(){
+    return songLibrary;
+}
+
 void CommandHandler::promptUser(){
 
     std::string mystr = "empty";
@@ -101,7 +106,12 @@ void CommandHandler::library(){
 }
 
 void CommandHandler::displayArtist(std::string artist){
-    std::cout << mainLibrary->getArtistSongs(artist) << std::endl;
+    //std::cout << mainLibrary->getArtistSongs(artist) << std::endl;
+    if(songLibrary->getArtist(artist) == nullptr){
+        std::cout<<"artist not found\n";
+    }else {
+        std::cout << songLibrary->getArtist(artist)->tooString() << std::endl;
+    }
 }
 
 void CommandHandler::song(std::string artist, std::string title){}
@@ -137,4 +147,4 @@ void CommandHandler::removeFromPlaylist(std::string  playlis, std::string  title
 
 void CommandHandler::playNext(std::string  name){}
 
-void CommandHandler::newRandomPlaylist(std::string name, std::string duration){}
+//void CommandHandler::newRandomPlaylist(std::string name, std::string duration){}
