@@ -14,6 +14,8 @@ class ArtistMap{
 private:
     ArtistMapNode* front;
 public:
+    void addArtistNode(Song song);
+    void checkNext(Song song, ArtistMapNode* node);
     ArtistMap();
     std::string toString();
     void removeAll();

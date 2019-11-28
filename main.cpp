@@ -14,6 +14,7 @@ void artistMapTester(){
     string song3 = "rap god, eminem, 5, 2013";
     string song4 = "lucy in thr sky with diamonds, beatles, 3, 1967";
     string song5 = "a hard days night, beatles, 3, 1964";
+    string song6 = "loose yourself, eminem, 5, 2013";
     cout<<"=======ArtistMapNode Tests=======\n";
     ArtistMapNode* testNode = new ArtistMapNode(*new Song(song1));
 
@@ -36,6 +37,7 @@ void artistMapTester(){
     if( testMap->getArtist("beatles") == nullptr){
         cout<<"fail\n";
     }
+    testMap->put(song6);
     cout<<"expecting {a hard days night, here comes the sun, lucy in thr sky with diamonds}, actual ="<< testMap->getArtist("beatles")->tooString()<<'\n';
     cout<< testMap->toString();
 }
@@ -90,12 +92,13 @@ void displayArtistTester(){
 
 
 
+
 }
 
 
 int main() {
-    //artistMapTester();
-    displayArtistTester();
+    artistMapTester();
+    //displayArtistTester();
     //TODO this isn't letting me reference list to test functions
     //PlayListTester();
     /*

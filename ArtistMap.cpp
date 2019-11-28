@@ -8,20 +8,27 @@ using namespace std;
 ArtistMap::ArtistMap(){
     this->front = nullptr;
 }
-void checkNext(Song song, ArtistMapNode &node){
-    if(node.getNext() == nullptr){
-        node.setNext(new ArtistMapNode(song));
-    }else if(node.getArtist() == song.getArtist()){
-        node.addSong(song);
+
+void ArtistMap::checkNext(Song song, ArtistMapNode* node){
+    //Todo this needs to be node.getnext == null ptr but it still needs to check the last ndoe
+    if(node == nullptr){
+        node->setNext(new ArtistMapNode(song));
+        cout<<"a node is needed\n";
+    }else if(node->getArtist() == song.getArtist()){
+        node->addSong(song);
+    }else if(song.getArtist().compare(node->getArtist())<0) {
+        ArtistMapNode *newNode = new ArtistMapNode(song);
+        newNode->setNext(node->getNext());
+        node->setNext(newNode);
     }else{
-        checkNext(song, *node.getNext());
+        checkNext(song, node->getNext());
     }
 }
 void ArtistMap::put(Song song) {
     if(front == nullptr){
         front = new ArtistMapNode(song);
     }else{
-        checkNext(song, *front);
+        checkNext(song, front);
     }
 }
 
