@@ -147,11 +147,17 @@ void CommandHandler::removeFromPlaylist(std::string  playlis, std::string  title
 
 void CommandHandler::playNext(std::string  name){}
 void CommandHandler::quit(){
-    std::string =
-    std::ofstream outf(filename);
+    std::string fileName = "/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/Save.txt";
+    std::ofstream outf(fileName);
     if (outf){
-        outf << "This is line 1" << std::endl;
-        outf << "This is line 2" << std::endl;
+        ArtistMapNode* holder = songLibrary->getFront();
+        while(holder != nullptr){
+            for(int i=0; i<holder->getSongList()->itemCount();i++) {
+                Song song = holder->getSongList()->getValueAt(i);
+                outf << song.getTitle()+","+song.getArtist()+","+std::to_string(song.getLength())+","+std::to_string(song.getYear())+'\n';
+            }
+            holder = holder->getNext();
+        }
         outf.close();
     }
     else {// Print an error and exit

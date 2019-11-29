@@ -108,10 +108,26 @@ void libraryTester(){
           "actual: \n";
     testHandler->library();
 }
+void quitTester(){
+    CommandHandler* testHandler = new CommandHandler();
+    string song1 = "here comes the sun, beatles, 3, 1967";
+    string song2 = "Billie Jean, michael Jackson, 5, 1980";
+    string song3 = "rap god, eminem, 5, 2013";
+    string song4 = "lucy in thr sky with diamonds, beatles, 3, 1967";
+    string song5 = "a hard days night, beatles, 3, 1964";
+    testHandler->getSongLibrary()->put(song1);
+    testHandler->getSongLibrary()->put(song2);
+    testHandler->getSongLibrary()->put(song3);
+    testHandler->getSongLibrary()->put(song4);
+    testHandler->getSongLibrary()->put(song5);
+    testHandler->quit();
+    testHandler->import("/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/importTest.txt");
+    testHandler->library();
 
-
+}
 
 int main() {
+    quitTester();
     //libraryTester();
     //artistMapTester();
     //displayArtistTester();
