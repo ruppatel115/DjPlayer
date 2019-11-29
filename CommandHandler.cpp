@@ -102,7 +102,7 @@ void CommandHandler::help(){
 
 
 void CommandHandler::library(){
-    std::cout << "List of song in library" << std::endl;
+    std::cout << songLibrary->toString() << std::endl;
 }
 
 void CommandHandler::displayArtist(std::string artist){
@@ -146,5 +146,17 @@ void CommandHandler::addToPlaylist(std::string  playlis, std::string  title, std
 void CommandHandler::removeFromPlaylist(std::string  playlis, std::string  title, std::string  artist){}
 
 void CommandHandler::playNext(std::string  name){}
+void CommandHandler::quit(){
+    std::string =
+    std::ofstream outf(filename);
+    if (outf){
+        outf << "This is line 1" << std::endl;
+        outf << "This is line 2" << std::endl;
+        outf.close();
+    }
+    else {// Print an error and exit
+        std::cerr << "Can't write to file" << std::endl;
+    }
+}
 
 //void CommandHandler::newRandomPlaylist(std::string name, std::string duration){}

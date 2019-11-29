@@ -31,6 +31,7 @@ public:
     void removeFromPlaylist(std::string  playlist, std::string  title, std::string  artist);
     void playNext(std::string  name);
     ArtistMap *getSongLibrary();
+    void quit();
 
 
 };

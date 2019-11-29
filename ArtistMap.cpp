@@ -10,13 +10,12 @@ ArtistMap::ArtistMap(){
 }
 
 void ArtistMap::checkNext(Song song, ArtistMapNode* node){
-    //Todo this needs to be node.getnext == null ptr but it still needs to check the last ndoe
-    if(node == nullptr){
+    if(node->getNext() == nullptr){
         node->setNext(new ArtistMapNode(song));
-        cout<<"a node is needed\n";
-    }else if(node->getArtist() == song.getArtist()){
-        node->addSong(song);
-    }else if(song.getArtist().compare(node->getArtist())<0) {
+        //cout<<"***this should never be seen***";
+    }else if(node->getNext()->getArtist() == song.getArtist()){
+        node->getNext()->addSong(song);
+    }else if(song.getArtist().compare(node->getNext()->getArtist())<0) {
         ArtistMapNode *newNode = new ArtistMapNode(song);
         newNode->setNext(node->getNext());
         node->setNext(newNode);
@@ -25,8 +24,14 @@ void ArtistMap::checkNext(Song song, ArtistMapNode* node){
     }
 }
 void ArtistMap::put(Song song) {
-    if(front == nullptr){
+    if(front == nullptr) {
         front = new ArtistMapNode(song);
+    }else if (front->getArtist() == song.getArtist()){
+        front->addSong(song);
+    }else if(song.getArtist().compare(front->getArtist())<0){
+        ArtistMapNode *newNode = new ArtistMapNode(song);
+        newNode->setNext(front->getNext());
+        front->setNext(newNode);
     }else{
         checkNext(song, front);
     }
