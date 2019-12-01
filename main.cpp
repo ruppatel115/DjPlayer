@@ -91,7 +91,7 @@ void displayArtistTester(){
 void libraryTester(){
     CommandHandler* testHandler = new CommandHandler();
     string song1 = "here comes the sun, beatles, 3, 1967";
-    string song2 = "Billie Jean, michael Jackson, 5, 1980";
+    string song2 = "Billie Jean, Michael Jackson, 5, 1980";
     string song3 = "rap god, eminem, 5, 2013";
     string song4 = "Lucy in thr sky with diamonds, beatles, 3, 1967";
     string song5 = "a hard days night, beatles, 3, 1964";
@@ -104,8 +104,8 @@ void libraryTester(){
 
     cout<<"[\n"
           "beatles: { a hard days night, here comes the sun, lucy in thr sky with diamonds}\n"
-          "Michael Jackson: { Billie Jean}\n"
           "eminem: { loose yourself, rap god}\n"
+          "Michael Jackson: { Billie Jean}\n"
           "]\n"
           "actual: \n";
     testHandler->library();
@@ -129,6 +129,7 @@ void quitTester(){
 }
 
 int main() {
+
     //quitTester();
     libraryTester();
     //artistMapTester();

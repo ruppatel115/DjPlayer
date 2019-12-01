@@ -11,35 +11,50 @@ ArtistMap::ArtistMap(){
 
 void ArtistMap::checkNext(Song song, ArtistMapNode* node){
     if(node->getNext() == nullptr){
-        cout<<"here all the time\n";
+        //cout<<"here all the time\n";
         node->setNext(new ArtistMapNode(song));
         //cout<<"***this should never be seen***";
     }else if(node->getNext()->getArtist() == song.getArtist()){
         node->getNext()->addSong(song);
-    }else if(song.getArtist().compare(node->getNext()->getArtist())<0) {
-        cout<<song.getArtist()<<" "<<node->getNext()->getArtist()<<endl;
+    }else{
+        string s1 = song.getArtist();
+        transform(s1.begin(), s1.end(), s1.begin(), ::tolower);
+        string s2 = node->getNext()->getArtist();
+        transform(s2.begin(), s2.end(), s2.begin(), ::tolower);
+        if(s1.compare(s2)<0) {
+        //cout<<song.getArtist()<<" "<<node->getNext()->getArtist()<<endl;
         ArtistMapNode *newNode = new ArtistMapNode(song);
         newNode->setNext(node->getNext());
         node->setNext(newNode);
-    }else{
-        checkNext(song, node->getNext());
+        }else {
+            checkNext(song, node->getNext());
+        }
     }
 }
 void ArtistMap::put(Song song) {
-    cout<<"in put\n";
+    string s1 = song.getArtist();
+    transform(s1.begin(), s1.end(), s1.begin(), ::tolower);
+
+    //cout<<"in put\n";
     if(front == nullptr) {
-        cout<<"first time \n";
+        //cout<<"first time \n";
         front = new ArtistMapNode(song);
     }else if (front->getArtist() == song.getArtist()){
-        cout<<"same artist\n";
+        //cout<<"same artist\n";
         front->addSong(song);
-    }else if(song.getArtist().compare(front->getArtist())<0){
-        cout<<"in put "<<song.getArtist()<<" "<< front->getArtist()<<endl;
-        ArtistMapNode *newNode = new ArtistMapNode(song);
-        newNode->setNext(front);
-        front = newNode;
-    }else{
-        checkNext(song, front);
+    }else {
+        string s1 = song.getArtist();
+        transform(s1.begin(), s1.end(), s1.begin(), ::tolower);
+        string s2 = front->getArtist();
+        transform(s2.begin(), s2.end(), s2.begin(), ::tolower);
+        if (s1.compare(s2) < 0) {
+            //cout << "in put " << song.getArtist() << " " << front->getArtist() << endl;
+            ArtistMapNode *newNode = new ArtistMapNode(song);
+            newNode->setNext(front);
+            front = newNode;
+        } else {
+            checkNext(song, front);
+        }
     }
 }
 
