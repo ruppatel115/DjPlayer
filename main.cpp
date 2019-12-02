@@ -5,6 +5,7 @@
 #include "CommandHandler.h"
 #include "Playlist.h"
 #include "PlaylistArrayList.h"
+#include "List.h"
 using namespace std;
 #include <stdexcept>
 #include <string>
@@ -43,31 +44,38 @@ void artistMapTester(){
     cout<< testMap->toString();
 }
 
-void PlayListTester(Playlist& playList){
+void PlayListTester(){
     string song1 = "A her comes the sun, beatles, 3, 1967";
     string song2 = "Billie Jean, Michael Jackson, 5, 1980";
     string song3 = "rap god, eminem, 5, 2013";
-    string song4 = "b  lucy in thr sky with diamonds, beatles, 3, 1967";
+    string song4 = "b lucy in thr sky with diamonds, beatles, 3, 1967";
     string song5 = "c  hey jude, beatles, 3, 1968";
 
-    std::cout << "-------isEmptyTest---------" <<std::endl;
-    playList.isEmpty();
+    std::cout << "-------PLAYLIST TEST---------" <<std::endl;
+    Playlist playList;
     cout<<"expecting true, actual: ";
+    cout<<playList.isEmpty()<<endl;
+    cout<<"expecting 0, actual: ";
+    cout<<playList.itemCount()<<endl;
     playList.insertAtEnd(song1);
     playList.insertAtEnd(song2);
+    cout<<"expecting 2, actual: ";
+    cout<<playList.itemCount()<<endl;
     cout<<"expecting false, actual: ";
-    playList.isEmpty();
+    cout<<playList.isEmpty()<<endl;
     playList.insertAtEnd(song3);
     playList.insertAtEnd(song4);
-    playList.itemCount();
     cout<<"expecting 4 actual: ";
-    playList.itemCount();
-    cout<<"expecting rap god, actual: ";
-    playList.removeSong(2);
+    cout<<playList.itemCount()<<endl;
+    cout<<"rap god, eminem, 5, 2013, actual: ";
+    cout<<playList.removeSong(2)<<endl;
+    ///REMOVESONG OFF BY ONE INDEX, REFERENCING LOCATION OF SONG/DUPLICATING FIRST SONG FOR INDEX 0 & 1
     cout<<"expecting 3 actual: ";
-    playList.itemCount();
-    std::cout << "--done--" <<std::endl;
-    }
+    cout<<playList.itemCount()<<endl;
+    std::cout << "--done--" <<std::endl;}
+
+
+
 void displayArtistTester(){
     CommandHandler* testHandler = new CommandHandler();
     string song1 = "here comes the sun, beatles, 3, 1967";
@@ -89,6 +97,10 @@ void displayArtistTester(){
     cout<<"expecting artist not found, actual: ";
     testHandler->displayArtist("jon doe");
 }
+
+
+
+
 void libraryTester(){
     CommandHandler* testHandler = new CommandHandler();
     string song1 = "here comes the sun, beatles, 3, 1967";
@@ -138,12 +150,11 @@ void playlistArrayListTester(){
 int main() {
 
     //quitTester();
-    libraryTester();
+    //libraryTester();
     //artistMapTester();
     //displayArtistTester();
-    playlistArrayListTester();
-    //TODO this isn't letting me reference list to test functions
-    //PlayListTester();
+   // playlistArrayListTester();
+   PlayListTester();
     /*
     //CommandHandler* test = new CommandHandler();
     //test->import("/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/importTest.txt");

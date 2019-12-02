@@ -9,8 +9,10 @@
 #include <string>
 #include "SongList.h"
 #include "Song.h"
+#include "List.h"
 
-class SongArrayList : public List {
+
+class SongArrayList { //public List {
 private:
     //pointer to the start of the array
     Song* array;

@@ -82,7 +82,9 @@ int Playlist::findSong(std::string title) { //TODO songs can have the same name?
 }
 
 bool Playlist::isEmpty() {
-    return front == nullptr;
+    if(front == nullptr){
+        return true;
+    }
 }
 
 int Playlist::itemCount(){//O(n) must run through all items of list
@@ -101,47 +103,50 @@ int Playlist::itemCount(){//O(n) must run through all items of list
 
 std::string Playlist::removeSong(int index) { //returns song information
     //throw exceptions if playlist empty
-    if (itemCount() < index + 1 || index < 0) {
+    if (itemCount() < index + 1 || index < 0 || front== nullptr) {
         throw std::out_of_range("out of range");
     }
-    LinkedNode *node = front;
-    if (index == 0) {
-        if (front == end) {
-            end = nullptr;
-            delete front;
-            front = nullptr;
-        }
-        LinkedNode *node = front;
-        front = front->getNext();
-        std::string item = node->getSong().getTitle() +", "+node->getSong().getArtist()+", "+std::to_string(node->getSong().getLength())+", "+std::to_string(node->getSong().getYear());
 
-        delete node;
-        return item;
+    if (index==0) {
+            LinkedNode *node = front;
+            end = nullptr;
+            front = front->getNext();
+            std::string item = node->getSong().getTitle() + ", " + node->getSong().getArtist() + ", " +
+                               std::to_string(node->getSong().getLength()) + ", " +
+                               std::to_string(node->getSong().getYear());
+
+            delete node;
+            return item;
     }
     if (index == 1) {
+        LinkedNode *node = front;
         front = node->getNext();
         std::string item = node->getSong().getTitle() +", "+node->getSong().getArtist()+", "+std::to_string(node->getSong().getLength())+", "+std::to_string(node->getSong().getYear());
         delete node;
         return item;
-    } else {
-        for (int i = 0; i < index - 1; i++) {
-            node = node->getNext();
-        }
-        LinkedNode *temp = node->getNext();
-        node->setNext(temp->getNext());
-        std::string item = node->getSong().getTitle() +", "+node->getSong().getArtist()+", "+std::to_string(node->getSong().getLength())+", "+std::to_string(node->getSong().getYear());
-        return item;
     }
-}
+    LinkedNode *node = front;
+
+    for (int i = 0; i < index - 1; i++) {
+            node = node->getNext();
+    }
+    LinkedNode *temp = node->getNext();
+    node->setNext(temp->getNext());
+    std::string item = node->getSong().getTitle() +", "+node->getSong().getArtist()+", "+std::to_string(node->getSong().getLength())+", "+std::to_string(node->getSong().getYear());
+    delete temp;
+    return item;
+    }
 
 
 
 
 
-void Playlist::insertAtEnd(Song songStr){
-    LinkedNode *newNode = new LinkedNode(songStr);
-    newNode->setNext(nullptr);
+
+void Playlist::insertAtEnd(Song song){
+    LinkedNode *newNode = new LinkedNode(song);
+    newNode->setSong(song);
     if (front == nullptr) {
+        newNode->setNext(front);
         front = newNode;
 
     } else {
@@ -150,6 +155,7 @@ void Playlist::insertAtEnd(Song songStr){
             temp = temp->getNext();
         }
         temp->setNext(newNode);
+        newNode->setNext(nullptr);
 
 
     }
