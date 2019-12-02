@@ -13,7 +13,7 @@ private:
     SongArrayList* songList;
 public:
     ArtistMapNode(Song song);
-    std::string tooString();
+    std::string toString();
     std::string getArtist();
     SongArrayList* getSongList();
     void addSong(Song song);

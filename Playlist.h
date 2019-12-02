@@ -13,10 +13,12 @@
 class Playlist{
 
 private:
+
+
     LinkedNode *front;
     LinkedNode *end;
-    Playlist(const Playlist& playlistToCopy);
-    Playlist& operator=(const Playlist& playlistToCopy);
+    //Playlist(const Playlist& playlistToCopy);
+    //Playlist& operator=(const Playlist& playlistToCopy);
     std::string title;
 
 
@@ -25,22 +27,27 @@ private:
 public:
 
     Playlist();
+    Playlist(std::string title);
 
     ~Playlist();
 
-    virtual std::string getTitle()=0;
+    virtual std::string getTitle();
 
-    virtual void calcDuration()=0;
+    virtual int calcDuration();
+    //Displays all the songs in the playlist
+    virtual std::string toString();
 
-    virtual std::string playNext()=0; //after next song is played will call remove song
+    virtual std::string playNext(); //after next song is played will call remove song
 
-    virtual int itemCount()=0; //O(n) must run through all items of list
+    virtual int findSong(std::string title);   //looks for the index of the song with given name
 
-    virtual bool isEmpty()=0;
+    virtual int itemCount(); //O(n) must run through all items of list
 
-    virtual std::string removeSong(int index)=0; //returns song information
+    virtual bool isEmpty();
 
-    virtual void insertAtEnd(Song songStr)=0;
+    virtual std::string removeSong(int index); //returns song information
+
+    virtual void insertAtEnd(Song songStr);
 
 
 

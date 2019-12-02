@@ -4,6 +4,7 @@
 #include "Library.h"
 #include "CommandHandler.h"
 #include "Playlist.h"
+#include "PlaylistArrayList.h"
 using namespace std;
 #include <stdexcept>
 #include <string>
@@ -23,7 +24,7 @@ void artistMapTester(){
     cout<<"expecting 'duplicate song a hard days night', actual: ";
     testNode->addSong(song5);
     cout<<"\n";
-    cout<<"expecting {a hard days night, here comes the sun, lucy in thr sky with diamonds}, actual ="<< testNode->tooString()<<'\n';
+    cout<<"expecting {a hard days night, here comes the sun, lucy in thr sky with diamonds}, actual ="<< testNode->toString()<<'\n';
 
     cout<<"=======ArtistAmp Tests=======\n";
     ArtistMap* testMap = new ArtistMap();
@@ -38,7 +39,7 @@ void artistMapTester(){
         cout<<"fail\n";
     }
     testMap->put(song6);
-    cout<<"expecting {a hard days night, here comes the sun, lucy in thr sky with diamonds}, actual ="<< testMap->getArtist("beatles")->tooString()<<'\n';
+    cout<<"expecting {a hard days night, here comes the sun, lucy in thr sky with diamonds}, actual ="<< testMap->getArtist("beatles")->toString()<<'\n';
     cout<< testMap->toString();
 }
 
@@ -128,12 +129,19 @@ void quitTester(){
 
 }
 
+void playlistArrayListTester(){
+    CommandHandler* testHandler = new CommandHandler();
+    //testHandler.
+
+}
+
 int main() {
 
     //quitTester();
     libraryTester();
     //artistMapTester();
     //displayArtistTester();
+    playlistArrayListTester();
     //TODO this isn't letting me reference list to test functions
     //PlayListTester();
     /*

@@ -55,7 +55,7 @@ ArtistMapNode* ArtistMapNode::getNext() {
     return next;
 }
 
-std::string ArtistMapNode::tooString(){
+std::string ArtistMapNode::toString(){
 
     std::string songString = "{";
     for(int i=0; i<songList->itemCount(); i++){

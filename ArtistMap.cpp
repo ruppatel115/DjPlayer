@@ -83,9 +83,9 @@ ArtistMapNode* ArtistMap::getFront() {
 }
 string toString( ArtistMapNode* node){
     if(node->getNext() == nullptr){
-        return  node->getArtist()+": "+node->tooString()+"\n";
+        return  node->getArtist()+": "+node->toString()+"\n";
     }
-    return node->getArtist() + ": " + node->tooString() + "\n" + toString( node->getNext());
+    return node->getArtist() + ": " + node->toString() + "\n" + toString( node->getNext());
 
 }
 string ArtistMap::toString() {

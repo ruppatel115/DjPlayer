@@ -9,13 +9,14 @@
 #include "Library.h"
 CommandHandler::CommandHandler(){
     songLibrary = new ArtistMap();
+    PlaylistList = new PlaylistArrayList(20);
 
 
     //promptUser();
 }
-CommandHandler::CommandHandler(Library* mainLibrary){
-    this->mainLibrary = mainLibrary;
-}
+//CommandHandler::CommandHandler(Library* mainLibrary){
+//    this->mainLibrary = mainLibrary;
+//}
 
 ArtistMap *CommandHandler::getSongLibrary(){
     return songLibrary;
@@ -110,11 +111,13 @@ void CommandHandler::displayArtist(std::string artist){
     if(songLibrary->getArtist(artist) == nullptr){
         std::cout<<"artist not found\n";
     }else {
-        std::cout << songLibrary->getArtist(artist)->tooString() << std::endl;
+        std::cout << songLibrary->getArtist(artist)->toString() << std::endl;
     }
 }
 
-void CommandHandler::song(std::string artist, std::string title){}
+void CommandHandler::song(std::string artist, std::string title){
+    //TODO
+}
 
 void CommandHandler::import(std::string fileName){
     std::ifstream infile(fileName);
@@ -133,19 +136,69 @@ void CommandHandler::import(std::string fileName){
     }
 }
 
-void CommandHandler::discontinue(std::string fileName){}
+void CommandHandler::discontinue(std::string fileName){
+    //TODO
+}
 
-void CommandHandler::listPlaylists(){}
+void CommandHandler::listPlaylists(){
+    std::cout << PlaylistList.toString() << std::endl;
 
-void CommandHandler::playlist(std::string  name){}
+}
+/**
+ * Displays all songs left in the given playlist and its duration
+ * @param name of the playlist
+ */
+void CommandHandler::playlist(std::string name){
+    int index = PlaylistList.find(name);
+     Playlist temp = PlaylistList.getValueAt(index);
+     std::cout << "Playlist" +  name + ": \nDuration: " + std::to_string(temp.calcDuration()) << std::endl;
+     std::cout << "Songs: " + temp.toString();
 
-void CommandHandler::newPlaylist(std::string  name){}
+}
 
-void CommandHandler::addToPlaylist(std::string  playlis, std::string  title, std::string  artist){}
+/**
+ * Creates a new empty playlist with name and adds it to the list of playlists
+ * @param name of the new playlist
+ */
+void CommandHandler::newPlaylist(std::string name){
+    Playlist* newPlaylist = new Playlist(name);
 
-void CommandHandler::removeFromPlaylist(std::string  playlis, std::string  title, std::string  artist){}
+    PlaylistList.insertAtEnd(*newPlaylist); //TODO does this work?
 
-void CommandHandler::playNext(std::string  name){}
+    std::cout << "Added new playlist "+name+"." << std::endl;
+}
+
+void CommandHandler::addToPlaylist(std::string playlist, std::string title, std::string artist){
+
+    int index = PlaylistList.find(playlist);
+    Playlist temp = PlaylistList.getValueAt(index);
+    std::string songStr = title +", " + artist +", , "; //TODO still need the error handler for missing info in Song
+    temp.insertAtEnd(songStr);
+    std::cout << "Added new song "+title+"." << std::endl;
+}
+
+void CommandHandler::removeFromPlaylist(std::string playlist, std::string title, std::string artist){
+    int playlistIndex = PlaylistList.find(playlist);
+    Playlist temp = PlaylistList.getValueAt(playlistIndex);
+    int songIndex = temp.findSong(title);
+    temp.removeSong(songIndex);
+
+    std::cout << "Removed song "+title+"." << std::endl;
+}
+
+
+void CommandHandler::playNext(std::string playlist) {
+    int playlistIndex = PlaylistList.find(playlist);
+    Playlist temp = PlaylistList.getValueAt(playlistIndex);
+
+    std::cout << "Next song to be played: " + temp.removeSong(0) << std::endl;
+    if (temp.isEmpty()){
+        PlaylistList.removeAt(playlistIndex);
+    }
+    //TODO playcount?
+}
+
+
 void CommandHandler::quit(){
     std::string fileName = "/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/Save.txt";
     std::ofstream outf(fileName);
@@ -164,5 +217,5 @@ void CommandHandler::quit(){
         std::cerr << "Can't write to file" << std::endl;
     }
 }
-
+//TODO
 //void CommandHandler::newRandomPlaylist(std::string name, std::string duration){}

@@ -9,18 +9,18 @@
 #include <string>
 #include "Song.h"
 
-class List {
+class SongList {
 private:
     //Private to disable copying and assigning from outside class, don't implement these methods
-    List(const List& listToCopy);
-    List& operator=(const List& listToCopy);
+    SongList(const SongList& listToCopy);
+    SongList& operator=(const SongList& listToCopy);
 
 public:
     //constructor
-    List() {}
+    SongList() {}
 
     //Destructor
-    virtual ~List() {}
+    virtual ~SongList() {}
 
     /**
      * appends the new item to the end of the list
