@@ -27,7 +27,7 @@ void artistMapTester(){
     cout<<"\n";
     cout<<"expecting {a hard days night, here comes the sun, lucy in thr sky with diamonds}, actual ="<< testNode->toString()<<'\n';
 
-    cout<<"=======ArtistAmp Tests=======\n";
+    cout<<"=======ArtistMap Tests=======\n";
     ArtistMap* testMap = new ArtistMap();
     testMap->put(song1);
     testMap->put(song2);
@@ -42,6 +42,9 @@ void artistMapTester(){
     testMap->put(song6);
     cout<<"expecting {a hard days night, here comes the sun, lucy in thr sky with diamonds}, actual ="<< testMap->getArtist("beatles")->toString()<<'\n';
     cout<< testMap->toString();
+
+    cout<<"-----done-----\n"<< std::endl;
+
 }
 
 void PlayListTester(){
@@ -72,11 +75,12 @@ void PlayListTester(){
     ///REMOVESONG OFF BY ONE INDEX, REFERENCING LOCATION OF SONG/DUPLICATING FIRST SONG FOR INDEX 0 & 1
     cout<<"expecting 3 actual: ";
     cout<<playList.itemCount()<<endl;
-    std::cout << "--done--" <<std::endl;}
+    std::cout << "-----done-----" <<endl;}
 
 
 
 void displayArtistTester(){
+    cout<<"=======displayArtistTester======="<<endl;
     CommandHandler* testHandler = new CommandHandler();
     string song1 = "here comes the sun, beatles, 3, 1967";
     string song2 = "Billie Jean, Michael Jackson, 5, 1980";
@@ -96,12 +100,14 @@ void displayArtistTester(){
     testHandler->displayArtist("Michael Jackson");
     cout<<"expecting artist not found, actual: ";
     testHandler->displayArtist("jon doe");
+    cout<<"-----done-----"<<endl;
 }
 
 
 
 
 void libraryTester(){
+    cout<<"=======libraryTester======="<<endl;
     CommandHandler* testHandler = new CommandHandler();
     string song1 = "here comes the sun, beatles, 3, 1967";
     string song2 = "Billie Jean, Michael Jackson, 5, 1980";
@@ -122,8 +128,10 @@ void libraryTester(){
           "]\n"
           "actual: \n";
     testHandler->library();
+    cout<<"-----done-----"<<endl;
 }
 void quitTester(){
+    cout<<"Quit tester"<<endl;
     CommandHandler* testHandler = new CommandHandler();
     string song1 = "here comes the sun, beatles, 3, 1967";
     string song2 = "Billie Jean, michael Jackson, 5, 1980";
@@ -138,6 +146,7 @@ void quitTester(){
     testHandler->quit();
     testHandler->import("/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/importTest.txt");
     testHandler->library();
+    cout<<"-----done-----"<<endl;
 
 }
 
