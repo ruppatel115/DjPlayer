@@ -159,6 +159,19 @@ void Playlist::insertAtEnd(Song song){
 
 
     }
+
+    Song Playlist::getSong(int index){
+        LinkedNode *temp = front;
+        int i = 0;
+        while (temp->getNext() != nullptr) {
+            if (i == index) {
+                return temp->getSong();
+            }
+            else {
+                temp = temp->getNext();
+            }
+        }
+    }
 }
 
 

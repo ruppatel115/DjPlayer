@@ -10,6 +10,7 @@ Song::Song(){  //default constructor
     artist = "";
     length = 0;
     year = 0;
+    playcount = 0;
 }
 
 Song::Song(std::string& songStr) {
@@ -43,5 +44,9 @@ int Song::getLength() const {
 
 int Song::getYear() const {
     return year;
+}
+
+void Song::incrementPlaycount() {
+    playcount++;
 }
 
