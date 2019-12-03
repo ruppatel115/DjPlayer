@@ -149,10 +149,10 @@ void playlistArrayListTester(){
 
 int main() {
 
-    //quitTester();
-    //libraryTester();
-    //artistMapTester();
-    //displayArtistTester();
+    quitTester();
+    libraryTester();
+    artistMapTester();
+    displayArtistTester();
    // playlistArrayListTester();
    PlayListTester();
     /*
