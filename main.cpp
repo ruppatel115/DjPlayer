@@ -131,7 +131,7 @@ void libraryTester(){
     cout<<"-----done-----"<<endl;
 }
 void quitTester(){
-    cout<<"Quit tester"<<endl;
+    cout<<"======Quit tester======"<<endl;
     CommandHandler* testHandler = new CommandHandler();
     string song1 = "here comes the sun, beatles, 3, 1967";
     string song2 = "Billie Jean, michael Jackson, 5, 1980";
