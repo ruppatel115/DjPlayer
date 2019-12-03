@@ -66,6 +66,7 @@ std::string ArtistMapNode::toString(){
             songString+=",";
         }
     }
+    songString.erase(1,1);
     songString += "}";
     return songString;
 
