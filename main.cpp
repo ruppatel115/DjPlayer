@@ -54,7 +54,7 @@ void PlayListTester(){
     string song4 = "b lucy in thr sky with diamonds, beatles, 3, 1967";
     string song5 = "c  hey jude, beatles, 3, 1968";
 
-    std::cout << "-------PLAYLIST TEST---------" <<std::endl;
+    std::cout << "=======PLAYLIST TEST=======" <<endl;
     Playlist playList;
     cout<<"expecting true, actual: ";
     cout<<playList.isEmpty()<<endl;
@@ -75,7 +75,8 @@ void PlayListTester(){
     ///REMOVESONG OFF BY ONE INDEX, REFERENCING LOCATION OF SONG/DUPLICATING FIRST SONG FOR INDEX 0 & 1
     cout<<"expecting 3 actual: ";
     cout<<playList.itemCount()<<endl;
-    std::cout << "-----done-----" <<endl;}
+    std::cout << "-----done-----" <<endl;
+}
 
 
 
