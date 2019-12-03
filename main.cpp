@@ -56,15 +56,15 @@ void PlayListTester(){
 
     std::cout << "=======PLAYLIST TEST=======" <<endl;
     Playlist playList;
-    cout<<"expecting true, actual: ";
+    cout<<"expecting 1 or true, actual: ";
     cout<<playList.isEmpty()<<endl;
-    cout<<"expecting 0, actual: ";
+    cout<<"expecting 0 or false, actual: ";
     cout<<playList.itemCount()<<endl;
     playList.insertAtEnd(song1);
     playList.insertAtEnd(song2);
     cout<<"expecting 2, actual: ";
     cout<<playList.itemCount()<<endl;
-    cout<<"expecting false, actual: ";
+    cout<<"expecting 0 or false, actual: ";
     cout<<playList.isEmpty()<<endl;
     playList.insertAtEnd(song3);
     playList.insertAtEnd(song4);
