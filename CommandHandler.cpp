@@ -116,7 +116,20 @@ void CommandHandler::displayArtist(std::string artist){
 }
 
 void CommandHandler::song(std::string artist, std::string title){
-    //TODO
+    ArtistMapNode* artistNode = songLibrary->getArtist(artist);
+    if(artistNode != nullptr){
+       int songIndex = artistNode->getSongList()->find(artist);
+       if(songIndex >-1){
+           Song song = artistNode->getSongList()->getValueAt(songIndex);
+           std::cout<<song.getTitle()<<", "<<song.getArtist()<<", "<<song.getLength()<<", "<<song.getLength()<<std::endl;
+       }else{
+           std::cout<<"Song not found for that artist\n";
+       }
+
+    }else{
+        std::cout<<"Artist not found for that artist\n";
+
+    }
 }
 
 void CommandHandler::import(std::string fileName){
