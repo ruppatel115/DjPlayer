@@ -1,6 +1,6 @@
-rap god, eminem, 5, 2013
-her comes the sun, beatles, 3, 1967
-Billie Jean, Michael Jackson, 5, 1980
-rap god, eminem, 5, 2013
-lucy in thr sky with diamonds, beatles, 3, 1967
-hey jude, beatles, 3, 1968
+rap god, eminem, 5:43, 2013
+her comes the sun, beatles, 3:21, 1967
+Billie Jean, Michael Jackson, 5:41, 1980
+rap god, eminem, 5:43, 2013
+lucy in thr sky with diamonds, beatles, 3:09, 1967
+hey jude, beatles, 3:56, 1968
