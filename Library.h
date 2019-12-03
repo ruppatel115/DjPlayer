@@ -10,6 +10,7 @@
 class Library{
 
 private:
+    //TODO songlist?
     std::string filename;
     //Probably won't need these:
     Library(const Library& libraryToCopy);
