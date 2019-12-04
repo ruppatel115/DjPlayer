@@ -118,11 +118,16 @@ void CommandHandler::displayArtist(std::string artist){
 void CommandHandler::song(std::string artist, std::string title){
     ArtistMapNode* artistNode = songLibrary->getArtist(artist);
     if(artistNode != nullptr){
+        /*
        int songIndex = artistNode->getSongList()->find(artist);
        if(songIndex >-1){
            Song song = artistNode->getSongList()->getValueAt(songIndex);
            std::cout<<song.getTitle()<<", "<<song.getArtist()<<", "<<song.getLength()<<", "<<song.getLength()<<std::endl;
-       }else{
+           */
+        Song* song = artistNode->getSongList()->getSong(title);
+        if(song != nullptr){
+            std::cout<<song->getTitle()<<", "<<song->getArtist()<<", "<<int(song->getLength()/60)<<":"<<song->getLength()%60<<", "<<song->getYear()<<std::endl;
+        }else{
            std::cout<<"Song, "<<title<< " not found for "<<artist<<"\n";
        }
 

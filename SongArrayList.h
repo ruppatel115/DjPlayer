@@ -143,6 +143,7 @@ public:
      * @throws out_of_range exception if index is invalid
      */
     Song removeValueAt(int index);
+    Song* getSong(std::string songToFind);
 
 };
 

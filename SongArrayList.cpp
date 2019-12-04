@@ -115,6 +115,15 @@ int SongArrayList::findLast(std::string numToFind) {
 
     return -1;
 }
+Song* SongArrayList::getSong(std::string songToFind) {
+    for(int i=0;i<currItemCount; i++){
+        if(array[i].getTitle() == songToFind){
+            return &array[i];
+        }
+    }
+
+    return nullptr;
+}
 /*
 int SongArrayList::findMaxIndex() {
     if(currItemCount <1){

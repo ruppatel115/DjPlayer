@@ -161,7 +161,7 @@ void playlistArrayListTester(){
 void displaySongTester(){
     CommandHandler* testHandler = new CommandHandler();
     testHandler->import("/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/importTest.txt");
-    cout<<"expecting rap god, eminem, 5:43, 2013, actual:";
+    cout<<"expecting rap god, eminem, 5:43, 2013, actual: ";
     testHandler->song("eminem", "rap god");
     cout<<"=====done=======\n";
 
