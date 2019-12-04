@@ -123,11 +123,11 @@ void CommandHandler::song(std::string artist, std::string title){
            Song song = artistNode->getSongList()->getValueAt(songIndex);
            std::cout<<song.getTitle()<<", "<<song.getArtist()<<", "<<song.getLength()<<", "<<song.getLength()<<std::endl;
        }else{
-           std::cout<<"Song not found for that artist\n";
+           std::cout<<"Song, "<<title<< " not found for "<<artist<<"\n";
        }
 
     }else{
-        std::cout<<"Artist not found for that artist\n";
+        std::cout<<"Artist, "<<artist<<" not found\n";
 
     }
 }

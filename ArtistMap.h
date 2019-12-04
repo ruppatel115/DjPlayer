@@ -4,7 +4,7 @@
 
 #ifndef DJPLAYER_ARTISTMAP_H
 #define DJPLAYER_ARTISTMAP_H
-#include "Song.h"
+//#include "Song.h"
 #include <iostream>
 #include <algorithm>
 #include "ArtistMapNode.h"

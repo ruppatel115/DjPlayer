@@ -5,10 +5,10 @@
 #ifndef DJPLAYER_COMMANDHANDLER_H
 #define DJPLAYER_COMMANDHANDLER_H
 #include <iostream>
-#include "SongList.h"
-#include "SongArrayList.h"
+//#include "SongList.h"
+//#include "SongArrayList.h"
 #include "ArtistMap.h"
-#include "Library.h"
+//#include "Library.h"
 #include "PlaylistArrayList.h"
 
 class CommandHandler {

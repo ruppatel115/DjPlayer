@@ -161,7 +161,7 @@ void playlistArrayListTester(){
 
 int main() {
 
-    quitTester();
+    //quitTester();
     //libraryTester();
     //artistMapTester();
     //displayArtistTester();
@@ -188,8 +188,8 @@ int main() {
     std::cout<<"title = "<<test2->getTitle()<<"\n";
     std::cout<<"year = "<<test2->getYear()<<"\n";
 
-
-    CommandHandler* handler = new CommandHandler(&mainLibrary);
+*/
+    CommandHandler* handler = new CommandHandler();
     std::string mystr;
     while(mystr != "done") {
         std::cout << "Enter your command or help:";
@@ -291,13 +291,13 @@ int main() {
             std::string duration = ""; //TODO different type?
             getline(std::cin, duration);
 
-            handler->newRandomPlaylist(playlistTitle, duration);
+           // handler->newRandomPlaylist(playlistTitle, duration);
 
         }
 
         }
 
-*/
+
 
     return 0;
     }

@@ -4,7 +4,6 @@
 #include <iostream>
 #include <string>
 #include "SongArrayList.h"
-#include "SongArrayList.h"
 
 
 void SongArrayList::doubleCapacity() {

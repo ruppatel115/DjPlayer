@@ -2,7 +2,7 @@
 // Created by Forrest Wargo on 11/24/19.
 //
 #include "ArtistMapNode.h"
-#include "SongList.h"
+//#include "SongList.h"
 using namespace std;
 
 
