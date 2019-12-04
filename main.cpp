@@ -136,8 +136,8 @@ void quitTester(){
     cout<<"======Quit tester======"<<endl;
     CommandHandler* testHandler = new CommandHandler();
     string song1 = "here comes the sun, beatles, 3:23, 1967";
-    string song2 = "Billie Jean, michael Jackson, 5:54, 1980";
-    string song3 = "rap god, eminem, 5, 2013";
+    string song2 = "Billie Jean, Michael Jackson, 5:54, 1980";
+    string song3 = "rap god, eminem, 5:43, 2013";
     string song4 = "lucy in thr sky with diamonds, beatles, 2:21, 1967";
     string song5 = "a hard days night, beatles, 31:56, 1964";
     testHandler->getSongLibrary()->put(song1);
@@ -146,8 +146,9 @@ void quitTester(){
     testHandler->getSongLibrary()->put(song4);
     testHandler->getSongLibrary()->put(song5);
     testHandler->quit();
-    testHandler->import("/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/importTest.txt");
-    testHandler->library();
+    CommandHandler* testHandler2 = new CommandHandler();
+    testHandler2->import("/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/Save.txt");
+    testHandler2->library();
     cout<<"-----done-----"<<endl;
 
 }
@@ -160,12 +161,12 @@ void playlistArrayListTester(){
 
 int main() {
 
-    //quitTester();
+    quitTester();
     //libraryTester();
     //artistMapTester();
     //displayArtistTester();
    // playlistArrayListTester();
-   PlayListTester();
+   //PlayListTester();
     /*
     //CommandHandler* test = new CommandHandler();
     //test->import("/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/importTest.txt");

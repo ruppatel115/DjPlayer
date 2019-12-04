@@ -220,7 +220,7 @@ void CommandHandler::quit(){
         while(holder != nullptr){
             for(int i=0; i<holder->getSongList()->itemCount();i++) {
                 Song song = holder->getSongList()->getValueAt(i);
-                outf << song.getTitle()+","+song.getArtist()+","+std::to_string(song.getLength())+","+std::to_string(song.getYear())+'\n';
+                outf << song.getTitle()+", "+song.getArtist()+", "+std::to_string(song.getLength())+", "+std::to_string(song.getYear())+'\n';
             }
             holder = holder->getNext();
         }
@@ -229,6 +229,9 @@ void CommandHandler::quit(){
     else {// Print an error and exit
         std::cerr << "Can't write to file" << std::endl;
     }
+    //TODO this needs to call destructor
+    //delete [] songLibrary;
+    //songLibrary = nullptr;
 }
 //TODO
 //void CommandHandler::newRandomPlaylist(std::string name, std::string duration){}
