@@ -5,6 +5,8 @@
 #include <stdexcept>
 #include <string>
 #include "PlaylistList.h"
+//#include "Playlist.h"
+
 
 class PlaylistArrayList : public PlaylistList {
 private:

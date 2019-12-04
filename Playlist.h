@@ -6,7 +6,7 @@
 #define DJPLAYER_PLAYLIST_H
 
 #include <string>
-#include "Song.h"
+//#include "Song.h"
 #include "LinkedNode.h"
 #include <iostream>
 
