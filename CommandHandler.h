@@ -8,19 +8,19 @@
 //#include "SongList.h"
 //#include "SongArrayList.h"
 #include "ArtistMap.h"
-//#include "Library.h"
+#include "Library.h"
 #include "PlaylistArrayList.h"
 
 class CommandHandler {
 private:
     ArtistMap* songLibrary;
-    //Library* mainLibrary;
+    Library* mainLibrary;
     PlaylistArrayList PlaylistList;
 
 public:
-    CommandHandler();
+    //CommandHandler(Library *pLibrary);
     void promptUser();
-    //CommandHandler(Library* mainLibrary);
+    CommandHandler();
     void help();
     void library();
     void displayArtist(std::string  artist);

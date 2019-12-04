@@ -7,7 +7,7 @@
 #include <sstream>
 #include "ArtistMap.h"
 #include "Library.h"
-CommandHandler::CommandHandler(){
+CommandHandler::CommandHandler() {
     songLibrary = new ArtistMap();
     PlaylistList = new PlaylistArrayList(20);
 
@@ -15,7 +15,7 @@ CommandHandler::CommandHandler(){
     //promptUser();
 }
 //CommandHandler::CommandHandler(Library* mainLibrary){
-//    this->mainLibrary = mainLibrary;
+//   this->mainLibrary = mainLibrary;
 //}
 
 ArtistMap *CommandHandler::getSongLibrary(){
@@ -23,7 +23,6 @@ ArtistMap *CommandHandler::getSongLibrary(){
 }
 
 void CommandHandler::promptUser(){
-
     std::string mystr = "empty";
     while(mystr != "done") {
         std::cout << "Enter your command or help:";
@@ -60,6 +59,12 @@ void CommandHandler::promptUser(){
 
         }else if(mystr == "newPlaylist"){
             //handler->newPlaylist();
+            std::cout<<"Enter name of new playlist";
+            std::string playlistname;
+            std::cin >> playlistname;
+            std::cout<<"Playlist"+playlistname+" has been added";
+            this->newPlaylist(playlistname);
+
 
         }else if(mystr == "addToPlaylist"){
             //handler->addToPlaylist();
@@ -118,21 +123,16 @@ void CommandHandler::displayArtist(std::string artist){
 void CommandHandler::song(std::string artist, std::string title){
     ArtistMapNode* artistNode = songLibrary->getArtist(artist);
     if(artistNode != nullptr){
-        /*
        int songIndex = artistNode->getSongList()->find(artist);
        if(songIndex >-1){
            Song song = artistNode->getSongList()->getValueAt(songIndex);
            std::cout<<song.getTitle()<<", "<<song.getArtist()<<", "<<song.getLength()<<", "<<song.getLength()<<std::endl;
-           */
-        Song* song = artistNode->getSongList()->getSong(title);
-        if(song != nullptr){
-            std::cout<<song->getTitle()<<", "<<song->getArtist()<<", "<<int(song->getLength()/60)<<":"<<song->getLength()%60<<", "<<song->getYear()<<std::endl;
-        }else{
-           std::cout<<"Song, "<<title<< " not found for "<<artist<<"\n";
+       }else{
+           std::cout<<"Song not found for that artist\n";
        }
 
     }else{
-        std::cout<<"Artist, "<<artist<<" not found\n";
+        std::cout<<"Artist not found for that artist\n";
 
     }
 }
@@ -145,7 +145,7 @@ void CommandHandler::import(std::string fileName){
             getline(infile, strInput);
             if(strInput != "") {
                 songLibrary->put(*new Song(strInput));
-                //std::cout << strInput << std::endl;
+                std::cout << strInput << std::endl;
             }
         }
     }
@@ -180,10 +180,9 @@ void CommandHandler::playlist(std::string name){
  */
 void CommandHandler::newPlaylist(std::string name){
     Playlist* newPlaylist = new Playlist(name);
+    PlaylistList.insertAtEnd(*newPlaylist); //TODO NEEDS FIX WON'T REGISTER USER INPUT
 
-    PlaylistList.insertAtEnd(*newPlaylist); //TODO does this work?
-
-    std::cout << "Added new playlist "+name+"." << std::endl;
+    std::cout << "Added new playlist "+(name)+"." << std::endl;
 }
 
 void CommandHandler::addToPlaylist(std::string playlist, std::string title, std::string artist){

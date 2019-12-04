@@ -73,7 +73,7 @@ void PlayListTester(){
     cout<<"expecting 4 actual: ";
     cout<<playList.itemCount()<<endl;
     cout<<"rap god, eminem, 5, 2013, actual: ";
-    cout<<playList.removeSong(3)<<endl;
+    cout<<playList.removeSong(2)<<endl;
     cout<<"expecting 3 actual: ";
     cout<<playList.itemCount()<<endl;
     std::cout << "-----done-----" <<endl;
@@ -167,23 +167,25 @@ void displaySongTester(){
 
 
 
+
 }
 
 int main() {
-    displaySongTester();
+    //displaySongTester();
+
     //quitTester();
     //libraryTester();
     //artistMapTester();
     //displayArtistTester();
    // playlistArrayListTester();
-   //PlayListTester();
-    /*
+    //PlayListTester();
+
     //CommandHandler* test = new CommandHandler();
     //test->import("/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/importTest.txt");
 
-    std::cout << "See if commit works, Elias was here" << std::endl;
-    Library mainLibrary;
-
+    //std::cout << "See if commit works, Elias was here" << std::endl;
+    //Library mainLibrary;
+/*
     std::string holder = "her comes the sun, beatles, 3, 1967";
     std::string song2 = "Billie Jean, Michael Jackson, 5, 1980";
     Song* test = new Song(holder);
@@ -197,8 +199,8 @@ int main() {
     std::cout<<"length  = "<<test2->getLength()<<"\n";
     std::cout<<"title = "<<test2->getTitle()<<"\n";
     std::cout<<"year = "<<test2->getYear()<<"\n";
-
 */
+
     CommandHandler* handler = new CommandHandler();
     std::string mystr;
     while(mystr != "done") {
@@ -301,7 +303,11 @@ int main() {
             std::string duration = ""; //TODO different type?
             getline(std::cin, duration);
 
+
            // handler->newRandomPlaylist(playlistTitle, duration);
+
+            //handler->newRandomPlaylist(playlistTitle, duration);
+
 
         }
 

@@ -27,6 +27,7 @@ private:
 public:
 
     Playlist();
+
     Playlist(std::string title);
 
     ~Playlist();
@@ -48,6 +49,8 @@ public:
     virtual std::string removeSong(int index); //returns song information
 
     virtual void insertAtEnd(Song songStr);
+
+
 
     virtual Song getSong(int index);
 
