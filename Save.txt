@@ -1,5 +1,5 @@
-a hard days night,beatles,3,1964
+a hard days night,beatles,31,1964
 here comes the sun,beatles,3,1967
-lucy in thr sky with diamonds,beatles,3,1967
+lucy in thr sky with diamonds,beatles,2,1967
 rap god,eminem,5,2013
 Billie Jean,michael Jackson,5,1980

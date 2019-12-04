@@ -25,9 +25,10 @@ Song::Song(std::string& songStr) {
     getline(splitter, space, ' ');
     getline(splitter, yearStr, ',');
     //TODO add error handling for when all info is not there
-    std::cout<<"part 1 "<<lengthStr.substr(0,lengthStr.rfind(":")-1)<<std::endl;
-    length = std::stoi(lengthStr.substr(0,lengthStr.rfind(":")-1));
-    std::cout<<"part 2 "<<lengthStr.substr(lengthStr.rfind(":")+1)<<std::endl;
+    //std::cout<<"full string  "<<lengthStr<<std::endl;
+    //std::cout<<"part 1 "<<lengthStr.substr(0,lengthStr.rfind(":"))<<std::endl;
+    length = std::stoi(lengthStr.substr(0,lengthStr.rfind(":")));
+    //std::cout<<"part 2 "<<lengthStr.substr(lengthStr.rfind(":")+1)<<std::endl;
 
     length += std::stoi(lengthStr.substr(lengthStr.rfind(":")+1))/60;
     //length = std::stoi(lengthStr);
