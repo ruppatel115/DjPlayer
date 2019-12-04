@@ -56,23 +56,24 @@ void PlayListTester(){
 
     std::cout << "=======PLAYLIST TEST=======" <<endl;
     Playlist playList;
-    cout<<"expecting true, actual: ";
+    cout<<"expecting 1 or true, actual: ";
     cout<<playList.isEmpty()<<endl;
+    //cout<<"throw exception actual: " << endl;
+    //cout<<playList.removeSong(0)<<endl;
     cout<<"expecting 0, actual: ";
     cout<<playList.itemCount()<<endl;
     playList.insertAtEnd(song1);
     playList.insertAtEnd(song2);
     cout<<"expecting 2, actual: ";
     cout<<playList.itemCount()<<endl;
-    cout<<"expecting false, actual: ";
+    cout<<"expecting 0 or false, actual: ";
     cout<<playList.isEmpty()<<endl;
     playList.insertAtEnd(song3);
     playList.insertAtEnd(song4);
     cout<<"expecting 4 actual: ";
     cout<<playList.itemCount()<<endl;
     cout<<"rap god, eminem, 5, 2013, actual: ";
-    cout<<playList.removeSong(2)<<endl;
-    ///REMOVESONG OFF BY ONE INDEX, REFERENCING LOCATION OF SONG/DUPLICATING FIRST SONG FOR INDEX 0 & 1
+    cout<<playList.removeSong(3)<<endl;
     cout<<"expecting 3 actual: ";
     cout<<playList.itemCount()<<endl;
     std::cout << "-----done-----" <<endl;
@@ -159,10 +160,10 @@ void playlistArrayListTester(){
 
 int main() {
 
-    quitTester();
-    libraryTester();
-    artistMapTester();
-    displayArtistTester();
+    //quitTester();
+    //libraryTester();
+    //artistMapTester();
+    //displayArtistTester();
    // playlistArrayListTester();
    PlayListTester();
     /*

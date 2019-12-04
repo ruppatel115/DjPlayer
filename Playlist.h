@@ -49,6 +49,8 @@ public:
 
     virtual void insertAtEnd(Song songStr);
 
+    virtual Song getSong(int index);
+
 
 
 

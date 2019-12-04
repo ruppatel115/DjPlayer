@@ -203,12 +203,12 @@ void CommandHandler::removeFromPlaylist(std::string playlist, std::string title,
 void CommandHandler::playNext(std::string playlist) {
     int playlistIndex = PlaylistList.find(playlist);
     Playlist temp = PlaylistList.getValueAt(playlistIndex);
-
+    temp.getSong(0).incrementPlaycount();
     std::cout << "Next song to be played: " + temp.removeSong(0) << std::endl;
     if (temp.isEmpty()){
         PlaylistList.removeAt(playlistIndex);
     }
-    //TODO playcount?
+
 }
 
 

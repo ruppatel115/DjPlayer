@@ -12,6 +12,7 @@ private:
     std::string artist;
     int length;
     int year;
+    int playcount;
 
 
 
@@ -28,6 +29,8 @@ public:
     int getLength() const;
 
     int getYear() const;
+
+    void incrementPlaycount();
 
 
 };

@@ -8,7 +8,7 @@
 #include <iostream>
 
 class Library{
-
+///Might not use this at all since we have the map
 private:
     //TODO songlist?
     std::string filename;
