@@ -59,11 +59,8 @@ void CommandHandler::promptUser(){
 
         }else if(mystr == "newPlaylist"){
             //handler->newPlaylist();
-            std::cout<<"Enter name of new playlist";
-            std::string playlistname;
-            std::cin >> playlistname;
-            std::cout<<"Playlist"+playlistname+" has been added";
-            this->newPlaylist(playlistname);
+
+
 
 
         }else if(mystr == "addToPlaylist"){
@@ -161,7 +158,10 @@ void CommandHandler::discontinue(std::string fileName){
 void CommandHandler::listPlaylists(){
     std::cout << PlaylistList.toString() << std::endl;
 
+
 }
+
+
 /**
  * Displays all songs left in the given playlist and its duration
  * @param name of the playlist
@@ -179,10 +179,12 @@ void CommandHandler::playlist(std::string name){
  * @param name of the new playlist
  */
 void CommandHandler::newPlaylist(std::string name){
-    Playlist* newPlaylist = new Playlist(name);
-    PlaylistList.insertAtEnd(*newPlaylist); //TODO NEEDS FIX WON'T REGISTER USER INPUT
+    Playlist *newPlaylist = new Playlist(name);
+    PlaylistList.insertAtEnd(*newPlaylist);
 
-    std::cout << "Added new playlist "+(name)+"." << std::endl;
+    std::cout << "Created new playlist: "+ name << std::endl;
+    //std::cout << PlaylistList.playlistCount() << std::endl;
+
 }
 
 void CommandHandler::addToPlaylist(std::string playlist, std::string title, std::string artist){

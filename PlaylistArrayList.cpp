@@ -61,8 +61,8 @@ void PlaylistArrayList::insertAtEnd(Playlist& playlistToAdd) {
     if (currPlaylistCount>=currCapacity) {      //if the arraylist is full
         doubleCapacity();
     }
-    array[currPlaylistCount-1] = playlistToAdd;
-    currPlaylistCount+=1;
+    array[currPlaylistCount] = playlistToAdd;
+    currPlaylistCount++;
 
 }
 

@@ -200,7 +200,7 @@ int main() {
     std::cout<<"title = "<<test2->getTitle()<<"\n";
     std::cout<<"year = "<<test2->getYear()<<"\n";
 */
-
+    PlaylistArrayList *collection = new PlaylistArrayList();
     CommandHandler* handler = new CommandHandler();
     std::string mystr;
     while(mystr != "done") {
@@ -243,7 +243,6 @@ int main() {
             std::cout << "Enter filename:" << std::endl;
             std::string filename = "";
             getline(std::cin, filename);
-
             handler->discontinue(filename);
 
         }else if(mystr == "list playlists"){
@@ -255,12 +254,18 @@ int main() {
             getline(std::cin, playlistTitle);
             handler->playlist(playlistTitle);
 
+
         }else if(mystr == "new"){
             std::cout << "Enter playlist title:" << std::endl;
             std::string playlistTitle = "";
             getline(std::cin, playlistTitle);
-
             handler->newPlaylist(playlistTitle);
+
+
+
+
+
+
 
         }else if(mystr == "add"){
             std::cout << "Enter playlist title:" << std::endl;
