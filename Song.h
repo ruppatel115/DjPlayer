@@ -18,6 +18,8 @@ private:
 
 public:
 
+    Song(std::string artist, std::string title);
+
     Song(); //default constructor
 
     Song(std::string& songStr);

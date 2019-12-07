@@ -4,6 +4,7 @@
 
 #include "PlaylistArrayList.h"
 #include <iostream>
+
 PlaylistArrayList::PlaylistArrayList() { //default constructor defaults to size of 20
     this->array = new Playlist[20];
     this->currPlaylistCount=0;

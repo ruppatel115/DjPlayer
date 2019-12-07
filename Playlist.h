@@ -9,6 +9,7 @@
 //#include "Song.h"
 #include "LinkedNode.h"
 #include <iostream>
+#include "List.h"
 
 class Playlist{
 
@@ -20,6 +21,10 @@ private:
     //Playlist(const Playlist& playlistToCopy);
     //Playlist& operator=(const Playlist& playlistToCopy);
     std::string title;
+    int numOfSongs;
+    double duration;
+
+
 
 
 
@@ -49,6 +54,7 @@ public:
     virtual std::string removeSong(int index); //returns song information
 
     virtual void insertAtEnd(Song songStr);
+
 
 
 

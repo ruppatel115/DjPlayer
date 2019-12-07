@@ -5,13 +5,23 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-Song::Song(){  //default constructor
-    title = "";
-    artist = "";
-    length = 0;
-    year = 0;
+Song::Song(std::string artist, std::string title){  //default constructor int length, int year
+    this->title = title;
+    this->artist = artist;
+    //this->length = 0;
+    //this->year = 0;
     playcount = 0;
 }
+
+
+Song::Song(){
+    this->artist = "default";
+    this->title = "default";
+    this->length = 0;
+    playcount = 0;
+}
+
+
 
 Song::Song(std::string& songStr) {
     //song string should be in form: title, artist, length, year

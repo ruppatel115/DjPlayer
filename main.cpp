@@ -264,9 +264,6 @@ int main() {
 
 
 
-
-
-
         }else if(mystr == "add"){
             std::cout << "Enter playlist title:" << std::endl;
             std::string playlistTitle = "";
@@ -277,6 +274,12 @@ int main() {
             std::cout << "Enter song title:" << std::endl;
             std::string songTitle = "";
             getline(std::cin, songTitle);
+           /* std::cout << "Enter length of song:" << std::endl;
+            std::string length = 0;
+            getline(std::cin, length);
+            std::cout << "Enter year song was release:" << std::endl;
+            int year = 0;
+            std::string getline(std::cin, year);*/
 
             handler->addToPlaylist(playlistTitle, artistName, songTitle);
 

@@ -10,10 +10,13 @@
 CommandHandler::CommandHandler() {
     songLibrary = new ArtistMap();
     PlaylistList = new PlaylistArrayList(20);
-
-
+    numOfSongs = 0;
+    numOfPlaylists = 0;
+    length = 0;
     //promptUser();
 }
+
+
 //CommandHandler::CommandHandler(Library* mainLibrary){
 //   this->mainLibrary = mainLibrary;
 //}
@@ -91,7 +94,7 @@ void CommandHandler::help(){
     std::cout << "list playlists: displays all available playlists" << std::endl;
     std::cout << "playlist: input a playlist name after prompt to display all songs in that playlist and its total duration" << std::endl;
     std::cout << "new: input a name after prompt to make a new empty playlist with that name" << std::endl;
-    std::cout << "add: input name, artist, title after respective prompts to add a new song to library with that info" << std::endl;
+    std::cout << "add: input name, artist, title, duration after respective prompts to add a new song to library with that info" << std::endl;
     std::cout << "remove: input name, artist, title after respective prompts to remove the song from the library with that info" << std::endl;
     std::cout << "playnext: input a playlist name after prompt to display all info about the next song to be played from it, \n"
                  "\t and removes that song and the playlist if it is now empty" << std::endl;
@@ -117,7 +120,7 @@ void CommandHandler::displayArtist(std::string artist){
     }
 }
 
-void CommandHandler::song(std::string artist, std::string title){
+Song * CommandHandler::song(std::string artist, std::string title){
     ArtistMapNode* artistNode = songLibrary->getArtist(artist);
     if(artistNode != nullptr){
        int songIndex = artistNode->getSongList()->find(artist);
@@ -156,7 +159,17 @@ void CommandHandler::discontinue(std::string fileName){
 }
 
 void CommandHandler::listPlaylists(){
-    std::cout << PlaylistList.toString() << std::endl;
+    std::string fullstring = "{";
+    for(int i=0; i<PlaylistList.playlistCount(); i++) {
+        Playlist current = PlaylistList.getValueAt(i);
+        fullstring += current.getTitle();
+        if(i != PlaylistList.playlistCount()-1){
+            fullstring+=", ";
+        }
+
+    }
+    fullstring+="}";
+    std::cout <<fullstring << std::endl;
 
 
 }
@@ -179,22 +192,34 @@ void CommandHandler::playlist(std::string name){
  * @param name of the new playlist
  */
 void CommandHandler::newPlaylist(std::string name){
+    for(int i=0;i<numOfPlaylists;i++){
+        if(name==PlaylistList.getValueAt(i).getTitle()){
+            throw std::invalid_argument("Playlist already exists");
+        }
+    }
     Playlist *newPlaylist = new Playlist(name);
     PlaylistList.insertAtEnd(*newPlaylist);
 
     std::cout << "Created new playlist: "+ name << std::endl;
-    //std::cout << PlaylistList.playlistCount() << std::endl;
+    std::cout << PlaylistList.playlistCount() << std::endl;
 
 }
 
 void CommandHandler::addToPlaylist(std::string playlist, std::string title, std::string artist){
-
+    /*if(findSong(title,artist)){
+     throw std::invalid_argument("Song is already in list");
+ }*/
     int index = PlaylistList.find(playlist);
     Playlist temp = PlaylistList.getValueAt(index);
-    std::string songStr = title +", " + artist +", , "; //TODO still need the error handler for missing info in Song
+    std::string songStr = title +", " + artist +", ,";
+    Song* song1 = new Song(artist, title);
+
+    //TODO still need the error handler for missing info in Song
     temp.insertAtEnd(songStr);
     std::cout << "Added new song "+title+"." << std::endl;
 }
+
+
 
 void CommandHandler::removeFromPlaylist(std::string playlist, std::string title, std::string artist){
     int playlistIndex = PlaylistList.find(playlist);

@@ -7,12 +7,17 @@ Playlist::Playlist() {
     front = nullptr;
     end = nullptr;
     title = "Untitled Playlist";
+    numOfSongs = 0;
+
+
 }
 
-Playlist::Playlist(std::string title) {
+Playlist::Playlist(std::string titleIn) {
     front = nullptr;
     end = nullptr;
-    this->title = title;
+    title = titleIn;
+    numOfSongs = 0;
+
 }
 
 Playlist::~Playlist() {
@@ -171,18 +176,20 @@ void Playlist::insertAtEnd(Song song) {
     }
 }
 
-    Song Playlist::getSong(int index){
-        LinkedNode *temp = front;
-        int i = 0;
-        while (temp->getNext() != nullptr) {
-            if (i == index) {
-                return temp->getSong();
-            }
-            else {
-                temp = temp->getNext();
-            }
+Song Playlist::getSong(int index){
+    LinkedNode *temp = front;
+    int i = 0;
+    while (temp->getNext() != nullptr) {
+        if (i == index) {
+            return temp->getSong();
+        }
+        else {
+            temp = temp->getNext();
         }
     }
+}
+
+
 
 
 

@@ -16,6 +16,9 @@ private:
     ArtistMap* songLibrary;
     Library* mainLibrary;
     PlaylistArrayList PlaylistList;
+    int numOfPlaylists;
+    int numOfSongs;
+    int length;
 
 public:
     //CommandHandler(Library *pLibrary);
@@ -24,9 +27,11 @@ public:
     void help();
     void library();
     void displayArtist(std::string  artist);
-    void song(std::string artist, std::string title);
+    Song * song(std::string artist, std::string title);
     void import(std::string fileName);
     void discontinue(std::string fileName);
+
+
     void listPlaylists();
     /**
     * Displays all songs left in the given playlist and its duration
@@ -43,6 +48,7 @@ public:
     void playNext(std::string playlist);
     ArtistMap *getSongLibrary();
     void quit();
+    void newRandomPlaylist(std::string name, std::string duration);
 
 
 };
