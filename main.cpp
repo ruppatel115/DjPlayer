@@ -73,7 +73,7 @@ void PlayListTester(){
     cout<<"expecting 4 actual: ";
     cout<<playList.itemCount()<<endl;
     cout<<"rap god, eminem, 5, 2013, actual: ";
-    cout<<playList.removeSong(2)<<endl;
+    cout<<playList.removeSong(3)<<endl;
     cout<<"expecting 3 actual: ";
     cout<<playList.itemCount()<<endl;
     std::cout << "-----done-----" <<endl;
@@ -169,17 +169,20 @@ void displaySongTester(){
 
 
 }
+void tests(){
+    displaySongTester();
+    quitTester();
+    libraryTester();
+    artistMapTester();
+    displayArtistTester();
+    playlistArrayListTester();
+    PlayListTester();
+}
 
 int main() {
-    //displaySongTester();
+    tests();
 
-    //quitTester();
-    //libraryTester();
-    //artistMapTester();
-    //displayArtistTester();
-   // playlistArrayListTester();
-    //PlayListTester();
-
+    /*
     //CommandHandler* test = new CommandHandler();
     //test->import("/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/importTest.txt");
 
@@ -199,8 +202,8 @@ int main() {
     std::cout<<"length  = "<<test2->getLength()<<"\n";
     std::cout<<"title = "<<test2->getTitle()<<"\n";
     std::cout<<"year = "<<test2->getYear()<<"\n";
+
 */
-    PlaylistArrayList *collection = new PlaylistArrayList();
     CommandHandler* handler = new CommandHandler();
     std::string mystr;
     while(mystr != "done") {
@@ -243,6 +246,7 @@ int main() {
             std::cout << "Enter filename:" << std::endl;
             std::string filename = "";
             getline(std::cin, filename);
+
             handler->discontinue(filename);
 
         }else if(mystr == "list playlists"){
@@ -254,15 +258,12 @@ int main() {
             getline(std::cin, playlistTitle);
             handler->playlist(playlistTitle);
 
-
         }else if(mystr == "new"){
             std::cout << "Enter playlist title:" << std::endl;
             std::string playlistTitle = "";
             getline(std::cin, playlistTitle);
+
             handler->newPlaylist(playlistTitle);
-
-
-
 
         }else if(mystr == "add"){
             std::cout << "Enter playlist title:" << std::endl;
@@ -274,12 +275,6 @@ int main() {
             std::cout << "Enter song title:" << std::endl;
             std::string songTitle = "";
             getline(std::cin, songTitle);
-           /* std::cout << "Enter length of song:" << std::endl;
-            std::string length = 0;
-            getline(std::cin, length);
-            std::cout << "Enter year song was release:" << std::endl;
-            int year = 0;
-            std::string getline(std::cin, year);*/
 
             handler->addToPlaylist(playlistTitle, artistName, songTitle);
 
@@ -311,11 +306,7 @@ int main() {
             std::string duration = ""; //TODO different type?
             getline(std::cin, duration);
 
-
            // handler->newRandomPlaylist(playlistTitle, duration);
-
-            //handler->newRandomPlaylist(playlistTitle, duration);
-
 
         }
 

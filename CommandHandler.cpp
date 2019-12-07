@@ -128,11 +128,11 @@ Song * CommandHandler::song(std::string artist, std::string title){
            Song song = artistNode->getSongList()->getValueAt(songIndex);
            std::cout<<song.getTitle()<<", "<<song.getArtist()<<", "<<song.getLength()<<", "<<song.getLength()<<std::endl;
        }else{
-           std::cout<<"Song not found for that artist\n";
+           std::cout<< title<<" not found for"<<artist<<"\n";
        }
 
     }else{
-        std::cout<<"Artist not found for that artist\n";
+        std::cout<<artist<<" not found in library\n";
 
     }
 }
@@ -211,12 +211,22 @@ void CommandHandler::addToPlaylist(std::string playlist, std::string title, std:
  }*/
     int index = PlaylistList.find(playlist);
     Playlist temp = PlaylistList.getValueAt(index);
+    /*
     std::string songStr = title +", " + artist +", ,";
     Song* song1 = new Song(artist, title);
 
+
+
     //TODO still need the error handler for missing info in Song
     temp.insertAtEnd(songStr);
-    std::cout << "Added new song "+title+"." << std::endl;
+     */
+    Song* songToAdd = this->songLibrary->getSong(title,artist);
+    if(songToAdd != nullptr){
+        //cout<<"song or artist could not be found\n"
+        temp.insertAtEnd(*songToAdd);
+        std::cout << "Added new song "+title+"." << std::endl;
+
+    }
 }
 
 

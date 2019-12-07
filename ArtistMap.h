@@ -23,6 +23,7 @@ public:
     void put(Song song);
     ArtistMapNode* getArtist(std::string artist);
     ArtistMapNode* getFront();
+    Song* getSong(std::string title, std::string artist);
 
 };
 

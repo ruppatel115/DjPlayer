@@ -101,3 +101,21 @@ string ArtistMap::toString() {
 
 
 }
+Song* ArtistMap::getSong(std::string title, std::string artist){
+    ArtistMapNode* artistNode = this->getArtist(artist);
+    if(artistNode != nullptr){
+        int songIndex = artistNode->getSongList()->find(artist);
+        if(songIndex >-1){
+            Song song = artistNode->getSongList()->getValueAt(songIndex);
+            return &song;
+        }else{
+            std::cout<< title<<" not found for"<<artist<<"\n";
+            return nullptr;
+        }
+
+    }else{
+        std::cout<<artist<<" not found in library\n";
+        return nullptr;
+
+    }
+}
