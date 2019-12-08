@@ -43,7 +43,7 @@ PlaylistArrayList& PlaylistArrayList::operator=(PlaylistArrayList *arrayListToCo
 
 //destructor
 PlaylistArrayList::~PlaylistArrayList() {
-    delete[] array;
+    delete[] array; //TODO what happens to the playlists?
 }
 
 void PlaylistArrayList::doubleCapacity() {

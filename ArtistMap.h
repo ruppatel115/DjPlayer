@@ -21,6 +21,7 @@ public:
     std::string toString();
     void removeAll();
     void put(Song song);
+    void remove(Song song);
     ArtistMapNode* getArtist(std::string artist);
     ArtistMapNode* getFront();
     Song* getSong(std::string title, std::string artist);

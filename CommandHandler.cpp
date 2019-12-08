@@ -6,7 +6,6 @@
 #include <fstream>
 #include <sstream>
 #include "ArtistMap.h"
-#include "Library.h"
 CommandHandler::CommandHandler() {
     songLibrary = new ArtistMap();
     PlaylistList = new PlaylistArrayList(20);
@@ -156,7 +155,20 @@ void CommandHandler::import(std::string fileName){
 }
 
 void CommandHandler::discontinue(std::string fileName){
-    //TODO
+    std::ifstream infile(fileName);
+    if (infile) {
+        while (infile) {
+            std::string strInput;
+            getline(infile, strInput);
+            if(strInput != "") {
+                Song tempSong(strInput);
+                songLibrary->remove(tempSong);
+            }
+        }
+    }
+    else {
+        std::cerr << fileName<< " not found." << std::endl;
+    }
 }
 
 void CommandHandler::listPlaylists(){
