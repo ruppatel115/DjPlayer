@@ -170,13 +170,13 @@ void displaySongTester(){
 
 }
 void tests(){
-    displaySongTester();
-    quitTester();
-    libraryTester();
-    artistMapTester();
-    displayArtistTester();
-    playlistArrayListTester();
-    PlayListTester();
+    //displaySongTester();
+    //quitTester();
+    //libraryTester();
+    //artistMapTester();
+    //displayArtistTester();
+    //playlistArrayListTester();
+    //PlayListTester();
 }
 
 int main() {

@@ -48,9 +48,9 @@ public:
     void playNext(std::string playlist);
     ArtistMap *getSongLibrary();
     void quit();
-    void newRandomPlaylist(std::string name, std::string duration);
+    void createRandomPlaylistStart(int playDuration, std::string playlistName);
 
-
+    void createRandomPlaylist(int playDuration, std::string playlistName);
 };
 
 #endif //DJPLAYER_COMMANDHANDLER_H

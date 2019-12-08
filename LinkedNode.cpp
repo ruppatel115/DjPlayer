@@ -3,8 +3,8 @@
 //
 #include "LinkedNode.h"
 
-LinkedNode::LinkedNode(Song song){
-    this->song = song;
+LinkedNode::LinkedNode(Song& song){
+    this->song = &song;
     next = nullptr;
 }
 
@@ -14,7 +14,7 @@ LinkedNode::LinkedNode(const LinkedNode& nodeToCopy){
 }
 
 Song LinkedNode::getSong(){
-    return song;
+    return *song;
 }
 
 LinkedNode* LinkedNode::getNext(){
@@ -22,7 +22,7 @@ LinkedNode* LinkedNode::getNext(){
 }
 
 void LinkedNode::setSong(Song newSong){
-    song = newSong;
+    song = &newSong;
 }
 
 void LinkedNode::setNext(LinkedNode* newNext){

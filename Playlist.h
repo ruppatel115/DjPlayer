@@ -37,6 +37,7 @@ public:
 
     ~Playlist();
 
+    Playlist getDuration();
     virtual std::string getTitle();
 
     virtual int calcDuration();
@@ -45,7 +46,7 @@ public:
 
     virtual std::string playNext(); //after next song is played will call remove song
 
-    virtual int findSong(std::string title);   //looks for the index of the song with given name
+    virtual int findSong(std::string title, std::string artist);   //looks for the index of the song with given name
 
     virtual int itemCount(); //O(n) must run through all items of list
 
@@ -61,13 +62,7 @@ public:
     virtual Song getSong(int index);
 
 
-
-
-
-
-
-
-
+    void insertAtEnd(Song *song);
 };
 
 

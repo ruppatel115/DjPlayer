@@ -10,6 +10,7 @@
 CommandHandler::CommandHandler() {
     songLibrary = new ArtistMap();
     PlaylistList = new PlaylistArrayList(20);
+    Playlist playlist1;
     numOfSongs = 0;
     numOfPlaylists = 0;
     length = 0;
@@ -205,27 +206,28 @@ void CommandHandler::newPlaylist(std::string name){
 
 }
 
-void CommandHandler::addToPlaylist(std::string playlist, std::string title, std::string artist){
-    /*if(findSong(title,artist)){
-     throw std::invalid_argument("Song is already in list");
- }*/
-    int index = PlaylistList.find(playlist);
-    Playlist temp = PlaylistList.getValueAt(index);
-    /*
-    std::string songStr = title +", " + artist +", ,";
-    Song* song1 = new Song(artist, title);
+void CommandHandler::addToPlaylist(std::string playlist, std::string title, std::string artist) {
+    int found = -1;
+    for (int i = 0; i < numOfSongs; i++) { //TODO exception throwing doesnt fully work
+        Playlist *current;
+        if (current->getSong(i).getTitle() == title && current->getSong(i).getArtist() == artist){
+            found = i;
+        }
+    }
+    if (found == -1) {
+        throw std::invalid_argument("Song is not in library");
+    }
 
+    else {
+        int index = PlaylistList.find(playlist);
+        Playlist temp = PlaylistList.getValueAt(index);
+        Song *songToAdd = this->songLibrary->getSong(title, artist);
+        if (songToAdd != nullptr) {
+            //cout<<"song or artist could not be found\n"
+            temp.insertAtEnd(*songToAdd);
+            std::cout << "Added new song " + title + "." << std::endl;
 
-
-    //TODO still need the error handler for missing info in Song
-    temp.insertAtEnd(songStr);
-     */
-    Song* songToAdd = this->songLibrary->getSong(title,artist);
-    if(songToAdd != nullptr){
-        //cout<<"song or artist could not be found\n"
-        temp.insertAtEnd(*songToAdd);
-        std::cout << "Added new song "+title+"." << std::endl;
-
+        }
     }
 }
 
@@ -234,7 +236,7 @@ void CommandHandler::addToPlaylist(std::string playlist, std::string title, std:
 void CommandHandler::removeFromPlaylist(std::string playlist, std::string title, std::string artist){
     int playlistIndex = PlaylistList.find(playlist);
     Playlist temp = PlaylistList.getValueAt(playlistIndex);
-    int songIndex = temp.findSong(title);
+    int songIndex = temp.findSong(title, artist);
     temp.removeSong(songIndex);
 
     std::cout << "Removed song "+title+"." << std::endl;
@@ -275,4 +277,4 @@ void CommandHandler::quit(){
     //songLibrary = nullptr;
 }
 //TODO
-//void CommandHandler::newRandomPlaylist(std::string name, std::string duration){}
+
