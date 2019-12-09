@@ -8,8 +8,17 @@ using namespace std;
 ArtistMap::ArtistMap(){
     this->front = nullptr;
 }
+ArtistMap::~ArtistMap(){
+    while (front != nullptr){
+        ArtistMapNode* holder = front->getNext();
+        delete front;
+        front = holder;
+    }
+}
+
 
 void ArtistMap::checkNext(Song song, ArtistMapNode* node){
+
     if(node->getNext() == nullptr){
         //cout<<"here all the time\n";
         node->setNext(new ArtistMapNode(song));

@@ -12,6 +12,7 @@ private:
     std::string artist;
     SongArrayList* songList;
 public:
+    ~ArtistMapNode();
     ArtistMapNode(Song song);
     std::string toString();
     std::string getArtist();

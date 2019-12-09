@@ -228,9 +228,7 @@ void CommandHandler::addToPlaylist(std::string playlist, std::string title, std:
     }
     if (found == -1) {
         throw std::invalid_argument("Song is not in library");
-    }
-
-    else {
+    }else {
         int index = PlaylistList.find(playlist);
         Playlist temp = PlaylistList.getValueAt(index);
         Song *songToAdd = this->songLibrary->getSong(title, artist);

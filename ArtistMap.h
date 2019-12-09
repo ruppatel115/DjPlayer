@@ -17,6 +17,7 @@ private:
 public:
     void addArtistNode(Song song);
     void checkNext(Song song, ArtistMapNode* node);
+    ~ArtistMap();
     ArtistMap();
     std::string toString();
     void removeAll();
