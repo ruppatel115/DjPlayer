@@ -157,12 +157,24 @@ void CommandHandler::import(std::string fileName){
 void CommandHandler::discontinue(std::string fileName){
     std::ifstream infile(fileName);
     if (infile) {
+
         while (infile) {
+            std::cout<<"here\n";
             std::string strInput;
             getline(infile, strInput);
             if(strInput != "") {
                 Song tempSong(strInput);
+
+                for(int i=0; i<PlaylistList.playlistCount();i++){
+                    int index = PlaylistList.getValueAt(i).findSong(tempSong.getTitle(),tempSong.getArtist());
+                    if(index>-1){
+                        PlaylistList.getValueAt(i).removeSong(index);
+                    }
+                }
+
+//todo problem in songlibrary->remove
                 songLibrary->remove(tempSong);
+
             }
         }
     }
@@ -219,7 +231,7 @@ void CommandHandler::newPlaylist(std::string name){
 }
 
 void CommandHandler::addToPlaylist(std::string playlist, std::string title, std::string artist) {
-    int found = -1;
+    /*int found = -1;
     for (int i = 0; i < numOfSongs; i++) { //TODO exception throwing doesnt fully work
         Playlist *current;
         if (current->getSong(i).getTitle() == title && current->getSong(i).getArtist() == artist){
@@ -228,7 +240,7 @@ void CommandHandler::addToPlaylist(std::string playlist, std::string title, std:
     }
     if (found == -1) {
         throw std::invalid_argument("Song is not in library");
-    }else {
+    }else {*/
         int index = PlaylistList.find(playlist);
         Playlist temp = PlaylistList.getValueAt(index);
         Song *songToAdd = this->songLibrary->getSong(title, artist);
@@ -238,7 +250,7 @@ void CommandHandler::addToPlaylist(std::string playlist, std::string title, std:
             std::cout << "Added new song " + title + "." << std::endl;
 
         }
-    }
+
 }
 
 
@@ -266,6 +278,7 @@ void CommandHandler::playNext(std::string playlist) {
 
 
 void CommandHandler::quit(){
+    //TODO this needs to write palylists to file
     std::string fileName = "/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/Save.txt";
     std::ofstream outf(fileName);
     if (outf){

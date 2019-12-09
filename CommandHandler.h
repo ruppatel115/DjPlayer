@@ -8,13 +8,12 @@
 //#include "SongList.h"
 //#include "SongArrayList.h"
 #include "ArtistMap.h"
-#include "Library.h"
 #include "PlaylistArrayList.h"
 
 class CommandHandler {
 private:
     ArtistMap* songLibrary;
-    Library* mainLibrary;
+    //Library* mainLibrary;
     PlaylistArrayList PlaylistList;
     int numOfPlaylists;
     int numOfSongs;

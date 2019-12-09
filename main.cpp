@@ -177,17 +177,34 @@ void tests(){
     //playlistArrayListTester();
     //PlayListTester();
 }
+void discontinueTester(){
+    cout<<"=====discontinueTester=======\n";
+
+    CommandHandler* testHandler = new CommandHandler();
+    testHandler->import("/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/importTest.txt");
+    testHandler->newPlaylist("testList");
+    testHandler->library();
+    testHandler->addToPlaylist("testList","rap god", "eminem");
+    testHandler->addToPlaylist("testList","here comes the sun", "beatles");
+    testHandler->discontinue("/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/discontinueTest.txt");
+    testHandler->playNext("testList");
+    testHandler->library();
+    cout<<"=====done=======\n";
+
+
+
+}
 
 int main() {
-    tests();
-
+    //tests();
+discontinueTester();
     /*
     //CommandHandler* test = new CommandHandler();
     //test->import("/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/importTest.txt");
 
     //std::cout << "See if commit works, Elias was here" << std::endl;
     //Library mainLibrary;
-/*
+
     std::string holder = "her comes the sun, beatles, 3, 1967";
     std::string song2 = "Billie Jean, Michael Jackson, 5, 1980";
     Song* test = new Song(holder);
@@ -202,7 +219,7 @@ int main() {
     std::cout<<"title = "<<test2->getTitle()<<"\n";
     std::cout<<"year = "<<test2->getYear()<<"\n";
 
-*/
+
     CommandHandler* handler = new CommandHandler();
     std::string mystr;
     while(mystr != "done") {
@@ -311,7 +328,7 @@ int main() {
 
         }
 
-
+*/
 
     return 0;
     }
