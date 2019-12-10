@@ -187,11 +187,6 @@ void discontinueTester(){
     testHandler->addToPlaylist("testList","rap god", "eminem");
     testHandler->addToPlaylist("testList","here comes the sun", "beatles");
     testHandler->discontinue("/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/discontinueTest.txt");
-    //testHandler->playNext("testList");
-    cout<<"after discontinue\n";
-    //testHandler->playlist("testList");
-    cout<<"after plalist\n";
-
     testHandler->library();
     cout<<"=====done=======\n";
 
