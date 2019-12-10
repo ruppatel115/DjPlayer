@@ -159,7 +159,6 @@ void CommandHandler::discontinue(std::string fileName){
     if (infile) {
 
         while (infile) {
-            std::cout<<"here\n";
             std::string strInput;
             getline(infile, strInput);
             if(strInput != "") {
@@ -172,8 +171,7 @@ void CommandHandler::discontinue(std::string fileName){
                     }
                 }
 
-//todo problem in songlibrary->remove
-                songLibrary->remove(tempSong);
+                songLibrary->remove(tempSong.getArtist(), tempSong.getTitle());
 
             }
         }

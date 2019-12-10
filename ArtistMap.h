@@ -8,6 +8,7 @@
 #include <iostream>
 #include <algorithm>
 #include "ArtistMapNode.h"
+using namespace std;
 
 
 
@@ -22,7 +23,7 @@ public:
     std::string toString();
     void removeAll();
     void put(Song song);
-    void remove(Song song);
+    void remove(string song, string title);
     ArtistMapNode* getArtist(std::string artist);
     ArtistMapNode* getFront();
     Song* getSong(std::string title, std::string artist);

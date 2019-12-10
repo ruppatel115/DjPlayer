@@ -67,7 +67,8 @@ void ArtistMap::put(Song song) {
     }
 }
 
-void ArtistMap::remove(Song song){
+void ArtistMap::remove(string artist, string title){
+    /*
     ArtistMapNode *node = front;
     while(node != nullptr){
         if (node->getSongList()->getSong(song.getTitle())->getTitle() == song.getTitle()){  //looks for the song in the library
@@ -82,6 +83,16 @@ void ArtistMap::remove(Song song){
             }
         }
     }
+     */
+    ArtistMapNode* artistNode = this->getArtist(artist);
+    if(artistNode != nullptr){
+        int songIndex = artistNode->getSongList()->find(title);
+        if(songIndex >-1){
+            artistNode->getSongList()->removeValueAt(songIndex);
+        }
+
+    }
+
 
 }
 
