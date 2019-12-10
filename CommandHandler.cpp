@@ -261,16 +261,6 @@ void CommandHandler::newPlaylist(std::string name){
 }
 
 void CommandHandler::addToPlaylist(std::string playlist, std::string title, std::string artist) {
-    /*int found = -1;
-    for (int i = 0; i < numOfSongs; i++) { //TODO exception throwing doesnt fully work
-        Playlist *current;
-        if (current->getSong(i).getTitle() == title && current->getSong(i).getArtist() == artist){
-            found = i;
-        }
-    }
-    if (found == -1) {
-        throw std::invalid_argument("Song is not in library");
-    }else {*/
         int index = PlaylistList.find(playlist);
         Playlist temp = PlaylistList.getValueAt(index);
         Song *songToAdd = this->songLibrary->getSong(title, artist);
@@ -368,18 +358,29 @@ void CommandHandler::createRandomPlaylist(int playDuration, std::string playlist
     int randArtistIndex = rand() % (artistCount-1);
     int randSongIndex; // = rand() % (songCount-1); //do this after getting the artist node
     while (newRandPlaylist->calcDuration() <= playDuration){
+
         //TODO no duplicate songs
+
         //Goes to the random artist then picks one of their songs with rand song index
        ArtistMapNode* artistHolder = songLibrary->getArtistAt(randArtistIndex);
        SongArrayList* songListHolder = artistHolder->getSongList();
-
        randSongIndex = rand() % (songListHolder->getSongCount()-1);
        Song songHolder = songListHolder->getValueAt(randSongIndex);
        //TODO getValueAt in songArrayList returns a copy not a pointer
-       newRandPlaylist->insertAtEnd(songHolder);
+       for(int i=0; i<songListHolder->itemCount();i++){
+        int comparison = songHolder.getTitle().compare(songListHolder->getValueAt(i).getTitle());
+           if(comparison < 0){
+               //cout<<song.getTitle()<<" orgininal: "<<songList->getValueAt(i).getTitle()<<endl;
+               songListHolder->insertAt(songHolder,i);
+           }else if (comparison == 0){
+               //cout<<"in duplicate "<<song.getTitle()<<" orgininal: "<<songList->getValueAt(i).getTitle()<<endl;
+
+               cout<<"duplicate song: "<< songHolder.getTitle()<<endl;
+               break;
+           }
+       }
+        newRandPlaylist->insertAtEnd(songHolder);
        randArtistIndex = rand() % (artistCount-1);
     }
-
-
 }
 

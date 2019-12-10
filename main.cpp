@@ -5,6 +5,7 @@
 #include "Playlist.h"
 #include "PlaylistArrayList.h"
 #include "List.h"
+#include "TestLib.h"
 using namespace std;
 #include <stdexcept>
 #include <string>
@@ -171,10 +172,26 @@ void displaySongTester(){
     testHandler->song("eminem", "rap god");
     cout<<"=====done=======\n";
 
+}
+
+void testRandomPlaylist() {
+    std::cout << "---------- Testing Random Playlist ---------" << std::endl;
+    CommandHandler *testHandler = new CommandHandler();
+//    testHandler->newPlaylist("randomplaylisttest");
+//    testHandler->addToPlaylist("randomplaylisttest", "a hard days night", "beatles");
+
+    //testHandler->import("/Users/ruppatel/CLionProjects/DjPlayer/importTest.txt");
+
+    std::cout<<"Create New Playlist"<<std::endl;
+    testHandler->createRandomPlaylist(5, "tester");
+    testHandler->listPlaylists();
+
 
 
 
 }
+
+
 void tests(){
     //displaySongTester();
     //quitTester();
@@ -185,26 +202,27 @@ void tests(){
     //PlayListTester();
 }
 void discontinueTester(){
-    cout<<"=====discontinueTester=======\n";
-
-    CommandHandler* testHandler = new CommandHandler();
-    testHandler->import("/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/importTest.txt");
-    testHandler->newPlaylist("testList");
-    testHandler->library();
-    testHandler->addToPlaylist("testList","rap god", "eminem");
-    testHandler->addToPlaylist("testList","here comes the sun", "beatles");
-    testHandler->discontinue("/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/discontinueTest.txt");
-    testHandler->library();
-    cout<<"=====done=======\n";
-
+//    cout<<"=====discontinueTester=======\n";
+//
+//    CommandHandler* testHandler = new CommandHandler();
+//    testHandler->import("/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/importTest.txt");
+//    testHandler->newPlaylist("testList");
+//    testHandler->library();
+//    testHandler->addToPlaylist("testList","rap god", "eminem");
+//    testHandler->addToPlaylist("testList","here comes the sun", "beatles");
+//    testHandler->discontinue("/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/discontinueTest.txt");
+//    testHandler->library();
+//    cout<<"=====done=======\n";
+//
 
 
 }
 
 int main() {
-    quitTester();
+    //quitTester();
     //tests();
 //discontinueTester();
+    testRandomPlaylist();
     /*
     //CommandHandler* test = new CommandHandler();
     //test->import("/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/importTest.txt");
