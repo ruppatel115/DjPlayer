@@ -231,10 +231,15 @@ void CommandHandler::listPlaylists(){
  */
 void CommandHandler::playlist(std::string name){
     int index = PlaylistList.find(name);
-     Playlist temp = PlaylistList.getValueAt(index);
-     std::cout << "Playlist" +  name + ": \nDuration: " + std::to_string(temp.calcDuration()) << std::endl;
-     std::cout << "Songs: " + temp.toString();
+    if(index >=0) {
+        Playlist temp = PlaylistList.getValueAt(index);
+        //todo somthing wrong in here
+        std::cout << "Playlist" + name + ": \nDuration: " + std::to_string(temp.calcDuration()) << std::endl;
+        std::cout << "Songs: " + temp.toString();
+    }else{
+        std::cout << "playlist not found\n";
 
+    }
 }
 
 /**
