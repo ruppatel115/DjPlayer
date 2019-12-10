@@ -143,7 +143,7 @@ Song* ArtistMap::getSong(std::string title, std::string artist){
     ArtistMapNode* artistNode = this->getArtist(artist);
     if(artistNode != nullptr){
         int songIndex = artistNode->getSongList()->find(title);
-        std::cout<<"index of song = "<<songIndex<<std::endl;
+        //std::cout<<"index of song = "<<songIndex<<std::endl;
         if(songIndex >-1){
             Song song = artistNode->getSongList()->getValueAt(songIndex);
             return &song;

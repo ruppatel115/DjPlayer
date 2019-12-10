@@ -22,8 +22,8 @@ CommandHandler::CommandHandler() {
 //   this->mainLibrary = mainLibrary;
 //}
 void CommandHandler::readSaveFiles(){
-    import("/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/Save.txt");
-    std::ifstream infile("/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/savedPlaylists.txt");
+    import("../Save.txt");
+    std::ifstream infile("../savedPlaylists.txt");
     string playlistName;
     if (infile) {
         while (infile) {
@@ -304,7 +304,7 @@ void CommandHandler::playNext(std::string playlist) {
 
 void CommandHandler::quit(){
     Song song;
-    std::string fileName = "/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/Save.txt";
+    std::string fileName = "../DjPlayer/Save.txt";
     std::ofstream outf(fileName);
     if (outf){
         ArtistMapNode* holder = songLibrary->getFront();
@@ -320,7 +320,7 @@ void CommandHandler::quit(){
     else {// Print an error and exit
         std::cerr << "Can't write to save file" << std::endl;
     }
-    string playlistFile = "/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/savedPlaylists.txt";
+    string playlistFile = "../savedPlaylists.txt";
     std::ofstream outf2(playlistFile);
     if (outf2){
         for(int i=0; i<PlaylistList.playlistCount();i++){
