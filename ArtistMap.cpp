@@ -7,6 +7,8 @@ using namespace std;
 
 ArtistMap::ArtistMap(){
     this->front = nullptr;
+    this->songCount = 0;
+    this->artistCount = 0;
 }
 ArtistMap::~ArtistMap(){
     while (front != nullptr){
@@ -16,6 +18,13 @@ ArtistMap::~ArtistMap(){
     }
 }
 
+int  ArtistMap::getSongCount(){
+    return songCount;
+}
+
+int ArtistMap::getArtistCount(){
+    return artistCount;
+}
 
 void ArtistMap::checkNext(Song song, ArtistMapNode* node){
 
@@ -48,6 +57,7 @@ void ArtistMap::put(Song song) {
     if(front == nullptr) {
         //cout<<"first time \n";
         front = new ArtistMapNode(song);
+        artistCount++;
     }else if (front->getArtist() == song.getArtist()){
         //cout<<"same artist\n";
         front->addSong(song);
@@ -61,10 +71,12 @@ void ArtistMap::put(Song song) {
             ArtistMapNode *newNode = new ArtistMapNode(song);
             newNode->setNext(front);
             front = newNode;
+            artistCount++;
         } else {
             checkNext(song, front);
         }
     }
+    songCount++;
 }
 
 void ArtistMap::remove(string artist, string title){
@@ -93,7 +105,7 @@ void ArtistMap::remove(string artist, string title){
 
     }
 
-
+    songCount--;
 }
 
 void ArtistMap::removeAll(){
@@ -103,6 +115,7 @@ void ArtistMap::removeAll(){
         delete node;
     }
     node->setNext(nullptr);
+    songCount=0;
 }
 
 ArtistMapNode* ArtistMap::getArtist(std::string artist) {
@@ -114,6 +127,18 @@ ArtistMapNode* ArtistMap::getArtist(std::string artist) {
         holder = holder->getNext();
     }
     return nullptr;
+}
+
+ArtistMapNode* ArtistMap::getArtistAt(int index){
+    if (index > artistCount){
+        throw std::out_of_range ("index invalid");
+    }
+
+    ArtistMapNode* holder = front;
+    for (int i = 0; i < index;i++){
+        holder=holder->getNext();
+    }
+    return holder;
 }
 
 ArtistMapNode* ArtistMap::getFront() {

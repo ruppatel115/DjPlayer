@@ -145,6 +145,7 @@ public:
     Song removeValueAt(int index);
     Song* getSong(std::string songToFind);
 
+    int getSongCount();
 };
 
 

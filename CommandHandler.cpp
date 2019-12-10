@@ -347,5 +347,39 @@ void CommandHandler::quit(){
     //delete [] songLibrary;
     //songLibrary = nullptr;
 }
-//TODO
+/*
+ * Get random songs from the library in the while loop and add that song to
+ * the playlist
+ */
+void CommandHandler::createRandomPlaylist(int playDuration, std::string playlistName) {
+    for(int i=0;i<numOfPlaylists;i++){
+        if(playlistName==PlaylistList.getValueAt(i).getTitle()){
+            throw std::invalid_argument("Playlist already exists");
+        }
+    }
+    srand(time(NULL));
+
+    Playlist *newRandPlaylist = new Playlist(playlistName);
+    PlaylistList.insertAtEnd(*newRandPlaylist);
+
+    int artistCount = songLibrary->getArtistCount();
+    //int songCount = songLibrary->getSongCount();
+
+    int randArtistIndex = rand() % (artistCount-1);
+    int randSongIndex; // = rand() % (songCount-1); //do this after getting the artist node
+    while (newRandPlaylist->calcDuration() <= playDuration){
+        //TODO no duplicate songs
+        //Goes to the random artist then picks one of their songs with rand song index
+       ArtistMapNode* artistHolder = songLibrary->getArtistAt(randArtistIndex);
+       SongArrayList* songListHolder = artistHolder->getSongList();
+
+       randSongIndex = rand() % (songListHolder->getSongCount()-1);
+       Song songHolder = songListHolder->getValueAt(randSongIndex);
+       //TODO getValueAt in songArrayList returns a copy not a pointer
+       newRandPlaylist->insertAtEnd(songHolder);
+       randArtistIndex = rand() % (artistCount-1);
+    }
+
+
+}
 

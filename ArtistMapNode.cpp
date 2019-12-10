@@ -75,3 +75,6 @@ std::string ArtistMapNode::toString(){
     return songString;
 
 }
+int ArtistMapNode::getSongCount() {
+    return songList->getSongCount();
+}
