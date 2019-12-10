@@ -18,6 +18,7 @@ private:
     int numOfPlaylists;
     int numOfSongs;
     int length;
+    void readSaveFiles();
 
 public:
     //CommandHandler(Library *pLibrary);

@@ -14,14 +14,41 @@ CommandHandler::CommandHandler() {
     numOfPlaylists = 0;
     length = 0;
     //promptUser();
+    readSaveFiles();
 }
 
 
 //CommandHandler::CommandHandler(Library* mainLibrary){
 //   this->mainLibrary = mainLibrary;
 //}
+void CommandHandler::readSaveFiles(){
+    import("/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/Save.txt");
+    std::ifstream infile("/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/savedPlaylists.txt");
+    string playlistName;
+    if (infile) {
+        while (infile) {
+            std::string strInput;
+            getline(infile, strInput);
+            if(strInput != "") {
+                if(strInput[0] = '*'){
+                    playlistName = strInput;
+                    newPlaylist(playlistName.substr(1));
+                }else {
+                    Song song = Song(strInput);
+                    addToPlaylist(playlistName,song.getTitle(),song.getArtist());
+                }
 
-ArtistMap *CommandHandler::getSongLibrary(){
+
+                std::cout << strInput << std::endl;
+            }
+        }
+    }
+    else {
+        std::cerr <<"save Playlsit file  not found." << std::endl;
+    }
+
+}
+ArtistMap* CommandHandler::getSongLibrary(){
     return songLibrary;
 }
 
@@ -276,14 +303,14 @@ void CommandHandler::playNext(std::string playlist) {
 
 
 void CommandHandler::quit(){
-    //TODO this needs to write palylists to file
+    Song song;
     std::string fileName = "/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/Save.txt";
     std::ofstream outf(fileName);
     if (outf){
         ArtistMapNode* holder = songLibrary->getFront();
         while(holder != nullptr){
             for(int i=0; i<holder->getSongList()->itemCount();i++) {
-                Song song = holder->getSongList()->getValueAt(i);
+                song = holder->getSongList()->getValueAt(i);
                 outf << song.getTitle()+", "+song.getArtist()+", "+std::to_string(song.getLength())+", "+std::to_string(song.getYear())+'\n';
             }
             holder = holder->getNext();
@@ -291,8 +318,26 @@ void CommandHandler::quit(){
         outf.close();
     }
     else {// Print an error and exit
-        std::cerr << "Can't write to file" << std::endl;
+        std::cerr << "Can't write to save file" << std::endl;
     }
+    string playlistFile = "/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/savedPlaylists.txt";
+    std::ofstream outf2(playlistFile);
+    if (outf2){
+        for(int i=0; i<PlaylistList.playlistCount();i++){
+            Playlist holder = PlaylistList.getValueAt(i);
+            outf2<<"*"<<holder.getTitle()+"\n";
+            for(int j=0; j<holder.itemCount();j++){
+                song = holder.getSong(j);
+                outf2 << song.getTitle()+", "+song.getArtist()+", "+std::to_string(song.getLength())+", "+std::to_string(song.getYear())+'\n';
+            }
+        }
+        outf2.close();
+    }
+    else {// Print an error and exit
+        std::cerr << "Can't write to playlist file" << std::endl;
+    }
+
+
     //TODO this needs to call destructor
     //delete [] songLibrary;
     //songLibrary = nullptr;
