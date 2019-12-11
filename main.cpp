@@ -185,11 +185,12 @@ void testRandomPlaylist() {
 
     std::cout<<"Create New Playlist"<<std::endl;
     testHandler->createRandomPlaylist(5, "tester");
+
     testHandler->listPlaylists();
 
 
 
-
+    std::cout <<"Finished test"<<std::endl;
 }
 void addToPlaylistTester(){
     cout<<"=========AddToPlayListTest=========\n";

@@ -151,18 +151,7 @@ void CommandHandler::discontinue(std::string fileName){
 }
 
 void CommandHandler::listPlaylists(){
-    std::string fullstring = "{";
-    for(int i=0; i<PlaylistList.playlistCount(); i++) {
-        Playlist current = PlaylistList.getValueAt(i);
-        fullstring += current.getTitle();
-        if(i != PlaylistList.playlistCount()-1){
-            fullstring+=", ";
-        }
-
-    }
-    fullstring+="}";
-    std::cout <<fullstring << std::endl;
-
+    std::cout << PlaylistList.toString() <<std::endl;
 
 }
 
@@ -310,18 +299,36 @@ void CommandHandler::createRandomPlaylist(int playDuration, std::string playlist
     PlaylistList.insertAtEnd(*newRandPlaylist);
 
     int artistCount = songLibrary->getArtistCount();
+    if (artistCount <= 0){
+        throw std::out_of_range("Library is empty");
+    }
+
     //int songCount = songLibrary->getSongCount();
+    int randArtistIndex;
+    if (artistCount-1 > 0) {
+        randArtistIndex =rand() % (artistCount - 1);
+    }
+    else{
+        randArtistIndex = 0;
+    }
 
-    int randArtistIndex = rand() % (artistCount-1);
     int randSongIndex; // = rand() % (songCount-1); //do this after getting the artist node
-    while (newRandPlaylist->calcDuration() <= playDuration){
+    int randPlaylistDuration = 0;
+    while (randPlaylistDuration <= playDuration){
 
-        //TODO no duplicate songs
+        //TODO no duplicate songs?
 
         //Goes to the random artist then picks one of their songs with rand song index
        ArtistMapNode* artistHolder = songLibrary->getArtistAt(randArtistIndex);
        SongArrayList* songListHolder = artistHolder->getSongList();
-       randSongIndex = rand() % (songListHolder->getSongCount()-1);
+
+       if (songListHolder->getSongCount()-1 > 0) {
+           randSongIndex = rand() % (songListHolder->getSongCount() - 1);
+       }
+       else{
+           randSongIndex=0;
+       }
+
        Song songHolder = songListHolder->getValueAt(randSongIndex);
        //TODO getValueAt in songArrayList returns a copy not a pointer
        for(int i=0; i<songListHolder->itemCount();i++){
@@ -337,7 +344,14 @@ void CommandHandler::createRandomPlaylist(int playDuration, std::string playlist
            }
        }
         newRandPlaylist->insertAtEnd(songHolder);
-       randArtistIndex = rand() % (artistCount-1);
+
+        if (artistCount-1 > 0) {
+            randArtistIndex =rand() % (artistCount - 1);
+        }
+        else{ //this happens if the artist has no more songs and  there was only one  artist to begin with
+            break;
+        }
+       randPlaylistDuration = newRandPlaylist->calcDuration();
     }
 }
 
