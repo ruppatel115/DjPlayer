@@ -43,6 +43,7 @@ public:
     * @param name of the new playlist
     */
     void newPlaylist(std::string  name);
+
     void addToPlaylist(std::string  playlist, std::string  title, std::string  artist);
     void removeFromPlaylist(std::string playlist, std::string title, std::string artist);
     void playNext(std::string playlist);

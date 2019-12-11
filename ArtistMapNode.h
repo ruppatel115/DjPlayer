@@ -20,6 +20,7 @@ public:
     void addSong(Song song);
     ArtistMapNode* getNext();
     void setNext(ArtistMapNode* nextNode);
+    int getSongCount();
     //Song getSong();
 
 

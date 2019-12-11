@@ -54,7 +54,7 @@ std::string Playlist::toString() {
     return result;
 }
 
-int Playlist::calcDuration(){
+int Playlist::calcDuration(){ //TODO does this work correctly?
     int duration = 0;
     while(front->getNext() != nullptr){
         duration+=front->getSong().getLength();

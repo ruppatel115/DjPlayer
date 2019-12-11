@@ -49,6 +49,10 @@ SongArrayList::~SongArrayList() {
 
 }
 
+int SongArrayList::getSongCount(){
+    return currItemCount;
+}
+
 void SongArrayList::insertAtEnd(Song itemToAdd) {
     currItemCount+=1;
     if(currItemCount>currCapacity){

@@ -15,6 +15,8 @@ using namespace std;
 class ArtistMap{
 private:
     ArtistMapNode* front;
+    int songCount;
+    int artistCount;
 public:
     void addArtistNode(Song song);
     void checkNext(Song song, ArtistMapNode* node);
@@ -28,6 +30,11 @@ public:
     ArtistMapNode* getFront();
     Song* getSong(std::string title, std::string artist);
 
+    int getSongCount();
+
+    int getArtistCount();
+
+    ArtistMapNode *getArtistAt(int index);
 };
 
 #endif //DJPLAYER_ARTISTMAP_H

@@ -4,3 +4,8 @@ Billie Jean, Michael Jackson, 5:41, 1980
 rap god, eminem, 5:43, 2013
 lucy in thr sky with diamonds, beatles, 3:09, 1967
 hey jude, beatles, 3:56, 1968
+testing, random playlist, 2:55, 2000
+testing, random playlist2, 2:55, 2000
+testing, random playlist, 2:55, 2000
+
+
