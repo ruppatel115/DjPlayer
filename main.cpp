@@ -327,7 +327,7 @@ int main() {
             std::string songTitle = "";
             getline(std::cin, songTitle);
 
-            handler->addToPlaylist(playlistTitle, artistName, songTitle);
+            handler->addToPlaylist(playlistTitle, songTitle,artistName,);
 
         }else if(mystr == "remove"){
             std::cout << "Enter playlist title:" << std::endl;
