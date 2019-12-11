@@ -151,6 +151,7 @@ void quitTester(){
     testHandler->addToPlaylist("test1","a hard days night", "beatles");
     testHandler->addToPlaylist("test1","Billie Jean", "Michael Jackson");
     testHandler->playlist("test1");//TODO THIS LINE ISNT WORKING
+    cout<<"here\n";
     testHandler->quit();
     CommandHandler* testHandler2 = new CommandHandler();
     //testHandler2->import("/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/Save.txt");
@@ -175,23 +176,30 @@ void displaySongTester(){
 }
 
 void testRandomPlaylist() {
-    //std::cout << "---------- Testing Random Playlist ---------" << std::endl;
-    //CommandHandler *testHandler = new CommandHandler();
+    std::cout << "---------- Testing Random Playlist ---------" << std::endl;
+    CommandHandler *testHandler = new CommandHandler();
 //    testHandler->newPlaylist("randomplaylisttest");
 //    testHandler->addToPlaylist("randomplaylisttest", "a hard days night", "beatles");
 
     //testHandler->import("/Users/ruppatel/CLionProjects/DjPlayer/importTest.txt");
 
-    //std::cout<<"Create New Playlist"<<std::endl;
-    //testHandler->createRandomPlaylist(5, "tester");
-    //Playlist("tester").toString();
-//    testHandler->listPlaylists();
+    std::cout<<"Create New Playlist"<<std::endl;
+    testHandler->createRandomPlaylist(5, "tester");
+    testHandler->listPlaylists();
 
 
 
 
 }
-
+void addToPlaylistTester(){
+    cout<<"=========AddToPlayListTest=========\n";
+    CommandHandler *testHandler = new CommandHandler();
+    //testHandler->library();
+    testHandler->newPlaylist("test");
+    cout<<"expecting, Added new song rap god, actual: ";
+    testHandler->addToPlaylist("test","rap god","eminem");
+    cout<<"\n=========done=========\n";
+}
 
 void tests(){
     //displaySongTester();
@@ -220,30 +228,31 @@ void discontinueTester(){
 }
 
 int main() {
-    quitTester();
+    addToPlaylistTester();
+    //quitTester();
     //tests();
 //discontinueTester();
     //testRandomPlaylist();
-
+    /*
     //CommandHandler* test = new CommandHandler();
     //test->import("/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/importTest.txt");
 
     //std::cout << "See if commit works, Elias was here" << std::endl;
     //Library mainLibrary;
-//
-//    std::string holder = "her comes the sun, beatles, 3, 1967";
-//    std::string song2 = "Billie Jean, Michael Jackson, 5, 1980";
-//    Song* test = new Song(holder);
-//    Song* test2 = new Song(song2);
-//    std::cout<<"artist = "<<test->getArtist()<<"\n";
-//    std::cout<<"length  = "<<test->getLength()<<"\n";
-//    std::cout<<"title = "<<test->getTitle()<<"\n";
-//    std::cout<<"year = "<<test->getYear()<<"\n";
-//
-//    std::cout<<"artist = "<<test2->getArtist()<<"\n";
-//    std::cout<<"length  = "<<test2->getLength()<<"\n";
-//    std::cout<<"title = "<<test2->getTitle()<<"\n";
-//    std::cout<<"year = "<<test2->getYear()<<"\n";
+
+    std::string holder = "her comes the sun, beatles, 3, 1967";
+    std::string song2 = "Billie Jean, Michael Jackson, 5, 1980";
+    Song* test = new Song(holder);
+    Song* test2 = new Song(song2);
+    std::cout<<"artist = "<<test->getArtist()<<"\n";
+    std::cout<<"length  = "<<test->getLength()<<"\n";
+    std::cout<<"title = "<<test->getTitle()<<"\n";
+    std::cout<<"year = "<<test->getYear()<<"\n";
+
+    std::cout<<"artist = "<<test2->getArtist()<<"\n";
+    std::cout<<"length  = "<<test2->getLength()<<"\n";
+    std::cout<<"title = "<<test2->getTitle()<<"\n";
+    std::cout<<"year = "<<test2->getYear()<<"\n";
 
 
     CommandHandler* handler = new CommandHandler();
@@ -318,7 +327,7 @@ int main() {
             std::string songTitle = "";
             getline(std::cin, songTitle);
 
-            handler->addToPlaylist(playlistTitle, artistName, songTitle);
+            handler->addToPlaylist(playlistTitle, songTitle,artistName,);
 
         }else if(mystr == "remove"){
             std::cout << "Enter playlist title:" << std::endl;
@@ -354,7 +363,7 @@ int main() {
 
         }
 
-
+*/
 
     return 0;
     }
