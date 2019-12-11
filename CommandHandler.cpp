@@ -172,7 +172,7 @@ void CommandHandler::import(std::string fileName){
             getline(infile, strInput);
             if(strInput != "") {
                 songLibrary->put(*new Song(strInput));
-                std::cout << strInput << std::endl;
+                //std::cout << strInput << std::endl;
             }
         }
     }
