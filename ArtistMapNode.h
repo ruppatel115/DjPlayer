@@ -1,6 +1,8 @@
-//
-// Created by Forrest Wargo on 11/24/19.
-//
+/**@file ArtistMapNode.h
+ * Interface for nodes of a map with string artists as keys and an arraylist of songs as values/items
+ * @authors Forrest Wargo, Rup Patel, Elias Platt
+ * Mostly done by Forrest
+ */
 
 #ifndef DJPLAYER_ARTISTMAPNODE_H
 #define DJPLAYER_ARTISTMAPNODE_H

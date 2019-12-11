@@ -1,5 +1,6 @@
 //
 // Created by Toby Dragon on 9/30/16.
+// Generic list interface
 //
 
 #ifndef COMP220_LIST_H

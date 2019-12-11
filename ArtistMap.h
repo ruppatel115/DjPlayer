@@ -1,6 +1,9 @@
-//
-// Created by Forrest Wargo on 11/24/19.
-//
+/**@file ArtistMap.h
+ * Interface for an ArtistMap using ArtistMapNodes (artist keys and SongArrayList values)
+ * This is essentially used to hold all the songs and artists in the library
+ * @authors Forrest Wargo, Rup Patel, Elias Platt
+ * Mostly done by Forrest
+ */
 
 #ifndef DJPLAYER_ARTISTMAP_H
 #define DJPLAYER_ARTISTMAP_H

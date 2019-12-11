@@ -1,6 +1,8 @@
-//
-// Created by Forrest Wargo on 11/24/19.
-//
+/**@file ArtistMapNode.cpp
+ * Implementation of ArtistMapNode.h
+ * @authors Forrest Wargo, Rup Patel, Elias Platt
+ * Mostly done by Forrest
+ */
 #include "ArtistMapNode.h"
 //#include "SongList.h"
 using namespace std;

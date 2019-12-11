@@ -1,6 +1,7 @@
-//
-// Created by Toby Dragon on 9/30/16.
-//
+/**@file PlaylistList.h
+ * Interface for a generic list of playlists (see playlist.h)
+ * @authors Forrest Wargo, Rup Patel, Elias Platt
+ */
 
 #ifndef COMP220_PLAYLISTLIST_H
 #define COMP220_PLAYLISTLIST_H

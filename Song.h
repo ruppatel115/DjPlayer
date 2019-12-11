@@ -1,6 +1,7 @@
-//
-// Created by Forrest Wargo on 11/18/19.
-//
+/**@file Song.h
+ * Interface for Song object/class
+ * @authors Forrest Wargo, Rup Patel, Elias Platt
+ */
 
 #ifndef DJPLAYER_SONG_H
 #define DJPLAYER_SONG_H

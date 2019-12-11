@@ -1,3 +1,8 @@
+/**@file main.cpp
+ * Runs the user interface and testers (testers are in this file)
+ * @authors Forrest Wargo, Rup Patel, Elias Platt
+ */
+
 #include <iostream>
 #include "Song.h"
 #include "ArtistMap.h"

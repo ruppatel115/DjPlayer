@@ -1,12 +1,13 @@
-//
-// Created by Rup Patel on 11/18/19.
-//
+/**@file Playlist.h
+ * Interface for Playlist object/class
+ * Each Playlist is a linked list of songs using List.h and LinkedNode.h
+ * @authors Forrest Wargo, Rup Patel, Elias Platt
+ */
 
 #ifndef DJPLAYER_PLAYLIST_H
 #define DJPLAYER_PLAYLIST_H
 
 #include <string>
-//#include "Song.h"
 #include "LinkedNode.h"
 #include <iostream>
 #include "List.h"

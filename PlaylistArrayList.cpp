@@ -1,6 +1,7 @@
-//
-// Created by Elias on 10/15/2019.
-//
+/**@file PlaylistArrayList.cpp
+ * Implementation of PlaylistArrayList.h to hold a bunch of Playlist objects
+ * @authors Forrest Wargo, Rup Patel, Elias Platt
+ */
 
 #include "PlaylistArrayList.h"
 #include <iostream>

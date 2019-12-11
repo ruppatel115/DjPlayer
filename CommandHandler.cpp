@@ -1,6 +1,7 @@
-//
-// Created by Forrest Wargo on 11/19/19.
-//
+/**@file CommandHandler.cpp
+ * Implementation of CommandHandler.h, list of commands for a user interface for a DJ Music Player
+ * @authors Forrest Wargo, Rup Patel, Elias Platt
+ */
 #include "CommandHandler.h"
 #include <iostream>
 #include <fstream>
@@ -212,6 +213,7 @@ void CommandHandler::addToPlaylist(std::string playlist, std::string title, std:
     int index = PlaylistList.find(playlist);
         Playlist temp = PlaylistList.getValueAt(index);
         Song *songToAdd = this->songLibrary->getSong(title, artist);
+        std::cout << this->songLibrary->getSong(title,artist);
         if (songToAdd != nullptr) {
             //cout<<"song or artist could not be found\n"
             std::cout <<"what the fuck "<<songToAdd->getArtist()<< std::endl;
@@ -321,8 +323,6 @@ void CommandHandler::createRandomPlaylist(int playDuration, std::string playlist
     int randSongIndex; // = rand() % (songCount-1); //do this after getting the artist node
     int randPlaylistDuration = 0;
     while (randPlaylistDuration <= playDuration){
-
-        //TODO no duplicate songs?
 
         //Goes to the random artist then picks one of their songs with rand song index
        ArtistMapNode* artistHolder = songLibrary->getArtistAt(randArtistIndex);

@@ -1,6 +1,7 @@
-//
-// Created by Forrest Wargo on 11/18/19.
-//
+/**@file Song.cpp
+ * Implementation of Song.h to create Song objects
+ * @authors Forrest Wargo, Rup Patel, Elias Platt
+ */
 #include "Song.h"
 #include <iostream>
 #include <fstream>

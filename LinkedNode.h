@@ -1,6 +1,8 @@
-//
-// Created by Toby Dragon on 10/24/16.
-//
+/**@file LinkedNode.h
+ * Interface for LinkedNodes with Songs for a linked list
+ * @authors Forrest Wargo, Rup Patel, Elias Platt, Toby Dragon
+ * Originally made by Toby, then converted to use Songs instead of an integer
+ */
 
 #ifndef LINKEDNODE_H
 #define LINKEDNODE_H

@@ -1,4 +1,7 @@
-
+/**@file PlaylistArrayList.h
+ * Interface for an Arraylist of playlists (from PlaylistList.h)
+ * @authors Forrest Wargo, Rup Patel, Elias Platt
+ */
 #ifndef COMP220_PLAYLISTARRAYLIST_H
 #define COMP220_PLAYLISTARRAYLIST_H
 

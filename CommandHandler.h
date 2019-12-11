@@ -1,6 +1,7 @@
-//
-// Created by Forrest Wargo on 11/19/19.
-//
+/**@file CommandHandler.h
+ * Interface for a CommandHandler which handles commands from a user interface for a DJ Music Player
+ * @authors Forrest Wargo, Rup Patel, Elias Platt
+ */
 
 #ifndef DJPLAYER_COMMANDHANDLER_H
 #define DJPLAYER_COMMANDHANDLER_H

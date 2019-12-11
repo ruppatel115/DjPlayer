@@ -1,6 +1,8 @@
-//
-// Created by Elias on 11/19/2019.
-//
+/**@file Playlist.cpp
+ * Implementation of Playlist.h to create Playlist objects
+ * Each Playlist is a LinkedList of Songs
+ * @authors Forrest Wargo, Rup Patel, Elias Platt
+ */
 #include "Playlist.h"
 
 Playlist::Playlist() {

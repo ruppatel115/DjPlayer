@@ -1,9 +1,9 @@
-//
-// Created by Forrest Wargo on 11/24/19.
-//
+/**@file ArtistMap.cpp
+ * Implementation of ArtistMap.h, this is the library
+ * @authors Forrest Wargo, Rup Patel, Elias Platt
+ */
 #include "ArtistMap.h"
 using namespace std;
-#include "LinkedNode.h"
 
 ArtistMap::ArtistMap(){
     this->front = nullptr;

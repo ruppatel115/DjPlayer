@@ -1,6 +1,7 @@
-//
-// Created by Forrest Wargo on 10/15/19.
-//
+/**@file SongArrayList.cpp
+ * Implementation of SongArrayList.h
+ * @authors Forrest Wargo, Rup Patel, Elias Platt
+ */
 #include <iostream>
 #include <string>
 #include "SongArrayList.h"

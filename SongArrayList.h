@@ -1,6 +1,7 @@
-//
-// Created by Forrest on 9/30/16.
-//
+/**@file SongArrayList.h
+ * Interface for an Arraylist of songs using SongList.h
+ * @authors Forrest Wargo, Rup Patel, Elias Platt
+ */
 
 #ifndef COMP220_ARRAYLIST_H
 #define COMP220_ARRAYLIST_H

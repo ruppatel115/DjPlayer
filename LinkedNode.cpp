@@ -1,6 +1,8 @@
-//
-// Created by Toby Dragon on 10/17/17.
-//
+/**@file LinkedNode.cpp
+ * Implementation of LinkedNode.h for LinkedNodes with Songs for a linked list
+ * @authors Forrest Wargo, Rup Patel, Elias Platt, Toby Dragon
+ * Originally made by Toby, then converted to use Songs instead of an integer
+ */
 #include "LinkedNode.h"
 
 LinkedNode::LinkedNode(Song& song){

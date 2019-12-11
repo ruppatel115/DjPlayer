@@ -1,6 +1,7 @@
-//
-// Created by Forrest on 9/30/16.
-//
+/**@file SongList.h
+ * Interface for generic list class for songs
+ * @authors Forrest Wargo, Rup Patel, Elias Platt
+ */
 
 #ifndef COMP220_LIST_H
 #define COMP220_LIST_H
