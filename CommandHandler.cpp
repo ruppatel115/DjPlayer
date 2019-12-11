@@ -268,9 +268,7 @@ void CommandHandler::addToPlaylist(std::string playlist, std::string title, std:
             //cout<<"song or artist could not be found\n"
             temp.insertAtEnd(*songToAdd);
             std::cout << "Added new song " + title + "." << std::endl;
-
         }
-
 }
 
 

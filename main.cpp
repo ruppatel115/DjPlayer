@@ -151,6 +151,7 @@ void quitTester(){
     testHandler->addToPlaylist("test1","a hard days night", "beatles");
     testHandler->addToPlaylist("test1","Billie Jean", "Michael Jackson");
     testHandler->playlist("test1");//TODO THIS LINE ISNT WORKING
+    cout<<"here\n";
     testHandler->quit();
     CommandHandler* testHandler2 = new CommandHandler();
     //testHandler2->import("/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/Save.txt");
@@ -190,7 +191,15 @@ void testRandomPlaylist() {
 
 
 }
-
+void addToPlaylistTester(){
+    cout<<"=========AddToPlayListTest=========\n";
+    CommandHandler *testHandler = new CommandHandler();
+    //testHandler->library();
+    testHandler->newPlaylist("test");
+    cout<<"expecting, Added new song rap god, actual: ";
+    testHandler->addToPlaylist("test","rap god","eminem");
+    cout<<"\n=========done=========\n";
+}
 
 void tests(){
     //displaySongTester();
@@ -219,10 +228,11 @@ void discontinueTester(){
 }
 
 int main() {
+    addToPlaylistTester();
     //quitTester();
     //tests();
 //discontinueTester();
-    testRandomPlaylist();
+    //testRandomPlaylist();
     /*
     //CommandHandler* test = new CommandHandler();
     //test->import("/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/importTest.txt");
