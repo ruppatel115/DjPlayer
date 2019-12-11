@@ -231,8 +231,8 @@ void discontinueTester(){
 }
 
 int main() {
-    addToPlaylistTester();
-    //quitTester();
+    //addToPlaylistTester();
+    quitTester();
     //tests();
 //discontinueTester();
     //testRandomPlaylist();

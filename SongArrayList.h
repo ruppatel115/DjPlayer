@@ -15,7 +15,8 @@
 class SongArrayList { //public List {
 private:
     //pointer to the start of the array
-    Song array;
+     //Song array;
+     Song* array;
     //count of the number of valid items currently stored in the array
     int currItemCount;
     //size of the current array
@@ -57,7 +58,7 @@ public:
      * @return a copy of the item at index
      * @throws out_of_range exception if index is invalid
      */
-    Song getValueAt(int index);
+    Song* getValueAt(int index);
 
     /**
      * gives a string representation of the current list

@@ -11,7 +11,7 @@ void SongArrayList::doubleCapacity() {
     Song* holder = new Song[currCapacity];
     for(int i=0; i<currItemCount-1; i++){
 
-        holder[i] = this->array[i];
+        holder = &array[i];
     }
     delete[] array;
     array = holder;
@@ -23,7 +23,7 @@ SongArrayList::SongArrayList(int initialCapacity) {
         throw std::invalid_argument ("exception if size < 1");
     }
     this->currCapacity = initialCapacity;
-    this->array = new Song[currCapacity];
+    this-> array = new Song[currCapacity];
     this->currItemCount =0;
 
 }
@@ -68,7 +68,9 @@ Song* SongArrayList::getValueAt(int index) {
     if(index>=currItemCount || index<0){
         throw std::out_of_range("Exception");
     }
-    return array[index];
+    Song song1 =  array[index];
+    Song* song = &song1;
+    return song ;
 }
 
 std::string SongArrayList::toString() {

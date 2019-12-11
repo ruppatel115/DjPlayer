@@ -164,7 +164,8 @@ std::string CommandHandler::playlist(std::string name){
         //todo somthing wrong in here
 //help
         std::string songList="";
-        std::cout <<temp.itemCount() << std::endl;
+        std::cout <<"item count = "<<temp.itemCount() << std::endl;
+
         for(int i=0; i<temp.itemCount();i++){
 
             std::string title=temp.getSong(i).getTitle();
@@ -207,12 +208,17 @@ void CommandHandler::newPlaylist(std::string name){
 }
 
 void CommandHandler::addToPlaylist(std::string playlist, std::string title, std::string artist) {
-        int index = PlaylistList.find(playlist);
+    std::cout <<"at the begining "<<artist<< std::endl;
+
+    int index = PlaylistList.find(playlist);
         Playlist temp = PlaylistList.getValueAt(index);
         Song *songToAdd = this->songLibrary->getSong(title, artist);
         if (songToAdd != nullptr) {
             //cout<<"song or artist could not be found\n"
+            std::cout <<"what the fuck "<<songToAdd->getArtist()<< std::endl;
+
             temp.insertAtEnd(*songToAdd);
+            //cout<<"artsit = "<<temp.getSong(0).getArtist()<<"\n";
             std::cout << "Added new song  " + title  + "." << std::endl;
 
         }
