@@ -30,7 +30,7 @@ void CommandHandler::readSaveFiles(){
             std::string strInput;
             getline(infile, strInput);
             if(strInput != "") {
-                if(strInput[0] = '*'){
+                if(strInput[0] == '*'){
                     playlistName = strInput;
                     newPlaylist(playlistName.substr(1));
                 }else {
@@ -89,13 +89,13 @@ void CommandHandler::displayArtist(std::string artist){
     }
 }
 
-Song * CommandHandler::song(std::string artist, std::string title){
+void CommandHandler::song(std::string artist, std::string title){
     ArtistMapNode* artistNode = songLibrary->getArtist(artist);
     if(artistNode != nullptr){
        int songIndex = artistNode->getSongList()->find(artist);
        if(songIndex >-1){
-           Song song = artistNode->getSongList()->getValueAt(songIndex);
-           std::cout<<song.getTitle()<<", "<<song.getArtist()<<", "<<song.getLength()<<", "<<song.getLength()<<std::endl;
+           Song* song = artistNode->getSongList()->getValueAt(songIndex);
+           std::cout<<song->getTitle()<<", "<<song->getArtist()<<", "<<song->getLength()<<", "<<song->getLength()<<std::endl;
        }else{
            std::cout<< title<<" not found for"<<artist<<"\n";
        }
@@ -157,7 +157,7 @@ void CommandHandler::listPlaylists(){
 
 
 //print out things in playlist
-std::string CommandHandler::playlist(std::string name){
+void CommandHandler::playlist(std::string name){
     int index = PlaylistList.find(name);
     if(index >=0) {
         Playlist temp = PlaylistList.getValueAt(index);
@@ -185,7 +185,6 @@ std::string CommandHandler::playlist(std::string name){
 //        std::cout << "Songs: " + temp.toString();
     }else{
         std::cout << "playlist not found\n";
-
     }
 }
 
@@ -250,7 +249,7 @@ void CommandHandler::playNext(std::string playlist) {
 
 
 void CommandHandler::quit(){
-    Song song;
+    Song* song;
     std::string fileName = "../DjPlayer/Save.txt";
     std::ofstream outf(fileName);
     if (outf){
@@ -258,7 +257,7 @@ void CommandHandler::quit(){
         while(holder != nullptr){
             for(int i=0; i<holder->getSongList()->itemCount();i++) {
                 song = holder->getSongList()->getValueAt(i);
-                outf << song.getTitle()+", "+song.getArtist()+", "+std::to_string(song.getLength())+", "+std::to_string(song.getYear())+'\n';
+                outf << song->getTitle()+", "+song->getArtist()+", "+std::to_string(song->getLength())+", "+std::to_string(song->getYear())+'\n';
             }
             holder = holder->getNext();
         }
@@ -268,14 +267,15 @@ void CommandHandler::quit(){
         std::cerr << "Can't write to save file" << std::endl;
     }
     string playlistFile = "../savedPlaylists.txt";
+    //writing playlists to file
     std::ofstream outf2(playlistFile);
     if (outf2){
         for(int i=0; i<PlaylistList.playlistCount();i++){
             Playlist holder = PlaylistList.getValueAt(i);
             outf2<<"*"<<holder.getTitle()+"\n";
             for(int j=0; j<holder.itemCount();j++){
-                song = holder.getSong(j);
-                outf2 << song.getTitle()+", "+song.getArtist()+", "+std::to_string(song.getLength())+", "+std::to_string(song.getYear())+'\n';
+                *song = holder.getSong(j);
+                outf2 << song->getTitle()+", "+song->getArtist()+", "+std::to_string(song->getLength())+", "+std::to_string(song->getYear())+'\n';
             }
         }
         outf2.close();
@@ -335,21 +335,21 @@ void CommandHandler::createRandomPlaylist(int playDuration, std::string playlist
            randSongIndex=0;
        }
 
-       Song songHolder = songListHolder->getValueAt(randSongIndex);
+       Song* songHolder = songListHolder->getValueAt(randSongIndex);
        //TODO getValueAt in songArrayList returns a copy not a pointer
        for(int i=0; i<songListHolder->itemCount();i++){
-        int comparison = songHolder.getTitle().compare(songListHolder->getValueAt(i).getTitle());
+        int comparison = songHolder->getTitle().compare(songListHolder->getValueAt(i)->getTitle());
            if(comparison < 0){
                //cout<<song.getTitle()<<" orgininal: "<<songList->getValueAt(i).getTitle()<<endl;
-               songListHolder->insertAt(songHolder,i);
+               songListHolder->insertAt(*songHolder,i);
            }else if (comparison == 0){
                //cout<<"in duplicate "<<song.getTitle()<<" orgininal: "<<songList->getValueAt(i).getTitle()<<endl;
 
-               cout<<"duplicate song: "<< songHolder.getTitle()<<endl;
+               cout<<"duplicate song: "<< songHolder->getTitle()<<endl;
                break;
            }
        }
-        newRandPlaylist->insertAtEnd(songHolder);
+        newRandPlaylist->insertAtEnd(*songHolder);
 
         if (artistCount-1 > 0) {
             randArtistIndex =rand() % (artistCount - 1);

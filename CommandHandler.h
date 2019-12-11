@@ -27,7 +27,7 @@ public:
     void help();
     void library();
     void displayArtist(std::string  artist);
-    Song * song(std::string artist, std::string title);
+    void song(std::string artist, std::string title);
     void import(std::string fileName);
     void discontinue(std::string fileName);
 
@@ -37,7 +37,7 @@ public:
     * Displays all songs left in the given playlist and its duration
     * @param name of the playlist
     */
-    std::string playlist(std::string  name);
+    void playlist(std::string  name);
     /**
     * Creates a new playlist with
     * @param name of the new playlist
