@@ -173,7 +173,7 @@ std::string CommandHandler::playlist(std::string name){
     if(index >=0) {
         Playlist temp = PlaylistList.getValueAt(index);
         //todo somthing wrong in here
-
+//help
         std::string songList="";
         std::cout <<temp.itemCount() << std::endl;
         for(int i=0; i<temp.itemCount();i++){
