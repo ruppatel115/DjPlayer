@@ -75,13 +75,25 @@ Playlist PlaylistArrayList::getValueAt(int index) {
 }
 
 std::string PlaylistArrayList::toString() { //Prints a list of the names of all the playlists and their durations
+    if (currPlaylistCount <= 0){
+        return "{}";
+    }
     std::string result = "{";
     for (int i = 0; i < currPlaylistCount; i++) {
-        if (i <currPlaylistCount-1) {
-            result += array[i].getTitle() + "(duration: " + std::to_string(array[i].calcDuration()) + "), ";
+        if (!array[i].isEmpty()) {
+            if (i < currPlaylistCount - 1) {
+                result += array[i].getTitle() + "(duration: " + std::to_string(array[i].calcDuration()) + "), ";
+            } else { //No comma at the end
+                result += array[i].getTitle() + "(duration: " + std::to_string(array[i].calcDuration()) + ")";
+            }
         }
-        else{ //No comma at the end
-            result += array[i].getTitle() + "(duration: " + std::to_string(array[i].calcDuration()) + ")";
+        else{ //if the playlist at the current index of the arraylist is empty, do this instead
+            if (i < currPlaylistCount - 1) {
+                result += array[i].getTitle() + " (empty playlist), ";
+            }
+            else{
+                result += array[i].getTitle() + " (empty playlist)";
+            }
         }
     }
     result+="}";
