@@ -67,14 +67,14 @@ std::string Playlist::playNext() {//after next song is played will call remove s
 return "";
 }
 
-int Playlist::findSong(std::string title, std::string artist) { //TODO songs can have the same name? currently finds first occurrence
+int Playlist::findSong(std::string title, std::string artist) {
     if (isEmpty()){
         return -1;
     }
     LinkedNode* temp = front;
     int i = 0;
-    while (temp->getNext() != end){
-        if (temp->getSong().getTitle() == title&& temp->getSong().getArtist()==artist){
+    while (temp->getNext() != nullptr){
+        if (temp->getSong().getTitle() == title && temp->getSong().getArtist()==artist){
             return i;
         }
         else{

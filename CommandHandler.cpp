@@ -52,64 +52,6 @@ ArtistMap* CommandHandler::getSongLibrary(){
     return songLibrary;
 }
 
-void CommandHandler::promptUser(){
-    std::string mystr = "empty";
-    while(mystr != "done") {
-        std::cout << "Enter your command or help:";
-        getline(std::cin, mystr);
-        std::cout << mystr<<'\n';
-
-
-        if(mystr == "help"){
-        }else if(mystr == "library"){
-            std::cout << "in library";
-
-            this->library();
-        }else if(mystr == "artist"){
-            //handler->displayArtist("holder");
-
-
-        }else if(mystr == "song"){
-            //handler->song();
-
-
-        }else if(mystr == "import"){
-            std::cout << "Enter file name:";
-            getline(std::cin, mystr);
-            this->import(mystr);
-
-        }else if(mystr == "discontinue"){
-            //handler->discontinue();
-
-        }else if(mystr == "list playlists"){
-            //handler->listPlaylists();
-
-        }else if(mystr == "playlist"){
-            //handler->playlist();
-
-        }else if(mystr == "newPlaylist"){
-            //handler->newPlaylist();
-
-
-
-
-        }else if(mystr == "addToPlaylist"){
-            //handler->addToPlaylist();
-
-        }else if(mystr == "remove"){
-
-        }else if(mystr == "play next"){
-            //handler->playNext();
-
-        }else if(mystr == "new random"){
-            //handler->newRandomPlaylist();
-
-        }else{
-            std::cout<<"I have know idea what you trynna do, why dont you try that again "<<'\n';
-        }
-
-    }
-}
 void CommandHandler::help(){
     std::cout << "*** ALL AVAILABLE COMMANDS ***" << std::endl;
     std::cout << "help: displays this" << std::endl;
@@ -225,17 +167,32 @@ void CommandHandler::listPlaylists(){
 }
 
 
-/**
- * Displays all songs left in the given playlist and its duration
- * @param name of the playlist
- */
-void CommandHandler::playlist(std::string name){
+//print out things in playlist
+std::string CommandHandler::playlist(std::string name){
     int index = PlaylistList.find(name);
     if(index >=0) {
         Playlist temp = PlaylistList.getValueAt(index);
         //todo somthing wrong in here
-        std::cout << "Playlist" + name + ": \nDuration: " + std::to_string(temp.calcDuration()) << std::endl;
-        std::cout << "Songs: " + temp.toString();
+
+        std::string songList="";
+        std::cout <<temp.itemCount() << std::endl;
+        for(int i=0; i<temp.itemCount();i++){
+
+            std::string title=temp.getSong(i).getTitle();
+            std::string artist=temp.getSong(i).getArtist();
+            int duration =temp.getSong(i).getLength();
+            songList +=  title + ", " + artist + ", "+ std::to_string(duration); ;
+
+        }
+        std::cout <<songList << std::endl;
+
+
+
+
+
+
+//        std::cout << "Playlist" + name + ": \nDuration: " + std::to_string(temp.calcDuration()) << std::endl;
+//        std::cout << "Songs: " + temp.toString();
     }else{
         std::cout << "playlist not found\n";
 
@@ -267,7 +224,7 @@ void CommandHandler::addToPlaylist(std::string playlist, std::string title, std:
         if (songToAdd != nullptr) {
             //cout<<"song or artist could not be found\n"
             temp.insertAtEnd(*songToAdd);
-            std::cout << "Added new song " + title + "." << std::endl;
+            std::cout << "Added new song  " + title  + "." << std::endl;
 
         }
 

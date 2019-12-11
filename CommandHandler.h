@@ -37,7 +37,7 @@ public:
     * Displays all songs left in the given playlist and its duration
     * @param name of the playlist
     */
-    void playlist(std::string  name);
+    std::string playlist(std::string  name);
     /**
     * Creates a new playlist with
     * @param name of the new playlist

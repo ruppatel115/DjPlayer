@@ -175,16 +175,17 @@ void displaySongTester(){
 }
 
 void testRandomPlaylist() {
-    std::cout << "---------- Testing Random Playlist ---------" << std::endl;
-    CommandHandler *testHandler = new CommandHandler();
+    //std::cout << "---------- Testing Random Playlist ---------" << std::endl;
+    //CommandHandler *testHandler = new CommandHandler();
 //    testHandler->newPlaylist("randomplaylisttest");
 //    testHandler->addToPlaylist("randomplaylisttest", "a hard days night", "beatles");
 
     //testHandler->import("/Users/ruppatel/CLionProjects/DjPlayer/importTest.txt");
 
-    std::cout<<"Create New Playlist"<<std::endl;
-    testHandler->createRandomPlaylist(5, "tester");
-    testHandler->listPlaylists();
+    //std::cout<<"Create New Playlist"<<std::endl;
+    //testHandler->createRandomPlaylist(5, "tester");
+    //Playlist("tester").toString();
+//    testHandler->listPlaylists();
 
 
 
@@ -219,30 +220,30 @@ void discontinueTester(){
 }
 
 int main() {
-    //quitTester();
+    quitTester();
     //tests();
 //discontinueTester();
-    testRandomPlaylist();
-    /*
+    //testRandomPlaylist();
+
     //CommandHandler* test = new CommandHandler();
     //test->import("/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/importTest.txt");
 
     //std::cout << "See if commit works, Elias was here" << std::endl;
     //Library mainLibrary;
-
-    std::string holder = "her comes the sun, beatles, 3, 1967";
-    std::string song2 = "Billie Jean, Michael Jackson, 5, 1980";
-    Song* test = new Song(holder);
-    Song* test2 = new Song(song2);
-    std::cout<<"artist = "<<test->getArtist()<<"\n";
-    std::cout<<"length  = "<<test->getLength()<<"\n";
-    std::cout<<"title = "<<test->getTitle()<<"\n";
-    std::cout<<"year = "<<test->getYear()<<"\n";
-
-    std::cout<<"artist = "<<test2->getArtist()<<"\n";
-    std::cout<<"length  = "<<test2->getLength()<<"\n";
-    std::cout<<"title = "<<test2->getTitle()<<"\n";
-    std::cout<<"year = "<<test2->getYear()<<"\n";
+//
+//    std::string holder = "her comes the sun, beatles, 3, 1967";
+//    std::string song2 = "Billie Jean, Michael Jackson, 5, 1980";
+//    Song* test = new Song(holder);
+//    Song* test2 = new Song(song2);
+//    std::cout<<"artist = "<<test->getArtist()<<"\n";
+//    std::cout<<"length  = "<<test->getLength()<<"\n";
+//    std::cout<<"title = "<<test->getTitle()<<"\n";
+//    std::cout<<"year = "<<test->getYear()<<"\n";
+//
+//    std::cout<<"artist = "<<test2->getArtist()<<"\n";
+//    std::cout<<"length  = "<<test2->getLength()<<"\n";
+//    std::cout<<"title = "<<test2->getTitle()<<"\n";
+//    std::cout<<"year = "<<test2->getYear()<<"\n";
 
 
     CommandHandler* handler = new CommandHandler();
@@ -353,7 +354,7 @@ int main() {
 
         }
 
-*/
+
 
     return 0;
     }
