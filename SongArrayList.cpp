@@ -68,9 +68,9 @@ Song* SongArrayList::getValueAt(int index) {
     if(index>=currItemCount || index<0){
         throw std::out_of_range("Exception");
     }
-    Song song1 =  array[index];
-    Song* song = &song1;
-    return song ;
+    //array[index];
+    //Song* song = &song1;
+    return array+index;
 }
 
 std::string SongArrayList::toString() {
