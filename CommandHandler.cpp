@@ -5,8 +5,9 @@
 #include "CommandHandler.h"
 #include <iostream>
 #include <fstream>
-#include <sstream>
 #include "ArtistMap.h"
+
+
 CommandHandler::CommandHandler() {
     songLibrary = new ArtistMap();
     PlaylistList = new PlaylistArrayList(20);
@@ -19,9 +20,6 @@ CommandHandler::CommandHandler() {
 }
 
 
-//CommandHandler::CommandHandler(Library* mainLibrary){
-//   this->mainLibrary = mainLibrary;
-//}
 void CommandHandler::readSaveFiles(){
     import("../Save.txt");
     std::ifstream infile("../savedPlaylists.txt");
@@ -162,8 +160,8 @@ void CommandHandler::playlist(std::string name){
     int index = PlaylistList.find(name);
     if(index >=0) {
         Playlist temp = PlaylistList.getValueAt(index);
-        //todo somthing wrong in here
-//help
+        //TODO something wrong in here
+
         std::string songList="";
         std::cout <<"item count = "<<temp.itemCount() << std::endl;
 
@@ -176,10 +174,6 @@ void CommandHandler::playlist(std::string name){
 
         }
         std::cout <<songList << std::endl;
-
-
-
-
 
 
 //        std::cout << "Playlist" + name + ": \nDuration: " + std::to_string(temp.calcDuration()) << std::endl;
@@ -216,7 +210,7 @@ void CommandHandler::addToPlaylist(std::string playlist, std::string title, std:
         std::cout << this->songLibrary->getSong(title,artist);
         if (songToAdd != nullptr) {
             //cout<<"song or artist could not be found\n"
-            std::cout <<"what the fuck "<<songToAdd->getArtist()<< std::endl;
+            std::cout <<"what the fuck "<<songToAdd->getArtist()<< std::endl; //TODO remember to remove this :)
 
             temp.insertAtEnd(*songToAdd);
             //cout<<"artsit = "<<temp.getSong(0).getArtist()<<"\n";

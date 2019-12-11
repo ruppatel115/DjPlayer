@@ -7,12 +7,12 @@
 
 #ifndef DJPLAYER_ARTISTMAP_H
 #define DJPLAYER_ARTISTMAP_H
-//#include "Song.h"
+
 #include <iostream>
 #include <algorithm>
 #include "ArtistMapNode.h"
-using namespace std;
 
+using namespace std;
 
 
 class ArtistMap{
@@ -21,7 +21,8 @@ private:
     int songCount;
     int artistCount;
 public:
-    void addArtistNode(Song song);
+    //TODO function comments
+
     void checkNext(Song song, ArtistMapNode* node);
     ~ArtistMap();
     ArtistMap();

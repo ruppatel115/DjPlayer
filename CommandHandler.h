@@ -6,15 +6,12 @@
 #ifndef DJPLAYER_COMMANDHANDLER_H
 #define DJPLAYER_COMMANDHANDLER_H
 #include <iostream>
-//#include "SongList.h"
-//#include "SongArrayList.h"
 #include "ArtistMap.h"
 #include "PlaylistArrayList.h"
 
 class CommandHandler {
 private:
     ArtistMap* songLibrary;
-    //Library* mainLibrary;
     PlaylistArrayList PlaylistList;
     int numOfPlaylists;
     int numOfSongs;
@@ -22,7 +19,7 @@ private:
     void readSaveFiles();
 
 public:
-    //CommandHandler(Library *pLibrary);
+    //TODO function comments? destructor
     void promptUser();
     CommandHandler();
     void help();

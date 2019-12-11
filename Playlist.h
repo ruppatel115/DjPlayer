@@ -16,22 +16,16 @@ class Playlist{
 
 private:
 
-
     LinkedNode *front;
     LinkedNode *end;
-    //Playlist(const Playlist& playlistToCopy);
+    //Playlist(const Playlist& playlistToCopy); //TODO we need to make these
     //Playlist& operator=(const Playlist& playlistToCopy);
     std::string title;
     int numOfSongs;
     double duration;
 
-
-
-
-
-
 public:
-
+    //TODO function comments
     Playlist();
 
     Playlist(std::string title);
@@ -57,13 +51,8 @@ public:
 
     virtual void insertAtEnd(Song songStr);
 
-
-
-
     virtual Song getSong(int index);
 
-
-    //void insertAtEnd(Song song);
 };
 
 

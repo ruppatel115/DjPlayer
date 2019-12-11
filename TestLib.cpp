@@ -2,7 +2,6 @@
 // Created by Toby Dragon on 9/4/18.
 //
 #include <iostream>
-#include "TestLib.h"
 
 void printAssertEquals(int expected, int actual){
     if (expected == actual){

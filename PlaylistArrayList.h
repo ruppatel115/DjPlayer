@@ -8,7 +8,6 @@
 #include <stdexcept>
 #include <string>
 #include "PlaylistList.h"
-//#include "Playlist.h"
 
 
 class PlaylistArrayList : public PlaylistList {
@@ -95,23 +94,6 @@ public:
      * @return the index of the last occurrence of numToFind if it is present, otherwise returns -1
      */
     int findLast(std::string playlistToFind);
-
-    /**
-     * appends the new playlist to the beginning of the list
-     * @post the list has an additional value in it, at the beginning
-     *    all other playlists are shifted down by one index
-     */
-    //void insertAtFront(Playlist& playlistToAdd);
-
-    /**
-     * inserts the playlist into the list so that it can be found with get(index)
-     * @param index the location in which to insert this playlist
-     * @post the list has an additional value in it at the specified index,
-     *        all further values have been shifted down by one index
-     * @throws out_of_range exception if index is invalid (< 0 or > currplaylistCount)
-     */
-    //void insertAt(Playlist* playlistToAdd, int index);
-
     /**
      * removes the playlist at the end of the list, and returns a copy of that playlist
      * @post the playlist at the end is removed from the list
