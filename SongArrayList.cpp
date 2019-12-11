@@ -63,7 +63,7 @@ void SongArrayList::insertAtEnd(Song itemToAdd) {
 
 }
 
-Song SongArrayList::getValueAt(int index) {
+Song* SongArrayList::getValueAt(int index) {
 
     if(index>=currItemCount || index<0){
         throw std::out_of_range("Exception");

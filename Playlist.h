@@ -62,7 +62,7 @@ public:
     virtual Song getSong(int index);
 
 
-    void insertAtEnd(Song *song);
+    //void insertAtEnd(Song song);
 };
 
 

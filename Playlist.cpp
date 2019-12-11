@@ -158,11 +158,13 @@ std::string Playlist::removeSong(int index) { //returns song information
 
 
 void Playlist::insertAtEnd(Song song) {
+
     LinkedNode *newNode = new LinkedNode(song);
     newNode->setSong(song);
     if (front == nullptr) {
-        newNode->setNext(front);
-        front = newNode;
+        front=newNode;
+//        newNode->setNext(front);
+//        front = newNode;
 
     } else {
         LinkedNode *temp = front;
@@ -173,6 +175,8 @@ void Playlist::insertAtEnd(Song song) {
         newNode->setNext(nullptr);
 
     }
+
+
 }
 
 
