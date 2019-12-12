@@ -28,17 +28,12 @@ void songTesters(){
     cout<<"=====DONE=======\n";
 
 
-
-
-
-
-
 }
 
 
 
 void ArtistMapTesters(){}
-void artistMapNodeTesters(){}
+
 void songArrayListTesters(){
     cout<<"=====SONG ARRAY LIST TESTS=======\n";
     SongArrayList testList = SongArrayList();
@@ -127,10 +122,42 @@ void songArrayListTesters2(){
 
     std::cout << "======DONE======" <<endl;
 }
+void artistMapNodeTesters(){
+    std::cout << "=======Artist Map Node TESTS=======" <<endl;
+    string song1 = "here comes the sun, beatles, 3:32, 1967";
+    string song2 = "Billie Jean, Michael Jackson, 5:56, 1980";
+    string song3 = "rap god, eminem, 5:09, 2013";
+
+    Song* testSong1 = new Song(song1);
+    Song* testSong2 = new Song(song2);
+    Song* testSong3 = new Song(song3);
+    ArtistMapNode* testNode = new ArtistMapNode(*testSong1);
+    cout<<"-----testing toString and i guess get song list------\n";
+    printAssertEquals("{here comes the sun}",testNode->toString());
+    testNode->getSongList()->clearList();
+    printAssertEquals("{}",testNode->toString());
+    cout<<"-----testing add song-----\n";
+    testNode->addSong(song1);
+    testNode->addSong(song2);
+    testNode->addSong(song3);
+    printAssertEquals("{Billie Jean, here comes the sun, rap god}",testNode->toString());
+    cout<<"-----testing get artist-----\n";
+    printAssertEquals("beatles",testNode->getArtist());
+    cout<<"-----set and get next-----\n";
+    ArtistMapNode* testNode2 = new ArtistMapNode(*testSong2);
+    testNode->setNext(testNode2);
+    printAssertEquals("Michael Jackson",testNode->getNext()->getArtist());
+
+    std::cout << "======DONE======" <<endl;
+
+
+}
+
 void playlistTesters(){}
 void playListArrayListTesters(){}
 int main(){
-    songTesters();
-    songArrayListTesters();
+    //songTesters();
+    //songArrayListTesters();
+    artistMapNodeTesters();
     return 0;
 }

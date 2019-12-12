@@ -26,9 +26,6 @@ std::string ArtistMapNode::getArtist() {
     return artist;
 }
 void ArtistMapNode::addSong(Song song){
-    //cout<<this->toString()<<endl;
-    //TODO make it work with caps
-//cout<<songList->itemCount()<<endl;
 bool songAdded = false;
     for(int i=0; i<songList->itemCount();i++){
         //cout<<song.getTitle()<<endl;
@@ -63,6 +60,8 @@ ArtistMapNode* ArtistMapNode::getNext() {
 }
 
 std::string ArtistMapNode::toString(){
+    return songList->toString();
+    /*
 
     std::string songString = "{";
     for(int i=0; i<songList->itemCount(); i++){
@@ -76,7 +75,7 @@ std::string ArtistMapNode::toString(){
     songString.erase(1,1);
     songString += "}";
     return songString;
-
+*/
 }
 int ArtistMapNode::getSongCount() {
     return songList->getSongCount();
