@@ -2,6 +2,7 @@
 #include "TestLib.h"
 #include "ArtistMapNode.h"
 #include "SongArrayList.h"
+#include "Playlist.h"
 
 
 //
@@ -18,14 +19,16 @@ a hard days night, beatles, 3:02, 1964
 loose yourself, eminem, 5:00, 2013
  */
 void songTesters(){
-    cout<<"=====SONG TESTS=======\n";
+    std::cout << "=======SONG TEST=======" <<endl;
     string song1 = "here comes the sun, beatles, 3:32, 1967";
     Song* testSong = new Song(song1);
     printAssertEquals("here comes the sun",testSong->getTitle());
     printAssertEquals("beatles",testSong->getArtist());
     printAssertEquals(212,testSong->getLength());
+
     printAssertEquals(1967,testSong->getYear());
-    cout<<"=====DONE=======\n";
+
+    std::cout << "=======DONE=======" <<endl;
 
 
 }
@@ -154,6 +157,46 @@ void artistMapNodeTesters(){
 }
 
 void playlistTesters(){}
+
+
+void playlistTesters(){
+    std::cout << "=======PLAYLIST TEST=======" <<endl;
+    string song1 = "here comes the sun, beatles, 3:32, 1967";
+    string song2 = "Billie Jean, Michael Jackson, 5:32, 1980";
+    string song3 = "rap god, eminem, 5:12, 2013";
+    string song4 = "b lucy in thr sky with diamonds, beatles, 3:39, 1967";
+    string song5 = "c  hey jude, beatles, 3:01, 1968";
+    Song* testSong1 = new Song(song1);
+    Song* testSong2 = new Song(song2);
+    Song* testSong3 = new Song(song3);
+    Song* testSong4 = new Song(song4);
+    Song* testSong5 = new Song(song5);
+    Playlist playList;
+    printAssertEquals(true, playList.isEmpty());
+    playList.insertAtEnd(testSong1);
+    printAssertEquals(false, playList.isEmpty());
+    printAssertEquals(1, playList.itemCount());
+    playList.insertAtEnd(testSong2);
+    playList.insertAtEnd(testSong3);
+    printAssertEquals(3, playList.itemCount());
+    //playList.removeSong(2);
+    //printAssertEquals(2, playList.itemCount());
+    playList.insertAtEnd(testSong3);
+    playList.insertAtEnd(testSong3);
+    //printAssertEquals(4, playList.itemCount());
+    std::cout<<playList.toString()<<std::endl;
+
+    std::cout << "======DONE======" <<endl;
+
+
+
+
+
+
+
+
+
+}
 void playListArrayListTesters(){}
 int main(){
     //songTesters();

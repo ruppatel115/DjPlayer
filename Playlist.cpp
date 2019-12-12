@@ -37,24 +37,36 @@ std::string Playlist::getTitle(){
 
 std::string Playlist::toString() {
     std::string result = "{";
-    LinkedNode* temp = front;
-    int i = 1;
-    while (temp != end){
-        if (temp->getNext() != end){
-        result += std::to_string(i)+": " + temp->getSong().getTitle() + "(Artist: "+temp->getSong().getArtist()+"; "
-         "Length: "+std::to_string(temp->getSong().getLength())+"; Year: "+std::to_string(temp->getSong().getYear())+"), ";
+    LinkedNode *temp = front;
+    int i = 0;
+
+    while (temp->getNext() != nullptr) {
+        if (temp != nullptr) {
+
+            result +=
+                    std::to_string(i) + ": " + temp->getSong().getTitle() + "(Artist: " + temp->getSong().getArtist() +
+                    "; "
+                    "Length: " + std::to_string(temp->getSong().getLength()) + "; Year: " +
+                    std::to_string(temp->getSong().getYear()) + "), ";
+
+        } else { //no comma at the end
+            result +=
+                    std::to_string(i) + ": " + temp->getSong().getTitle() + "(Artist: " + temp->getSong().getArtist() +
+                    "; "
+                    "Length: " + std::to_string(temp->getSong().getLength()) + "; Year: " +
+                    std::to_string(temp->getSong().getYear()) + ")";
         }
-        else{ //no comma at the end
-            result += std::to_string(i)+": " + temp->getSong().getTitle() + "(Artist: "+temp->getSong().getArtist()+"; "
-            "Length: "+std::to_string(temp->getSong().getLength())+"; Year: "+std::to_string(temp->getSong().getYear())+")";
-        }
-        temp->getNext();
+        temp = temp->getNext();
         i++;
 
     }
-    result+="}";
-    return result;
+    std::cout << result << std::endl;
+
 }
+
+
+
+
 
 int Playlist::calcDuration(){ //TODO does this work correctly?
     int duration = 0;
@@ -103,7 +115,7 @@ bool Playlist::isEmpty() {
 }
 
 int Playlist::itemCount(){//O(n) must run through all items of list
-    std::cout<<"first son in playlist "<<front->getSong().getTitle()+"\n";
+    //std::cout<<"first son in playlist "<<front->getSong().getTitle()+"\n";
     LinkedNode *temp = front;
     int count = 0;
     while(temp != nullptr) {
@@ -122,7 +134,7 @@ std::string Playlist::removeSong(int index) { //returns song information
     if (itemCount() < index +1 || index < 0 || front == nullptr) {
         throw std::out_of_range("out of range");
     }
-
+    std::string item="";
     if (index == 0) {
         LinkedNode *node = front;
         end = nullptr;
