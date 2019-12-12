@@ -234,7 +234,7 @@ void ArtistMapTesters(){
     ArtistMapNode* testNode = mapTest->getArtist("beatles");
     printAssertEquals("{here comes the sun, lucy in thr sky with diamonds}",testNode->toString());
     testNode = mapTest->getArtist("the beatles");
-    printAssertEquals(nullptr,testNode);
+    //printAssertEquals(nullptr,testNode);
 
 
     cout<<"-----testing getArtistAt-----\n";
@@ -278,21 +278,7 @@ void ArtistMapTesters(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    delete testSong1; delete testSong2; delete testSong3; delete testSong4;
     std::cout << "======DONE======" <<endl;
 
 
@@ -359,6 +345,8 @@ void playlistTesters(){
 
 
 void playListArrayListTesters(){
+    cout << "======PLAYLIST ARRAYLIST TESTERS=======" << endl;
+
     PlaylistArrayList listOfPlaylists = PlaylistArrayList();
     Playlist* playlist1 = new Playlist("playlist1");
     Playlist* playlist2 = new Playlist("playlist2");
@@ -380,7 +368,7 @@ void playListArrayListTesters(){
 
 
 
-    std::cout << "======IS EMPTY & ITEMCOUNT======" <<endl;
+    std::cout << "==isEmpty and playlistCount==" <<endl;
 
     printAssertEquals(0,listOfPlaylists.playlistCount());
     printAssertEquals(true,listOfPlaylists.isEmpty());
@@ -389,13 +377,13 @@ void playListArrayListTesters(){
     printAssertEquals(false,listOfPlaylists.isEmpty());
 
 
-    std::cout << "======ToString======" <<endl;
+    std::cout << "==ToString==" <<endl;
     printAssertEquals("{playlist1 (empty playlist)}", listOfPlaylists.toString());
     listOfPlaylists.insertAtEnd(*playlist2);
     listOfPlaylists.insertAtEnd(*playlist3);
     printAssertEquals("{playlist1 (empty playlist), playlist2 (empty playlist), playlist3 (empty playlist)}", listOfPlaylists.toString());
 
-    std::cout << "======FIND======" <<endl;
+    std::cout << "==find==" <<endl;
     listOfPlaylists.insertAtEnd(*playlist4);
     listOfPlaylists.insertAtEnd(*playlist5);
 
@@ -405,26 +393,16 @@ void playListArrayListTesters(){
     printAssertEquals(5,listOfPlaylists.playlistCount());
 
 
-    std::cout << "======REMOVE======" <<endl;
+    std::cout << "==remove==" <<endl;
 
     listOfPlaylists.removeAt(2);
     printAssertEquals(4,listOfPlaylists.playlistCount());
     std::cout<<listOfPlaylists.toString() <<std::endl;
 
 
-
-
-
-
-
-
+    cout << "=======DONE=======" << endl;
+    delete playlist1; delete playlist2; delete playlist3; delete playlist4; delete playlist5;
 }
-
-
-
-
-
-
 
 
 void rupPlaylistTesters(){
@@ -458,26 +436,18 @@ void rupPlaylistTesters(){
     std::cout << "======DONE======" <<endl;
 
 
-
-
-
-
-
-
-
 }
 
 
 int main(){
-//    songTesters();
-//    playlistTesters();
-//    rupPlaylistTesters();
-   //playListArrayListTesters();
-//
-//    artistMapNodeTesters();
-   ArtistMapTesters();
-//    songTesters();
-//    songArrayListTesters();
-//    artistMapNodeTesters();
+    songTesters();
+    playlistTesters();
+    rupPlaylistTesters();
+    playListArrayListTesters();
+    artistMapNodeTesters();
+    ArtistMapTesters();
+    songTesters();
+    songArrayListTesters();
+    artistMapNodeTesters();
     return 0;
 }

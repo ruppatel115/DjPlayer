@@ -26,15 +26,17 @@ public:
     Song(std::string songStr);
 
 
-    const std::string &getTitle() const;
+    virtual const std::string &getTitle() const;
 
-    const std::string &getArtist() const;
+    virtual const std::string &getArtist() const;
 
-    int getLength() const;
+    virtual int getLength() const;
 
-    int getYear() const;
+    virtual int getYear() const;
 
-    void incrementPlaycount();
+    virtual void incrementPlaycount();
+
+    virtual int getPlaycount();
 
 
 };

@@ -69,3 +69,7 @@ void Song::incrementPlaycount() {
     playcount++;
 }
 
+int Song::getPlaycount() {
+    return playcount;
+}
+
