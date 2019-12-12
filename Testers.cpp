@@ -170,7 +170,9 @@ void ArtistMapTesters(){
 
 
     ArtistMap* mapTest = new ArtistMap();
-    cout<<"-----testing put and to string-----\n";
+
+
+    cout<<"-----testing put and tostring-----\n";
     mapTest->put(*testSong1);
     printAssertEquals("[\nbeatles: {here comes the sun}\n]\n",mapTest->toString());
     cout<<"expecting 'duplicate song: here comes the sun' actual: ";
@@ -180,6 +182,8 @@ void ArtistMapTesters(){
     printAssertEquals("[\nbeatles: {here comes the sun}\nMichael Jackson: {Billie Jean}\n]\n",mapTest->toString());
     mapTest->put(*testSong4);
     printAssertEquals("[\nbeatles: {here comes the sun, lucy in thr sky with diamonds}\nMichael Jackson: {Billie Jean}\n]\n",mapTest->toString());
+
+
     cout<<"-----testing remove-----\n";
     mapTest->remove("here comes the sun", "beatles");
     printAssertEquals("[\nbeatles: {lucy in thr sky with diamonds}\nMichael Jackson: {Billie Jean}\n]\n",mapTest->toString());
@@ -213,6 +217,76 @@ void ArtistMapTesters(){
     mapTest->put(*testSong4);
     printAssertEquals(3,mapTest->getArtistCount());
     //printAssertEquals(4,mapTest->getSongCount());
+
+    cout<<"-----testing removeAll-----\n";
+    mapTest->removeAll();
+    printAssertEquals("[]",mapTest->toString());
+    printAssertEquals(0,mapTest->getArtistCount());
+    mapTest->removeAll();
+    printAssertEquals("[]",mapTest->toString());
+    printAssertEquals(0,mapTest->getArtistCount());
+
+    cout<<"-----testing getArtist-----\n";
+    mapTest->put(*testSong1);
+    mapTest->put(*testSong2);
+    mapTest->put(*testSong3);
+    mapTest->put(*testSong4);
+    ArtistMapNode* testNode = mapTest->getArtist("beatles");
+    printAssertEquals("{here comes the sun, lucy in thr sky with diamonds}",testNode->toString());
+    testNode = mapTest->getArtist("the beatles");
+    printAssertEquals(nullptr,testNode);
+
+
+    cout<<"-----testing getArtistAt-----\n";
+    testNode = mapTest->getArtistAt(0);
+    printAssertEquals("{here comes the sun, lucy in thr sky with diamonds}",testNode->toString());
+    try{
+        mapTest->getArtistAt(-1);
+        cout << "FAIL: removeSong did not throw exception when index was negative" <<endl;
+    }
+    catch(out_of_range& e){
+        printAssertEquals("invalid index",e.what());
+    }
+    try{
+        mapTest->getArtistAt(3);
+        cout << "FAIL: removeSong did not throw exception when index was negative" <<endl;
+    }
+    catch(out_of_range& e){
+        printAssertEquals("invalid index",e.what());
+    }
+    try{
+        mapTest->getArtistAt(10000);
+        cout << "FAIL: removeSong did not throw exception when index was negative" <<endl;
+    }
+    catch(out_of_range& e){
+        printAssertEquals("invalid index",e.what());
+    }
+    testNode = mapTest->getArtistAt(2);
+    printAssertEquals("{Billie Jean}",testNode->toString());
+
+    cout<<"-----testing getSong-----\n";
+    delete mapTest;
+    mapTest = new ArtistMap();
+    mapTest->put(*testSong1);
+    mapTest->put(*testSong2);
+    mapTest->put(*testSong3);
+    mapTest->put(*testSong4);
+    printAssertEquals("rap god",mapTest->getSong("rap god", "eminem")->getTitle());
+    printAssertEquals("eminem",mapTest->getSong("rap god", "eminem")->getArtist());
+    printAssertEquals("here comes the sun",mapTest->getSong("here comes the sun", "beatles")->getTitle());
+    printAssertEquals("here comes the sun",mapTest->getSong("here comes the sun", "beatles")->getTitle());
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -398,10 +472,10 @@ int main(){
 //    songTesters();
 //    playlistTesters();
 //    rupPlaylistTesters();
-   playListArrayListTesters();
+   //playListArrayListTesters();
 //
 //    artistMapNodeTesters();
-//    ArtistMapTesters();
+   ArtistMapTesters();
 //    songTesters();
 //    songArrayListTesters();
 //    artistMapNodeTesters();

@@ -11,11 +11,15 @@ ArtistMap::ArtistMap(){
     this->artistCount = 0;
 }
 ArtistMap::~ArtistMap(){
+    removeAll();
+    /*
     while (front != nullptr){
         ArtistMapNode* holder = front->getNext();
         delete front;
         front = holder;
     }
+     */
+    front = nullptr;
 }
 /*
 int  ArtistMap::getSongCount(){
@@ -118,13 +122,20 @@ void ArtistMap::remove(string title, string artist){
 }
 
 void ArtistMap::removeAll(){
+    /*
     ArtistMapNode *node = front;
     while(node != nullptr){
         front = front->getNext();
         delete node;
     }
     node->setNext(nullptr);
-    //songCount=0;
+     */
+    while (front != nullptr){
+        ArtistMapNode* holder = front->getNext();
+        delete front;
+        front = holder;
+        artistCount--;
+    }
 }
 
 ArtistMapNode* ArtistMap::getArtist(std::string artist) {
@@ -139,8 +150,9 @@ ArtistMapNode* ArtistMap::getArtist(std::string artist) {
 }
 
 ArtistMapNode* ArtistMap::getArtistAt(int index){
-    if (index > artistCount){
-        throw std::out_of_range ("index invalid");
+    //std::cout<<"artiust count = "<<artistCount<<" index = "<<index<<"\n";
+    if (index >= artistCount || index <0){
+        throw std::out_of_range ("invalid index");
     }
 
     ArtistMapNode* holder = front;
@@ -163,7 +175,7 @@ string toString( ArtistMapNode* node){
 string ArtistMap::toString() {
     string songString = "[";
     if(front == nullptr){
-        songString += "}";
+        songString += "]";
         return songString;
     }
     songString+="\n";
