@@ -163,13 +163,13 @@ void CommandHandler::playlist(std::string name){
         //TODO something wrong in here
 
         std::string songList="";
-        std::cout <<"item count = "<<temp.itemCount() << std::endl;
+        std::cout <<"item count = "<<temp.getNumSongs() << std::endl;
 
-        for(int i=0; i<temp.itemCount();i++){
+        for(int i=0; i<temp.getNumSongs();i++){
 
-            std::string title=temp.getSong(i).getTitle();
-            std::string artist=temp.getSong(i).getArtist();
-            int duration =temp.getSong(i).getLength();
+            std::string title=temp.getSong(i)->getTitle();
+            std::string artist=temp.getSong(i)->getArtist();
+            int duration =temp.getSong(i)->getLength();
             songList +=  title + ", " + artist + ", "+ std::to_string(duration); ;
 
         }
@@ -225,16 +225,22 @@ void CommandHandler::removeFromPlaylist(std::string playlist, std::string title,
     int playlistIndex = PlaylistList.find(playlist);
     Playlist temp = PlaylistList.getValueAt(playlistIndex);
     int songIndex = temp.findSong(title, artist);
-    temp.removeSong(songIndex);
+    if (songIndex != -1) {
+        temp.removeSong(songIndex);
+        std::cout << "Removed song "+title+"." << std::endl;
+    }
+    else{
+        cout << "No such song "+title+" in playlist or playlist is empty" <<endl;
+    }
 
-    std::cout << "Removed song "+title+"." << std::endl;
+
 }
 
 
 void CommandHandler::playNext(std::string playlist) {
     int playlistIndex = PlaylistList.find(playlist);
     Playlist temp = PlaylistList.getValueAt(playlistIndex);
-    temp.getSong(0).incrementPlaycount();
+    temp.getSong(0)->incrementPlaycount();
     std::cout << "Next song to be played: " + temp.removeSong(0) << std::endl;
     if (temp.isEmpty()){
         PlaylistList.removeAt(playlistIndex);
@@ -268,8 +274,8 @@ void CommandHandler::quit(){
         for(int i=0; i<PlaylistList.playlistCount();i++){
             Playlist holder = PlaylistList.getValueAt(i);
             outf2<<"*"<<holder.getTitle()+"\n";
-            for(int j=0; j<holder.itemCount();j++){
-                *song = holder.getSong(j);
+            for(int j=0; j<holder.getNumSongs();j++){
+                song = holder.getSong(j);
                 outf2 << song->getTitle()+", "+song->getArtist()+", "+std::to_string(song->getLength())+", "+std::to_string(song->getYear())+'\n';
             }
         }
@@ -350,7 +356,7 @@ void CommandHandler::createRandomPlaylist(int playDuration, std::string playlist
         else{ //this happens if the artist has no more songs and  there was only one  artist to begin with
             break;
         }
-       randPlaylistDuration = newRandPlaylist->calcDuration();
+       randPlaylistDuration = newRandPlaylist->getDuration();
     }
 }
 

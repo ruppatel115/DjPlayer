@@ -20,7 +20,7 @@ private:
 
 public:
     //TODO function comments? destructor
-    void promptUser();
+    //void promptUser();
     CommandHandler();
     void help();
     void library();
@@ -47,7 +47,7 @@ public:
     void playNext(std::string playlist);
     ArtistMap *getSongLibrary();
     void quit();
-    void createRandomPlaylistStart(int playDuration, std::string playlistName);
+    //void createRandomPlaylistStart(int playDuration, std::string playlistName);
 
     void createRandomPlaylist(int playDuration, std::string playlistName);
 };
