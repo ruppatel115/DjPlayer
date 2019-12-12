@@ -10,8 +10,8 @@
 Song::Song(std::string artist, std::string title){  //default constructor int length, int year
     this->title = title;
     this->artist = artist;
-    //this->length = 0;
-    //this->year = 0;
+    this->length = 0;
+    this->year = 0;
     playcount = 0;
 }
 
