@@ -1,8 +1,6 @@
 #include "Song.h"
 #include "TestLib.h"
-#include "ArtistMapNode.h"
-#include "SongArrayList.h"
-#include "Playlist.h"
+#include "CommandHandler.h"
 
 
 //
@@ -35,7 +33,7 @@ void songTesters(){
 
 
 
-void ArtistMapTesters(){}
+
 
 void songArrayListTesters(){
     cout<<"=====SONG ARRAY LIST TESTS=======\n";
@@ -141,12 +139,14 @@ void artistMapNodeTesters(){
     printAssertEquals("{}",testNode->toString());
     cout<<"-----testing add song-----\n";
     testNode->addSong(song1);
+    cout<<"expecting 'duplicate song: here comes the sun' actual: ";
+    testNode->addSong(song1);
     testNode->addSong(song2);
     testNode->addSong(song3);
     printAssertEquals("{Billie Jean, here comes the sun, rap god}",testNode->toString());
     cout<<"-----testing get artist-----\n";
     printAssertEquals("beatles",testNode->getArtist());
-    cout<<"-----set and get next-----\n";
+    cout<<"-----testing set and get next-----\n";
     ArtistMapNode* testNode2 = new ArtistMapNode(*testSong2);
     testNode->setNext(testNode2);
     printAssertEquals("Michael Jackson",testNode->getNext()->getArtist());
@@ -156,7 +156,79 @@ void artistMapNodeTesters(){
 
 }
 
-void playlistTesters(){}
+void ArtistMapTesters(){
+    std::cout << "=======ARTIST MAP TESTS=======" <<endl;
+    string song1 = "here comes the sun, beatles, 3:32, 1967";
+    string song2 = "Billie Jean, Michael Jackson, 5:56, 1980";
+    string song3 = "rap god, eminem, 5:09, 2013";
+    string song4 = "lucy in thr sky with diamonds, beatles, 3:45, 1967";
+
+    Song* testSong1 = new Song(song1);
+    Song* testSong2 = new Song(song2);
+    Song* testSong3 = new Song(song3);
+    Song* testSong4 = new Song(song4);
+
+
+    ArtistMap* mapTest = new ArtistMap();
+    cout<<"-----testing put and to string-----\n";
+    mapTest->put(*testSong1);
+    printAssertEquals("[\nbeatles: {here comes the sun}\n]\n",mapTest->toString());
+    cout<<"expecting 'duplicate song: here comes the sun' actual: ";
+    mapTest->put(*testSong1);
+    printAssertEquals("[\nbeatles: {here comes the sun}\n]\n",mapTest->toString());
+    mapTest->put(*testSong2);
+    printAssertEquals("[\nbeatles: {here comes the sun}\nMichael Jackson: {Billie Jean}\n]\n",mapTest->toString());
+    mapTest->put(*testSong4);
+    printAssertEquals("[\nbeatles: {here comes the sun, lucy in thr sky with diamonds}\nMichael Jackson: {Billie Jean}\n]\n",mapTest->toString());
+    cout<<"-----testing remove-----\n";
+    mapTest->remove("here comes the sun", "beatles");
+    printAssertEquals("[\nbeatles: {lucy in thr sky with diamonds}\nMichael Jackson: {Billie Jean}\n]\n",mapTest->toString());
+    mapTest->remove("here comes the sun", "Michael Jackson");
+    printAssertEquals("[\nbeatles: {lucy in thr sky with diamonds}\nMichael Jackson: {Billie Jean}\n]\n",mapTest->toString());
+    mapTest->remove("here comes the sun", "fake");
+    printAssertEquals("[\nbeatles: {lucy in thr sky with diamonds}\nMichael Jackson: {Billie Jean}\n]\n",mapTest->toString());
+
+
+
+
+    cout<<"-----testing get artist count-----\n";
+    delete mapTest;
+    mapTest = new ArtistMap();
+    printAssertEquals(0,mapTest->getArtistCount());
+    //printAssertEquals(0,mapTest->getSongCount());
+    mapTest->put(*testSong1);
+    printAssertEquals(1,mapTest->getArtistCount());
+    //printAssertEquals(1,mapTest->getSongCount());
+    mapTest->put(*testSong2);
+    printAssertEquals(2,mapTest->getArtistCount());
+    //printAssertEquals(2,mapTest->getSongCount());
+    mapTest->put(*testSong3);
+    printAssertEquals(3,mapTest->getArtistCount());
+    //printAssertEquals(3,mapTest->getSongCount());
+    //testing with a duplicate song
+    mapTest->put(*testSong3);
+    printAssertEquals(3,mapTest->getArtistCount());
+    //printAssertEquals(3,mapTest->getSongCount());
+    //testing with a song from an artist already in map
+    mapTest->put(*testSong4);
+    printAssertEquals(3,mapTest->getArtistCount());
+    //printAssertEquals(4,mapTest->getSongCount());
+
+
+
+
+
+
+
+
+
+
+
+
+    std::cout << "======DONE======" <<endl;
+
+
+}
 
 
 void playlistTesters(){
@@ -198,10 +270,12 @@ void playlistTesters(){
 
 
 }
+
 void playListArrayListTesters(){}
 int main(){
+    ArtistMapTesters();
     //songTesters();
     //songArrayListTesters();
-    artistMapNodeTesters();
+    //artistMapNodeTesters();
     return 0;
 }

@@ -7,7 +7,7 @@ using namespace std;
 
 ArtistMap::ArtistMap(){
     this->front = nullptr;
-    this->songCount = 0;
+    //this->songCount = 0;
     this->artistCount = 0;
 }
 ArtistMap::~ArtistMap(){
@@ -17,11 +17,11 @@ ArtistMap::~ArtistMap(){
         front = holder;
     }
 }
-
+/*
 int  ArtistMap::getSongCount(){
     return songCount;
 }
-
+*/
 int ArtistMap::getArtistCount(){
     return artistCount;
 }
@@ -31,6 +31,7 @@ void ArtistMap::checkNext(Song song, ArtistMapNode* node){
     if(node->getNext() == nullptr){
         //cout<<"here all the time\n";
         node->setNext(new ArtistMapNode(song));
+        artistCount++;
         //cout<<"***this should never be seen***";
     }else if(node->getNext()->getArtist() == song.getArtist()){
         node->getNext()->addSong(song);
@@ -42,6 +43,7 @@ void ArtistMap::checkNext(Song song, ArtistMapNode* node){
         if(s1.compare(s2)<0) {
         //cout<<song.getArtist()<<" "<<node->getNext()->getArtist()<<endl;
         ArtistMapNode *newNode = new ArtistMapNode(song);
+        artistCount++;
         newNode->setNext(node->getNext());
         node->setNext(newNode);
         }else {
@@ -58,10 +60,13 @@ void ArtistMap::put(Song song) {
         //cout<<"first time \n";
         front = new ArtistMapNode(song);
         artistCount++;
-    }else if (front->getArtist() == song.getArtist()){
+        //songCount++;
+    }else if (front->getArtist() == song.getArtist()){//if the first node is the one we want to put in
         //cout<<"same artist\n";
         front->addSong(song);
+        //songCount++;
     }else {
+        //songCount++;
         string s1 = song.getArtist();
         transform(s1.begin(), s1.end(), s1.begin(), ::tolower);
         string s2 = front->getArtist();
@@ -76,10 +81,9 @@ void ArtistMap::put(Song song) {
             checkNext(song, front);
         }
     }
-    songCount++;
 }
 
-void ArtistMap::remove(string artist, string title){
+void ArtistMap::remove(string title, string artist){
     /*
     ArtistMapNode *node = front;
     while(node != nullptr){
@@ -101,11 +105,16 @@ void ArtistMap::remove(string artist, string title){
         int songIndex = artistNode->getSongList()->find(title);
         if(songIndex >-1){
             artistNode->getSongList()->removeValueAt(songIndex);
+        }else{
+            cout<<title<<" not found from artist, "<<artist<<"\n";
         }
+
+    }else{
+        cout<<"artist "<<artist<<" not found"<<"\n";
 
     }
 
-    songCount--;
+    //songCount--;
 }
 
 void ArtistMap::removeAll(){
@@ -115,7 +124,7 @@ void ArtistMap::removeAll(){
         delete node;
     }
     node->setNext(nullptr);
-    songCount=0;
+    //songCount=0;
 }
 
 ArtistMapNode* ArtistMap::getArtist(std::string artist) {
@@ -159,7 +168,7 @@ string ArtistMap::toString() {
     }
     songString+="\n";
     songString +=::toString( front);
-    songString+="]";
+    songString+="]\n";
     return  songString;
 
 

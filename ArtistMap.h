@@ -29,12 +29,12 @@ public:
     std::string toString();
     void removeAll();
     void put(Song song);
-    void remove(string song, string title);
+    void remove(string artist, string title);
     ArtistMapNode* getArtist(std::string artist);
     ArtistMapNode* getFront();
     Song* getSong(std::string title, std::string artist);
 
-    int getSongCount();
+    //int getSongCount();
 
     int getArtistCount();
 
