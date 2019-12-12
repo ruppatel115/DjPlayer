@@ -154,7 +154,7 @@ int PlaylistArrayList::findLast(std::string playlistToFind) {
 //
 //
 //}
-
+//
 //void PlaylistArrayList::insertAt(Playlist playlistToAdd, int index) {
 //    if (index > currPlaylistCount || index < 0){
 //        throw std::out_of_range ("Bad index given to insertAt: " + std::to_string(index));

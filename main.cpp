@@ -451,8 +451,10 @@ void runInterface(){
 
 
 int main() {
+    std::cout<<"Hello";
     runAllTests();
-    runInterface();
+
+    //runInterface();
 
     /*
     //CommandHandler* test = new CommandHandler();
