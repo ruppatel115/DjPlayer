@@ -1,7 +1,7 @@
 //
 // Created by Forrest Wargo on 12/11/19.
 //
-#include "CommandHandler.h";
+#include "CommandHandler.h"
 #include "TestLib.h"
 using namespace std;
 /*
@@ -34,6 +34,6 @@ void songArrayListTesters(){}
 void playlistTesters(){}
 void playListArrayListTesters(){}
 int main(){
-
+    songTesters();
     return 0;
 }
