@@ -159,9 +159,10 @@ std::string Playlist::removeSong(int index) { //returns song information
                            std::to_string(node->getSong()->getLength()) + ", " +
                            std::to_string(node->getSong()->getYear());
 
+        duration-=node->getSong()->getLength();
         delete node;
         front = nullptr;
-        duration-=node->getSong()->getLength();
+
         numOfSongs--;
         return item;
     }

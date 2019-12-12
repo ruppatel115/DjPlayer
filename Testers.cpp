@@ -292,7 +292,7 @@ void ArtistMapTesters(){
 }
 
 
-void playlistTesters(){
+void playlistTesters(){ //TODO borked?
     cout << "=======PLAYLIST TESTERS=======" <<endl;
     string song1 = "here comes the sun, beatles, 3:32, 1967";
     Song* testSong = new Song(song1);
@@ -339,7 +339,7 @@ void playlistTesters(){
     printAssertEquals(212,testPlaylist->getDuration());
     printAssertEquals(false,testPlaylist->isEmpty());
     printAssertEquals(0,testPlaylist->findSong(testSong->getTitle(),testSong->getArtist()));
-
+    cout << "removesongtest" <<endl;
     printAssertEquals("here comes the sun, beatles, 212, 1967",testPlaylist->removeSong(0));
 
 
@@ -360,17 +360,17 @@ void playListArrayListTesters(){
     Playlist* playlist3 = new Playlist("playlist3");
     Playlist* playlist4 = new Playlist("playlist4");
     Playlist* playlist5 = new Playlist("playlist5");
-    string song1 = "here comes the sun, beatles, 3:32, 1967";
-    string song2 = "Billie Jean, Michael Jackson, 5:56, 1980";
-    string song3 = "rap god, eminem, 5:09, 2013";
-    string song4 = "lucy in thr sky with diamonds, beatles, 3:45, 1967";
-
-    Song* testSong1 = new Song(song1);
-    Song* testSong2 = new Song(song2);
-    Song* testSong3 = new Song(song3);
-    Song* testSong4 = new Song(song4);
-    playlist5->insertAtEnd(testSong3);
-    playlist5->insertAtEnd(testSong2);
+//    string song1 = "here comes the sun, beatles, 3:32, 1967";
+//    string song2 = "Billie Jean, Michael Jackson, 5:56, 1980";
+//    string song3 = "rap god, eminem, 5:09, 2013";
+//    string song4 = "lucy in thr sky with diamonds, beatles, 3:45, 1967";
+//
+//    Song* testSong1 = new Song(song1);
+//    Song* testSong2 = new Song(song2);
+//    Song* testSong3 = new Song(song3);
+//    Song* testSong4 = new Song(song4);
+//    playlist5->insertAtEnd(testSong3);
+//    playlist5->insertAtEnd(testSong2);
 
 
 
@@ -407,8 +407,9 @@ void playListArrayListTesters(){
     std::cout<<listOfPlaylists.toString() <<std::endl;
 
 
-    cout << "=======DONE=======" << endl;
+
     delete playlist1; delete playlist2; delete playlist3; delete playlist4; delete playlist5;
+    cout << "=======DONE=======" << endl;
 }
 
 
