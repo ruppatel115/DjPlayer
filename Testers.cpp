@@ -181,11 +181,11 @@ void playlistTesters(){
     catch(out_of_range& e){
         printAssertEquals("playlist is empty",e.what());
     }
-
     printAssertEquals(-1,testPlaylist->findSong(testSong->getTitle(),testSong->getArtist()));
 
     testPlaylist->insertAtEnd(testSong);
     //One song now in playlist
+
     printAssertEquals(1,testPlaylist->getNumSongs());
     try {
         printAssertEquals(testSong->getTitle(), testPlaylist->getSong(0)->getTitle());
@@ -253,6 +253,7 @@ void playListArrayListTesters(){}
 int main(){
     songTesters();
     playlistTesters();
+    rupPlaylistTesters();
 
     artistMapNodeTesters();
     return 0;

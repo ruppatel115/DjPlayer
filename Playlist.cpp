@@ -86,9 +86,7 @@ int Playlist::findSong(std::string title, std::string artist) {
 }
 
 bool Playlist::isEmpty() {
-    if(numOfSongs == 0){
-        return true;
-    }
+    return numOfSongs == 0;
 }
 
 int Playlist::getNumSongs(){
