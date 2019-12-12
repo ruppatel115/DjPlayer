@@ -25,12 +25,15 @@ Playlist::Playlist(std::string titleIn) {
 }
 
 Playlist::~Playlist() {
-    while(front != nullptr){
-        LinkedNode* temp = front;
-        delete temp;
-        front=front->getNext();
+    LinkedNode* temp = front;
+
+    while(temp != nullptr){
+        LinkedNode *temp2 = temp;
+        temp = temp->getNext();
+        delete temp2;
     }
     front = nullptr;
+    end = nullptr;
 }
 
 std::string Playlist::getTitle(){

@@ -5,7 +5,7 @@
 
 #include "PlaylistArrayList.h"
 #include <iostream>
-
+//TODO any functions of type Playlist should be changed to Playlist*
 PlaylistArrayList::PlaylistArrayList() { //default constructor defaults to size of 20
     Playlist *array = new Playlist[20];
     this->array = new Playlist[20];
