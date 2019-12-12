@@ -1,3 +1,4 @@
+#include <fstream>
 #include "Song.h"
 #include "TestLib.h"
 #include "CommandHandler.h"
