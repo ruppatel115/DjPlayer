@@ -60,6 +60,7 @@ std::string Playlist::toString() {
         i++;
 
     }
+    result+="}";
     std::cout << result << std::endl;
 
 }
@@ -69,18 +70,15 @@ std::string Playlist::toString() {
 
 
 int Playlist::calcDuration(){ //TODO does this work correctly?
-    int duration = 0;
-    if (numOfSongs <= 0){
-        duration  = -1;
-    }
-    if (numOfSongs == 1){
-        duration = front->getSong().getLength();
+    LinkedNode *temp = front;
+    int duration =0;
+    std::cout<<"HELP"<<std::endl;
+
+    while (temp->getNext() != nullptr){
+        duration+= temp->getSong().getLength();
     }
 
-    while(front->getNext() != nullptr){
-        duration+=front->getSong().getLength();
-    }
-    return duration;
+    std::cout<< duration<<std::endl;
 
 }
 

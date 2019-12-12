@@ -105,6 +105,7 @@ void playlistTesters(){
     //printAssertEquals(4, playList.itemCount());
     std::cout<<playList.toString()<<std::endl;
 
+    //playList.calcDuration();NOT WORKING
     std::cout << "======DONE======" <<endl;
 
 
