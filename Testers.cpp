@@ -69,7 +69,7 @@ void songArrayListTesters(){
     songList->clearList();
     printAssertEquals(0, songList->itemCount());
 
-    std::cout << "=======DONE=======" <<endl;
+    std::cout << "======DONE======" <<endl;
 }
 
 
