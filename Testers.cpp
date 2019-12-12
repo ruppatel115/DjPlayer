@@ -408,8 +408,11 @@ void playListArrayListTesters(){
 
 
 
-    delete playlist1;
-    delete playlist2; delete playlist3; delete playlist4; delete playlist5;
+    delete playlist1; playlist1=nullptr;
+    delete playlist2; playlist2=nullptr;
+    delete playlist3; playlist3=nullptr;
+    delete playlist4; playlist4=nullptr;
+    delete playlist5; playlist5=nullptr;
     cout << "=======DONE=======" << endl;
 }
 
@@ -534,15 +537,15 @@ void commandHandlerTesters(){
 
 int main(){
     commandHandlerTesters();
-//    songTesters();
-//    playlistTesters();
-//    rupPlaylistTesters();
-//    playListArrayListTesters();
-//
-//    artistMapNodeTesters();
-//    ArtistMapTesters();
-//    songTesters();
-//    songArrayListTesters();
-//    artistMapNodeTesters();
+    songTesters();
+    playlistTesters();
+    rupPlaylistTesters();
+    playListArrayListTesters();
+
+    artistMapNodeTesters();
+    ArtistMapTesters();
+    songTesters();
+    songArrayListTesters();
+    artistMapNodeTesters();
     return 0;
 }

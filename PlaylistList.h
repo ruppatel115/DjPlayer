@@ -96,7 +96,7 @@ public:
      * @return a copy of the playlist at the end
      * @throws out_of_range exception if there is no playlist to remove
      */
-    virtual Playlist removeAtEnd()=0;
+    //virtual Playlist removeAtEnd()=0;
 
     /**
      * removes the playlist at the front of the list, and returns a copy of that playlist
@@ -104,7 +104,7 @@ public:
      * @return a copy of the playlist at index
      * @throws out_of_range exception if there is no playlist to remove
      */
-    virtual Playlist removeAtFront()=0;
+    //virtual Playlist removeAtFront()=0;
 
     /**
      * removes the playlist at index from the list, and returns a copy of that playlist

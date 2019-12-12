@@ -223,6 +223,7 @@ void Playlist::insertAtEnd(Song* song) {
 
     }
     duration+=end->getSong()->getLength();
+    //end->setNext(nullptr);
     numOfSongs++;
 
 
