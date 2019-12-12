@@ -360,17 +360,17 @@ void playListArrayListTesters(){
     Playlist* playlist3 = new Playlist("playlist3");
     Playlist* playlist4 = new Playlist("playlist4");
     Playlist* playlist5 = new Playlist("playlist5");
-//    string song1 = "here comes the sun, beatles, 3:32, 1967";
-//    string song2 = "Billie Jean, Michael Jackson, 5:56, 1980";
-//    string song3 = "rap god, eminem, 5:09, 2013";
-//    string song4 = "lucy in thr sky with diamonds, beatles, 3:45, 1967";
-//
-//    Song* testSong1 = new Song(song1);
-//    Song* testSong2 = new Song(song2);
-//    Song* testSong3 = new Song(song3);
-//    Song* testSong4 = new Song(song4);
-//    playlist5->insertAtEnd(testSong3);
-//    playlist5->insertAtEnd(testSong2);
+    string song1 = "here comes the sun, beatles, 3:32, 1967";
+    string song2 = "Billie Jean, Michael Jackson, 5:56, 1980";
+    string song3 = "rap god, eminem, 5:09, 2013";
+    string song4 = "lucy in thr sky with diamonds, beatles, 3:45, 1967";
+
+    Song* testSong1 = new Song(song1);
+    Song* testSong2 = new Song(song2);
+    Song* testSong3 = new Song(song3);
+    Song* testSong4 = new Song(song4);
+    playlist5->insertAtEnd(testSong3);
+    playlist5->insertAtEnd(testSong2);
 
 
 
@@ -408,7 +408,8 @@ void playListArrayListTesters(){
 
 
 
-    delete playlist1; delete playlist2; delete playlist3; delete playlist4; delete playlist5;
+    delete playlist1;
+    delete playlist2; delete playlist3; delete playlist4; delete playlist5;
     cout << "=======DONE=======" << endl;
 }
 
@@ -502,8 +503,16 @@ void commandHandlerTesters(){
     cout<<"-----testing song-----\n";
     testHandler->getSongLibrary()->removeAll();
     testHandler->import("../Save.txt");
-    cout<<"rap god, by eminem, 309 seconds, came out in 2013, actual: ";
+    cout<<"expecting rap god, by eminem, 309 seconds, came out in 2013, actual: ";
     testHandler->song("eminem","rap god");
+    cout<<"expecting song not found in library, actual: ";
+    testHandler->song("eminem","fake song");
+    cout<<"expecting song not found in library, actual: ";
+    testHandler->song("not a real artist","rap god");
+
+    cout<<"-----testing song-----\n";
+
+
 
 
 
