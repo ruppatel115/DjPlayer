@@ -37,24 +37,36 @@ std::string Playlist::getTitle(){
 
 std::string Playlist::toString() {
     std::string result = "{";
-    LinkedNode* temp = front;
-    int i = 1;
-    while (temp != end){
-        if (temp->getNext() != end){
-        result += std::to_string(i)+": " + temp->getSong().getTitle() + "(Artist: "+temp->getSong().getArtist()+"; "
-         "Length: "+std::to_string(temp->getSong().getLength())+"; Year: "+std::to_string(temp->getSong().getYear())+"), ";
+    LinkedNode *temp = front;
+    int i = 0;
+
+    while (temp->getNext() != nullptr) {
+        if (temp != nullptr) {
+
+            result +=
+                    std::to_string(i) + ": " + temp->getSong().getTitle() + "(Artist: " + temp->getSong().getArtist() +
+                    "; "
+                    "Length: " + std::to_string(temp->getSong().getLength()) + "; Year: " +
+                    std::to_string(temp->getSong().getYear()) + "), ";
+
+        } else { //no comma at the end
+            result +=
+                    std::to_string(i) + ": " + temp->getSong().getTitle() + "(Artist: " + temp->getSong().getArtist() +
+                    "; "
+                    "Length: " + std::to_string(temp->getSong().getLength()) + "; Year: " +
+                    std::to_string(temp->getSong().getYear()) + ")";
         }
-        else{ //no comma at the end
-            result += std::to_string(i)+": " + temp->getSong().getTitle() + "(Artist: "+temp->getSong().getArtist()+"; "
-            "Length: "+std::to_string(temp->getSong().getLength())+"; Year: "+std::to_string(temp->getSong().getYear())+")";
-        }
-        temp->getNext();
+        temp = temp->getNext();
         i++;
 
     }
-    result+="}";
-    return result;
+    std::cout << result << std::endl;
+
 }
+
+
+
+
 
 int Playlist::calcDuration(){ //TODO does this work correctly?
     int duration = 0;

@@ -57,7 +57,7 @@ void songArrayListTesters(){
     Song* song3 = new Song("jay z", "welcome to the jungle");
     Song* song4 = new Song("beatles", "some song");
 
-    SongArrayList* songList = new SongArrayList(20);
+    SongArrayList* songList = new SongArrayList();
     printAssertEquals(true,songList->isEmpty());
     songList->insertAtEnd(*song1);
     songList->insertAtEnd(*song2);
