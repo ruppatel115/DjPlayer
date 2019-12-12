@@ -13,13 +13,14 @@ a hard days night, beatles, 3:02, 1964
 loose yourself, eminem, 5:00, 2013
  */
 void songTesters(){
+    cout<<"=====SONG TESTS=======\n";
     string song1 = "here comes the sun, beatles, 3:32, 1967";
     Song* testSong = new Song(song1);
     printAssertEquals("here comes the sun",testSong->getTitle());
     printAssertEquals("beatles",testSong->getArtist());
     printAssertEquals(212,testSong->getLength());
-
     printAssertEquals(1967,testSong->getYear());
+    cout<<"=====DONE=======\n";
 
 
 
@@ -30,10 +31,91 @@ void songTesters(){
 }
 void ArtistMapTesters(){}
 void artistMapNodeTesters(){}
-void songArrayListTesters(){}
+void songArrayListTesters(){
+    cout<<"=====SONG ARRAY LIST TESTS=======\n";
+    SongArrayList testList = SongArrayList();
+    string song1 = "here comes the sun, beatles, 3:32, 1967";
+    string song2 = "Billie Jean, Michael Jackson, 5:56, 1980";
+    string song3 = "rap god, eminem, 5:09, 2013";
+
+
+
+    Song* testSong1 = new Song(song1);
+    Song* testSong2 = new Song(song2);
+    Song* testSong3 = new Song(song3);
+    cout<<"-----testing item count ------\n";
+    printAssertEquals(0,testList.itemCount());
+    testList.insertAtEnd(*testSong1);
+    printAssertEquals(1,testList.itemCount());
+    testList.insertAtEnd(*testSong2);
+    printAssertEquals(2,testList.itemCount());
+    testList.insertAtEnd(*testSong3);
+    printAssertEquals(3,testList.itemCount());
+
+    cout<<"-----testing get value at and insert at end------\n";
+    printAssertEquals("here comes the sun",testList.getValueAt(0)->getTitle());
+
+    printAssertEquals("Billie Jean",testList.getValueAt(1)->getTitle());
+    printAssertEquals("rap god",testList.getValueAt(2)->getTitle());
+    cout<<"-----testing get song------\n";
+    //testList.insertAtEnd(song1);
+    printAssertEquals("here comes the sun",testList.getSong("here comes the sun")->getTitle());
+    cout<<"-----testing find------\n";
+    printAssertEquals(0,testList.find("here comes the sun"));
+    printAssertEquals(1,testList.find("Billie Jean"));
+    cout<<"-----testing remove value at and is empty------\n";
+    printAssertEquals("Billie Jean",testList.removeValueAt(1).getTitle());
+    printAssertEquals(2,testList.itemCount());
+    printAssertEquals("here comes the sun",testList.removeValueAt(0).getTitle());
+    printAssertEquals("rap god",testList.removeValueAt(0).getTitle());
+    printAssertEquals(0,testList.itemCount());
+    printAssertEquals(true,testList.isEmpty());
+    cout<<"-----testing insert at ------\n";
+    testList.insertAtEnd(*testSong1);
+    testList.insertAtEnd(*testSong2);
+    testList.insertAt(*testSong3,1);
+    printAssertEquals("rap god",testList.getValueAt(1)->getTitle());
+    cout<<"-----testing clear list------\n";
+    testList.clearList();
+    printAssertEquals(true,testList.isEmpty());
+    printAssertEquals(0,testList.itemCount());
+    cout<<"-----testing tostring------\n";
+    printAssertEquals("{}",testList.toString());
+
+    testList.insertAtEnd(*testSong1);
+    testList.insertAtEnd(*testSong2);
+    testList.insertAtEnd(*testSong3);
+    printAssertEquals("{here comes the sun, Billie Jean, rap god}",testList.toString());
+    cout<<"=====DONE=======\n";
+    //todo add testers for destructor and coy constructor
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //testList.removeValueAt(1).getTitle();
+
+
+
+
+
+
+
+
+
+}
 void playlistTesters(){}
 void playListArrayListTesters(){}
 int main(){
     songTesters();
+    songArrayListTesters();
     return 0;
 }
