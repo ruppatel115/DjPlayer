@@ -482,12 +482,20 @@ void commandHandlerTesters(){
         outf << testSong2->getTitle()+", "+testSong2->getArtist()+", "+std::to_string(testSong2->getLength())+", "+std::to_string(testSong2->getYear())+'\n';
         outf << testSong3->getTitle()+", "+testSong3->getArtist()+", "+std::to_string(testSong3->getLength())+", "+std::to_string(testSong3->getYear())+'\n';
         outf << testSong4->getTitle()+", "+testSong4->getArtist()+", "+std::to_string(testSong4->getLength())+", "+std::to_string(testSong4->getYear())+'\n';
+        outf << testSong4->getTitle()+", "+testSong4->getArtist()+", "+std::to_string(testSong4->getLength())+", "+std::to_string(testSong4->getYear())+'\n';
+
 
 
         outf.close();
     }else{
         cout<<"file "<<"Save.txt"<<" cant be found \n";
     }
+    testHandler->getSongLibrary()->removeAll();
+    testHandler->import("../Save.txt");
+    printAssertEquals("[\nbeatles: {here comes the sun, lucy in thr sky with diamonds}\neminem: {rap god}\nMichael Jackson: {Billie Jean}\n]\n",testHandler->getSongLibrary()->toString());
+    cout<<"-----testing display artist-----\n";
+
+
 
 
 
@@ -500,16 +508,16 @@ void commandHandlerTesters(){
 
 
 int main(){
-    //commandHandlerTesters();
+    commandHandlerTesters();
     songTesters();
-   // playlistTesters();
-//    rupPlaylistTesters();
-  // playListArrayListTesters();
-//
-//    artistMapNodeTesters();
-   //ArtistMapTesters();
-//    songTesters();
-//    songArrayListTesters();
-//    artistMapNodeTesters();
+    playlistTesters();
+    rupPlaylistTesters();
+    playListArrayListTesters();
+
+    artistMapNodeTesters();
+    ArtistMapTesters();
+    songTesters();
+    songArrayListTesters();
+    artistMapNodeTesters();
     return 0;
 }
