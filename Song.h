@@ -18,7 +18,7 @@ private:
 
 
 public:
-
+    //TODO function comments
     Song(std::string artist, std::string title);
 
     Song(); //default constructor

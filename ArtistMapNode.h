@@ -8,12 +8,15 @@
 #define DJPLAYER_ARTISTMAPNODE_H
 #include "SongArrayList.h"
 #include <iostream>
+
+
 class ArtistMapNode{
 private:
     ArtistMapNode* next;
     std::string artist;
     SongArrayList* songList;
 public:
+    //TODO function comments
     ~ArtistMapNode();
     ArtistMapNode(Song song);
     std::string toString();

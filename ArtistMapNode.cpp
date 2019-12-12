@@ -4,11 +4,12 @@
  * Mostly done by Forrest
  */
 #include "ArtistMapNode.h"
-//#include "SongList.h"
 using namespace std;
+
+
 ArtistMapNode::~ArtistMapNode(){
     delete songList;
-    next = nullptr;
+    next = nullptr; //make sure this is fine
 }
 
 

@@ -5,8 +5,9 @@
 #include "CommandHandler.h"
 #include <iostream>
 #include <fstream>
-#include <sstream>
 #include "ArtistMap.h"
+
+
 CommandHandler::CommandHandler() {
     songLibrary = new ArtistMap();
     PlaylistList = new PlaylistArrayList(20);
@@ -19,9 +20,6 @@ CommandHandler::CommandHandler() {
 }
 
 
-//CommandHandler::CommandHandler(Library* mainLibrary){
-//   this->mainLibrary = mainLibrary;
-//}
 void CommandHandler::readSaveFiles(){
     import("../Save.txt");
     std::ifstream infile("../savedPlaylists.txt");
@@ -111,23 +109,17 @@ void CommandHandler::import(std::string fileName){
     std::ifstream infile(fileName);
     if (infile) {
         while (infile) {
-            cout<<"at start\n";
             std::string strInput;
             getline(infile, strInput);
             if(strInput != "") {
-                cout<<"in while in if "<<strInput<<"\n";
                 songLibrary->put(*new Song(strInput));
                 //std::cout << strInput << std::endl;
-            }else {
-                cout << "in while NOT in if " << strInput << "\n";
             }
-
         }
     }
     else {
         std::cerr << fileName<< " not found." << std::endl;
     }
-    cout<<"done with import \n";
 }
 
 void CommandHandler::discontinue(std::string fileName){
@@ -168,8 +160,8 @@ void CommandHandler::playlist(std::string name){
     int index = PlaylistList.find(name);
     if(index >=0) {
         Playlist temp = PlaylistList.getValueAt(index);
-        //todo somthing wrong in here
-//help
+        //TODO something wrong in here
+
         std::string songList="";
         std::cout <<"item count = "<<temp.itemCount() << std::endl;
 
@@ -182,10 +174,6 @@ void CommandHandler::playlist(std::string name){
 
         }
         std::cout <<songList << std::endl;
-
-
-
-
 
 
 //        std::cout << "Playlist" + name + ": \nDuration: " + std::to_string(temp.calcDuration()) << std::endl;
@@ -256,15 +244,13 @@ void CommandHandler::playNext(std::string playlist) {
 
 
 void CommandHandler::quit(){
-    cout<<"in quite\n";
     Song* song;
-    std::string fileName = "/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/Save.txt";
+    std::string fileName = "../DjPlayer/Save.txt";
     std::ofstream outf(fileName);
     if (outf){
         ArtistMapNode* holder = songLibrary->getFront();
         while(holder != nullptr){
             for(int i=0; i<holder->getSongList()->itemCount();i++) {
-                cout<<"in quit for loop\n";
                 song = holder->getSongList()->getValueAt(i);
                 outf << song->getTitle()+", "+song->getArtist()+", "+std::to_string(song->getLength())+", "+std::to_string(song->getYear())+'\n';
             }

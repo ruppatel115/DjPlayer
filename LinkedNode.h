@@ -17,6 +17,8 @@ private:
 
 public:
     LinkedNode(Song* song);
+    //TODO function comments, destructor, assignment operator?
+    LinkedNode(Song& song);
     LinkedNode(const LinkedNode& nodeToCopy); //only copies item, next is set to nullptr
     Song getSong();
     LinkedNode* getNext();
