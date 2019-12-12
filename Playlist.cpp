@@ -103,7 +103,7 @@ bool Playlist::isEmpty() {
 }
 
 int Playlist::itemCount(){//O(n) must run through all items of list
-    std::cout<<"first son in playlist "<<front->getSong().getTitle()+"\n";
+    //std::cout<<"first son in playlist "<<front->getSong().getTitle()+"\n";
     LinkedNode *temp = front;
     int count = 0;
     while(temp != nullptr) {
@@ -122,7 +122,7 @@ std::string Playlist::removeSong(int index) { //returns song information
     if (itemCount() < index +1 || index < 0 || front == nullptr) {
         throw std::out_of_range("out of range");
     }
-
+    std::string item="";
     if (index == 0) {
         LinkedNode *node = front;
         end = nullptr;
