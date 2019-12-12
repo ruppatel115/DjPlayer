@@ -37,20 +37,25 @@ std::string Playlist::getTitle(){
     return title;
 }
 
-std::string Playlist::toString() {
+std::string Playlist::toString() { //TODO this prints an extra comma with multiple items
     if (isEmpty()){
         return "{}";
     }
     std::string result = "{";
     LinkedNode* temp = front;
+    if (temp == end){
+        result += std::to_string(0)+": " + temp->getSong()->getTitle() + " (Artist: "+temp->getSong()->getArtist()+"; "
+          "Length: "+std::to_string(temp->getSong()->getLength())+" secs; Year: "+std::to_string(temp->getSong()->getYear())+")}";
+        return result;
+    }
     int i = 0;
     while (temp->getNext() != nullptr){
-        if (temp != nullptr){
-        result += std::to_string(i)+": " + temp->getSong()->getTitle() + "(Artist: "+temp->getSong()->getArtist()+"; "
-         "Length: "+std::to_string(temp->getSong()->getLength())+"; Year: "+std::to_string(temp->getSong()->getYear())+"), ";
+        if (temp != nullptr && temp!=end){
+        result += std::to_string(i)+": " + temp->getSong()->getTitle() + " (Artist: "+temp->getSong()->getArtist()+"; "
+         "Length: "+std::to_string(temp->getSong()->getLength())+" secs; Year: "+std::to_string(temp->getSong()->getYear())+"), ";
         }
         else{ //no comma at the end
-            result += std::to_string(i)+": " + temp->getSong()->getTitle() + "(Artist: "+temp->getSong()->getArtist()+"; "
+            result += std::to_string(i)+": " + temp->getSong()->getTitle() + " (Artist: "+temp->getSong()->getArtist()+"; "
             "Length: "+std::to_string(temp->getSong()->getLength())+" secs; Year: "+std::to_string(temp->getSong()->getYear())+")";
         }
         temp = temp->getNext();
@@ -70,6 +75,14 @@ int Playlist::findSong(std::string title, std::string artist) {
         return -1;
     }
     LinkedNode* temp = front;
+    if (temp == end){
+        if(temp->getSong()->getTitle() == title && temp->getSong()->getArtist()==artist){
+            return 0;
+        }
+        else{
+            return -1;
+        }
+    }
     int i = 0;
     while (temp->getNext() != nullptr){
         if (temp->getSong()->getTitle() == title && temp->getSong()->getArtist()==artist){
@@ -186,6 +199,7 @@ Song* Playlist::getSong(int index){
             temp = temp->getNext();
         }
     }
+    return temp->getSong();
 }
 
 
