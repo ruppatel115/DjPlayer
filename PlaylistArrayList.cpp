@@ -5,7 +5,8 @@
 
 #include "PlaylistArrayList.h"
 #include <iostream>
-//TODO any functions of type Playlist should be changed to Playlist*
+
+
 PlaylistArrayList::PlaylistArrayList() { //default constructor defaults to size of 20
     Playlist *array = new Playlist[20];
     this->array = new Playlist[20];
@@ -23,6 +24,10 @@ PlaylistArrayList::PlaylistArrayList(int initialCapacity) {
     this->currCapacity=initialCapacity;
 
 }
+/***
+ * allows us to make deep copies of playlist array list
+ * @param arrayListToCopy
+ */
 //Copy Constructor
 PlaylistArrayList::PlaylistArrayList(const PlaylistArrayList &arrayListToCopy) {
     this->array = new Playlist[arrayListToCopy.currCapacity];
@@ -33,6 +38,11 @@ PlaylistArrayList::PlaylistArrayList(const PlaylistArrayList &arrayListToCopy) {
     this->currCapacity=arrayListToCopy.currCapacity;
 }
 
+/***
+ *
+ * @param arrayListToCopy
+ * @return new copy of the playlist arraylist
+ */
 PlaylistArrayList& PlaylistArrayList::operator=(PlaylistArrayList *arrayListToCopy) {
     this->currCapacity = arrayListToCopy->currCapacity;
     this->currPlaylistCount = arrayListToCopy->currPlaylistCount;
@@ -48,6 +58,10 @@ PlaylistArrayList::~PlaylistArrayList() {
     delete[] array; //TODO what happens to the playlists?
 }
 
+/***
+ * if list of playlist is full, we must double capacity to hold more playlist
+ * returns an Arraylist with double the capacity
+ */
 void PlaylistArrayList::doubleCapacity() {
     currCapacity = currCapacity*2;
     Playlist* holder = new Playlist[currCapacity];
@@ -59,7 +73,11 @@ void PlaylistArrayList::doubleCapacity() {
 
 }
 
-
+/***
+ * inserts playlist at the end of the list of playlists
+ * @param playlistToAdd
+ * count should be increased by 1
+ */
 void PlaylistArrayList::insertAtEnd(Playlist playlistToAdd) {
     if (currPlaylistCount>=currCapacity) {      //if the arraylist is full
         doubleCapacity();
@@ -69,6 +87,11 @@ void PlaylistArrayList::insertAtEnd(Playlist playlistToAdd) {
 
 }
 
+/***
+ *
+ * @param index
+ * @return playlist at speicifed index
+ */
 Playlist PlaylistArrayList::getValueAt(int index) {
     std::cout<<"index = "<<index<<" current count = "<<currPlaylistCount<<"\n";
     if (index > currPlaylistCount-1 || index < 0 || isEmpty()){
@@ -77,6 +100,10 @@ Playlist PlaylistArrayList::getValueAt(int index) {
     return array[index];
 }
 
+/***
+ * takes lists of playlist and turns it into a string with each playlist listed and its duration
+ * @return name of each playlist and its duration
+ */
 std::string PlaylistArrayList::toString() { //Prints a list of the names of all the playlists and their durations
     if (currPlaylistCount <= 0){
         return "{}";
@@ -103,18 +130,32 @@ std::string PlaylistArrayList::toString() { //Prints a list of the names of all 
     return result;
 }
 
+/***
+ * checks if list of playlists is empty
+ * @return true if empty, false if playlist exists
+ */
 bool PlaylistArrayList::isEmpty() {
    return currPlaylistCount == 0;
 }
-
+/***
+ *
+ * @return amount of playlist
+ */
 int PlaylistArrayList::playlistCount() {
     return currPlaylistCount;
 }
 
+/***
+ * clears list of playlists
+ */
 void PlaylistArrayList::clearList() {
     currPlaylistCount=0;
 }
-
+/**
+ *
+ * @param playlistToFind
+ * @return where the playlist was found in the list of playlists or returns -1 if not found
+ */
 int PlaylistArrayList::find(std::string playlistToFind) {
     for (int i = 0; i < currPlaylistCount; i++){
         if (array[i].getTitle() == playlistToFind){
@@ -134,7 +175,7 @@ int PlaylistArrayList::findLast(std::string playlistToFind) {
     }
     return indexTemp;
 }
-
+//
 //void PlaylistArrayList::insertAtFront(Playlist playlistToAdd) {
 //    if(currPlaylistCount >= currCapacity){
 //        doubleCapacity();
@@ -182,6 +223,8 @@ int PlaylistArrayList::findLast(std::string playlistToFind) {
 //
 //}
 
+
+
 Playlist PlaylistArrayList::removeAtEnd() {
     if (currPlaylistCount == 0){
         throw std::out_of_range("No playlists to remove");
@@ -213,6 +256,11 @@ Playlist PlaylistArrayList::removeAtFront() {
     return removedPlaylist;
 }
 
+
+/***
+ *@param index at location of where we  want to remove the specified playlist
+ * @return playlist that was removed
+ */
 Playlist PlaylistArrayList::removeAt(int index) {
     if (index > currPlaylistCount || index < 0){
         throw std::out_of_range ("Bad index given to removeValueAt: " + std::to_string(index));

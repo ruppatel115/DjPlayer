@@ -6,7 +6,12 @@
 #include <iostream>
 #include <sstream>
 
-
+/***
+ *
+ * @param artist
+ * @param title
+ * constructor
+ */
 Song::Song(std::string artist, std::string title){  //default constructor int length, int year
     this->title = title;
     this->artist = artist;
@@ -15,7 +20,9 @@ Song::Song(std::string artist, std::string title){  //default constructor int le
     playcount = 0;
 }
 
-
+/***
+ * default constructor
+ */
 Song::Song(){
     this->artist = "default";
     this->title = "default";
@@ -24,7 +31,10 @@ Song::Song(){
 }
 
 
-
+/***
+ * takes in string of songs and splits each in the form of title, artist, length and year
+ * @param songStr
+ */
 Song::Song(std::string songStr) {
     //song string should be in form: title, artist, length, year
     std::stringstream splitter (songStr);
@@ -55,22 +65,39 @@ Song::Song(std::string songStr) {
     year = std::stoi(yearStr);
 }
 
+/***
+ * @return title of the song
+ */
 const std::string &Song::getTitle() const {
     return title;
 }
 
+/***
+ * @return artist of the song
+ */
 const std::string &Song::getArtist() const {
     return artist;
 }
 
+/***
+ * @return length of the song
+ */
 int Song::getLength() const {
     return length;
 }
 
+
+/***
+ * @return year song was released
+ */
 int Song::getYear() const {
     return year;
 }
 
+
+/***
+ * increases count of song played
+ */
 void Song::incrementPlaycount() {
     playcount++;
 }
