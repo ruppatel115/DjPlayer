@@ -10,7 +10,7 @@
 
 CommandHandler::CommandHandler() {
     songLibrary = new ArtistMap();
-    PlaylistList = new PlaylistArrayList(20);
+    PlaylistList = new PlaylistArrayList(2);
     Playlist playlist1;
     numOfSongs = 0;
     numOfPlaylists = 0;
@@ -22,7 +22,7 @@ CommandHandler::CommandHandler() {
 
 void CommandHandler::readSaveFiles(){
     import("../Save.txt");
-    std::ifstream infile("../savedPlaylists.txt");
+    ifstream infile("../savedPlaylists.txt");
     string playlistName;
     if (infile) {
         while (infile) {

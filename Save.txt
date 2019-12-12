@@ -1,5 +1,4 @@
-a hard days night, beatles, -2056577613, 1964
-lucy in thr sky with diamonds, beatles, -2056577613, 1967
-loose yourself, eminem, 867337941, 2013
-rap god, eminem, 867337941, 2013
-Billie Jean, Michael Jackson, 867337941, 1980
+here comes the sun, beatles, 212, 1967
+Billie Jean, Michael Jackson, 356, 1980
+rap god, eminem, 309, 2013
+lucy in thr sky with diamonds, beatles, 225, 1967

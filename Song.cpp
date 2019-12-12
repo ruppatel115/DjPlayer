@@ -41,10 +41,16 @@ Song::Song(std::string songStr) {
     //TODO not giving exactly correct length values
     //std::cout<<"full string  "<<lengthStr<<std::endl;
     //std::cout<<"part 1 "<<lengthStr.substr(0,lengthStr.rfind(":"))<<std::endl;
-    length = std::stoi(lengthStr.substr(0,lengthStr.rfind(":")))*60;
-    //std::cout<<"part 2 "<<lengthStr.substr(lengthStr.rfind(":")+1)<<std::endl;
+    if(lengthStr.find(":") != lengthStr.npos){
+        length = std::stoi(lengthStr.substr(0,lengthStr.rfind(":")))*60;
+        //std::cout<<"part 2 "<<lengthStr.substr(lengthStr.rfind(":")+1)<<std::endl;
 
-    length += std::stoi(lengthStr.substr(lengthStr.rfind(":")+1));
+        length += std::stoi(lengthStr.substr(lengthStr.rfind(":")+1));
+    }else{
+        length = std::stoi(lengthStr);
+
+    }
+
     //length = std::stoi(lengthStr);
     year = std::stoi(yearStr);
 }

@@ -1,3 +1,4 @@
+#include <fstream>
 #include "Song.h"
 #include "TestLib.h"
 #include "CommandHandler.h"
@@ -23,8 +24,14 @@ void songTesters(){
     printAssertEquals("here comes the sun",testSong->getTitle());
     printAssertEquals("beatles",testSong->getArtist());
     printAssertEquals(212,testSong->getLength());
-
     printAssertEquals(1967,testSong->getYear());
+    string song2 = "here comes the sun, beatles, 212, 1967";
+    Song* testSong2 = new Song(song2);
+    printAssertEquals("here comes the sun",testSong2->getTitle());
+    printAssertEquals("beatles",testSong2->getArtist());
+    printAssertEquals(212,testSong2->getLength());
+    printAssertEquals(1967,testSong2->getYear());
+
 
     delete testSong;
 
@@ -365,17 +372,17 @@ void playListArrayListTesters(){
     Playlist* playlist3 = new Playlist("playlist3");
     Playlist* playlist4 = new Playlist("playlist4");
     Playlist* playlist5 = new Playlist("playlist5");
-//    string song1 = "here comes the sun, beatles, 3:32, 1967";
-//    string song2 = "Billie Jean, Michael Jackson, 5:56, 1980";
-//    string song3 = "rap god, eminem, 5:09, 2013";
-//    string song4 = "lucy in thr sky with diamonds, beatles, 3:45, 1967";
-//
-//    Song* testSong1 = new Song(song1);
-//    Song* testSong2 = new Song(song2);
-//    Song* testSong3 = new Song(song3);
-//    Song* testSong4 = new Song(song4);
-//    playlist5->insertAtEnd(testSong3);
-//    playlist5->insertAtEnd(testSong2);
+    string song1 = "here comes the sun, beatles, 3:32, 1967";
+    string song2 = "Billie Jean, Michael Jackson, 5:56, 1980";
+    string song3 = "rap god, eminem, 5:09, 2013";
+    string song4 = "lucy in thr sky with diamonds, beatles, 3:45, 1967";
+
+    Song* testSong1 = new Song(song1);
+    Song* testSong2 = new Song(song2);
+    Song* testSong3 = new Song(song3);
+    Song* testSong4 = new Song(song4);
+    playlist5->insertAtEnd(testSong3);
+    playlist5->insertAtEnd(testSong2);
 
 
 
@@ -466,16 +473,70 @@ void rupPlaylistTesters(){
 
 
 }
+void wipeFile(string fileName){
+    std::ofstream outf(fileName);
+    if (outf){
+        outf.close();
+    }else{
+        cout<<"file "<<fileName<<" cant be found \n";
+    }
+}
+void commandHandlerTesters(){
+
+    string song1 = "here comes the sun, beatles, 3:32, 1967";
+    string song2 = "Billie Jean, Michael Jackson, 5:56, 1980";
+    string song3 = "rap god, eminem, 5:09, 2013";
+    string song4 = "lucy in thr sky with diamonds, beatles, 3:45, 1967";
+
+    Song* testSong1 = new Song(song1);
+    Song* testSong2 = new Song(song2);
+    Song* testSong3 = new Song(song3);
+    Song* testSong4 = new Song(song4);
+    std::cout << "======TESTING COMMAND HANDLER ======" <<endl;
+    wipeFile("../Save.txt");
+    wipeFile("../savedPlaylists.txt");
+    CommandHandler* testHandler = new CommandHandler();//constructor calls save files
+    cout<<"-----testing Library-----\n";
+    testHandler->getSongLibrary()->put(*testSong1);
+    testHandler->getSongLibrary()->put(*testSong2);
+    testHandler->getSongLibrary()->put(*testSong3);
+    testHandler->getSongLibrary()->put(*testSong4);
+    testHandler->getSongLibrary()->put(*testSong1);
+    printAssertEquals("[\nbeatles: {here comes the sun, lucy in thr sky with diamonds}\neminem: {rap god}\nMichael Jackson: {Billie Jean}\n]\n",testHandler->getSongLibrary()->toString());
+
+    cout<<"-----testing import-----\n";
+    std::ofstream outf("../Save.txt");
+    if (outf){
+        outf << testSong1->getTitle()+", "+testSong1->getArtist()+", "+std::to_string(testSong1->getLength())+", "+std::to_string(testSong1->getYear())+'\n';
+        outf << testSong2->getTitle()+", "+testSong2->getArtist()+", "+std::to_string(testSong2->getLength())+", "+std::to_string(testSong2->getYear())+'\n';
+        outf << testSong3->getTitle()+", "+testSong3->getArtist()+", "+std::to_string(testSong3->getLength())+", "+std::to_string(testSong3->getYear())+'\n';
+        outf << testSong4->getTitle()+", "+testSong4->getArtist()+", "+std::to_string(testSong4->getLength())+", "+std::to_string(testSong4->getYear())+'\n';
+
+
+        outf.close();
+    }else{
+        cout<<"file "<<"Save.txt"<<" cant be found \n";
+    }
+
+
+
+
+
+
+    std::cout << "======DONE======" <<endl;
+
+};
 
 
 int main(){
-//    songTesters();
-//    playlistTesters();
+    //commandHandlerTesters();
+    songTesters();
+   // playlistTesters();
 //    rupPlaylistTesters();
-   //playListArrayListTesters();
+  // playListArrayListTesters();
 //
 //    artistMapNodeTesters();
-   ArtistMapTesters();
+   //ArtistMapTesters();
 //    songTesters();
 //    songArrayListTesters();
 //    artistMapNodeTesters();
