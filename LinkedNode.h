@@ -16,11 +16,11 @@ private:
     LinkedNode* next;
 
 public:
-    LinkedNode(Song& song);
+    LinkedNode(Song* song);
     LinkedNode(const LinkedNode& nodeToCopy); //only copies item, next is set to nullptr
     Song getSong();
     LinkedNode* getNext();
-    void setSong(Song newSong);
+    void setSong(Song* newSong);
     void setNext(LinkedNode* newNext);
 };
 

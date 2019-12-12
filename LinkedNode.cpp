@@ -5,8 +5,8 @@
  */
 #include "LinkedNode.h"
 
-LinkedNode::LinkedNode(Song& song){
-    this->song = &song;
+LinkedNode::LinkedNode(Song* song){
+    this->song = song;
     next = nullptr;
 }
 
@@ -23,8 +23,8 @@ LinkedNode* LinkedNode::getNext(){
     return next;
 }
 
-void LinkedNode::setSong(Song newSong){
-    song = &newSong;
+void LinkedNode::setSong(Song* newSong){
+    song = newSong;
 }
 
 void LinkedNode::setNext(LinkedNode* newNext){

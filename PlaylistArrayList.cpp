@@ -69,7 +69,8 @@ void PlaylistArrayList::insertAtEnd(Playlist& playlistToAdd) {
 }
 
 Playlist PlaylistArrayList::getValueAt(int index) {
-    if (index > currPlaylistCount || index < 0 || isEmpty()){
+    std::cout<<"index = "<<index<<" current count = "<<currPlaylistCount<<"\n";
+    if (index > currPlaylistCount-1 || index < 0 || isEmpty()){
         throw std::out_of_range ("Bad index given to getValueAt: " + std::to_string(index));
     }
     return array[index];

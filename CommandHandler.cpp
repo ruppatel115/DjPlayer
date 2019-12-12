@@ -35,8 +35,8 @@ void CommandHandler::readSaveFiles(){
                     playlistName = strInput;
                     newPlaylist(playlistName.substr(1));
                 }else {
-                    Song song = Song(strInput);
-                    addToPlaylist(playlistName,song.getTitle(),song.getArtist());
+                    Song* song = new  Song(strInput);
+                    addToPlaylist(playlistName,song->getTitle(),song->getArtist());
                 }
 
 
@@ -111,17 +111,23 @@ void CommandHandler::import(std::string fileName){
     std::ifstream infile(fileName);
     if (infile) {
         while (infile) {
+            cout<<"at start\n";
             std::string strInput;
             getline(infile, strInput);
             if(strInput != "") {
+                cout<<"in while in if "<<strInput<<"\n";
                 songLibrary->put(*new Song(strInput));
                 //std::cout << strInput << std::endl;
+            }else {
+                cout << "in while NOT in if " << strInput << "\n";
             }
+
         }
     }
     else {
         std::cerr << fileName<< " not found." << std::endl;
     }
+    cout<<"done with import \n";
 }
 
 void CommandHandler::discontinue(std::string fileName){
@@ -208,19 +214,18 @@ void CommandHandler::newPlaylist(std::string name){
 }
 
 void CommandHandler::addToPlaylist(std::string playlist, std::string title, std::string artist) {
-    std::cout <<"at the begining "<<artist<< std::endl;
+    //std::cout <<"at the begining "<<artist<< std::endl;
 
     int index = PlaylistList.find(playlist);
         Playlist temp = PlaylistList.getValueAt(index);
         Song *songToAdd = this->songLibrary->getSong(title, artist);
-        std::cout << this->songLibrary->getSong(title,artist);
+        //std::cout << this->songLibrary->getSong(title,artist)->getTitle();
         if (songToAdd != nullptr) {
             //cout<<"song or artist could not be found\n"
-            std::cout <<"what the fuck "<<songToAdd->getArtist()<< std::endl;
-
-            temp.insertAtEnd(*songToAdd);
+            //std::cout <<"what the fuck "<<songToAdd->getArtist()<< std::endl;
+            temp.insertAtEnd(songToAdd);
             //cout<<"artsit = "<<temp.getSong(0).getArtist()<<"\n";
-            std::cout << "Added new song  " + title  + "." << std::endl;
+            std::cout << "Added new song " + title  + "." << std::endl;
 
         }
 
@@ -251,13 +256,15 @@ void CommandHandler::playNext(std::string playlist) {
 
 
 void CommandHandler::quit(){
+    cout<<"in quite\n";
     Song* song;
-    std::string fileName = "../DjPlayer/Save.txt";
+    std::string fileName = "/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/Save.txt";
     std::ofstream outf(fileName);
     if (outf){
         ArtistMapNode* holder = songLibrary->getFront();
         while(holder != nullptr){
             for(int i=0; i<holder->getSongList()->itemCount();i++) {
+                cout<<"in quit for loop\n";
                 song = holder->getSongList()->getValueAt(i);
                 outf << song->getTitle()+", "+song->getArtist()+", "+std::to_string(song->getLength())+", "+std::to_string(song->getYear())+'\n';
             }
@@ -349,7 +356,7 @@ void CommandHandler::createRandomPlaylist(int playDuration, std::string playlist
                break;
            }
        }
-        newRandPlaylist->insertAtEnd(*songHolder);
+        newRandPlaylist->insertAtEnd(songHolder);
 
         if (artistCount-1 > 0) {
             randArtistIndex =rand() % (artistCount - 1);

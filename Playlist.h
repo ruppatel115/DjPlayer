@@ -55,7 +55,7 @@ public:
 
     virtual std::string removeSong(int index); //returns song information
 
-    virtual void insertAtEnd(Song songStr);
+    virtual void insertAtEnd(Song* songStr);
 
 
 

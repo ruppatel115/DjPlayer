@@ -52,91 +52,91 @@ void artistMapTester(){
 
 }
 
-//void PlayListTester(){
-//    string song1 = "A her comes the sun, beatles, 3, 1967";
-//    string song2 = "Billie Jean, Michael Jackson, 5, 1980";
-//    string song3 = "rap god, eminem, 5, 2013";
-//    string song4 = "b lucy in thr sky with diamonds, beatles, 3, 1967";
-//    string song5 = "c  hey jude, beatles, 3, 1968";
-//
-//    std::cout << "=======PLAYLIST TEST=======" <<endl;
-//    Playlist playList;
-//    cout<<"expecting 1 or true, actual: ";
-//    cout<<playList.isEmpty()<<endl;
-//    //cout<<"throw exception actual: " << endl;
-//    //cout<<playList.removeSong(0)<<endl;
-//    cout<<"expecting 0, actual: ";
-//    cout<<playList.itemCount()<<endl;
-//    playList.insertAtEnd(song1);
-//    playList.insertAtEnd(song2);
-//    cout<<"expecting 2, actual: ";
-//    cout<<playList.itemCount()<<endl;
-//    cout<<"expecting 0 or false, actual: ";
-//    cout<<playList.isEmpty()<<endl;
-//    playList.insertAtEnd(song3);
-//    playList.insertAtEnd(song4);
-//    cout<<"expecting 4 actual: ";
-//    cout<<playList.itemCount()<<endl;
-//    cout<<"rap god, eminem, 5, 2013, actual: ";
-//    cout<<playList.removeSong(3)<<endl;
-//    cout<<"expecting 3 actual: ";
-//    cout<<playList.itemCount()<<endl;
-//    std::cout << "-----done-----" <<endl;
-//}
+void PlayListTester(){
+    string song1 = "A her comes the sun, beatles, 3, 1967";
+    string song2 = "Billie Jean, Michael Jackson, 5, 1980";
+    string song3 = "rap god, eminem, 5, 2013";
+    string song4 = "b lucy in thr sky with diamonds, beatles, 3, 1967";
+    string song5 = "c  hey jude, beatles, 3, 1968";
+
+    std::cout << "=======PLAYLIST TEST=======" <<endl;
+    Playlist playList;
+    cout<<"expecting 1 or true, actual: ";
+    cout<<playList.isEmpty()<<endl;
+    //cout<<"throw exception actual: " << endl;
+    //cout<<playList.removeSong(0)<<endl;
+    cout<<"expecting 0, actual: ";
+    cout<<playList.itemCount()<<endl;
+    //playList.insertAtEnd(song1);
+    //playList.insertAtEnd(song2);
+    cout<<"expecting 2, actual: ";
+    cout<<playList.itemCount()<<endl;
+    cout<<"expecting 0 or false, actual: ";
+    cout<<playList.isEmpty()<<endl;
+    //playList.insertAtEnd(song3);
+    //playList.insertAtEnd(song4);
+    cout<<"expecting 4 actual: ";
+    cout<<playList.itemCount()<<endl;
+    cout<<"rap god, eminem, 5, 2013, actual: ";
+    cout<<playList.removeSong(3)<<endl;
+    cout<<"expecting 3 actual: ";
+    cout<<playList.itemCount()<<endl;
+    std::cout << "-----done-----" <<endl;
+}
 
 
-//
-//void displayArtistTester(){
-//    cout<<"=======displayArtistTester======="<<endl;
-//    CommandHandler* testHandler = new CommandHandler();
-//    string song1 = "here comes the sun, beatles, 3, 1967";
-//    string song2 = "Billie Jean, Michael Jackson, 5, 1980";
-//    string song3 = "rap god, eminem, 5, 2013";
-//    string song4 = "lucy in thr sky with diamonds, beatles, 3, 1967";
-//    string song5 = "a hard days night, beatles, 3, 1964";
-//    testHandler->getSongLibrary()->put(song1);
-//    testHandler->getSongLibrary()->put(song2);
-//    testHandler->getSongLibrary()->put(song3);
-//    testHandler->getSongLibrary()->put(song4);
-//    testHandler->getSongLibrary()->put(song5);
-//    cout<<"expecting {a hard days night, here comes the sun, lucy in thr sky with diamonds}, actual: ";
-//    testHandler->displayArtist("beatles");
-//    cout<<"expecting {rap god}, actual: ";
-//    testHandler->displayArtist("eminem");
-//    cout<<"expecting {Billies jean}, actual: ";
-//    testHandler->displayArtist("Michael Jackson");
-//    cout<<"expecting artist not found, actual: ";
-//    testHandler->displayArtist("jon doe");
-//    cout<<"-----done-----"<<endl;
-//}
-//
-//
-//
-//
-//void libraryTester(){
-//    cout<<"=======libraryTester======="<<endl;
-//    CommandHandler* testHandler = new CommandHandler();
-//    string song1 = "here comes the sun, beatles, 3, 1967";
-//    string song2 = "Billie Jean, Michael Jackson, 5, 1980";
-//    string song3 = "rap god, eminem, 5, 2013";
-//    string song4 = "Lucy in thr sky with diamonds, beatles, 3, 1967";
-//    string song5 = "a hard days night, beatles, 3, 1964";
-//    testHandler->getSongLibrary()->put(song2);
-//    testHandler->getSongLibrary()->put(song1);
-//    testHandler->getSongLibrary()->put(song3);
-//    testHandler->getSongLibrary()->put(song4);
-//    testHandler->getSongLibrary()->put(song5);
-//    testHandler->getSongLibrary()->put(song1);
-//
-//    cout<<"[\n"
-//          "beatles: { a hard days night, here comes the sun, lucy in thr sky with diamonds}\n"
-//          "eminem: { loose yourself, rap god}\n"
-//          "Michael Jackson: { Billie Jean}\n"
-//          "]\n"
-//          "actual: \n";
-//    testHandler->library();
-//    cout<<"-----done-----"<<endl;
-//}
+
+void displayArtistTester(){
+    cout<<"=======displayArtistTester======="<<endl;
+    CommandHandler* testHandler = new CommandHandler();
+    string song1 = "here comes the sun, beatles, 3, 1967";
+    string song2 = "Billie Jean, Michael Jackson, 5, 1980";
+    string song3 = "rap god, eminem, 5, 2013";
+    string song4 = "lucy in thr sky with diamonds, beatles, 3, 1967";
+    string song5 = "a hard days night, beatles, 3, 1964";
+    testHandler->getSongLibrary()->put(song1);
+    testHandler->getSongLibrary()->put(song2);
+    testHandler->getSongLibrary()->put(song3);
+    testHandler->getSongLibrary()->put(song4);
+    testHandler->getSongLibrary()->put(song5);
+    cout<<"expecting {a hard days night, here comes the sun, lucy in thr sky with diamonds}, actual: ";
+    testHandler->displayArtist("beatles");
+    cout<<"expecting {rap god}, actual: ";
+    testHandler->displayArtist("eminem");
+    cout<<"expecting {Billies jean}, actual: ";
+    testHandler->displayArtist("Michael Jackson");
+    cout<<"expecting artist not found, actual: ";
+    testHandler->displayArtist("jon doe");
+    cout<<"-----done-----"<<endl;
+}
+
+
+
+
+void libraryTester(){
+    cout<<"=======libraryTester======="<<endl;
+    CommandHandler* testHandler = new CommandHandler();
+    string song1 = "here comes the sun, beatles, 3, 1967";
+    string song2 = "Billie Jean, Michael Jackson, 5, 1980";
+    string song3 = "rap god, eminem, 5, 2013";
+    string song4 = "Lucy in thr sky with diamonds, beatles, 3, 1967";
+    string song5 = "a hard days night, beatles, 3, 1964";
+    testHandler->getSongLibrary()->put(song2);
+    testHandler->getSongLibrary()->put(song1);
+    testHandler->getSongLibrary()->put(song3);
+    testHandler->getSongLibrary()->put(song4);
+    testHandler->getSongLibrary()->put(song5);
+    testHandler->getSongLibrary()->put(song1);
+
+    cout<<"[\n"
+          "beatles: { a hard days night, here comes the sun, lucy in thr sky with diamonds}\n"
+          "eminem: { loose yourself, rap god}\n"
+          "Michael Jackson: { Billie Jean}\n"
+          "]\n"
+          "actual: \n";
+    testHandler->library();
+    cout<<"-----done-----"<<endl;
+}
 void quitTester(){
     cout<<"======Quit tester======"<<endl;
     CommandHandler* testHandler = new CommandHandler();
@@ -156,7 +156,6 @@ void quitTester(){
     testHandler->addToPlaylist("test1","a hard days night", "beatles");
     testHandler->addToPlaylist("test1","Billie Jean", "Michael Jackson");
     testHandler->playlist("test1");//TODO THIS LINE ISNT WORKING
-    cout<<"here\n";
     testHandler->quit();
     CommandHandler* testHandler2 = new CommandHandler();
     //testHandler2->import("/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/Save.txt");
@@ -236,8 +235,9 @@ void discontinueTester(){
 }
 
 int main() {
-    //addToPlaylistTester();
-    quitTester();
+
+    addToPlaylistTester();
+    //quitTester();
     //tests();
 //discontinueTester();
     //testRandomPlaylist();

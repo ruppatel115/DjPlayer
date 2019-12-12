@@ -103,6 +103,7 @@ bool Playlist::isEmpty() {
 }
 
 int Playlist::itemCount(){//O(n) must run through all items of list
+    std::cout<<"first son in playlist "<<front->getSong().getTitle()+"\n";
     LinkedNode *temp = front;
     int count = 0;
     while(temp != nullptr) {
@@ -166,12 +167,14 @@ std::string Playlist::removeSong(int index) { //returns song information
 
 
 
-void Playlist::insertAtEnd(Song song) {
+void Playlist::insertAtEnd(Song* song) {
 
     LinkedNode *newNode = new LinkedNode(song);
-    newNode->setSong(song);
+    //newNode->setSong(song);
     if (front == nullptr) {
+        //std::cout<<"first song\n";
         front=newNode;
+
 //        newNode->setNext(front);
 //        front = newNode;
 
@@ -184,7 +187,6 @@ void Playlist::insertAtEnd(Song song) {
         newNode->setNext(nullptr);
 
     }
-
 
 }
 
