@@ -80,7 +80,6 @@ void songArrayListTesters(){
 
 void playlistTesters(){
     std::cout << "=======PLAYLIST TEST=======" <<endl;
-
     string song1 = "here comes the sun, beatles, 3:32, 1967";
     string song2 = "Billie Jean, Michael Jackson, 5:32, 1980";
     string song3 = "rap god, eminem, 5:12, 2013";
