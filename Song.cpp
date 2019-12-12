@@ -25,7 +25,7 @@ Song::Song(){
 
 
 
-Song::Song(std::string& songStr) {
+Song::Song(std::string songStr) {
     //song string should be in form: title, artist, length, year
     std::stringstream splitter (songStr);
     std::string yearStr, lengthStr, space;

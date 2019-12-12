@@ -23,7 +23,7 @@ public:
 
     Song(); //default constructor
 
-    Song(std::string& songStr);
+    Song(std::string songStr);
 
     const std::string &getTitle() const;
 
