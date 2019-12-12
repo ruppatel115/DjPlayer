@@ -84,9 +84,9 @@ std::string PlaylistArrayList::toString() { //Prints a list of the names of all 
     for (int i = 0; i < currPlaylistCount; i++) {
         if (!array[i].isEmpty()) {
             if (i < currPlaylistCount - 1) {
-                result += array[i].getTitle() + "(duration: " + std::to_string(array[i].calcDuration()) + "), ";
+                result += array[i].getTitle() + "(duration: " + std::to_string(array[i].getDuration()) + "), ";
             } else { //No comma at the end
-                result += array[i].getTitle() + "(duration: " + std::to_string(array[i].calcDuration()) + ")";
+                result += array[i].getTitle() + "(duration: " + std::to_string(array[i].getDuration()) + ")";
             }
         }
         else{ //if the playlist at the current index of the arraylist is empty, do this instead

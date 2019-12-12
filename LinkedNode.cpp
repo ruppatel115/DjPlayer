@@ -15,8 +15,8 @@ LinkedNode::LinkedNode(const LinkedNode& nodeToCopy){
     next = nullptr;
 }
 
-Song LinkedNode::getSong(){
-    return *song;
+Song* LinkedNode::getSong(){
+    return song;
 }
 
 LinkedNode* LinkedNode::getNext(){

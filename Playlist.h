@@ -22,7 +22,7 @@ private:
     //Playlist& operator=(const Playlist& playlistToCopy);
     std::string title;
     int numOfSongs;
-    double duration;
+    int duration;
 
 public:
     //TODO function comments
@@ -32,18 +32,17 @@ public:
 
     ~Playlist();
 
-    Playlist getDuration();
     virtual std::string getTitle();
 
-    virtual int calcDuration();
+    virtual int getDuration();
     //Displays all the songs in the playlist
     virtual std::string toString();
 
-    virtual std::string playNext(); //after next song is played will call remove song
+    //virtual std::string playNext(); //after next song is played will call remove song
 
     virtual int findSong(std::string title, std::string artist);   //looks for the index of the song with given name
 
-    virtual int itemCount(); //O(n) must run through all items of list
+    virtual int getNumSongs(); //O(n) must run through all items of list
 
     virtual bool isEmpty();
 
@@ -51,7 +50,7 @@ public:
 
     virtual void insertAtEnd(Song* songStr);
 
-    virtual Song getSong(int index);
+    virtual Song* getSong(int index);
 
 };
 

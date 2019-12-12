@@ -18,12 +18,13 @@ private:
 
 
 public:
-    //TODO function comments
+    //TODO function comments, destructor not needed
     Song(std::string artist, std::string title);
 
     Song(); //default constructor
 
     Song(std::string songStr);
+
 
     const std::string &getTitle() const;
 
