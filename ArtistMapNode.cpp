@@ -16,8 +16,8 @@ ArtistMapNode::~ArtistMapNode(){
 ArtistMapNode::ArtistMapNode(Song song){
     this->next = nullptr;
     this->artist = song.getArtist();
-    this->songList  = new SongArrayList(2);
-    songList->insertAtFront(song);
+    this->songList  = new SongArrayList();
+    songList->insertAtEnd(song);
 }
 SongArrayList* ArtistMapNode::getSongList() {
     return songList;

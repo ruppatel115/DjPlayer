@@ -36,7 +36,7 @@ public:
      * Constructor
      * @throws an std::invalid_argument exception if size < 1
      */
-    SongArrayList(int initialCapacity);
+    SongArrayList();
 
     //Copy Constructor
     SongArrayList(const SongArrayList& arrayListToCopy);
@@ -90,13 +90,13 @@ public:
      * Searches an int array for a certain value
      * @return the index of the first occurrence of numToFind if it is present, otherwise returns -1
      */
-    int find(std::string songToFind);
+    int find(std::string songTitleToFind);
 
     /**
      * Searches an int array for a certain value
      * @return the index of the last occurrence of numToFind if it is present, otherwise returns -1
      */
-    int findLast(std::string songToFind);
+    //int findLast(std::string songToFind);
 
     /**
      * finds the largest value in the array
@@ -110,7 +110,7 @@ public:
      * @post the list has an additional value in it, at the beginning
      *    all other items are shifted down by one index
      */
-    void insertAtFront(Song itemToAdd);
+    //void insertAtFront(Song itemToAdd);
 
     /**
      * inserts the item into the list so that it can be found with get(index)
@@ -127,7 +127,7 @@ public:
      * @return a copy of the item at the end
      * @throws out_of_range exception if there is no item to remove
      */
-    Song removeValueAtEnd();
+    //Song removeValueAtEnd();
 
     /**
      * removes the item at the front of the list, and returns a copy of that item
@@ -135,7 +135,7 @@ public:
      * @return a copy of the item at index
      * @throws out_of_range exception if there is no item to remove
      */
-    Song removeValueAtFront();
+    //Song removeValueAtFront();
 
     /**
      * removes the item at index from the list, and returns a copy of that item
