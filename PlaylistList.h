@@ -27,7 +27,7 @@ public:
      * appends the new playlist to the end of the list
      * @post the list has an additional value/playlist in it, at the end
      */
-    virtual void insertAtEnd(Playlist& playlistToAdd)=0;
+    virtual void insertAtEnd(Playlist playlistToAdd)=0;
 
     /**
      * gets the playlist/playlist name

@@ -7,6 +7,7 @@
 #include <iostream>
 
 PlaylistArrayList::PlaylistArrayList() { //default constructor defaults to size of 20
+    Playlist *array = new Playlist[20];
     this->array = new Playlist[20];
     this->currPlaylistCount=0;
     this->currCapacity=20;
@@ -59,7 +60,7 @@ void PlaylistArrayList::doubleCapacity() {
 }
 
 
-void PlaylistArrayList::insertAtEnd(Playlist& playlistToAdd) {
+void PlaylistArrayList::insertAtEnd(Playlist playlistToAdd) {
     if (currPlaylistCount>=currCapacity) {      //if the arraylist is full
         doubleCapacity();
     }

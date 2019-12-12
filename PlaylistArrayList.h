@@ -48,7 +48,7 @@ public:
      * appends the new playlist to the end of the list
      * @post the list has an additional value in it, at the end
      */
-    void insertAtEnd(Playlist& playlistToAdd);
+    void insertAtEnd(Playlist playlistToAdd);
 
     /**
      * gets a playlist from the list

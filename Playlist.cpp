@@ -37,6 +37,8 @@ std::string Playlist::getTitle(){
     return title;
 }
 
+
+
 std::string Playlist::toString() { //TODO this prints an extra comma with multiple items
     if (isEmpty()){
         return "{}";
