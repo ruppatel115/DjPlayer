@@ -494,6 +494,21 @@ void commandHandlerTesters(){
     testHandler->import("../Save.txt");
     printAssertEquals("[\nbeatles: {here comes the sun, lucy in thr sky with diamonds}\neminem: {rap god}\nMichael Jackson: {Billie Jean}\n]\n",testHandler->getSongLibrary()->toString());
     cout<<"-----testing display artist-----\n";
+    // the actual get artist function was tested in artist map
+    cout<<"expecting 'artist not found' actual: ";
+    testHandler->displayArtist("not an artist");
+
+    cout<<"-----testing song-----\n";
+    testHandler->getSongLibrary()->removeAll();
+    testHandler->import("../Save.txt");
+    cout<<"rap god, by eminem, 309 seconds, came out in 2013, actual: ";
+    testHandler->song("eminem","rap god");
+
+
+
+
+
+
 
 
 
@@ -509,15 +524,15 @@ void commandHandlerTesters(){
 
 int main(){
     commandHandlerTesters();
-    songTesters();
-    playlistTesters();
-    rupPlaylistTesters();
-    playListArrayListTesters();
-
-    artistMapNodeTesters();
-    ArtistMapTesters();
-    songTesters();
-    songArrayListTesters();
-    artistMapNodeTesters();
+//    songTesters();
+//    playlistTesters();
+//    rupPlaylistTesters();
+//    playListArrayListTesters();
+//
+//    artistMapNodeTesters();
+//    ArtistMapTesters();
+//    songTesters();
+//    songArrayListTesters();
+//    artistMapNodeTesters();
     return 0;
 }
