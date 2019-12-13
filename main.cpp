@@ -338,7 +338,7 @@ void runInterface(){
 
     CommandHandler* handler = new CommandHandler();
     std::string mystr;
-    while(mystr != "done") {
+    while(mystr != "quit") {
         std::cout << "Enter your command or help for a list of commands (type done to stop program):";
         getline(std::cin, mystr);
         std::cout << mystr<<'\n';
@@ -447,6 +447,7 @@ void runInterface(){
         }
 
     }
+    handler->quit();
 
 }
 
