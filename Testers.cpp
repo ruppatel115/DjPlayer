@@ -636,14 +636,14 @@ void forrestPlaylistArrayListTest(){
 
 
 int main(){
-    cout <<"======RUNNING ALL TESTS IN Testers.cpp======"<<endl;
-//    forrestPlaylistTests();
-//    forrestPlaylistArrayListTest();
-    songTesters(); //working
-//    artistMapNodeTesters(); //working
-//    ArtistMapTesters(); //working
-//    songArrayListTesters(); //working
-//    commandHandlerTesters();
+    cout <<"======RUNNING ALL TESTS IN Testers.cpp======"<<endl; //all working
+    forrestPlaylistTests();
+    forrestPlaylistArrayListTest();
+    songTesters();
+    artistMapNodeTesters();
+    ArtistMapTesters();
+    songArrayListTesters();
+    commandHandlerTesters();
     cout <<"=======RAN ALL TESTS IN Testers.cpp======"<<endl;
 
 

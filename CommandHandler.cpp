@@ -297,8 +297,6 @@ void CommandHandler::quit(){
         std::cerr << "Can't write to playlist file" << std::endl;
     }
 
-    delete[] songLibrary;
-    delete[] PlaylistList;
 }
 /*
  * Get random songs from the library in the while loop and add that song to
