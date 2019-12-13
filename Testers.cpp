@@ -514,6 +514,15 @@ void commandHandlerTesters(){
     testHandler->song("eminem","rap god");
 
 
+    cout<<"-----testing newPlaylist-----\n";
+    testHandler->import("../Save.txt");
+    testHandler->newPlaylist("TestPlaylist1");
+    printAssertEquals("TestPlaylist1", testHandler->listPlaylists());
+
+
+
+
+
 
 
 
@@ -532,11 +541,11 @@ void commandHandlerTesters(){
 
 
 int main(){
-    //commandHandlerTesters();
+    commandHandlerTesters();
 //    songTesters();
 //    playlistTesters();
     //rupPlaylistTesters();
-    playListArrayListTesters();
+    //playListArrayListTesters();
 //
 //    artistMapNodeTesters();
 //    ArtistMapTesters();

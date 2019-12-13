@@ -18,8 +18,8 @@ private:
 
     LinkedNode *front;
     LinkedNode *end;
-    //Playlist(const Playlist& playlistToCopy); //TODO we need to make these
-    //Playlist& operator=(const Playlist& playlistToCopy);
+    Playlist(const Playlist& playlistToCopy); //TODO we need to make these
+    Playlist& operator=(const Playlist* playlistToCopy);
     std::string title;
     int numOfSongs;
     int duration;
@@ -51,6 +51,7 @@ public:
     virtual void insertAtEnd(Song* songStr);
 
     virtual Song* getSong(int index);
+
 
 };
 

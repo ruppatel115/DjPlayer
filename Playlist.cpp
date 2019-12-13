@@ -30,6 +30,34 @@ Playlist::Playlist(std::string titleIn) {
 
 }
 
+
+Playlist::Playlist(const Playlist& playlistToCopy){
+    Playlist playlist(title);
+
+    playlist.title=playlistToCopy.title;
+    duration=playlistToCopy.duration;
+    for(int i=0;i<numOfSongs;i++){
+        playlist.insertAtEnd(playlistToCopy.front->getSong());
+    }
+}
+
+Playlist& Playlist:: operator=(const Playlist* playlistToCopy){
+    Playlist playlist(title);
+    if(this != playlistToCopy) {
+        while (front != nullptr) {
+            LinkedNode *temp = front;
+            Song *song = temp->getSong();
+            front = front->getNext();
+            delete song;
+            delete temp;
+        }
+        title = playlistToCopy->title;
+        duration = playlistToCopy->duration;
+    }
+
+    return *this;
+}
+
 //Destructor
 
 Playlist::~Playlist() {

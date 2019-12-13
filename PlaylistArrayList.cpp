@@ -111,7 +111,7 @@ std::string PlaylistArrayList::toString() { //Prints a list of the names of all 
     std::string result = "{";
     for (int i = 0; i < playlistCount(); i++) {
         if (!array[i].isEmpty()) {
-            if (i < currPlaylistCount) {
+            if (i < currPlaylistCount-1) {
                 result += array[i].getTitle() + "(duration: " + std::to_string(array[i].getDuration()) + "), ";
             } else { //No comma at the end
                 result += array[i].getTitle() + "(duration: " + std::to_string(array[i].getDuration()) + ")";
