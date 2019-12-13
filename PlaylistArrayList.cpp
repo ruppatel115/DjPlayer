@@ -183,31 +183,44 @@ int PlaylistArrayList::find(std::string playlistToFind) {
  *@param index at location of where we  want to remove the specified playlist
  * @return playlist that was removed
  */
-Playlist* PlaylistArrayList::removeAt(int index) {
+void PlaylistArrayList::removeAt(int index) {
+    /*
+    if (index > currPlaylistCount-1 || index < 0){
+        throw std::out_of_range ("Bad index given to removeValueAt: " + std::to_string(index));
+    }
+    Playlist* removedPlaylist = array[index];
 
-//    if (index > currPlaylistCount-1 || index < 0){
-//        throw std::out_of_range ("Bad index given to removeValueAt: " + std::to_string(index));
-//    }
-//    Playlist* removedPlaylist = array[index];
-//
-//    Playlist * tempArr = new Playlist[currCapacity];
-//    int j = 0;
-//    for (int i = index+1;i<currPlaylistCount;i++){
-//        tempArr[j] = array[i];
-//        j++;
-//    }
-//
-//    currPlaylistCount--;
-//    j=0;
-//    for (int i = index; i< currPlaylistCount;i++){
-//        array[i]=tempArr+j;
-//        j++;
-//
-//    }
-//
-//    return removedPlaylist;
+    Playlist * tempArr = new Playlist[currCapacity];
+    int j = 0;
+    for (int i = index+1;i<currPlaylistCount;i++){
+        tempArr[j] = array+i;
+        j++;
+    }
 
-    return nullptr;
+    currPlaylistCount--;
+    j=0;
+    for (int i = index; i< currPlaylistCount;i++){
+        array[i]=tempArr[j];
+        j++;
+
+    }
+
+    return removedPlaylist;
+     */
+    if (index > currPlaylistCount-1 || index < 0 || isEmpty()){
+
+    }else{
+        delete array[index];
+        if(index != currPlaylistCount-1){
+            for(int i=index; i<currPlaylistCount-1; i++){
+                array[i] = array[i+1];
+            }
+        }
+        currPlaylistCount--;
+    }
+
+
+
 
 }
 Playlist** PlaylistArrayList::getArray() {

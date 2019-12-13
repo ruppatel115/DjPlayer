@@ -96,7 +96,7 @@ public:
      * @return a copy of the playlist at index
      * @throws out_of_range exception if index is invalid
      */
-    Playlist* removeAt(int index);
+    void removeAt(int index);
 
     Playlist** getArray();
 

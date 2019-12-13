@@ -690,20 +690,16 @@ void forrestPlaylistArrayListTest(){
     printAssertEquals(nullptr,testArraylist->getValueAt(3));
 
     std::cout << "-----testing remove at------" <<endl;
+    testArraylist->removeAt(1);
+    printAssertEquals("[testlist1 {duration = 568 seconds, songs left: here comes the sun, Billie Jean}, testlist3 {empty playlist}]",testArraylist->toString());
+    testArraylist->removeAt(-1);
+    printAssertEquals("[testlist1 {duration = 568 seconds, songs left: here comes the sun, Billie Jean}, testlist3 {empty playlist}]",testArraylist->toString());
+    testArraylist->removeAt(2);
+    printAssertEquals("[testlist1 {duration = 568 seconds, songs left: here comes the sun, Billie Jean}, testlist3 {empty playlist}]",testArraylist->toString());
 
-
-
-
-
-
-
-
-    testArraylist->insertAtEnd(testPlaylist2);
-    //printAssertEquals("testlist2",
-    //std::cout<<testArraylist->toString();
-
-
-
+    std::cout << "-----testing clear list------" <<endl;
+    testArraylist->clearList();
+    printAssertEquals("[]",testArraylist->toString());
 
     std::cout << "======DONE======" <<endl;
 
