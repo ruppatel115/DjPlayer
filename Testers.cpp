@@ -487,15 +487,15 @@ cout<<"here\n";
     testHandler4->addToPlaylist("test5", "lucy in thr sky with diamonds", "beatles");
 
     printAssertEquals("[test5 {duration = 890 seconds, songs left: rap god, Billie Jean, lucy in thr sky with diamonds}, test7 {empty playlist}]",testHandler4->listPlaylists(true));
-    printAssertEquals("Played song: rap god, eminem, 309, 2013 and removed from playlist test5\n", testHandler4->playNext("test5",true));
+    printAssertEquals("Played song: rap god, by eminem, 309 seconds long, year: 2013, playCount: 1 and removed from playlist test5\n", testHandler4->playNext("test5",true));
     printAssertEquals(1,testHandler4->getSongLibrary()->getSong("rap god","eminem")->getPlaycount());
     printAssertEquals("[test5 {duration = 581 seconds, songs left: Billie Jean, lucy in thr sky with diamonds}, test7 {empty playlist}]", testHandler4->listPlaylists(true));
-    printAssertEquals("Played song: Billie Jean, Michael Jackson, 356, 1980 and removed from playlist test5\n", testHandler4->playNext("test5",true));
+    printAssertEquals("Played song: Billie Jean, by Michael Jackson, 356 seconds long, year: 1980, playCount: 1 and removed from playlist test5\n", testHandler4->playNext("test5",true));
     printAssertEquals("[test5 {duration = 225 seconds, songs left: lucy in thr sky with diamonds}, test7 {empty playlist}]",testHandler4->listPlaylists(true));
 
     printAssertEquals("Removed playlist (was empty): test7",testHandler4->playNext("test7",true));
     printAssertEquals("[test5 {duration = 225 seconds, songs left: lucy in thr sky with diamonds}]",testHandler4->listPlaylists(true));
-    printAssertEquals("Played song: lucy in thr sky with diamonds, beatles, 225, 1967 and removed from playlist test5\nRemoved playlist (was now empty)", testHandler4->playNext("test5",true));
+    printAssertEquals("Played song: lucy in thr sky with diamonds, by beatles, 225 seconds long, year: 1967, playCount: 1 and removed from playlist test5\nRemoved playlist (was now empty)", testHandler4->playNext("test5",true));
     printAssertEquals("[]",testHandler4->listPlaylists(true));
 
 
