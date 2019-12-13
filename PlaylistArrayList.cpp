@@ -55,7 +55,7 @@ PlaylistArrayList& PlaylistArrayList::operator=(PlaylistArrayList *arrayListToCo
 
 //destructor
 PlaylistArrayList::~PlaylistArrayList() {
-    delete[] array; //TODO what happens to the playlists?
+    delete [] array; //TODO what happens to the playlists?
 }
 
 /***
@@ -109,9 +109,9 @@ std::string PlaylistArrayList::toString() { //Prints a list of the names of all 
         return "{}";
     }
     std::string result = "{";
-    for (int i = 0; i < currPlaylistCount; i++) {
+    for (int i = 0; i < playlistCount(); i++) {
         if (!array[i].isEmpty()) {
-            if (i < currPlaylistCount - 1) {
+            if (i < currPlaylistCount) {
                 result += array[i].getTitle() + "(duration: " + std::to_string(array[i].getDuration()) + "), ";
             } else { //No comma at the end
                 result += array[i].getTitle() + "(duration: " + std::to_string(array[i].getDuration()) + ")";
@@ -277,7 +277,8 @@ Playlist PlaylistArrayList::removeAt(int index) {
     currPlaylistCount--;
     j=0;
     for (int i = index; i< currPlaylistCount;i++){
-        array[i]=tempArr[j];j++;
+        array[i]=tempArr[j];
+        j++;
 
     }
 

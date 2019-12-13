@@ -360,17 +360,19 @@ void playListArrayListTesters(){
     Playlist* playlist3 = new Playlist("playlist3");
     Playlist* playlist4 = new Playlist("playlist4");
     Playlist* playlist5 = new Playlist("playlist5");
-//    string song1 = "here comes the sun, beatles, 3:32, 1967";
-//    string song2 = "Billie Jean, Michael Jackson, 5:56, 1980";
-//    string song3 = "rap god, eminem, 5:09, 2013";
-//    string song4 = "lucy in thr sky with diamonds, beatles, 3:45, 1967";
-//
-//    Song* testSong1 = new Song(song1);
-//    Song* testSong2 = new Song(song2);
-//    Song* testSong3 = new Song(song3);
-//    Song* testSong4 = new Song(song4);
-//    playlist5->insertAtEnd(testSong3);
-//    playlist5->insertAtEnd(testSong2);
+    string song1 = "here comes the sun, beatles, 3:32, 1967";
+    string song2 = "Billie Jean, Michael Jackson, 5:56, 1980";
+    string song3 = "rap god, eminem, 5:09, 2013";
+    string song4 = "lucy in thr sky with diamonds, beatles, 3:45, 1967";
+
+    Song* testSong1 = new Song(song1);
+    Song* testSong2 = new Song(song2);
+    Song* testSong3 = new Song(song3);
+    Song* testSong4 = new Song(song4);
+    playlist5->insertAtEnd(testSong3);
+    playlist5->insertAtEnd(testSong2);
+
+
 
 
 
@@ -404,12 +406,17 @@ void playListArrayListTesters(){
 
     listOfPlaylists.removeAt(2);
     printAssertEquals(4,listOfPlaylists.playlistCount());
+
+
     std::cout<<listOfPlaylists.toString() <<std::endl;
 
 
 
-    delete playlist1; delete playlist2; delete playlist3; delete playlist4; delete playlist5;
     cout << "=======DONE=======" << endl;
+
+
+    //delete playlist1; delete playlist2; delete playlist3; delete playlist4; delete playlist5;
+
 }
 
 
@@ -433,6 +440,7 @@ void rupPlaylistTesters(){
     playList.insertAtEnd(testSong2);
     playList.insertAtEnd(testSong3);
     printAssertEquals(3, playList.getNumSongs());
+    printAssertEquals(2, playList.findSong("rap god", "eminem"));
     //playList.removeSong(2);
     //printAssertEquals(2, playList.itemCount());
     playList.insertAtEnd(testSong3);
@@ -524,11 +532,11 @@ void commandHandlerTesters(){
 
 
 int main(){
-    commandHandlerTesters();
+    //commandHandlerTesters();
 //    songTesters();
 //    playlistTesters();
-//    rupPlaylistTesters();
-//    playListArrayListTesters();
+    //rupPlaylistTesters();
+    playListArrayListTesters();
 //
 //    artistMapNodeTesters();
 //    ArtistMapTesters();

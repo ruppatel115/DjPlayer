@@ -33,16 +33,29 @@ Playlist::Playlist(std::string titleIn) {
 //Destructor
 
 Playlist::~Playlist() {
-    LinkedNode* temp = front;
+    LinkedNode *temp = front;
 
-    while(temp != nullptr){
-        LinkedNode *temp2 = temp;
-        temp = temp->getNext();
-        delete temp2;
+//    while(temp != nullptr){
+//        LinkedNode *temp2 = temp;
+//        temp = temp->getNext();
+//        delete temp2;
+//    }
+//    front = nullptr;
+//    end = nullptr;
+//}
+    while (front != nullptr) {
+        LinkedNode *temp = front;
+        Song *song = temp->getSong();
+        front = front->getNext();
+        delete song;
+        delete temp;
+
+
+
     }
-    front = nullptr;
     end = nullptr;
 }
+
 
 std::string Playlist::getTitle(){
     return title;
@@ -97,29 +110,47 @@ int Playlist::findSong(std::string title, std::string artist) {
     if (isEmpty()){
         return -1;
     }
-    LinkedNode* temp = front;
-    if (temp == end){
-        if(temp->getSong()->getTitle() == title && temp->getSong()->getArtist()==artist){
-            return 0;
+//    LinkedNode* temp = front;
+//    if (temp == end){
+//        if(temp->getSong()->getTitle() == title && temp->getSong()->getArtist()==artist){
+//            return 0;
+//        }
+//
+//    }
+//    else {
+//        int i = 0;
+//        while (temp->getNext() != nullptr) {
+//            if (temp->getSong()->getTitle() == title && temp->getSong()->getArtist() == artist) {
+//                return i;
+//            } else {
+//                i++;
+//                temp = temp->getNext();
+//            }
+//        }
+//    }
+//
+//    return -1; //returns -1 by default if nothing found
+
+    int index = 0;
+    LinkedNode *temp;
+    temp = front;
+
+    while(temp != nullptr) {
+        if (temp->getSong()->getTitle() == title && temp->getSong()->getArtist() == artist) {
+            return index;
+        } else {
+            temp = temp->getNext();
+            index++;
         }
-        else{
-            return -1;
-        }
-    }
-    int i = 0;
-    while (temp->getNext() != nullptr){
-        if (temp->getSong()->getTitle() == title && temp->getSong()->getArtist()==artist){
-            return i;
-        }
-        else{
-            i++;
-            temp=temp->getNext();
-        }
+
+
     }
 
-    return -1; //returns -1 by default if nothing found
 
+
+    return -1;
 }
+
 
 /**
  * checks if there are any valid items in the list
