@@ -225,36 +225,36 @@ int PlaylistArrayList::findLast(std::string playlistToFind) {
 
 
 
-Playlist PlaylistArrayList::removeAtEnd() {
-    if (currPlaylistCount == 0){
-        throw std::out_of_range("No playlists to remove");
-    }
-    Playlist removedPlaylist = array[currPlaylistCount-1];
-
-    currPlaylistCount--;
-
-    return removedPlaylist;
-}
-
-Playlist PlaylistArrayList::removeAtFront() {
-    if (currPlaylistCount == 0){
-        throw std::out_of_range("No playlists to remove");
-    }
-    Playlist removedPlaylist = array[0];
-
-    Playlist * tempArr = new Playlist[currCapacity];
-    int j = 0;
-    for(int i = 1; i < currPlaylistCount; i++){
-        tempArr[j] = array[i];
-        j++;
-    }
-    currPlaylistCount--;
-    for(int i = 0; i < currPlaylistCount;i++){
-        array[i] = tempArr[i];
-    }
-
-    return removedPlaylist;
-}
+//Playlist PlaylistArrayList::removeAtEnd() {
+//    if (currPlaylistCount == 0){
+//        throw std::out_of_range("No playlists to remove");
+//    }
+//    Playlist removedPlaylist = array[currPlaylistCount-1];
+//
+//    currPlaylistCount--;
+//
+//    return removedPlaylist;
+//}
+//
+//Playlist PlaylistArrayList::removeAtFront() {
+//    if (currPlaylistCount == 0){
+//        throw std::out_of_range("No playlists to remove");
+//    }
+//    Playlist removedPlaylist = array[0];
+//
+//    Playlist * tempArr = new Playlist[currCapacity];
+//    int j = 0;
+//    for(int i = 1; i < currPlaylistCount; i++){
+//        tempArr[j] = array[i];
+//        j++;
+//    }
+//    currPlaylistCount--;
+//    for(int i = 0; i < currPlaylistCount;i++){
+//        array[i] = tempArr[i];
+//    }
+//
+//    return removedPlaylist;
+//}
 
 
 /***
@@ -262,7 +262,7 @@ Playlist PlaylistArrayList::removeAtFront() {
  * @return playlist that was removed
  */
 Playlist PlaylistArrayList::removeAt(int index) {
-    if (index > currPlaylistCount || index < 0){
+    if (index > currPlaylistCount-1 || index < 0){
         throw std::out_of_range ("Bad index given to removeValueAt: " + std::to_string(index));
     }
     Playlist removedPlaylist = array[index];

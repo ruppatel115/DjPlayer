@@ -194,12 +194,12 @@ Song* ArtistMap::getSong(std::string title, std::string artist){
             Song* song = artistNode->getSongList()->getValueAt(songIndex);
             return song;
         }else{
-            std::cout<< title<<" not found for "<<artist<<"\n";
+            //std::cout<< title<<" not found for "<<artist<<"\n";
             return nullptr;
         }
 
     }else{
-        std::cout<<artist<<" not found in library\n";
+        //std::cout<<artist<<" not found in library\n";
         return nullptr;
 
     }
