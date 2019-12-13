@@ -48,6 +48,12 @@ Song::Song(std::string songStr) {
     getline(splitter, lengthStr, ',');
     getline(splitter, space, ' ');
     getline(splitter, yearStr, ',');
+    if(yearStr.find("*") != lengthStr.npos){
+        year = std::stoi(yearStr.substr(0,yearStr.rfind("*")));
+        playcount = std::stoi(yearStr.substr(yearStr.rfind(":")+1));
+    }else{
+        year = std::stoi(yearStr);
+    }
     //TODO add error handling for when all info is not there? assuming user inputs correct stuff?
     //std::cout<<"full string  "<<lengthStr<<std::endl;
     //std::cout<<"part 1 "<<lengthStr.substr(0,lengthStr.rfind(":"))<<std::endl;
@@ -62,7 +68,7 @@ Song::Song(std::string songStr) {
     }
 
     //length = std::stoi(lengthStr);
-    year = std::stoi(yearStr);
+
 }
 
 std::string Song::toString() {

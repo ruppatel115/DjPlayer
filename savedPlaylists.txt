@@ -1,2 +1,4 @@
-*playlist1
-lucy in thr sky with diamonds, beatles, 189, 1967
+*test2
+Billie Jean, Michael Jackson, 341, 1980
+*test4
+hey jude, beatles, 236, 1968
