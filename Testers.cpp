@@ -291,167 +291,6 @@ void ArtistMapTesters(){
 
 }
 
-
-void playlistTesters(){
-    cout << "=======PLAYLIST TESTERS=======" <<endl;
-    string song1 = "here comes the sun, beatles, 3:32, 1967";
-    Song* testSong = new Song(song1);
-    Playlist* testPlaylist = new Playlist("testPlaylist");
-
-    //Testing with nothing in playlist
-    printAssertEquals("testPlaylist",testPlaylist->getTitle());
-    printAssertEquals(0,testPlaylist->getNumSongs());
-
-    try{
-        testPlaylist->getSong(0);
-        cout << "FAIL: getSong did not throw exception when playlist is empty" <<endl;
-    }
-    catch(out_of_range& e){
-        printAssertEquals("playlist is empty",e.what());
-    }
-    printAssertEquals("{}",testPlaylist->toString());
-
-    printAssertEquals(0,testPlaylist->getDuration());
-    printAssertEquals(true,testPlaylist->isEmpty());
-
-    printAssertEquals("no songs", testPlaylist->removeSong(0));
-//    try{
-//        testPlaylist->removeSong(0);
-//        cout << "FAIL: removeSong did not throw exception when playlist is empty" <<endl;
-//    }
-//    catch(out_of_range& e){
-//        printAssertEquals("playlist is empty",e.what());
-//    }
-    printAssertEquals(-1,testPlaylist->findSong(testSong->getTitle(),testSong->getArtist()));
-
-    testPlaylist->insertAtEnd(testSong);
-    //One song now in playlist
-
-    printAssertEquals(1,testPlaylist->getNumSongs());
-    try {
-        printAssertEquals(testSong->getTitle(), testPlaylist->getSong(0)->getTitle());
-    }
-    catch(out_of_range& e){
-        cout <<"FAIL: getSong threw exception"<<endl;
-    }
-
-    printAssertEquals("{duration = 212 seconds,  songs left: here comes the sun}",testPlaylist->toString());
-
-    printAssertEquals(212,testPlaylist->getDuration());
-    printAssertEquals(false,testPlaylist->isEmpty());
-    printAssertEquals(0,testPlaylist->findSong(testSong->getTitle(),testSong->getArtist()));
-    cout << "removesongtest" <<endl;
-    printAssertEquals("here comes the sun, beatles, 212, 1967",testPlaylist->removeSong(0));
-
-
-
-
-
-    delete testSong; delete testPlaylist;
-    cout << "=======DONE=======" << endl;
-}
-
-/*
-void playListArrayListTesters(){
-    cout << "======PLAYLIST ARRAYLIST TESTERS=======" << endl;
-
-    PlaylistArrayList listOfPlaylists = PlaylistArrayList();
-    Playlist* playlist1 = new Playlist("playlist1");
-    Playlist* playlist2 = new Playlist("playlist2");
-    Playlist* playlist3 = new Playlist("playlist3");
-    Playlist* playlist4 = new Playlist("playlist4");
-    Playlist* playlist5 = new Playlist("playlist5");
-    string song1 = "here comes the sun, beatles, 3:32, 1967";
-    string song2 = "Billie Jean, Michael Jackson, 5:56, 1980";
-    string song3 = "rap god, eminem, 5:09, 2013";
-    string song4 = "lucy in thr sky with diamonds, beatles, 3:45, 1967";
-
-    Song* testSong1 = new Song(song1);
-    Song* testSong2 = new Song(song2);
-    Song* testSong3 = new Song(song3);
-    Song* testSong4 = new Song(song4);
-    playlist5->insertAtEnd(testSong3);
-    playlist5->insertAtEnd(testSong2);
-
-
-
-
-
-
-    std::cout << "==isEmpty and playlistCount==" <<endl;
-
-    printAssertEquals(0,listOfPlaylists.playlistCount());
-    printAssertEquals(true,listOfPlaylists.isEmpty());
-    listOfPlaylists.insertAtEnd(*playlist1);
-    printAssertEquals(1,listOfPlaylists.playlistCount());
-    printAssertEquals(false,listOfPlaylists.isEmpty());
-
-
-    std::cout << "==ToString==" <<endl;
-    printAssertEquals("{playlist1 (empty playlist)}", listOfPlaylists.toString());
-    listOfPlaylists.insertAtEnd(*playlist2);
-    listOfPlaylists.insertAtEnd(*playlist3);
-    printAssertEquals("{playlist1 (empty playlist), playlist2 (empty playlist), playlist3 (empty playlist)}", listOfPlaylists.toString());
-
-    std::cout << "==find==" <<endl;
-    listOfPlaylists.insertAtEnd(*playlist4);
-    listOfPlaylists.insertAtEnd(*playlist5);
-
-    printAssertEquals(2,listOfPlaylists.find("playlist3"));
-    printAssertEquals(0,listOfPlaylists.find("playlist1"));
-    printAssertEquals(3,listOfPlaylists.find("playlist4"));
-    printAssertEquals(5,listOfPlaylists.playlistCount());
-
-
-    std::cout << "==remove==" <<endl;
-
-    listOfPlaylists.removeAt(2);
-    printAssertEquals(4,listOfPlaylists.playlistCount());
-
-
-    std::cout<<listOfPlaylists.toString() <<std::endl;
-    cout << "playlist5 toString test (it has two songs in it)" <<endl;
-    cout << playlist5->toString() <<endl;
-
-
-    delete playlist1; delete playlist2; delete playlist3; delete playlist4; delete playlist5;
-    cout << "=======DONE=======" << endl;
-}
-
-*/
-void rupPlaylistTesters(){
-    std::cout << "=======PLAYLIST TEST=======" <<endl;
-    string song1 = "here comes the sun, beatles, 3:32, 1967";
-    string song2 = "Billie Jean, Michael Jackson, 5:32, 1980";
-    string song3 = "rap god, eminem, 5:12, 2013";
-    string song4 = "b lucy in thr sky with diamonds, beatles, 3:39, 1967";
-    string song5 = "c  hey jude, beatles, 3:01, 1968";
-    Song* testSong1 = new Song(song1);
-    Song* testSong2 = new Song(song2);
-    Song* testSong3 = new Song(song3);
-    Song* testSong4 = new Song(song4);
-    Song* testSong5 = new Song(song5);
-    Playlist playList;
-    printAssertEquals(true, playList.isEmpty());
-    playList.insertAtEnd(testSong1);
-    printAssertEquals(false, playList.isEmpty());
-    printAssertEquals(1, playList.getNumSongs());
-    playList.insertAtEnd(testSong2);
-    playList.insertAtEnd(testSong3);
-    printAssertEquals(3, playList.getNumSongs());
-    printAssertEquals(2, playList.findSong("rap god", "eminem"));
-    //playList.removeSong(2);
-    //printAssertEquals(2, playList.itemCount());
-    playList.insertAtEnd(testSong3);
-    playList.insertAtEnd(testSong3);
-    //printAssertEquals(4, playList.itemCount());
-    std::cout<<playList.toString()<<std::endl;
-
-    //playList.calcDuration();NOT WORKING
-    std::cout << "======DONE======" <<endl;
-
-
-}
 void wipeFile(string fileName){
     std::ofstream outf(fileName);
     if (outf){
@@ -524,7 +363,16 @@ void commandHandlerTesters(){
     //TODO not done?
 
     cout<<"-----testing discontinue-----\n";
-    //TODO
+    CommandHandler* testHandlerD = new CommandHandler();
+    testHandlerD->import("../importTest.txt"); //TODO fix file path?
+    testHandlerD->newPlaylist("testList");
+    testHandlerD->library();
+    testHandlerD->addToPlaylist("testList","rap god", "eminem");
+    testHandlerD->addToPlaylist("testList","here comes the sun", "beatles");
+    testHandlerD->discontinue("../discontinueTest.txt"); //TODO file path working?
+    testHandlerD->library();
+
+
     //printAssertEquals("TestPlaylist1",
     //Playlist("TestPlaylist1").insertAtEnd(testSong2);
     testHandler->listPlaylists();
@@ -579,10 +427,35 @@ void commandHandlerTesters(){
 
 
     cout<<"-----testing create random playlist-----\n";
+    CommandHandler* testHandlerRand = new CommandHandler();
+    testHandlerRand->createRandomPlaylist(0,"noDurationPlaylist");
     //TODO
 
     cout<<"-----testing quit-----\n";
     //TODO
+    CommandHandler* testHandlerQ = new CommandHandler();
+    /*
+    string song1 = "here comes the sun, beatles, 3:23, 1967";
+    string song2 = "Billie Jean, Michael Jackson, 5:54, 1980";
+    string song3 = "rap god, eminem, 5:43, 2013";
+    string song4 = "lucy in thr sky with diamonds, beatles, 2:21, 1967";
+    string song5 = "a hard days night, beatles, 31:56, 1964";
+    testHandlerQ->getSongLibrary()->put(song1);
+    testHandlerQ->getSongLibrary()->put(song2);
+    testHandlerQ->getSongLibrary()->put(song3);
+    testHandlerQ->getSongLibrary()->put(song4);
+    testHandlerQ->getSongLibrary()->put(song5);
+     */
+    testHandlerQ->newPlaylist("test1");
+    testHandlerQ->addToPlaylist("test1","a hard days night", "beatles");
+    testHandlerQ->addToPlaylist("test1","Billie Jean", "Michael Jackson");
+    testHandlerQ->playlist("test1");//TODO THIS LINE ISNT WORKING?
+    cout<<"here\n";
+    testHandlerQ->quit();
+    CommandHandler* testHandlerQ2 = new CommandHandler();
+    //testHandler2->import("/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/Save.txt");
+    testHandlerQ2->library();
+    testHandlerQ2->playlist("test1");
 
     std::cout << "======DONE======" <<endl;
 
@@ -641,23 +514,7 @@ void forrestPlaylistTests(){
     printAssertEquals("{duration = 877 seconds, songs left: here comes the sun, Billie Jean}",testlist->toString());
     printAssertEquals("song deleted", testlist->removeSong(1));
 
-
-
-
-
-
     std::cout << "======DONE======" <<endl;
-
-
-
-
-
-
-
-
-
-
-
 }
 void forrestPlaylistArrayListTest(){
     string song1 = "here comes the sun, beatles, 3:32, 1967";
@@ -705,7 +562,7 @@ void forrestPlaylistArrayListTest(){
     printAssertEquals("{duration = 568 seconds, songs left: here comes the sun, Billie Jean}",testArraylist->getValueAt(0)->toString());
     printAssertEquals("{}",testArraylist->getValueAt(1)->toString());
     printAssertEquals("{}",testArraylist->getValueAt(2)->toString());
-    printAssertEquals(nullptr,testArraylist->getValueAt(3));
+    printAssertEquals(false,testArraylist->getValueAt(3));
 
     std::cout << "-----testing remove at------" <<endl;
     testArraylist->removeAt(1);
@@ -725,14 +582,14 @@ void forrestPlaylistArrayListTest(){
 
 
 int main(){
-    forrestPlaylistTests();
-    forrestPlaylistArrayListTest();
-   songTesters(); //working
-    artistMapNodeTesters(); //working
-    ArtistMapTesters(); //working
-    songArrayListTesters(); //working
+    //forrestPlaylistTests(); //working
+    //forrestPlaylistArrayListTest(); //working
     commandHandlerTesters();
-
+    //songTesters(); //working
+   // artistMapNodeTesters(); //working
+   // ArtistMapTesters(); //working
+   //songArrayListTesters(); //working
+   //songArrayListTesters2(); //working
 
     return 0;
 }
