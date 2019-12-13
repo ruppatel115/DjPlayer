@@ -9,9 +9,9 @@
 
 PlaylistArrayList::PlaylistArrayList() { //default constructor defaults to size of 20
     //Playlist** array = new Playlist*[20];
-    this->array = new Playlist*[2];
+    this->array = new Playlist*[20];
     this->currPlaylistCount=0;
-    this->currCapacity=2;
+    this->currCapacity=20;
 }
 
 //Constructor
@@ -93,7 +93,7 @@ void PlaylistArrayList::insertAtEnd(Playlist* playlistToAdd) {
  * @return playlist at specified index
  */
 Playlist* PlaylistArrayList::getValueAt(int index) {
-    std::cout<<"index = "<<index<<" current count = "<<currPlaylistCount<<"\n";
+    //std::cout<<"index = "<<index<<" current count = "<<currPlaylistCount<<"\n";
     if (index > currPlaylistCount-1 || index < 0 || isEmpty()){
         throw std::out_of_range ("Bad index given to getValueAt: " + std::to_string(index));
     }

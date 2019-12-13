@@ -72,9 +72,9 @@ Playlist::~Playlist() {
 
     while (front != nullptr) {
         LinkedNode *temp = front;
-        Song *song = temp->getSong();
+        //Song *song = temp->getSong();
         front = front->getNext();
-        delete song;
+        //delete song;
         delete temp;
 //fixed
 
@@ -202,7 +202,7 @@ int Playlist::getNumSongs(){
  * @param index the location from which to get the value
  * @post the item at index is removed from the list, everything else is shifted down one
  * @return a copy of the item at index
- * @throws out_of_range exception if index is invalid
+
  */
 
 std::string Playlist::removeSong(int index) { //returns song information
