@@ -508,7 +508,6 @@ cout<<"here\n";
     //TODO finish discontinue?
 
     cout<<"-----testing play next-----\n\n";
-    //TODO
     CommandHandler* testHandler4 = new CommandHandler();
     testHandler4->getSongLibrary()->put(*testSong1);
     testHandler4->getSongLibrary()->put(*testSong2);
@@ -520,14 +519,17 @@ cout<<"here\n";
     testHandler4->addToPlaylist("test5", "rap god", "eminem");
     testHandler4->addToPlaylist("test5", "Billie Jean", "Michael Jackson");
     testHandler4->addToPlaylist("test5", "lucy in thr sky with diamonds", "beatles");
-    testHandler4->listPlaylists();
-    testHandler4->playNext("test5");
-    testHandler4->listPlaylists();
 
-    testHandler4->playNext("test5");
+    printAssertEquals("[test5 {duration = 890 seconds, songs left: rap god, Billie Jean, lucy in thr sky with diamonds}, test7 {empty playlist}]",testHandler4->listPlaylists(true));
+    printAssertEquals("Played song: rap god, eminem, 309, 2013 and removed from playlist test5\n", testHandler4->playNext("test5",true));
+    printAssertEquals("[test5 {duration = 581 seconds, songs left: Billie Jean, lucy in thr sky with diamonds}, test7 {empty playlist}]", testHandler4->listPlaylists(true));
+    printAssertEquals("Played song: Billie Jean, Michael Jackson, 356, 1980 and removed from playlist test5\n", testHandler4->playNext("test5",true));
+    printAssertEquals("[test5 {duration = 225 seconds, songs left: lucy in thr sky with diamonds}, test7 {empty playlist}]",testHandler4->listPlaylists(true));
 
-    testHandler4->listPlaylists();
-
+    printAssertEquals("Removed playlist (was empty): test7",testHandler4->playNext("test7",true));
+    printAssertEquals("[test5 {duration = 225 seconds, songs left: lucy in thr sky with diamonds}]",testHandler4->listPlaylists(true));
+    printAssertEquals("Played song: lucy in thr sky with diamonds, beatles, 225, 1967 and removed from playlist test5\nRemoved playlist (was now empty)", testHandler4->playNext("test5",true));
+    printAssertEquals("[]",testHandler4->listPlaylists(true));
 
 
     cout<<"-----testing quit-----\n\n";
@@ -679,7 +681,7 @@ void forrestPlaylistArrayListTest(){
 
 
 int main(){
-    //forrestPlaylistTests();
+//    forrestPlaylistTests();
 //    forrestPlaylistArrayListTest();
 //   songTesters(); //working
 //    artistMapNodeTesters(); //working
