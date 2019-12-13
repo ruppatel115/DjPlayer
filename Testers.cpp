@@ -455,10 +455,10 @@ cout<<"here\n";
     printAssertEquals("[tester1 {empty playlist}, tester2 {empty playlist}]",testHandler9->listPlaylists(true));
     testHandler9->addToPlaylist("tester1", "rap god", "eminem");
     testHandler9->addToPlaylist("tester1", "Billie Jean", "Michael Jackson");
-    testHandler->listPlaylists();
     printAssertEquals("[tester1 {duration = 665 seconds, songs left: rap god, Billie Jean}, tester2 {empty playlist}]",testHandler9->listPlaylists(true));
     printAssertEquals("Removed song rap god.", testHandler9->removeFromPlaylist("tester1", "rap god", "eminem", true));
-    testHandler->listPlaylists();//TODO this whre the problem is wont remove first song
+    printAssertEquals("[tester1 {duration = 356 seconds, songs left: Billie Jean}, tester2 {empty playlist}]",testHandler9->listPlaylists(true));
+
 
 
 
@@ -470,7 +470,7 @@ cout<<"here\n";
 
 
     cout<<"\n-----testing discontinue-----\n\n";
-    /*
+
     CommandHandler* testHandlerD = new CommandHandler();
     testHandlerD->import("../importTest.txt"); //TODO fix file path?
     testHandlerD->newPlaylist("testList");
@@ -479,7 +479,7 @@ cout<<"here\n";
     testHandlerD->addToPlaylist("testList","here comes the sun", "beatles");
     testHandlerD->discontinue("../discontinueTest.txt"); //TODO file path working?
     testHandlerD->library();
-     */
+
     //TODO
     wipeFile("../Save.txt");
     wipeFile("../savedPlaylists.txt");
