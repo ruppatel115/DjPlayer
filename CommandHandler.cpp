@@ -159,7 +159,6 @@ void CommandHandler::playlist(std::string name){
     int index = PlaylistList->find(name);
     if(index >=0) {
         Playlist* temp = PlaylistList->getValueAt(index);
-        //TODO something wrong in here?
 
         std::string songList="";
         std::cout <<"item count = "<<temp->getNumSongs() << std::endl;
@@ -252,13 +251,16 @@ void CommandHandler::playNext(std::string playlist) {
     Playlist *temp = PlaylistList->getValueAt(playlistIndex);
     if (temp->isEmpty()) {
         PlaylistList->removeAt(playlistIndex);
+        cout << "Removed playlist (was empty): " + playlist <<endl;
     } else {
         temp->getSong(0)->incrementPlaycount();
-        cout << "Played song: " + temp->getSong(0)->toString() + " and removed from playlist "+playlist << endl;
+        std::string result = "Played song: " + temp->getSong(0)->toString() + " and removed from playlist "+playlist+"\n";
+        cout << result << endl;
         temp->removeSong(0);
         //std::cout << "Next song to be played: " + temp->getSong(0) << std::endl;
         if (temp->isEmpty()) {
             PlaylistList->removeAt(playlistIndex);
+            cout <<result + "Removed playlist (was now empty): "+playlist <<endl;
         }
 
     }
@@ -438,7 +440,6 @@ string CommandHandler::playlist(std::string name, bool test) {
     int index = PlaylistList->find(name);
     if(index >=0) {
         Playlist* temp = PlaylistList->getValueAt(index);
-        //TODO something wrong in here
 
         std::string songList = temp->toString();
         //std::cout <<"item count = "<<temp->getNumSongs() << std::endl;

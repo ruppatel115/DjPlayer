@@ -94,36 +94,7 @@ std::string Playlist::getTitle(){
  * @returns a string representing the given list in the exact format shown
  *{0: here comes the sun (Artist: beatles; Length: 212 secs; Year: 1967), 1: Billie Jean (Artist: Michael Jackson; Length: 356 secs; Year: 1980)}
  */
-std::string Playlist::toString() { //TODO this prints an extra comma with multiple items
-    /*
-    if (isEmpty()){
-        return "{}";
-    }
-    std::string result = "{";
-    LinkedNode* temp = front;
-    if (temp == end){
-        result += std::to_string(0)+": " + temp->getSong()->getTitle() + " (Artist: "+temp->getSong()->getArtist()+"; "
-          "Length: "+std::to_string(temp->getSong()->getLength())+" secs; Year: "+std::to_string(temp->getSong()->getYear())+")}";
-        return result;
-    }
-    int i = 0;
-    while (temp!= nullptr){
-        if (temp != nullptr && temp!=end){
-            std::string temptitle = temp->getSong()->getTitle();
-        result += std::to_string(i)+": " + temp->getSong()->getTitle() + " (Artist: "+temp->getSong()->getArtist()+"; "
-         "Length: "+std::to_string(temp->getSong()->getLength())+" secs; Year: "+std::to_string(temp->getSong()->getYear())+"), ";
-        }
-        else{ //no comma at the end
-            result += std::to_string(i)+": " + temp->getSong()->getTitle() + " (Artist: "+temp->getSong()->getArtist()+"; "
-            "Length: "+std::to_string(temp->getSong()->getLength())+" secs; Year: "+std::to_string(temp->getSong()->getYear())+")";
-        }
-        temp = temp->getNext();
-        i++;
-
-    }
-    result+="}";
-    return result;
-    */
+std::string Playlist::toString() {
     if (isEmpty()){
         return "{}";
     }

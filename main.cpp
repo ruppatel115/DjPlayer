@@ -238,7 +238,7 @@ void quitTester(){
     testHandler->newPlaylist("test1");
     testHandler->addToPlaylist("test1","a hard days night", "beatles");
     testHandler->addToPlaylist("test1","Billie Jean", "Michael Jackson");
-    testHandler->playlist("test1");//TODO THIS LINE ISNT WORKING?
+    testHandler->playlist("test1");
     cout<<"here\n";
     testHandler->quit();
     CommandHandler* testHandler2 = new CommandHandler();
@@ -252,13 +252,12 @@ void quitTester(){
 void playlistArrayListTester(){
     CommandHandler* testHandler = new CommandHandler();
     //testHandler.
-    //TODO
     cout<<"playlistArrayListTester not implemented yet, DONE" <<endl;
 
 }
 void displaySongTester(){
     CommandHandler* testHandler = new CommandHandler();
-    testHandler->import("../importTest.txt"); //TODO file path?
+    testHandler->import("../importTest.txt");
     cout<<"expecting rap god, eminem, 5:43, 2013, actual: ";
     testHandler->song("eminem", "rap god");
     cout<<"=====done=======\n";
@@ -298,12 +297,12 @@ void discontinueTester(){
     cout<<"=====discontinueTester=======\n";
 
     CommandHandler* testHandler = new CommandHandler();
-    testHandler->import("../importTest.txt"); //TODO fix file path?
+    testHandler->import("../importTest.txt");
     testHandler->newPlaylist("testList");
     testHandler->library();
     testHandler->addToPlaylist("testList","rap god", "eminem");
     testHandler->addToPlaylist("testList","here comes the sun", "beatles");
-    testHandler->discontinue("../discontinueTest.txt"); //TODO file path working?
+    testHandler->discontinue("../discontinueTest.txt");
     testHandler->library();
     cout<<"=====done=======\n";
 
@@ -452,9 +451,9 @@ void runInterface(){
 
 int main() {
     std::cout<<"Hello";
-    runAllTests();
+    //runAllTests();
 
-    //runInterface();
+    runInterface();
 
     /*
     //CommandHandler* test = new CommandHandler();

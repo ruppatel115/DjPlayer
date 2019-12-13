@@ -48,8 +48,7 @@ Song::Song(std::string songStr) {
     getline(splitter, lengthStr, ',');
     getline(splitter, space, ' ');
     getline(splitter, yearStr, ',');
-    //TODO add error handling for when all info is not there
-    //TODO not giving exactly correct length values
+    //TODO add error handling for when all info is not there? assuming user inputs correct stuff?
     //std::cout<<"full string  "<<lengthStr<<std::endl;
     //std::cout<<"part 1 "<<lengthStr.substr(0,lengthStr.rfind(":"))<<std::endl;
     if(lengthStr.find(":") != lengthStr.npos){
