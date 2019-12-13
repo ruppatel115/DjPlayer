@@ -377,13 +377,12 @@ void commandHandlerTesters(){
  //   testHandler->addToPlaylist("nonexistentplaylist","blah","beep");
 
     cout<<"\n-----testing song (displays song with given artist and title)-----\n\n";
-    //TODO write actual tests
+
     testHandler->getSongLibrary()->removeAll();
     testHandler->import("../Save.txt");
     printAssertEquals("rap god, by eminem, 309 seconds, came out in 2013\n",testHandler->song("eminem","rap god", true));
-    //cout<<"Expecting: rap god, by eminem, 309 seconds, came out in 2013, actual: ";
-    //testHandler->song("eminem","rap god");
-
+    printAssertEquals("Billie Jean, by Michael Jackson, 356 seconds, came out in 1980\n",testHandler->song("Michael Jackson","Billie Jean",true));
+    printAssertEquals("song not found in library\n",testHandler->song("somebody","take on me",true));
 
     cout<<"\n-----testing newPlaylist-----\n\n";//todo should not print created playlsit if duplicate, it does not create the playlsit
     testHandler->getSongLibrary()->removeAll();
@@ -481,12 +480,12 @@ cout<<"here\n";
     cout<<"\n-----testing discontinue-----\n\n";
 /*
     CommandHandler* testHandlerD = new CommandHandler();
-    testHandlerD->import("../importTest.txt"); //TODO fix file path?
+    testHandlerD->import("../importTest.txt");
     testHandlerD->newPlaylist("testList");
     testHandlerD->library();
     testHandlerD->addToPlaylist("testList","rap god", "eminem");
     testHandlerD->addToPlaylist("testList","here comes the sun", "beatles");
-    testHandlerD->discontinue("../discontinueTest.txt"); //TODO file path working?
+    testHandlerD->discontinue("../discontinueTest.txt");
     testHandlerD->library();
 */
     //TODO
