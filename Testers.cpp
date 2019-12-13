@@ -608,20 +608,35 @@ void forrestPlaylistArrayListTest(){
     Song* testSong3 = new Song(song3);
     Song* testSong4 = new Song(song4);
     std::cout << "======forrest playlsit arraylist tests======" <<endl;
-    PlaylistArrayList* testlist = new PlaylistArrayList();
+    PlaylistArrayList* testArraylist = new PlaylistArrayList();
     cout<<"-----testing insert at end-----\n";
     Playlist* testPlaylist = new Playlist("testlist1");
     testPlaylist->insertAtEnd(testSong1);
-    cout<<testPlaylist->toString()<<endl;
+    //cout<<testPlaylist->toString()<<endl;
 
     Playlist* testPlaylist2 = new Playlist("testlist2");
-    testlist->insertAtEnd(testPlaylist);
-    cout<<"here"<<endl;
-    cout<<testPlaylist->toString()<<endl;
-    printAssertEquals("{duration 212 seconds, songs left: here comes the sun}}",testlist->toString());
-    testlist->insertAtEnd(testPlaylist2);
+    testArraylist->insertAtEnd(testPlaylist);
+    //cout<<testPlaylist->toString()<<endl;
+    printAssertEquals("{duration = 212 seconds, songs left: here comes the sun}",testArraylist->getArray()[0]->toString());
+    testArraylist->insertAtEnd(testPlaylist2);
+    printAssertEquals("{duration = 212 seconds, songs left: here comes the sun}",testArraylist->getArray()[0]->toString());
+    printAssertEquals("{}",testArraylist->getArray()[1]->toString());
+    testArraylist->getArray()[0]->insertAtEnd(testSong2);
+    printAssertEquals("{duration = 568 seconds, songs left: here comes the sun, Billie Jean}",testArraylist->getArray()[0]->toString());
+
+
+
+    std::cout << "-----testing tostring------" <<endl;
+    PlaylistArrayList* testArraylist2 = new PlaylistArrayList();
+    printAssertEquals("[testlist1 {duration = 568 seconds, songs left: here comes the sun, Billie Jean} testlist2 {empty playlist}]",testArraylist->toString());
+    printAssertEquals("[]",testArraylist2->toString());
+
+
+
+
+    testArraylist->insertAtEnd(testPlaylist2);
     //printAssertEquals("testlist2",
-    std::cout<<testlist->toString();
+    //std::cout<<testArraylist->toString();
 
 
 
