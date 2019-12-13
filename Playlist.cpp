@@ -49,7 +49,7 @@ Playlist::~Playlist() {
         front = front->getNext();
         delete song;
         delete temp;
-
+//fixed
 
 
     }
