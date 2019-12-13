@@ -89,20 +89,13 @@ void CommandHandler::displayArtist(std::string artist){
 }
 
 void CommandHandler::song(std::string artist, std::string title){
-    ArtistMapNode* artistNode = songLibrary->getArtist(artist);
-    if(artistNode != nullptr){
-       int songIndex = artistNode->getSongList()->find(artist);
-       if(songIndex >-1){
-           Song* song = artistNode->getSongList()->getValueAt(songIndex);
-           std::cout<<song->getTitle()<<", "<<song->getArtist()<<", "<<song->getLength()<<", "<<song->getLength()<<std::endl;
-       }else{
-           std::cout<< title<<" not found for"<<artist<<"\n";
-       }
-
+    Song* song = songLibrary->getSong(title,artist);
+    if(song != nullptr){
+        cout<<song->getTitle()+", by "+song->getArtist()+", "+to_string(song->getLength())+" seconds, came out in "+to_string(song->getYear())+"\n";
     }else{
-        std::cout<<artist<<" not found in library\n";
+        cout<< "song not found in library\n";
 
-    }
+    };
 }
 
 void CommandHandler::import(std::string fileName){

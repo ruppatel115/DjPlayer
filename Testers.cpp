@@ -699,8 +699,7 @@ void forrestPlaylistArrayListTest(){
 
 
 int main(){
-    //forrestPlaylistTests();
-    //forrestPlaylistTests();
+    forrestPlaylistTests();
     forrestPlaylistArrayListTest();
     songTesters(); //working
     artistMapNodeTesters(); //working
