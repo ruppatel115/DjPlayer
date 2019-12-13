@@ -709,15 +709,15 @@ void forrestPlaylistArrayListTest(){
 int main(){
     forrestPlaylistTests();
     forrestPlaylistArrayListTest();
-//commandHandlerTesters();
-//    songTesters(); //working
+    //commandHandlerTesters();
+   songTesters(); //working
 //    playlistTesters(); //working
 //    rupPlaylistTesters(); //working without delete song in ~Playlist
-   // playListArrayListTesters();
-//
-//    artistMapNodeTesters(); //working
-//    ArtistMapTesters(); //working
-//    songArrayListTesters(); //working
+     // playListArrayListTesters();
+
+    artistMapNodeTesters(); //working
+    ArtistMapTesters(); //working
+    songArrayListTesters(); //working
 
     return 0;
 }

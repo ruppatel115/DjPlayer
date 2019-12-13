@@ -290,6 +290,8 @@ void Playlist::insertAtEnd(Song* song) {
     if (front == nullptr) {
         front=newNode;
         end=newNode;
+        duration+=song->getLength();
+
     } else {
         LinkedNode *temp = front;
         while(temp->getNext() != nullptr){
@@ -298,7 +300,7 @@ void Playlist::insertAtEnd(Song* song) {
         temp->setNext(newNode);
         end=newNode;
 
-        duration+=end->getSong()->getLength();
+        duration+=song->getLength();
 
     }
 
