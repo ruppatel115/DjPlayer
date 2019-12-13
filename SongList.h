@@ -75,13 +75,6 @@ public:
     virtual int findLast(std::string songToFind)=0;
 
     /**
-     * finds the largest value in the array
-     * @return the first index of the maximum value
-     * @throws out_of_range exception if there is no item to remove
-     */
-    //virtual int findMaxIndex()=0;
-
-    /**
      * appends the new item to the beginning of the list
      * @post the list has an additional value in it, at the beginning
      *    all other items are shifted down by one index

@@ -65,8 +65,6 @@ Song* SongArrayList::getValueAt(int index) {
     if(index>=currItemCount || index<0){
         throw std::out_of_range("Exception");
     }
-    //array[index];
-    //Song* song = &song1;
     return array+index;
 }
 
@@ -108,65 +106,16 @@ int SongArrayList::find(std::string numToFind) {
 
     return -1;
 }
-/*
-int SongArrayList::findLast(std::string numToFind) {
-    for(int i=currItemCount-1;i>-1; i--){
-        if(array[i].getTitle() ==numToFind){
-            return i;
-        }
-    }
 
-    return -1;
-}
- */
-Song* SongArrayList::getSong(std::string songToFindTitle) {
+Song* SongArrayList::getSong(std::string songToFind) {
     for(int i=0;i<currItemCount; i++){
-        if(array[i].getTitle() == songToFindTitle){
+        if(array[i].getTitle() == songToFind){
             return &array[i];
         }
     }
 
     return nullptr;
 }
-/*
-int SongArrayList::findMaxIndex() {
-    if(currItemCount <1){
-        throw std::out_of_range("Exception");
-    }
-
-    int maxNum = array[0];
-    int maxIndex = 0;
-
-    for(int i=0; i<currItemCount; i++){
-
-        if(array[i] > maxNum){
-            maxNum = array[i];
-            maxIndex = i;
-        }
-    }
-    return maxIndex;
-
-
-
-    return maxIndex;
-}
-*/
-/*
-void SongArrayList::insertAtFront(Song itemToAdd) {
-    currItemCount+=1;
-    if(currItemCount > currCapacity){
-        doubleCapacity();
-}
-    Song* holder = new Song[currCapacity];
-    for(int i=1;i<currItemCount;i++){
-        holder[i]=array[i-1];
-    }
-    delete[] array;
-    holder[0]=itemToAdd;
-    array =holder;
-    holder = nullptr;
-}
-*/
 
 void SongArrayList::insertAt(Song itemToAdd, int index) {
 
@@ -201,35 +150,7 @@ void SongArrayList::insertAt(Song itemToAdd, int index) {
 
 
 }
-/*
-Song SongArrayList::removeValueAtEnd() {
-    if(currItemCount == 0) {
-        throw std::out_of_range("Exception");
-    }
-    currItemCount--;
-    return array[currItemCount];
 
-}
- */
-/*
-Song SongArrayList::removeValueAtFront() {
-    if(currItemCount == 0){
-        throw std::out_of_range("Exception");
-    }
-    currItemCount--;
-    Song numToReturn = array[0];
-    Song* holder = new Song[currCapacity];
-    for(int i=1; i<currItemCount+1;i++){
-        holder[i-1] = array[i];
-    }
-    delete[] array;
-    array = holder;
-
-    holder = nullptr;
-    return numToReturn;
-
-}
-*/
 Song SongArrayList::removeValueAt(int index) {
 
     currItemCount--;

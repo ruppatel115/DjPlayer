@@ -93,26 +93,6 @@ public:
     int find(std::string songTitleToFind);
 
     /**
-     * Searches an int array for a certain value
-     * @return the index of the last occurrence of numToFind if it is present, otherwise returns -1
-     */
-    //int findLast(std::string songToFind);
-
-    /**
-     * finds the largest value in the array
-     * @return the first index of the maximum value
-     * @throws out_of_range exception if there is no item to remove
-     */
-    //int findMaxIndex();
-
-    /**
-     * appends the new item to the beginning of the list
-     * @post the list has an additional value in it, at the beginning
-     *    all other items are shifted down by one index
-     */
-    //void insertAtFront(Song itemToAdd);
-
-    /**
      * inserts the item into the list so that it can be found with get(index)
      * @param index the location in which to insert this item
      * @post the list has an additional value in it at the specified index,
@@ -122,22 +102,6 @@ public:
     void insertAt(Song itemToAdd, int index);
 
     /**
-     * removes the item at the end of the list, and returns a copy of that item
-     * @post the item at the end is removed from the list
-     * @return a copy of the item at the end
-     * @throws out_of_range exception if there is no item to remove
-     */
-    //Song removeValueAtEnd();
-
-    /**
-     * removes the item at the front of the list, and returns a copy of that item
-     * @post the item at the front is removed from the list, everything else is shifted down one
-     * @return a copy of the item at index
-     * @throws out_of_range exception if there is no item to remove
-     */
-    //Song removeValueAtFront();
-
-    /**
      * removes the item at index from the list, and returns a copy of that item
      * @param index the location from which to get the value
      * @post the item at index is removed from the list, everything else is shifted down one
@@ -145,8 +109,18 @@ public:
      * @throws out_of_range exception if index is invalid
      */
     Song removeValueAt(int index);
+
+    /**
+     * Gets a pointer to song with given title
+     * @param songToFind the title of the song to get
+     * @return a pointer to the song
+     */
     Song* getSong(std::string songToFind);
 
+    /**
+     * Gets the number of songs in the array list, or currItemCount
+     * @return number of songs in the arraylist, currItemCount
+     */
     int getSongCount();
 };
 

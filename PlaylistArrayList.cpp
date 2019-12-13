@@ -90,7 +90,7 @@ void PlaylistArrayList::insertAtEnd(Playlist playlistToAdd) {
 /***
  *
  * @param index
- * @return playlist at speicifed index
+ * @return playlist at specified index
  */
 Playlist PlaylistArrayList::getValueAt(int index) {
     std::cout<<"index = "<<index<<" current count = "<<currPlaylistCount<<"\n";
@@ -164,98 +164,6 @@ int PlaylistArrayList::find(std::string playlistToFind) {
     }
     return -1;
 }
-
-int PlaylistArrayList::findLast(std::string playlistToFind) {
-    int indexTemp = -1;
-
-    for (int i = 0; i < currPlaylistCount; i++){
-        if (array[i].getTitle() == playlistToFind){
-            indexTemp = i;
-        }
-    }
-    return indexTemp;
-}
-//
-//void PlaylistArrayList::insertAtFront(Playlist playlistToAdd) {
-//    if(currPlaylistCount >= currCapacity){
-//        doubleCapacity();
-//    }
-//
-//    Playlist * tempArr = new Playlist[currCapacity];
-//    for (int i = 0;i<currPlaylistCount;i++){    //store array into a temp array for copying later
-//        tempArr[i] = array[i];
-//    }
-//    array = new Playlist[currCapacity];          //array reinitialized, now empty
-//    array[0] = playlistToAdd;                   //playlistToAdd inserted at front
-//    currPlaylistCount++;
-//    for (int i = 1;i<currPlaylistCount;i++){    //put tempArr data back into Array, shifted over one
-//        array[i] = tempArr[i-1];
-//    }
-//
-//    delete[]tempArr;
-//
-//
-//}
-//
-//void PlaylistArrayList::insertAt(Playlist playlistToAdd, int index) {
-//    if (index > currPlaylistCount || index < 0){
-//        throw std::out_of_range ("Bad index given to insertAt: " + std::to_string(index));
-//    }
-//    if(currPlaylistCount >= currCapacity){
-//        doubleCapacity();
-//    }
-//    Playlist * tempArr = new Playlist[currCapacity];
-//    int j = 0;
-//    for (int i = index;i<currPlaylistCount;i++){
-//        tempArr[j] = array[i];
-//        j++;
-//    }
-//    array[index] = playlistToAdd;
-//    currPlaylistCount++;
-//    j=0;
-//    for (int i =index+1; i <currPlaylistCount;i++){
-//        array[i] = tempArr[j];
-//        j++;
-//    }
-//
-//
-//
-//
-//}
-
-
-
-//Playlist PlaylistArrayList::removeAtEnd() {
-//    if (currPlaylistCount == 0){
-//        throw std::out_of_range("No playlists to remove");
-//    }
-//    Playlist removedPlaylist = array[currPlaylistCount-1];
-//
-//    currPlaylistCount--;
-//
-//    return removedPlaylist;
-//}
-//
-//Playlist PlaylistArrayList::removeAtFront() {
-//    if (currPlaylistCount == 0){
-//        throw std::out_of_range("No playlists to remove");
-//    }
-//    Playlist removedPlaylist = array[0];
-//
-//    Playlist * tempArr = new Playlist[currCapacity];
-//    int j = 0;
-//    for(int i = 1; i < currPlaylistCount; i++){
-//        tempArr[j] = array[i];
-//        j++;
-//    }
-//    currPlaylistCount--;
-//    for(int i = 0; i < currPlaylistCount;i++){
-//        array[i] = tempArr[i];
-//    }
-//
-//    return removedPlaylist;
-//}
-
 
 /***
  *@param index at location of where we  want to remove the specified playlist

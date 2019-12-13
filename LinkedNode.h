@@ -12,17 +12,41 @@
 class LinkedNode {
 
 private:
-    Song* song;
-    LinkedNode* next;
+    Song* song; //pointer to a Song object
+    LinkedNode* next; //points to the next node if there is one
 
 public:
-    LinkedNode(Song* song);
-    //TODO function comments, destructor, assignment operator?
-    LinkedNode(Song& song);
-    LinkedNode(const LinkedNode& nodeToCopy); //only copies item, next is set to nullptr
+    /**
+     * Constructor
+     * @param pointer to a song object in heap
+     */
+    explicit LinkedNode(Song* song);
+
+    /**
+     * Copy constructor, allows us to make a deep copy of the given node
+     * It only copies the song, next is set to nullptr.
+     * @param nodeToCopy
+     */
+    LinkedNode(const LinkedNode& nodeToCopy);
+    /**
+     * Gets the song in the node
+     * @return a pointer to the song object
+     */
     Song* getSong();
+    /**
+     * Gets the next node
+     * @return a pointer to the next node
+     */
     LinkedNode* getNext();
+    /**
+     * sets the song in the node to given song
+     * @param newSong pointer
+     */
     void setSong(Song* newSong);
+    /**
+     * sets the next pointer of this node to point to the given node
+     * @param newNext node pointer
+     */
     void setNext(LinkedNode* newNext);
 };
 
