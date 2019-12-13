@@ -335,11 +335,12 @@ void runInterface(){
 //    std::cout<<"title = "<<test2->getTitle()<<"\n";
 //    std::cout<<"year = "<<test2->getYear()<<"\n";
 //
-
+    std::cout << "Importing playlists...." << endl;
     CommandHandler* handler = new CommandHandler();
     std::string mystr;
+    cout << "INTERFACE START:" << endl;
     while(mystr != "quit") {
-        std::cout << "Enter your command or help for a list of commands (type done to stop program):";
+        std::cout << "Enter your command or help for a list of commands (type quit to stop program):"<<endl;
         getline(std::cin, mystr);
         std::cout << mystr<<'\n';
 

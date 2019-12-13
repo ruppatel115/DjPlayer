@@ -298,7 +298,7 @@ void CommandHandler::quit(){
     }
 
 
-    //TODO this needs to call destructor
+    //TODO this needs to call destructor?
     //delete [] songLibrary;
     //songLibrary = nullptr;
 }

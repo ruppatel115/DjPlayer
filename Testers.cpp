@@ -766,6 +766,7 @@ int main(){
     ArtistMapTesters(); //working
     songArrayListTesters(); //working
     commandHandlerTesters();
+    cout <<"=======RAN ALL TESTS IN Testers.cpp======"<<endl;
 
 
     return 0;
