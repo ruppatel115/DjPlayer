@@ -303,7 +303,7 @@ void discontinueTester(){
     testHandler->library();
     testHandler->addToPlaylist("testList","rap god", "eminem");
     testHandler->addToPlaylist("testList","here comes the sun", "beatles");
-    testHandler->discontinue("/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/discontinueTest.txt");
+    testHandler->discontinue("../discontinueTest.txt"); //TODO file path working?
     testHandler->library();
     cout<<"=====done=======\n";
 
