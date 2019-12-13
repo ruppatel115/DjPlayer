@@ -435,32 +435,31 @@ string CommandHandler::listPlaylists(bool test){
 
 }
 string CommandHandler::playlist(std::string name, bool test) {
-    /*
     int index = PlaylistList->find(name);
-    if (index >= 0) {
-        Playlist *temp = PlaylistList->getValueAt(index);
+    if(index >=0) {
+        Playlist* temp = PlaylistList->getValueAt(index);
         //TODO something wrong in here
 
-        std::string songList = "";
-        std::cout << "item count = " << temp->getNumSongs() << std::endl;
+        std::string songList = temp->toString();
+        //std::cout <<"item count = "<<temp->getNumSongs() << std::endl;
+/*
+        for(int i=0; i<temp->getNumSongs();i++){
 
-        for (int i = 0; i < temp->getNumSongs(); i++) {
-
-            std::string title = temp->getSong(i)->getTitle();
-            std::string artist = temp->getSong(i)->getArtist();
-            int duration = temp->getSong(i)->getLength();
-            songList += title + ", " + artist + ", " + std::to_string(duration);;
+            std::string title=temp->getSong(i)->getTitle();
+            std::string artist=temp->getSong(i)->getArtist();
+            int duration =temp->getSong(i)->getLength();
+            songList +=  title + ", " + artist + ", "+ std::to_string(duration); ;
 
         }
-        std::cout << songList << std::endl;
+        */
+        return songList+"\n";
 
 
 //        std::cout << "Playlist" + name + ": \nDuration: " + std::to_string(temp.calcDuration()) << std::endl;
 //        std::cout << "Songs: " + temp.toString();
-    } else {
-        std::cout << "playlist not found\n";
+    }else{
+        return "playlist not found\n";
     }
-     */
 }
 string CommandHandler::addToPlaylist(std::string playlist, std::string title, std::string artist, bool test) {
     //std::cout <<"at the begining "<<artist<< std::endl;
