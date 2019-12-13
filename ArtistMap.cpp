@@ -79,7 +79,7 @@ void ArtistMap::remove(string title, string artist){
     ArtistMapNode* artistNode = this->getArtist(artist);
     if(artistNode != nullptr){
         int songIndex = artistNode->getSongList()->find(title);
-        if(songIndex >-1){
+        if(songIndex > -1){
             artistNode->getSongList()->removeValueAt(songIndex);
         }else{
             cout<<title<<" not found from artist, "<<artist<<"\n";

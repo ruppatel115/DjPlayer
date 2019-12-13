@@ -156,7 +156,7 @@ Song SongArrayList::removeValueAt(int index) {
     currItemCount--;
     Song songToReturn = array[index];
     int aIndex =0;
-    for(int i=0; i<currItemCount+1;i++){
+    for(int i=0; i<currItemCount;i++){
         if(i == index) {
             aIndex++;
         }
