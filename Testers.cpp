@@ -457,7 +457,7 @@ printAssertEquals({"{duration = 309 seconds, songs left: rap god}\n"},testHandle
     testHandler5->addToPlaylist("tester1", "Billie Jean", "Michael Jackson");
     printAssertEquals("[tester1 {duration = 665 seconds, songs left: rap god, Billie Jean}, tester2 {empty playlist}]",testHandler5->listPlaylists(true));
     printAssertEquals("Removed song rap god.", testHandler5->removeFromPlaylist("tester1", "rap god", "eminem", true));
-    testHandler->listPlaylists();
+    testHandler->listPlaylists();//TODO this whre the problem is wont remove first song
 
 
 
