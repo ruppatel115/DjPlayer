@@ -153,9 +153,9 @@ void CommandHandler::playlist(std::string name){
     if(index >=0) {
         Playlist* temp = PlaylistList->getValueAt(index);
 
-        std::string songList="";
-        std::cout <<"item count = "<<temp->getNumSongs() << std::endl;
-
+        std::string songList = temp->toString();
+        //std::cout <<"item count = "<<temp->getNumSongs() << std::endl;
+/*
         for(int i=0; i<temp->getNumSongs();i++){
 
             std::string title=temp->getSong(i)->getTitle();
@@ -164,13 +164,14 @@ void CommandHandler::playlist(std::string name){
             songList +=  title + ", " + artist + ", "+ std::to_string(duration); ;
 
         }
-        std::cout <<songList << std::endl;
+        */
+        cout<< songList+"\n";
 
 
 //        std::cout << "Playlist" + name + ": \nDuration: " + std::to_string(temp.calcDuration()) << std::endl;
 //        std::cout << "Songs: " + temp.toString();
     }else{
-        std::cout << "playlist not found\n";
+        cout<< "playlist not found\n";
     }
 }
 
@@ -188,7 +189,7 @@ void CommandHandler::newPlaylist(std::string name){
     PlaylistList->insertAtEnd(newPlaylist);
 
     std::cout << "Created new playlist: "+ name << std::endl;
-    std::cout << PlaylistList->playlistCount() << std::endl;
+    //std::cout << PlaylistList->playlistCount() << std::endl;
 
 }
 
