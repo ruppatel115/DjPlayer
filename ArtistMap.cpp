@@ -84,7 +84,6 @@ void ArtistMap::remove(string title, string artist){
             artistNode->getSongList()->removeValueAt(songIndex);
 
             if(artistNode->getSongCount() == 0){
-                cout<<"in the new code\n";
                 ArtistMapNode* tempNode = front;
                 if(front->getArtist() == artistNode->getArtist()){
                     front = front->getNext();
