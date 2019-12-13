@@ -98,7 +98,7 @@ void songArrayListTesters(){
     testList.insertAtEnd(*testSong3);
     printAssertEquals("{here comes the sun, Billie Jean, rap god}",testList.toString());
     cout<<"=====DONE=======\n";
-    //todo add testers for destructor and coy constructor
+    //todo add testers for destructor and copy constructor
 
 
 
@@ -528,15 +528,14 @@ void commandHandlerTesters(){
 
 int main(){
     //commandHandlerTesters();
-    songTesters();
-    playlistTesters();
-    rupPlaylistTesters();
-    playListArrayListTesters();
+    songTesters(); //working
+    playlistTesters(); //working
+    rupPlaylistTesters(); //working without delete song in ~Playlist
+    //playListArrayListTesters();
 
-    artistMapNodeTesters();
-    ArtistMapTesters();
-    songTesters();
-    songArrayListTesters();
-    artistMapNodeTesters();
+    artistMapNodeTesters(); //working
+    ArtistMapTesters(); //working
+    songArrayListTesters(); //working
+
     return 0;
 }
