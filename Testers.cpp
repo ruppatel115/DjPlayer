@@ -335,7 +335,7 @@ void commandHandlerTesters(){
     testHandlerRand->listPlaylists();
     testHandlerRand->createRandomPlaylist(1500,"testRandPlaylist2");
     cout << "testRandPlaylist2 should not go over 1500 duration" <<endl;
-    testHandlerRand->listPlaylists();   //TODO something wrong with songs being added but otherwise it works, just can't find the other songs
+    testHandlerRand->listPlaylists();
 
 
     cout<<"\n-----testing display artist-----\n\n";
@@ -379,10 +379,7 @@ void commandHandlerTesters(){
     printAssertEquals("palylist does not exist\n",testHandler->addToPlaylist("not a playlist","rap god","eminem", true));
     printAssertEquals("Added song rap god to playlist TestPlaylist1\n",testHandler->addToPlaylist("TestPlaylist1","rap god","eminem", true));
     printAssertEquals("song already in playlist\n",testHandler->addToPlaylist("TestPlaylist1","rap god","eminem", true));
-    //testHandler->listPlaylists();
-    //testHandler->listPlaylists();
 
-    //TODO not done?
     cout<<"\n-----testing list playlists-----\n\n";
 
     CommandHandler* testHandler8 = new CommandHandler();
