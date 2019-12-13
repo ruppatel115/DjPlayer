@@ -74,7 +74,7 @@ Playlist::~Playlist() {
         LinkedNode *temp = front;
         Song *song = temp->getSong();
         front = front->getNext();
-        //delete song;
+        delete song;
         delete temp;
 //fixed
 
