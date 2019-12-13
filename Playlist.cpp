@@ -263,6 +263,14 @@ std::string Playlist::removeSong(int index) { //returns song information
     if(index >= numOfSongs || index <0){
         return "out of bounds";
     }
+    if(index ==0){
+        LinkedNode* temp = front->getNext();
+        front = front->getNext();
+        delete temp;
+        numOfSongs--;
+        return "song deleted";
+
+    }
     LinkedNode* temp = front;
     LinkedNode* tempBefore;
 

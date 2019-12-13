@@ -451,7 +451,7 @@ printAssertEquals({"{duration = 309 seconds, songs left: rap god}\n"},testHandle
     printAssertEquals("Removed song Billie Jean.",testHandler5->removeFromPlaylist("tester2","Billie Jean", "Michael Jackson", true));
     printAssertEquals("[tester1 {empty playlist}, tester2 {duration = 309 seconds, songs left: rap god}]",testHandler5->listPlaylists(true));
     printAssertEquals("Removed song rap god.", testHandler5->removeFromPlaylist("tester2", "rap god", "eminem", true));
-
+cout<<"here\n";
     printAssertEquals("[tester1 {empty playlist}, tester2 {empty playlist}]",testHandler5->listPlaylists(true));
     testHandler5->addToPlaylist("tester1", "rap god", "eminem");
     testHandler5->addToPlaylist("tester1", "Billie Jean", "Michael Jackson");
