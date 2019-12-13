@@ -442,21 +442,22 @@ printAssertEquals({"{duration = 309 seconds, songs left: rap god}\n"},testHandle
 
 
     cout<<"\n-----testing remove from playlist-----\n\n";
-    CommandHandler* testHandler5 = new CommandHandler();
-    testHandler5->newPlaylist("tester1");
-    testHandler5->newPlaylist("tester2");
-    testHandler5->addToPlaylist("tester2", "rap god", "eminem");
-    testHandler5->addToPlaylist("tester2", "Billie Jean", "Michael Jackson");
-    printAssertEquals("[tester1 {empty playlist}, tester2 {duration = 665 seconds, songs left: rap god, Billie Jean}]", testHandler5->listPlaylists(true));
-    printAssertEquals("Removed song Billie Jean.",testHandler5->removeFromPlaylist("tester2","Billie Jean", "Michael Jackson", true));
-    printAssertEquals("[tester1 {empty playlist}, tester2 {duration = 309 seconds, songs left: rap god}]",testHandler5->listPlaylists(true));
-    printAssertEquals("Removed song rap god.", testHandler5->removeFromPlaylist("tester2", "rap god", "eminem", true));
+    CommandHandler* testHandler9 = new CommandHandler();
+    testHandler9->newPlaylist("tester1");
+    testHandler9->newPlaylist("tester2");
+    testHandler9->addToPlaylist("tester2", "rap god", "eminem");
+    testHandler9->addToPlaylist("tester2", "Billie Jean", "Michael Jackson");
+    printAssertEquals("[tester1 {empty playlist}, tester2 {duration = 665 seconds, songs left: rap god, Billie Jean}]", testHandler9->listPlaylists(true));
+    printAssertEquals("Removed song Billie Jean.",testHandler9->removeFromPlaylist("tester2","Billie Jean", "Michael Jackson", true));
+    printAssertEquals("[tester1 {empty playlist}, tester2 {duration = 309 seconds, songs left: rap god}]",testHandler9->listPlaylists(true));
+    printAssertEquals("Removed song rap god.", testHandler9->removeFromPlaylist("tester2", "rap god", "eminem", true));
 cout<<"here\n";
-    printAssertEquals("[tester1 {empty playlist}, tester2 {empty playlist}]",testHandler5->listPlaylists(true));
-    testHandler5->addToPlaylist("tester1", "rap god", "eminem");
-    testHandler5->addToPlaylist("tester1", "Billie Jean", "Michael Jackson");
-    printAssertEquals("[tester1 {duration = 665 seconds, songs left: rap god, Billie Jean}, tester2 {empty playlist}]",testHandler5->listPlaylists(true));
-    printAssertEquals("Removed song rap god.", testHandler5->removeFromPlaylist("tester1", "rap god", "eminem", true));
+    printAssertEquals("[tester1 {empty playlist}, tester2 {empty playlist}]",testHandler9->listPlaylists(true));
+    testHandler9->addToPlaylist("tester1", "rap god", "eminem");
+    testHandler9->addToPlaylist("tester1", "Billie Jean", "Michael Jackson");
+    testHandler->listPlaylists();
+    printAssertEquals("[tester1 {duration = 665 seconds, songs left: rap god, Billie Jean}, tester2 {empty playlist}]",testHandler9->listPlaylists(true));
+    printAssertEquals("Removed song rap god.", testHandler9->removeFromPlaylist("tester1", "rap god", "eminem", true));
     testHandler->listPlaylists();//TODO this whre the problem is wont remove first song
 
 
@@ -521,6 +522,8 @@ cout<<"here\n";
     testHandler4->addToPlaylist("test5", "lucy in thr sky with diamonds", "beatles");
     testHandler4->listPlaylists();
     testHandler4->playNext("test5");
+    testHandler4->listPlaylists();
+
     testHandler4->playNext("test5");
 
     testHandler4->listPlaylists();
@@ -663,13 +666,13 @@ void forrestPlaylistArrayListTest(){
 
 
 int main(){
-    forrestPlaylistTests();
+    //forrestPlaylistTests();
 //    forrestPlaylistArrayListTest();
 //   songTesters(); //working
 //    artistMapNodeTesters(); //working
 //    ArtistMapTesters(); //working
 //    songArrayListTesters(); //working
- //   commandHandlerTesters();
+    commandHandlerTesters();
 
 
     return 0;
