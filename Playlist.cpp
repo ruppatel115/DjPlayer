@@ -29,7 +29,10 @@ Playlist::Playlist(std::string titleIn) {
     duration=0;
 
 }
-
+/***
+ * Copy Constructor
+ * @param playlistToCopy
+ */
 
 Playlist::Playlist(const Playlist& playlistToCopy){
     Playlist playlist(title);
@@ -40,7 +43,11 @@ Playlist::Playlist(const Playlist& playlistToCopy){
         playlist.insertAtEnd(playlistToCopy.front->getSong());
     }
 }
-
+/***
+ * Assignment operator
+ * @param playlistToCopy
+ * @return
+ */
 Playlist& Playlist:: operator=(const Playlist* playlistToCopy){
     Playlist playlist(title);
     if(this != playlistToCopy) {
