@@ -568,8 +568,19 @@ void forrestPlaylistTests(){
     printAssertEquals("rap god",testlist->getSong(2)->getTitle());
     printAssertEquals("Billie Jean",testlist->getSong(1)->getTitle());
     printAssertEquals("here comes the sun",testlist->getSong(0)->getTitle());
-    printAssertEquals(nullptr,testlist->getSong(4));
-    printAssertEquals(nullptr,testlist->getSong(-1));
+    printAssertEquals(false,testlist->getSong(4));
+    printAssertEquals(false,testlist->getSong(-1));
+
+    cout<<"-----testing remove song -----\n";
+    printAssertEquals("song deleted", testlist->removeSong(2));
+    printAssertEquals("out of bounds", testlist->removeSong(2));
+    printAssertEquals("out of bounds", testlist->removeSong(-1));
+    printAssertEquals("{0: here comes the sun (Artist: beatles; Length: 212 secs; Year: 1967), 1: Billie Jean (Artist: Michael Jackson; Length: 356 secs; Year: 1980)}",testlist->toString());
+    printAssertEquals("song deleted", testlist->removeSong(1));
+
+
+
+
 
 
     std::cout << "======DONE======" <<endl;
@@ -589,15 +600,15 @@ void forrestPlaylistTests(){
 
 int main(){
     forrestPlaylistTests();
-    //commandHandlerTesters();
-    songTesters(); //working
-    playlistTesters(); //working
-    rupPlaylistTesters(); //working without delete song in ~Playlist
-    //playListArrayListTesters();
-
-    artistMapNodeTesters(); //working
-    ArtistMapTesters(); //working
-    songArrayListTesters(); //working
+//    //commandHandlerTesters();
+//    songTesters(); //working
+//    playlistTesters(); //working
+//    rupPlaylistTesters(); //working without delete song in ~Playlist
+//    //playListArrayListTesters();
+//
+//    artistMapNodeTesters(); //working
+//    ArtistMapTesters(); //working
+//    songArrayListTesters(); //working
 
     return 0;
 }
