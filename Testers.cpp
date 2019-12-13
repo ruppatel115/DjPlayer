@@ -478,34 +478,10 @@ cout<<"here\n";
 
 
     cout<<"\n-----testing discontinue-----\n\n";
-/*
-    CommandHandler* testHandlerD = new CommandHandler();
-    testHandlerD->import("../importTest.txt");
-    testHandlerD->newPlaylist("testList");
-    testHandlerD->library();
-    testHandlerD->addToPlaylist("testList","rap god", "eminem");
-    testHandlerD->addToPlaylist("testList","here comes the sun", "beatles");
-    testHandlerD->discontinue("../discontinueTest.txt");
-    testHandlerD->library();
-*/
-    //TODO
-
-
 
     CommandHandler* testHandlerDiscontinue = new CommandHandler();
-    //testHandlerDiscontinue->import("../Save.txt");
-    //printAssertEquals("[]",testHandlerDiscontinue->library(true)); //TODO is expected right?
 
     testHandlerDiscontinue->library();
-
-//    printAssertEquals("[\n"
-//                      "beatles: {lucy in thr sky with diamonds}\n"
-//                      "eminem:{rap god}\n"
-//                      "Michael Jackson: {Billie Jean}\n"
-//                      "]",testHandlerDiscontinue->library(true));
-
-    //printAssertEquals("TestPlaylist1",
-    //Playlist("TestPlaylist1").insertAtEnd(testSong2);
     testHandlerDiscontinue->listPlaylists();
     testHandlerDiscontinue->newPlaylist("playlist21");
     testHandlerDiscontinue->addToPlaylist("playlist21", "Billie Jean", "Michael Jackson");
@@ -518,7 +494,7 @@ cout<<"here\n";
 
 
     testHandlerDiscontinue->listPlaylists();
-    printAssertEquals("[\nbeatles: {lucy in thr sky with diamonds}\nMichael Jackson: {Billie Jean}\n]",testHandlerDiscontinue->library(true));
+    printAssertEquals("[\nbeatles: {lucy in thr sky with diamonds}\nMichael Jackson: {Billie Jean}\n]\n",testHandlerDiscontinue->library(true));
 
 
 
@@ -758,7 +734,7 @@ void forrestPlaylistArrayListTest(){
 
 
 int main(){
-    //forrestPlaylistTests();
+    cout <<"======RUNNING ALL TESTS IN Testers.cpp======"<<endl;
     forrestPlaylistTests();
     forrestPlaylistArrayListTest();
     songTesters(); //working
