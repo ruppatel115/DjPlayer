@@ -588,16 +588,16 @@ void forrestPlaylistTests(){
 
 
 int main(){
-    forrestPlaylistTests();
+   // forrestPlaylistTests();
     //commandHandlerTesters();
-    songTesters(); //working
-    playlistTesters(); //working
-    rupPlaylistTesters(); //working without delete song in ~Playlist
-    //playListArrayListTesters();
-
-    artistMapNodeTesters(); //working
-    ArtistMapTesters(); //working
-    songArrayListTesters(); //working
+//    songTesters(); //working
+//    playlistTesters(); //working
+    //rupPlaylistTesters(); //working without delete song in ~Playlist
+    playListArrayListTesters();
+//
+//    artistMapNodeTesters(); //working
+//    ArtistMapTesters(); //working
+//    songArrayListTesters(); //working
 
     return 0;
 }
