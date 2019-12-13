@@ -69,6 +69,8 @@ public:
      */
     virtual int getPlaycount();
 
+    virtual std::string toString();
+
 
 };
 

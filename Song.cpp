@@ -66,6 +66,12 @@ Song::Song(std::string songStr) {
     year = std::stoi(yearStr);
 }
 
+std::string Song::toString() {
+    std::string result = "";
+    result+= this->getTitle() +", "+this->getArtist()+", "+ std::to_string(this->getLength())+", "+ std::to_string(this->getYear());
+    return result;
+}
+
 /***
  * @return title of the song
  */

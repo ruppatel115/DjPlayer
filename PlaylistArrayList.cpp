@@ -184,6 +184,17 @@ int PlaylistArrayList::find(std::string playlistToFind) {
  * @return playlist that was removed
  */
 void PlaylistArrayList::removeAt(int index) {
+    if (index > currPlaylistCount-1 || index < 0 || isEmpty()){
+
+    }else{
+        delete array[index];
+        if(index != currPlaylistCount-1){
+            for(int i=index; i<currPlaylistCount-1; i++){
+                array[i] = array[i+1];
+            }
+        }
+        currPlaylistCount--;
+    }
     /*
     if (index > currPlaylistCount-1 || index < 0){
         throw std::out_of_range ("Bad index given to removeValueAt: " + std::to_string(index));
@@ -207,19 +218,6 @@ void PlaylistArrayList::removeAt(int index) {
 
     return removedPlaylist;
      */
-    if (index > currPlaylistCount-1 || index < 0 || isEmpty()){
-
-    }else{
-        delete array[index];
-        if(index != currPlaylistCount-1){
-            for(int i=index; i<currPlaylistCount-1; i++){
-                array[i] = array[i+1];
-            }
-        }
-        currPlaylistCount--;
-    }
-
-
 
 
 }

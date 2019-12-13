@@ -210,12 +210,12 @@ void CommandHandler::addToPlaylist(std::string playlist, std::string title, std:
         //std::cout << this->songLibrary->getSong(title,artist)->getTitle();
         if (songToAdd != nullptr ) {
             //cout<<"song or artist could not be found\n";
-            if(temp->findSong(title, artist)>-1) {
+            if(temp->findSong(title, artist)==-1) {
                 temp->insertAtEnd(songToAdd);
                 //cout << "artsit = " << temp->getSong(0)->getArtist() << "\n";
                 cout<< "Added song " + title + " to playlist " + playlist + "\n";
             }else{
-                cout<< "song already in playlist";
+                cout<< "song already in playlist" <<endl;
             }
         } else {
             cout<< "song or artist could not be found\n";
@@ -254,8 +254,8 @@ void CommandHandler::playNext(std::string playlist) {
         PlaylistList->removeAt(playlistIndex);
     } else {
         temp->getSong(0)->incrementPlaycount();
-        PlaylistList->removeAt(playlistIndex);
-
+        cout << temp->getSong(0)->toString();
+        temp->removeSong(0);
         //std::cout << "Next song to be played: " + temp->getSong(0) << std::endl;
         if (temp->isEmpty()) {
             PlaylistList->removeAt(playlistIndex);

@@ -481,18 +481,23 @@ printAssertEquals({"{duration = 309 seconds, songs left: rap god}\n"},testHandle
     CommandHandler* testHandler3 = new CommandHandler();
     testHandler->library();
     testHandler3->discontinue("../discontinueTest.txt");
-    printAssertEquals("idk",testHandler3->library(true));
+    printAssertEquals("[]",testHandler3->library(true)); //TODO is expected right?
 
     //printAssertEquals("TestPlaylist1",
     //Playlist("TestPlaylist1").insertAtEnd(testSong2);
     testHandler->listPlaylists();
 
 
-    //TODO
+    //TODO finish discontinue?
 
     cout<<"-----testing play next-----\n\n";
     //TODO
     CommandHandler* testHandler4 = new CommandHandler();
+    testHandler4->getSongLibrary()->put(*testSong1);
+    testHandler4->getSongLibrary()->put(*testSong2);
+    testHandler4->getSongLibrary()->put(*testSong3);
+    testHandler4->getSongLibrary()->put(*testSong4);
+
     testHandler4->newPlaylist("test5");
     testHandler4->newPlaylist("test7");
     testHandler4->addToPlaylist("test5", "rap god", "eminem");
