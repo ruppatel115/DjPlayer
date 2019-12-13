@@ -270,7 +270,8 @@ std::string Playlist::removeSong(int index) { //returns song information
         tempBefore = temp;
         temp = temp->getNext();
     }
-    tempBefore = temp->getNext();
+    tempBefore->setNext(temp->getNext());
+    duration -= temp->getSong()->getLength();
     delete temp;
     numOfSongs--;
     return "song deleted";

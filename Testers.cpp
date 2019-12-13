@@ -638,7 +638,7 @@ void forrestPlaylistTests(){
     printAssertEquals("song deleted", testlist->removeSong(2));
     printAssertEquals("out of bounds", testlist->removeSong(2));
     printAssertEquals("out of bounds", testlist->removeSong(-1));
-    printAssertEquals("{duration = 877 seconds, songs left: here comes the sun, Billie Jean}",testlist->toString());
+    printAssertEquals("{duration = 568 seconds, songs left: here comes the sun, Billie Jean}",testlist->toString());
     printAssertEquals("song deleted", testlist->removeSong(1));
 
 
@@ -731,7 +731,7 @@ int main(){
     artistMapNodeTesters(); //working
     ArtistMapTesters(); //working
     songArrayListTesters(); //working
-    commandHandlerTesters();
+    //commandHandlerTesters();
 
 
     return 0;
