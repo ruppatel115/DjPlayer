@@ -18,6 +18,7 @@ int ArtistMap::getArtistCount(){
     return artistCount;
 }
 
+
 void ArtistMap::checkNext(Song song, ArtistMapNode* node){
 
     if(node->getNext() == nullptr){
@@ -81,6 +82,31 @@ void ArtistMap::remove(string title, string artist){
         int songIndex = artistNode->getSongList()->find(title);
         if(songIndex > -1){
             artistNode->getSongList()->removeValueAt(songIndex);
+
+            if(artistNode->getSongCount() == 0){
+                cout<<"in the new code\n";
+                ArtistMapNode* tempNode = front;
+                if(front->getArtist() == artistNode->getArtist()){
+                    front = front->getNext();
+                    artistCount--;
+                    delete tempNode;
+                }else {
+                    ArtistMapNode *tempNode = front;
+
+                    ArtistMapNode *nodeBefore = front;
+                    for (int i = 0; i < artistCount; i++) {
+                        if(tempNode->getArtist() == artistNode->getArtist()){
+                            nodeBefore->setNext(artistNode->getNext());
+                            delete artistNode;
+                            artistCount--;
+                        }else{
+                            nodeBefore = tempNode;
+                            tempNode = tempNode->getNext();
+                        }
+
+                    }
+                }
+            }
         }else{
             cout<<title<<" not found from artist, "<<artist<<"\n";
         }
