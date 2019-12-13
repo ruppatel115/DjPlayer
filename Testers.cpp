@@ -581,11 +581,19 @@ void forrestPlaylistTests(){
     printAssertEquals(false,testlist->getSong(-1));
 
     cout<<"-----testing remove song -----\n";
-    printAssertEquals("song deleted", testlist->removeSong(2));
+    cout<<testlist->toString()<<endl;
+
+    printAssertEquals("song deleted", testlist->removeSong(0));
+    cout<<testlist->toString()<<endl;
+    //printAssertEquals("song deleted", testlist->removeSong(2));
     printAssertEquals("out of bounds", testlist->removeSong(2));
     printAssertEquals("out of bounds", testlist->removeSong(-1));
-    printAssertEquals("{duration = 568 seconds, songs left: here comes the sun, Billie Jean}",testlist->toString());
+    printAssertEquals("{duration = 665 seconds, songs left: Billie Jean, rap god}",testlist->toString());
     printAssertEquals("song deleted", testlist->removeSong(1));
+    printAssertEquals("song deleted", testlist->removeSong(0));
+    printAssertEquals("{}",testlist->toString());
+
+
 
     std::cout << "======DONE======" <<endl;
 }
@@ -655,13 +663,13 @@ void forrestPlaylistArrayListTest(){
 
 
 int main(){
-//    forrestPlaylistTests();
+    forrestPlaylistTests();
 //    forrestPlaylistArrayListTest();
 //   songTesters(); //working
 //    artistMapNodeTesters(); //working
 //    ArtistMapTesters(); //working
 //    songArrayListTesters(); //working
-    commandHandlerTesters();
+ //   commandHandlerTesters();
 
 
     return 0;
