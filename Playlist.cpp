@@ -126,7 +126,7 @@ std::string Playlist::toString() { //TODO this prints an extra comma with multip
     if (isEmpty()){
         return "{}";
     }
-    std::string result = "{ duration = ";
+    std::string result = "{duration = ";
     result+= std::to_string(duration);
     result+= " seconds, songs left: ";
 

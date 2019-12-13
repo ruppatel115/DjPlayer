@@ -546,7 +546,7 @@ void forrestPlaylistTests(){
     testlist->insertAtEnd(testSong3);
     printAssertEquals("rap god",testlist->getFront()->getNext()->getNext()->getSong()->getTitle());
     cout<<"-----testing to string-----\n";
-    printAssertEquals("{0: here comes the sun (Artist: beatles; Length: 212 secs; Year: 1967), 1: Billie Jean (Artist: Michael Jackson; Length: 356 secs; Year: 1980), 2: rap god (Artist: eminem; Length: 309 secs; Year: 2013)}",testlist->toString());
+    printAssertEquals("{duration = 877 seconds, songs left: here comes the sun, Billie Jean, rap god}",testlist->toString());
     Playlist* testlist2 = new Playlist("testList1");
     printAssertEquals("{}",testlist2->toString());
     cout<<"-----testing calc duration-----\n";
@@ -575,12 +575,10 @@ void forrestPlaylistTests(){
     printAssertEquals("song deleted", testlist->removeSong(2));
     printAssertEquals("out of bounds", testlist->removeSong(2));
     printAssertEquals("out of bounds", testlist->removeSong(-1));
-    printAssertEquals("{0: here comes the sun (Artist: beatles; Length: 212 secs; Year: 1967), 1: Billie Jean (Artist: Michael Jackson; Length: 356 secs; Year: 1980)}",testlist->toString());
+    printAssertEquals("{duration = 877 seconds, songs left: here comes the sun, Billie Jean}",testlist->toString());
     printAssertEquals("song deleted", testlist->removeSong(1));
-
-
-
-
+    printAssertEquals("song deleted", testlist->removeSong(0));
+    printAssertEquals("{}",testlist->toString());
 
 
     std::cout << "======DONE======" <<endl;
@@ -596,15 +594,23 @@ void forrestPlaylistTests(){
 
 
 }
+void forrestPlaylistArrayListTest(){
+    std::cout << "======forrest playlsit tests======" <<endl;
+
+
+    std::cout << "======DONE======" <<endl;
+
+}
 
 
 int main(){
     forrestPlaylistTests();
+    forrestPlaylistArrayListTest();
 //    //commandHandlerTesters();
 //    songTesters(); //working
 //    playlistTesters(); //working
 //    rupPlaylistTesters(); //working without delete song in ~Playlist
-//    //playListArrayListTesters();
+    playListArrayListTesters();
 //
 //    artistMapNodeTesters(); //working
 //    ArtistMapTesters(); //working
