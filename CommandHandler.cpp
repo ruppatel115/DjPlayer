@@ -141,9 +141,9 @@ void CommandHandler::discontinue(std::string fileName){
                 Song tempSong(strInput);
 
                 for(int i=0; i<PlaylistList->playlistCount();i++){
-                    int index = PlaylistList->getValueAt(i).findSong(tempSong.getTitle(),tempSong.getArtist());
+                    int index = PlaylistList->getValueAt(i)->findSong(tempSong.getTitle(),tempSong.getArtist());
                     if(index>-1){
-                        PlaylistList->getValueAt(i).removeSong(index);
+                        PlaylistList->getValueAt(i)->removeSong(index);
                     }
                 }
 
@@ -167,17 +167,17 @@ void CommandHandler::listPlaylists(){
 void CommandHandler::playlist(std::string name){
     int index = PlaylistList->find(name);
     if(index >=0) {
-        Playlist temp = PlaylistList->getValueAt(index);
+        Playlist* temp = PlaylistList->getValueAt(index);
         //TODO something wrong in here
 
         std::string songList="";
-        std::cout <<"item count = "<<temp.getNumSongs() << std::endl;
+        std::cout <<"item count = "<<temp->getNumSongs() << std::endl;
 
-        for(int i=0; i<temp.getNumSongs();i++){
+        for(int i=0; i<temp->getNumSongs();i++){
 
-            std::string title=temp.getSong(i)->getTitle();
-            std::string artist=temp.getSong(i)->getArtist();
-            int duration =temp.getSong(i)->getLength();
+            std::string title=temp->getSong(i)->getTitle();
+            std::string artist=temp->getSong(i)->getArtist();
+            int duration =temp->getSong(i)->getLength();
             songList +=  title + ", " + artist + ", "+ std::to_string(duration); ;
 
         }
@@ -197,12 +197,12 @@ void CommandHandler::playlist(std::string name){
  */
 void CommandHandler::newPlaylist(std::string name){
     for(int i=0;i<numOfPlaylists;i++){
-        if(name==PlaylistList->getValueAt(i).getTitle()){
+        if(name==PlaylistList->getValueAt(i)->getTitle()){
             throw std::invalid_argument("Playlist already exists");
         }
     }
     Playlist *newPlaylist = new Playlist(name);
-    PlaylistList->insertAtEnd(*newPlaylist);
+    PlaylistList->insertAtEnd(newPlaylist);
 
     std::cout << "Created new playlist: "+ name << std::endl;
     std::cout << PlaylistList->playlistCount() << std::endl;
@@ -213,13 +213,13 @@ void CommandHandler::addToPlaylist(std::string playlist, std::string title, std:
     //std::cout <<"at the begining "<<artist<< std::endl;
 
     int index = PlaylistList->find(playlist);
-        Playlist temp = PlaylistList->getValueAt(index);
+        Playlist* temp = PlaylistList->getValueAt(index);
         Song *songToAdd = this->songLibrary->getSong(title, artist);
         //std::cout << this->songLibrary->getSong(title,artist)->getTitle();
         if (songToAdd != nullptr) {
             //cout<<"song or artist could not be found\n"
             //std::cout <<"what the fuck "<<songToAdd->getArtist()<< std::endl;
-            temp.insertAtEnd(songToAdd);
+            temp->insertAtEnd(songToAdd);
             //cout<<"artsit = "<<temp.getSong(0).getArtist()<<"\n";
             std::cout << "Added new song " + title  + "." << std::endl;
 
@@ -231,10 +231,10 @@ void CommandHandler::addToPlaylist(std::string playlist, std::string title, std:
 
 void CommandHandler::removeFromPlaylist(std::string playlist, std::string title, std::string artist){
     int playlistIndex = PlaylistList->find(playlist);
-    Playlist temp = PlaylistList->getValueAt(playlistIndex);
-    int songIndex = temp.findSong(title, artist);
+    Playlist* temp = PlaylistList->getValueAt(playlistIndex);
+    int songIndex = temp->findSong(title, artist);
     if (songIndex != -1) {
-        temp.removeSong(songIndex);
+        temp->removeSong(songIndex);
         std::cout << "Removed song "+title+"." << std::endl;
     }
     else{
@@ -247,10 +247,10 @@ void CommandHandler::removeFromPlaylist(std::string playlist, std::string title,
 
 void CommandHandler::playNext(std::string playlist) {
     int playlistIndex = PlaylistList->find(playlist);
-    Playlist temp = PlaylistList->getValueAt(playlistIndex);
-    temp.getSong(0)->incrementPlaycount();
-    std::cout << "Next song to be played: " + temp.removeSong(0) << std::endl;
-    if (temp.isEmpty()){
+    Playlist* temp = PlaylistList->getValueAt(playlistIndex);
+    temp->getSong(0)->incrementPlaycount();
+    std::cout << "Next song to be played: " + temp->removeSong(0) << std::endl;
+    if (temp->isEmpty()){
         PlaylistList->removeAt(playlistIndex);
     }
 
@@ -280,10 +280,10 @@ void CommandHandler::quit(){
     std::ofstream outf2(playlistFile);
     if (outf2){
         for(int i=0; i<PlaylistList->playlistCount();i++){
-            Playlist holder = PlaylistList->getValueAt(i);
-            outf2<<"*"<<holder.getTitle()+"\n";
-            for(int j=0; j<holder.getNumSongs();j++){
-                song = holder.getSong(j);
+            Playlist* holder = PlaylistList->getValueAt(i);
+            outf2<<"*"<<holder->getTitle()+"\n";
+            for(int j=0; j<holder->getNumSongs();j++){
+                song = holder->getSong(j);
                 outf2 << song->getTitle()+", "+song->getArtist()+", "+std::to_string(song->getLength())+", "+std::to_string(song->getYear())+'\n';
             }
         }
@@ -304,14 +304,14 @@ void CommandHandler::quit(){
  */
 void CommandHandler::createRandomPlaylist(int playDuration, std::string playlistName) {
     for(int i=0;i<numOfPlaylists;i++){
-        if(playlistName==PlaylistList->getValueAt(i).getTitle()){
+        if(playlistName==PlaylistList->getValueAt(i)->getTitle()){
             throw std::invalid_argument("Playlist already exists");
         }
     }
     srand(time(NULL));
 
     Playlist *newRandPlaylist = new Playlist(playlistName);
-    PlaylistList->insertAtEnd(*newRandPlaylist);
+    PlaylistList->insertAtEnd(newRandPlaylist);
 
     int artistCount = songLibrary->getArtistCount();
     if (artistCount <= 0){

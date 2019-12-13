@@ -10,10 +10,10 @@
 #include "PlaylistList.h"
 
 
-class PlaylistArrayList : public PlaylistList {
+class PlaylistArrayList  {
 private:
     //pointer to the start of the array
-    Playlist* array;
+    Playlist** array;
     //count of the number of valid playlists currently stored in the array
     int currPlaylistCount;
     //size of the current array
@@ -48,7 +48,7 @@ public:
      * appends the new playlist to the end of the list
      * @post the list has an additional value in it, at the end
      */
-    void insertAtEnd(Playlist playlistToAdd);
+    void insertAtEnd(Playlist* playlistToAdd);
 
     /**
      * gets a playlist from the list
@@ -56,7 +56,7 @@ public:
      * @return a copy of the playlist at index
      * @throws out_of_range exception if index is invalid
      */
-    Playlist getValueAt(int index);
+    Playlist* getValueAt(int index);
 
     /**
      * gives a string representation of the current list
@@ -96,9 +96,9 @@ public:
      * @return a copy of the playlist at index
      * @throws out_of_range exception if index is invalid
      */
-    Playlist removeAt(int index);
+    Playlist* removeAt(int index);
 
-    Playlist* getArray();
+    Playlist** getArray();
 
 };
 

@@ -8,10 +8,10 @@
 
 
 PlaylistArrayList::PlaylistArrayList() { //default constructor defaults to size of 20
-    Playlist *array = new Playlist[20];
-    this->array = new Playlist[20];
+    //Playlist** array = new Playlist*[20];
+    this->array = new Playlist*[2];
     this->currPlaylistCount=0;
-    this->currCapacity=20;
+    this->currCapacity=2;
 }
 
 //Constructor
@@ -19,7 +19,7 @@ PlaylistArrayList::PlaylistArrayList(int initialCapacity) {
     if (initialCapacity < 1){
         throw std::invalid_argument ("Initial capactity must be greater than 0 ");
     }
-    this->array = new Playlist[initialCapacity];
+    this->array = new Playlist*[initialCapacity];
     this->currPlaylistCount=0;
     this->currCapacity=initialCapacity;
 
@@ -30,7 +30,7 @@ PlaylistArrayList::PlaylistArrayList(int initialCapacity) {
  */
 //Copy Constructor
 PlaylistArrayList::PlaylistArrayList(const PlaylistArrayList &arrayListToCopy) {
-    this->array = new Playlist[arrayListToCopy.currCapacity];
+    this->array = new Playlist*[arrayListToCopy.currCapacity];
     for (int i = 0; i < arrayListToCopy.currPlaylistCount; i++){
         array[i] = arrayListToCopy.array[i];
     }
@@ -46,7 +46,7 @@ PlaylistArrayList::PlaylistArrayList(const PlaylistArrayList &arrayListToCopy) {
 PlaylistArrayList& PlaylistArrayList::operator=(PlaylistArrayList *arrayListToCopy) {
     this->currCapacity = arrayListToCopy->currCapacity;
     this->currPlaylistCount = arrayListToCopy->currPlaylistCount;
-    this->array = new Playlist[currCapacity];
+    this->array = new Playlist*[currCapacity];
     for(int i=0; i<currPlaylistCount; i++) {
         this->array[i] = arrayListToCopy->array[i];
     }
@@ -64,7 +64,7 @@ PlaylistArrayList::~PlaylistArrayList() {
  */
 void PlaylistArrayList::doubleCapacity() {
     currCapacity = currCapacity*2;
-    Playlist* holder = new Playlist[currCapacity];
+    Playlist** holder = new Playlist*[currCapacity];
     for(int i=0; i<currPlaylistCount-1; i++){
         holder[i] = this->array[i];
     }
@@ -78,7 +78,7 @@ void PlaylistArrayList::doubleCapacity() {
  * @param playlistToAdd
  * count should be increased by 1
  */
-void PlaylistArrayList::insertAtEnd(Playlist playlistToAdd) {
+void PlaylistArrayList::insertAtEnd(Playlist* playlistToAdd) {
     if (currPlaylistCount>=currCapacity) {      //if the arraylist is full
         doubleCapacity();
     }
@@ -92,7 +92,7 @@ void PlaylistArrayList::insertAtEnd(Playlist playlistToAdd) {
  * @param index
  * @return playlist at specified index
  */
-Playlist PlaylistArrayList::getValueAt(int index) {
+Playlist* PlaylistArrayList::getValueAt(int index) {
     std::cout<<"index = "<<index<<" current count = "<<currPlaylistCount<<"\n";
     if (index > currPlaylistCount-1 || index < 0 || isEmpty()){
         throw std::out_of_range ("Bad index given to getValueAt: " + std::to_string(index));
@@ -110,19 +110,19 @@ std::string PlaylistArrayList::toString() { //Prints a list of the names of all 
     }
     std::string result = "{";
     for (int i = 0; i < playlistCount(); i++) {
-        if (!array[i].isEmpty()) {
+        if (!array[i]->isEmpty()) {
             if (i < currPlaylistCount-1) {
-                result += array[i].getTitle() + "(duration: " + std::to_string(array[i].getDuration()) + "), ";
+                result += array[i]->getTitle() + "(duration: " + std::to_string(array[i]->getDuration()) + "), ";
             } else { //No comma at the end
-                result += array[i].getTitle() + "(duration: " + std::to_string(array[i].getDuration()) + ")";
+                result += array[i]->getTitle() + "(duration: " + std::to_string(array[i]->getDuration()) + ")";
             }
         }
         else{ //if the playlist at the current index of the arraylist is empty, do this instead
             if (i < currPlaylistCount - 1) {
-                result += array[i].getTitle() + " (empty playlist), ";
+                result += array[i]->getTitle() + " (empty playlist), ";
             }
             else{
-                result += array[i].getTitle() + " (empty playlist)";
+                result += array[i]->getTitle() + " (empty playlist)";
             }
         }
     }
@@ -158,7 +158,7 @@ void PlaylistArrayList::clearList() {
  */
 int PlaylistArrayList::find(std::string playlistToFind) {
     for (int i = 0; i < currPlaylistCount; i++){
-        if (array[i].getTitle() == playlistToFind){
+        if (array[i]->getTitle() == playlistToFind){
             return i;
         }
     }
@@ -169,16 +169,17 @@ int PlaylistArrayList::find(std::string playlistToFind) {
  *@param index at location of where we  want to remove the specified playlist
  * @return playlist that was removed
  */
-Playlist PlaylistArrayList::removeAt(int index) {
+Playlist* PlaylistArrayList::removeAt(int index) {
+    /*
     if (index > currPlaylistCount-1 || index < 0){
         throw std::out_of_range ("Bad index given to removeValueAt: " + std::to_string(index));
     }
-    Playlist removedPlaylist = array[index];
+    Playlist* removedPlaylist = array[index];
 
     Playlist * tempArr = new Playlist[currCapacity];
     int j = 0;
     for (int i = index+1;i<currPlaylistCount;i++){
-        tempArr[j] = array[i];
+        tempArr[j] = array+i;
         j++;
     }
 
@@ -191,8 +192,11 @@ Playlist PlaylistArrayList::removeAt(int index) {
     }
 
     return removedPlaylist;
+     */
+    return nullptr;
+
 }
-Playlist* PlaylistArrayList::getArray() {
+Playlist** PlaylistArrayList::getArray() {
     return array;
 }
 

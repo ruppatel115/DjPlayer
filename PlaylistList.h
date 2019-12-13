@@ -35,7 +35,7 @@ public:
      * @return a copy of the playlist at index
      * @throws out_of_range exception if index is invalid
      */
-    virtual Playlist getValueAt(int index)=0;
+    virtual Playlist* getValueAt(int index)=0;
 
     /**
      * gives a string representation of the current list
@@ -75,7 +75,7 @@ public:
      * @return a copy of the playlist at index
      * @throws out_of_range exception if index is invalid
      */
-    virtual Playlist removeAt(int index)=0;
+    virtual Playlist* removeAt(int index)=0;
 
 };
 
