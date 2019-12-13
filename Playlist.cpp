@@ -277,21 +277,33 @@ Song* Playlist::getSong(int index){
     if (this->isEmpty()){
         throw std::out_of_range("playlist is empty");
     }
-
-    LinkedNode *temp = front;
-    int i = 0;
-    while (temp->getNext() != nullptr) {
-        if (i == index) {
-            return temp->getSong();
-        }
-        else {
-            temp = temp->getNext();
-        }
+    if(index >= numOfSongs || index <0){
+        return nullptr;
     }
+    LinkedNode* temp = front;
+
+    for(int i=0; i<index; i++){
+        temp = temp->getNext();
+    }
+    return temp->getSong();
+//    LinkedNode *temp = front;
+//    int i = 0;
+//    while (temp->getNext() != nullptr) {
+//        if (i == index) {
+//            return temp->getSong();
+//        }
+//        else {
+//            temp = temp->getNext();
+//            i++;
+//        }
+//    }
     return temp->getSong();
 }
 
 
+LinkedNode* Playlist::getFront() {
+    return front;
+}
 
 
 

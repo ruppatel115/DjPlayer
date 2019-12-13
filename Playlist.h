@@ -91,6 +91,8 @@ public:
  */
     virtual Song* getSong(int index);
 
+    virtual LinkedNode* getFront();
+
 };
 
 

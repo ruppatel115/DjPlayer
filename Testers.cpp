@@ -523,10 +523,72 @@ void commandHandlerTesters(){
 
     std::cout << "======DONE======" <<endl;
 
-};
+}
+void forrestPlaylistTests(){
+    string song1 = "here comes the sun, beatles, 3:32, 1967";
+    string song2 = "Billie Jean, Michael Jackson, 5:56, 1980";
+    string song3 = "rap god, eminem, 5:09, 2013";
+    string song4 = "lucy in thr sky with diamonds, beatles, 3:45, 1967";
+
+    Song* testSong1 = new Song(song1);
+    Song* testSong2 = new Song(song2);
+    Song* testSong3 = new Song(song3);
+    Song* testSong4 = new Song(song4);
+    std::cout << "======forrest playlsit tests======" <<endl;
+    cout<<"-----testing insert at end-----\n";
+
+    Playlist* testlist = new Playlist("testList1");
+    testlist->insertAtEnd(testSong1);
+    printAssertEquals("here comes the sun",testlist->getFront()->getSong()->getTitle());
+    testlist->insertAtEnd(testSong2);
+    printAssertEquals("here comes the sun",testlist->getFront()->getSong()->getTitle());
+    printAssertEquals("Billie Jean",testlist->getFront()->getNext()->getSong()->getTitle());
+    testlist->insertAtEnd(testSong3);
+    printAssertEquals("rap god",testlist->getFront()->getNext()->getNext()->getSong()->getTitle());
+    cout<<"-----testing to string-----\n";
+    printAssertEquals("{0: here comes the sun (Artist: beatles; Length: 212 secs; Year: 1967), 1: Billie Jean (Artist: Michael Jackson; Length: 356 secs; Year: 1980), 2: rap god (Artist: eminem; Length: 309 secs; Year: 2013)}",testlist->toString());
+    Playlist* testlist2 = new Playlist("testList1");
+    printAssertEquals("{}",testlist2->toString());
+    cout<<"-----testing calc duration-----\n";
+    printAssertEquals(0,testlist2->getDuration());
+    printAssertEquals(877,testlist->getDuration());
+    cout<<"-----testing find song-----\n";
+    printAssertEquals(0,testlist->findSong("here comes the sun", "beatles"));
+    printAssertEquals(1,testlist->findSong("Billie Jean", "Michael Jackson"));
+    printAssertEquals(2,testlist->findSong("rap god", "eminem"));
+    printAssertEquals(-1,testlist->findSong("rap god", "fake artist"));
+    printAssertEquals(-1,testlist->findSong("fake song ", "eminem"));
+    printAssertEquals(-1,testlist2->findSong("here comes the sun", "beatles"));
+
+    cout<<"-----testing get number of songs-----\n";
+    printAssertEquals(0,testlist2->getNumSongs());
+    printAssertEquals(3,testlist->getNumSongs());
+
+    cout<<"-----testing get song-----\n";
+    printAssertEquals("rap god",testlist->getSong(2)->getTitle());
+    printAssertEquals("Billie Jean",testlist->getSong(1)->getTitle());
+    printAssertEquals("here comes the sun",testlist->getSong(0)->getTitle());
+    printAssertEquals(nullptr,testlist->getSong(4));
+    printAssertEquals(nullptr,testlist->getSong(-1));
+
+
+    std::cout << "======DONE======" <<endl;
+
+
+
+
+
+
+
+
+
+
+
+}
 
 
 int main(){
+    forrestPlaylistTests();
     //commandHandlerTesters();
     songTesters(); //working
     playlistTesters(); //working
