@@ -28,7 +28,6 @@ public:
     void import(std::string fileName);
     void discontinue(std::string fileName);
 
-
     void listPlaylists();
     /**
     * Displays all songs left in the given playlist and its duration
@@ -41,12 +40,11 @@ public:
     */
     void newPlaylist(std::string  name);
 
-    void addToPlaylist(std::string  playlist, std::string  title, std::string  artist);
+    void addToPlaylist(std::string  playlist, std::string title, std::string artist);
     void removeFromPlaylist(std::string playlist, std::string title, std::string artist);
     void playNext(std::string playlist);
     ArtistMap *getSongLibrary();
     void quit();
-    //void createRandomPlaylistStart(int playDuration, std::string playlistName);
 
     void createRandomPlaylist(int playDuration, std::string playlistName);
 };

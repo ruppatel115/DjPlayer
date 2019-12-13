@@ -9,9 +9,9 @@
 
 PlaylistArrayList::PlaylistArrayList() { //default constructor defaults to size of 20
     //Playlist** array = new Playlist*[20];
-    this->array = new Playlist*[2];
+    this->array = new Playlist*[20];
     this->currPlaylistCount=0;
-    this->currCapacity=2;
+    this->currCapacity=20;
 }
 
 //Constructor

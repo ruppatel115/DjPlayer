@@ -168,26 +168,10 @@ void CommandHandler::playlist(std::string name){
     int index = PlaylistList->find(name);
     if(index >=0) {
         Playlist* temp = PlaylistList->getValueAt(index);
-        //TODO something wrong in here
 
-        std::string songList="";
-        std::cout <<"item count = "<<temp->getNumSongs() << std::endl;
-
-        for(int i=0; i<temp->getNumSongs();i++){
-
-            std::string title=temp->getSong(i)->getTitle();
-            std::string artist=temp->getSong(i)->getArtist();
-            int duration =temp->getSong(i)->getLength();
-            songList +=  title + ", " + artist + ", "+ std::to_string(duration); ;
-
-        }
-        std::cout <<songList << std::endl;
-
-
-//        std::cout << "Playlist" + name + ": \nDuration: " + std::to_string(temp.calcDuration()) << std::endl;
-//        std::cout << "Songs: " + temp.toString();
+       std::cout << "Playlist " + name + ": Duration: " + std::to_string(temp->getDuration()) + "\nSongs: " + temp->toString();
     }else{
-        std::cout << "playlist not found\n";
+        std::cout << "playlist not found" <<std::endl;
     }
 }
 
@@ -205,24 +189,22 @@ void CommandHandler::newPlaylist(std::string name){
     PlaylistList->insertAtEnd(newPlaylist);
 
     std::cout << "Created new playlist: "+ name << std::endl;
-    std::cout << PlaylistList->playlistCount() << std::endl;
+    std::cout << "Total playlists: " + to_string(PlaylistList->playlistCount()) << std::endl;
 
 }
 
 void CommandHandler::addToPlaylist(std::string playlist, std::string title, std::string artist) {
-    //std::cout <<"at the begining "<<artist<< std::endl;
 
     int index = PlaylistList->find(playlist);
         Playlist* temp = PlaylistList->getValueAt(index);
         Song *songToAdd = this->songLibrary->getSong(title, artist);
-        //std::cout << this->songLibrary->getSong(title,artist)->getTitle();
         if (songToAdd != nullptr) {
-            //cout<<"song or artist could not be found\n"
-            //std::cout <<"what the fuck "<<songToAdd->getArtist()<< std::endl;
             temp->insertAtEnd(songToAdd);
-            //cout<<"artsit = "<<temp.getSong(0).getArtist()<<"\n";
             std::cout << "Added new song " + title  + "." << std::endl;
 
+        }
+        else{
+            cout << "Song not found, use add command to add new song to library" <<endl;
         }
 
 }
@@ -294,7 +276,7 @@ void CommandHandler::quit(){
     }
 
 
-    //TODO this needs to call destructor
+    //TODO this needs to call destructor?
     //delete [] songLibrary;
     //songLibrary = nullptr;
 }
