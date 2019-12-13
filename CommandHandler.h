@@ -47,19 +47,16 @@ public:
     void createRandomPlaylist(int playDuration, std::string playlistName);
     void quit();
 ////TEST VERSIONS=========================================
-    //void createRandomPlaylist(int playDuration, std::string playlistName);
     string library(bool test);
     string displayArtist(std::string  artist, bool test);
     string song(std::string artist, std::string title, bool test);
-    //void import(std::string fileName);
-    //void discontinue(std::string fileName);
 
     string listPlaylists(bool test);
     /**
     * Displays all songs left in the given playlist and its duration
     * @param name of the playlist
     */
-    string playlist(std::string  name,bool test);
+    string playlist(std::string  name, bool test);
     /**
     * Creates a new playlist with
     * @param name of the new playlist
