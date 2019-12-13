@@ -34,7 +34,7 @@ void CommandHandler::readSaveFiles(){
                     newPlaylist(playlistName.substr(1));
                 }else {
                     Song* song = new  Song(strInput);
-                    addToPlaylist(playlistName,song->getTitle(),song->getArtist());
+                    addToPlaylist(playlistName.substr(1),song->getTitle(),song->getArtist());
                 }
 
 
@@ -269,7 +269,7 @@ void CommandHandler::playNext(std::string playlist) {
 
 void CommandHandler::quit(){
     Song* song;
-    std::string fileName = "../DjPlayer/Save.txt";
+    std::string fileName = "../Save.txt";
     std::ofstream outf(fileName);
     if (outf){
         ArtistMapNode* holder = songLibrary->getFront();
