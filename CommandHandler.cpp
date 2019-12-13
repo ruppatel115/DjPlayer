@@ -195,16 +195,20 @@ void CommandHandler::newPlaylist(std::string name){
 
 void CommandHandler::addToPlaylist(std::string playlist, std::string title, std::string artist) {
 
-    int index = PlaylistList->find(playlist);
-        Playlist* temp = PlaylistList->getValueAt(index);
-        Song *songToAdd = this->songLibrary->getSong(title, artist);
-        if (songToAdd != nullptr) {
-            temp->insertAtEnd(songToAdd);
-            std::cout << "Added new song " + title  + "." << std::endl;
+        int index = PlaylistList->find(playlist);
 
-        }
-        else{
-            cout << "Song not found, use add command to add new song to library" <<endl;
+        if (index > 0) {
+            Playlist* temp = PlaylistList->getValueAt(index);
+            Song *songToAdd = this->songLibrary->getSong(title, artist);
+            if (songToAdd != nullptr) {
+                temp->insertAtEnd(songToAdd);
+                std::cout << "Added new song " + title + "." << std::endl;
+
+            } else {
+                cout << "Song not found, use add command to add new song to library" << endl;
+            }
+        } else{
+            cout << "Playlist not found, use new command to add new playlist" <<endl;
         }
 
 }
@@ -325,7 +329,7 @@ void CommandHandler::createRandomPlaylist(int playDuration, std::string playlist
        }
 
        Song* songHolder = songListHolder->getValueAt(randSongIndex);
-       //TODO getValueAt in songArrayList returns a copy not a pointer
+
        for(int i=0; i<songListHolder->itemCount();i++){
         int comparison = songHolder->getTitle().compare(songListHolder->getValueAt(i)->getTitle());
            if(comparison < 0){

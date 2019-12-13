@@ -298,9 +298,10 @@ void Playlist::insertAtEnd(Song* song) {
         temp->setNext(newNode);
         end=newNode;
 
+        duration+=end->getSong()->getLength();
 
     }
-    duration+=end->getSong()->getLength();
+
     //end->setNext(nullptr);
     numOfSongs++;
 

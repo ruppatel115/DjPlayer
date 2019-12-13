@@ -238,7 +238,7 @@ void quitTester(){
     testHandler->newPlaylist("test1");
     testHandler->addToPlaylist("test1","a hard days night", "beatles");
     testHandler->addToPlaylist("test1","Billie Jean", "Michael Jackson");
-    testHandler->playlist("test1");//TODO THIS LINE ISNT WORKING
+    testHandler->playlist("test1");//TODO THIS LINE ISNT WORKING?
     cout<<"here\n";
     testHandler->quit();
     CommandHandler* testHandler2 = new CommandHandler();

@@ -462,6 +462,8 @@ void wipeFile(string fileName){
 }
 void commandHandlerTesters(){
 
+
+
     string song1 = "here comes the sun, beatles, 3:32, 1967";
     string song2 = "Billie Jean, Michael Jackson, 5:56, 1980";
     string song3 = "rap god, eminem, 5:09, 2013";
@@ -505,6 +507,8 @@ void commandHandlerTesters(){
     // the actual get artist function was tested in artist map
     cout<<"expecting 'artist not found' actual: ";
     testHandler->displayArtist("not an artist");
+    cout << "Expected: playlist not found. Actual: ";
+    testHandler->addToPlaylist("nonexistentplaylist","blah","beep");
 
     cout<<"-----testing song (displays song with given artist and title)-----\n";
     testHandler->getSongLibrary()->removeAll();
@@ -530,7 +534,7 @@ void commandHandlerTesters(){
         testHandler->listPlaylists();
 
         testHandler->newPlaylist("listplaylist2");
-        testHandler->listPlaylists();
+        //testHandler->listPlaylists();
 
     cout<<"-----testing playlist (displays playlist with given name)-----\n";
         cout << "Expected: playlist not found. Actual: ";
