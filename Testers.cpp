@@ -681,6 +681,16 @@ void forrestPlaylistArrayListTest(){
 
     std::cout << "-----testing getValueAt------" <<endl;
     printAssertEquals("{duration = 568 seconds, songs left: here comes the sun, Billie Jean}",testArraylist->getValueAt(0)->toString());
+    printAssertEquals("{}",testArraylist->getValueAt(1)->toString());
+    printAssertEquals("{}",testArraylist->getValueAt(2)->toString());
+    printAssertEquals(nullptr,testArraylist->getValueAt(3));
+
+    std::cout << "-----testing remove at------" <<endl;
+
+
+
+
+
 
 
 

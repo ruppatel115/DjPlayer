@@ -95,7 +95,10 @@ void PlaylistArrayList::insertAtEnd(Playlist* playlistToAdd) {
  */
 Playlist* PlaylistArrayList::getValueAt(int index) {
     //std::cout<<"index = "<<index<<" current count = "<<currPlaylistCount<<"\n";
+
+
     if (index > currPlaylistCount-1 || index < 0 || isEmpty()){
+        return nullptr;
         throw std::out_of_range ("Bad index given to getValueAt: " + std::to_string(index));
     }
     return array[index];
@@ -153,6 +156,9 @@ int PlaylistArrayList::playlistCount() {
  * clears list of playlists
  */
 void PlaylistArrayList::clearList() {
+    for(int i=0;i<currPlaylistCount; i++){
+        delete array[i];
+    }
     currPlaylistCount=0;
 }
 /**
