@@ -531,7 +531,20 @@ cout<<"here\n";
 
 
     cout<<"-----testing quit-----\n\n";
+    CommandHandler* testHandler10 = new CommandHandler();
+    testHandler10->import("../importTest.txt");
+    testHandler10->newPlaylist("tester1");
+    testHandler10->newPlaylist("tester2");
+
+    testHandler10->addToPlaylist("tester1", "rap god", "eminem");
+    testHandler10->addToPlaylist("tester1", "Billie Jean", "Michael Jackson");
+    testHandler10->addToPlaylist("tester2", "lucy in thr sky with diamonds", "beatles");
+    testHandler10->listPlaylists();
+    testHandler10->quit();
+
+
     //TODO
+
 
     std::cout << "======DONE======" <<endl;
 
