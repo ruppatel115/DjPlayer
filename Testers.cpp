@@ -363,7 +363,7 @@ void commandHandlerTesters(){
     printAssertEquals("Billie Jean, by Michael Jackson, 356 seconds, came out in 1980\n",testHandler->song("Michael Jackson","Billie Jean",true));
     printAssertEquals("song not found in library\n",testHandler->song("somebody","take on me",true));
 
-    cout<<"\n-----testing newPlaylist-----\n\n";//todo should not print created playlsit if duplicate, it does not create the playlsit
+    cout<<"\n-----testing newPlaylist-----\n\n";\
     testHandler->getSongLibrary()->removeAll();
     testHandler->import("../Save.txt");
     testHandler->newPlaylist("TestPlaylist1");

@@ -187,8 +187,8 @@ void CommandHandler::newPlaylist(std::string name){
     Playlist *newPlaylist = new Playlist(name);
     PlaylistList->insertAtEnd(newPlaylist);
 
-    std::cout << "Created new playlist: "+ name << std::endl;
-    std::cout << PlaylistList->playlistCount() << std::endl;
+    //std::cout << "Created new playlist: "+ name << std::endl;
+    //std::cout << PlaylistList->playlistCount() << std::endl;
 
 }
 
