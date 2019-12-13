@@ -55,7 +55,7 @@ PlaylistArrayList& PlaylistArrayList::operator=(PlaylistArrayList *arrayListToCo
 
 //destructor
 PlaylistArrayList::~PlaylistArrayList() {
-    delete [] array; //TODO what happens to the playlists?
+    delete [] array;
 }
 
 /***

@@ -159,7 +159,6 @@ void CommandHandler::playlist(std::string name){
     int index = PlaylistList->find(name);
     if(index >=0) {
         Playlist* temp = PlaylistList->getValueAt(index);
-        //TODO something wrong in here?
 
         std::string songList="";
         std::cout <<"item count = "<<temp->getNumSongs() << std::endl;
@@ -441,7 +440,6 @@ string CommandHandler::playlist(std::string name, bool test) {
     int index = PlaylistList->find(name);
     if(index >=0) {
         Playlist* temp = PlaylistList->getValueAt(index);
-        //TODO something wrong in here
 
         std::string songList = temp->toString();
         //std::cout <<"item count = "<<temp->getNumSongs() << std::endl;

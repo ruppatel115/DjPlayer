@@ -403,7 +403,6 @@ void commandHandlerTesters(){
     //testHandler->listPlaylists();
     //testHandler->listPlaylists();
 
-    //TODO not done?
     cout<<"\n-----testing list playlists-----\n\n";
 
     CommandHandler* testHandler8 = new CommandHandler();
@@ -473,12 +472,12 @@ cout<<"here\n";
     cout<<"\n-----testing discontinue-----\n\n";
 /*
     CommandHandler* testHandlerD = new CommandHandler();
-    testHandlerD->import("../importTest.txt"); //TODO fix file path?
+    testHandlerD->import("../importTest.txt");
     testHandlerD->newPlaylist("testList");
     testHandlerD->library();
     testHandlerD->addToPlaylist("testList","rap god", "eminem");
     testHandlerD->addToPlaylist("testList","here comes the sun", "beatles");
-    testHandlerD->discontinue("../discontinueTest.txt"); //TODO file path working?
+    testHandlerD->discontinue("../discontinueTest.txt");
     testHandlerD->library();
 
     //TODO
@@ -538,9 +537,7 @@ cout<<"here\n";
     testHandler10->addToPlaylist("tester2", "lucy in thr sky with diamonds", "beatles");
     testHandler10->listPlaylists();
     testHandler10->quit();
-
-
-    //TODO
+    //TODO quit is not writing to file?
 
 
     std::cout << "======DONE======" <<endl;

@@ -19,7 +19,7 @@ private:
     void readSaveFiles();
 
 public:
-    //TODO function comments? destructor
+    //TODO function comments? destructor?
     CommandHandler();
     void help();
     void library();
