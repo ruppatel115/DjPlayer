@@ -442,12 +442,15 @@ void runInterface(){
             getline(std::cin, durationStr);
             int duration = stoi(durationStr);
             handler->createRandomPlaylist(duration, playlistTitle);
+        }else if(mystr == "quit"){
+            break;
         }
         else{
             cout << "Invalid command, type help for a list of commands." <<endl;
         }
 
     }
+    std::cout << "Saving and quitting program..." <<endl;
     handler->quit();
 
 }
