@@ -50,7 +50,7 @@ Song::Song(std::string songStr) {
     getline(splitter, yearStr, ',');
     if(yearStr.find("*") != lengthStr.npos){
         year = std::stoi(yearStr.substr(0,yearStr.rfind("*")));
-        playcount = std::stoi(yearStr.substr(yearStr.rfind(":")+1));
+        playcount = std::stoi(yearStr.substr(yearStr.rfind("*")+1));
     }else{
         year = std::stoi(yearStr);
         playcount = 0;

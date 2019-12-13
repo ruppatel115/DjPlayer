@@ -33,7 +33,13 @@ void songTesters(){
     printAssertEquals(212,testSong2->getLength());
     printAssertEquals(1967,testSong2->getYear());
     printAssertEquals(0,testSong2->getPlaycount());
-
+    string song3 = "here comes the sun, beatles, 212, 1967 *123";
+    Song* testSong3 = new Song(song3);
+    printAssertEquals("here comes the sun",testSong3->getTitle());
+    printAssertEquals("beatles",testSong3->getArtist());
+    printAssertEquals(212,testSong3->getLength());
+    printAssertEquals(1967,testSong3->getYear());
+    printAssertEquals(123,testSong3->getPlaycount());
 
     delete testSong; delete testSong2;
 
@@ -657,13 +663,13 @@ void forrestPlaylistArrayListTest(){
 
 int main(){
     cout <<"======RUNNING ALL TESTS IN Testers.cpp======"<<endl;
-    forrestPlaylistTests();
-    forrestPlaylistArrayListTest();
+//    forrestPlaylistTests();
+//    forrestPlaylistArrayListTest();
     songTesters(); //working
-    artistMapNodeTesters(); //working
-    ArtistMapTesters(); //working
-    songArrayListTesters(); //working
-    commandHandlerTesters();
+//    artistMapNodeTesters(); //working
+//    ArtistMapTesters(); //working
+//    songArrayListTesters(); //working
+//    commandHandlerTesters();
     cout <<"=======RAN ALL TESTS IN Testers.cpp======"<<endl;
 
 
