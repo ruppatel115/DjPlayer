@@ -379,11 +379,21 @@ void commandHandlerTesters(){
     //testHandler->song("eminem","rap god");
 
 
-    cout<<"\n-----testing newPlaylist-----\n\n";
+    cout<<"\n-----testing newPlaylist-----\n\n";//todo should not print created playlsit if duplicate, it does not create the playlsit
     testHandler->getSongLibrary()->removeAll();
     testHandler->import("../Save.txt");
     testHandler->newPlaylist("TestPlaylist1");
-    //printAssertEquals("TestPlaylist1", testHandler->listPlaylists());
+    printAssertEquals("[TestPlaylist1 {empty playlist}]", testHandler->listPlaylists(true));
+    testHandler->newPlaylist("TestPlaylist1");
+    printAssertEquals("[TestPlaylist1 {empty playlist}]", testHandler->listPlaylists(true));
+    testHandler->newPlaylist("TestPlaylist2");
+    printAssertEquals("[TestPlaylist1 {empty playlist}, TestPlaylist2 {empty playlist}]", testHandler->listPlaylists(true));
+       testHandler->newPlaylist("TestPlaylist2");
+    printAssertEquals("[TestPlaylist1 {empty playlist}, TestPlaylist2 {empty playlist}]", testHandler->listPlaylists(true));
+    testHandler->newPlaylist("TestPlaylist3");
+    printAssertEquals("[TestPlaylist1 {empty playlist}, TestPlaylist2 {empty playlist}, TestPlaylist3 {empty playlist}]", testHandler->listPlaylists(true));
+
+
     //TODO not done?
 
     cout<<"\n-----testing discontinue-----\n\n";
