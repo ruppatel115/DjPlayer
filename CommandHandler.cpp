@@ -494,11 +494,11 @@ string CommandHandler::removeFromPlaylist(std::string playlist, std::string titl
     int songIndex = temp->findSong(title, artist);
     if (songIndex != -1) {
         temp->removeSong(songIndex);
-        std::cout << "Removed song "+title+"." << std::endl;
+        return "Removed song "+title+".";
 
     }
     else{
-        cout << "No such song "+title+" in playlist or playlist is empty" <<endl;
+        return "No such song "+title+" in playlist or playlist is empty";
     }
 
 
