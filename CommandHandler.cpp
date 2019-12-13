@@ -307,6 +307,10 @@ void CommandHandler::createRandomPlaylist(int playDuration, std::string playlist
             throw std::invalid_argument("Playlist already exists");
         }
     }
+    if (playDuration <= 0){
+        throw std::invalid_argument("playDuration must be greater than 0");
+    }
+
     srand(time(NULL));
 
     Playlist *newRandPlaylist = new Playlist(playlistName);
@@ -342,7 +346,6 @@ void CommandHandler::createRandomPlaylist(int playDuration, std::string playlist
        }
 
        Song* songHolder = songListHolder->getValueAt(randSongIndex);
-       //TODO getValueAt in songArrayList returns a copy not a pointer
        for(int i=0; i<songListHolder->itemCount();i++){
         int comparison = songHolder->getTitle().compare(songListHolder->getValueAt(i)->getTitle());
            if(comparison < 0){
@@ -405,7 +408,7 @@ string CommandHandler::song(std::string artist, std::string title, bool test){
     }
      */
 }
-string CommandHandler::listPlaylists(bool test){
-    std::cout << PlaylistList->toString() <<std::endl;
+std::string CommandHandler::listPlaylists(bool test){
+    return PlaylistList->toString();
 
 }
