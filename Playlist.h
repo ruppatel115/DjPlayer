@@ -25,8 +25,8 @@ private:
     int duration;
 
 public:
-    Playlist(const Playlist& playlistToCopy);
-    Playlist& operator=(const Playlist* playlistToCopy);
+    //Playlist(const Playlist& playlistToCopy);
+    //Playlist& operator=(const Playlist* playlistToCopy);
     /**
     * Default Constructor
     * Initializes front and end to nullptr, title of playlist to 'Untitled Playlist', numOfSongs and Duration to 0

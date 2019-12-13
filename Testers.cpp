@@ -494,6 +494,8 @@ void commandHandlerTesters(){
         outf << testSong4->getTitle()+", "+testSong4->getArtist()+", "+std::to_string(testSong4->getLength())+", "+std::to_string(testSong4->getYear())+'\n';
         outf << testSong4->getTitle()+", "+testSong4->getArtist()+", "+std::to_string(testSong4->getLength())+", "+std::to_string(testSong4->getYear())+'\n';
 
+
+
         outf.close();
     }else{
         cout<<"file "<<"Save.txt"<<" cant be found \n";
@@ -575,30 +577,42 @@ void forrestPlaylistTests(){
     printAssertEquals("out of bounds", testlist->removeSong(-1));
     printAssertEquals("{duration = 877 seconds, songs left: here comes the sun, Billie Jean}",testlist->toString());
     printAssertEquals("song deleted", testlist->removeSong(1));
-    printAssertEquals("song deleted", testlist->removeSong(0));
-    printAssertEquals("{}",testlist->toString());
+
+
+
+
 
 
     std::cout << "======DONE======" <<endl;
 
+
+
+
+
+
+
+
+
+
+
 }
-void forrestPlaylistArrayListTest(){
-    std::cout << "======forrest playlsit tests======" <<endl;
-
-
-    std::cout << "======DONE======" <<endl;
-
-}
+//void forrestPlaylistArrayListTest(){
+//    std::cout << "======forrest playlsit tests======" <<endl;
+//
+//
+//    std::cout << "======DONE======" <<endl;
+//
+//}
 
 
 int main(){
     forrestPlaylistTests();
-    forrestPlaylistArrayListTest();
+    //forrestPlaylistArrayListTest();
 //    //commandHandlerTesters();
 //    songTesters(); //working
 //    playlistTesters(); //working
 //    rupPlaylistTesters(); //working without delete song in ~Playlist
-    playListArrayListTesters();
+   // playListArrayListTesters();
 //
 //    artistMapNodeTesters(); //working
 //    ArtistMapTesters(); //working
