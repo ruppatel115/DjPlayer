@@ -73,7 +73,7 @@ Song::Song(std::string songStr) {
 
 std::string Song::toString() {
     std::string result = "";
-    result+= this->getTitle() +", "+this->getArtist()+", "+ std::to_string(this->getLength())+", "+ std::to_string(this->getYear())+" *"+std::to_string(playcount);
+    result+= this->getTitle() +", by "+this->getArtist()+", "+ std::to_string(this->getLength())+" seconds long, year: "+ std::to_string(this->getYear())+", playCount: "+std::to_string(playcount);
     return result;
 }
 
