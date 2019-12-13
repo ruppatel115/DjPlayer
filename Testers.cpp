@@ -110,7 +110,6 @@ void artistMapNodeTesters(){
 
     Song* testSong1 = new Song(song1);
     Song* testSong2 = new Song(song2);
-    Song* testSong3 = new Song(song3);
     ArtistMapNode* testNode = new ArtistMapNode(*testSong1);
     cout<<"-----testing toString and i guess get song list------\n";
     printAssertEquals("{here comes the sun}",testNode->toString());
@@ -129,6 +128,8 @@ void artistMapNodeTesters(){
     ArtistMapNode* testNode2 = new ArtistMapNode(*testSong2);
     testNode->setNext(testNode2);
     printAssertEquals("Michael Jackson",testNode->getNext()->getArtist());
+
+    delete testSong1; delete testSong2;
 
     std::cout << "======DONE======" <<endl;
 
@@ -431,22 +432,9 @@ cout<<"here\n";
     printAssertEquals("[tester1 {empty playlist}, tester2 {empty playlist}]",testHandler9->listPlaylists(true));
     testHandler9->addToPlaylist("tester1", "rap god", "eminem");
     testHandler9->addToPlaylist("tester1", "Billie Jean", "Michael Jackson");
-    testHandler9->listPlaylists();
     printAssertEquals("[tester1 {duration = 665 seconds, songs left: rap god, Billie Jean}, tester2 {empty playlist}]",testHandler9->listPlaylists(true));
-    testHandler9->listPlaylists();//TODO this whre the problem is wont remove first song
-
     printAssertEquals("Removed song rap god.", testHandler9->removeFromPlaylist("tester1", "rap god", "eminem", true));
     printAssertEquals("[tester1 {duration = 356 seconds, songs left: Billie Jean}, tester2 {empty playlist}]",testHandler9->listPlaylists(true));
-
-    //testHandler9->listPlaylists();//TODO this whre the problem is wont remove first song
-
-
-
-
-
-
-
-
 
 
     cout<<"\n-----testing discontinue-----\n\n";
@@ -469,9 +457,6 @@ cout<<"here\n";
     printAssertEquals("[\nbeatles: {lucy in thr sky with diamonds}\nMichael Jackson: {Billie Jean}\n]\n",testHandlerDiscontinue->library(true));
 
 
-
-
-    //TODO finish discontinue?
 
     cout<<"-----testing play next-----\n\n";
     CommandHandler* testHandler4 = new CommandHandler();
@@ -499,7 +484,7 @@ cout<<"here\n";
     printAssertEquals("[]",testHandler4->listPlaylists(true));
 
 
-    cout<<"-----testing quit-----\n\n";
+    cout<<"-----testing quit-----\n";
     CommandHandler* testHandler10 = new CommandHandler();
     //testHandler10->import("../importTest.txt");
     testHandler10->newPlaylist("tester1");
@@ -515,13 +500,10 @@ cout<<"here\n";
     printAssertEquals(testHandler10->listPlaylists(true), testHandler11->listPlaylists(true));
     printAssertEquals(testHandler10->library(true), testHandler11->library(true));
 
-   // testHandler11->library();
 
-
-
-    //TODO
-
-
+    delete testSong1; delete testSong2; delete testSong3; delete testSong4;
+    delete testHandler; delete testHandler4; delete testHandler8; delete testHandler9; delete testHandler10;
+    delete testHandler11; delete testHandlerDiscontinue; delete testHandlerP; delete testHandlerRand;
     std::cout << "======DONE======" <<endl;
 
 }
@@ -534,7 +516,6 @@ void forrestPlaylistTests(){
     Song* testSong1 = new Song(song1);
     Song* testSong2 = new Song(song2);
     Song* testSong3 = new Song(song3);
-    Song* testSong4 = new Song(song4);
     std::cout << "======forrest playlsit tests======\n\n" <<endl;
     cout<<"-----testing insert at end-----\n";
 
@@ -585,6 +566,7 @@ void forrestPlaylistTests(){
     printAssertEquals("song deleted", testlist->removeSong(0));
     printAssertEquals("{}",testlist->toString());
 
+    delete testSong1; delete testSong2; delete testSong3;
 
     std::cout << "======DONE======" <<endl;
 
@@ -598,20 +580,17 @@ void forrestPlaylistArrayListTest(){
 
     Song* testSong1 = new Song(song1);
     Song* testSong2 = new Song(song2);
-    Song* testSong3 = new Song(song3);
-    Song* testSong4 = new Song(song4);
     std::cout << "======forrest playlsit arraylist tests======" <<endl;
     PlaylistArrayList* testArraylist = new PlaylistArrayList();
     cout<<"-----testing insert at end-----\n";
     Playlist* testPlaylist = new Playlist("testlist1");
     testPlaylist->insertAtEnd(testSong1);
-    //cout<<testPlaylist->toString()<<endl;
 
     Playlist* testPlaylist2 = new Playlist("testlist2");
     Playlist* testPlaylist3 = new Playlist("testlist3");
 
     testArraylist->insertAtEnd(testPlaylist);
-    //cout<<testPlaylist->toString()<<endl;
+
     printAssertEquals("{duration = 212 seconds, songs left: here comes the sun}",testArraylist->getArray()[0]->toString());
     testArraylist->insertAtEnd(testPlaylist2);
     printAssertEquals("{duration = 212 seconds, songs left: here comes the sun}",testArraylist->getArray()[0]->toString());
@@ -620,9 +599,6 @@ void forrestPlaylistArrayListTest(){
     printAssertEquals("{duration = 568 seconds, songs left: here comes the sun, Billie Jean}",testArraylist->getArray()[0]->toString());
     testArraylist->insertAtEnd(testPlaylist3);
     printAssertEquals("{}",testArraylist->getArray()[2]->toString());
-    //cout<<testArraylist->getArray()[2]->getTitle();
-
-
 
     std::cout << "-----testing tostring------" <<endl;
     PlaylistArrayList* testArraylist2 = new PlaylistArrayList();
@@ -649,6 +625,7 @@ void forrestPlaylistArrayListTest(){
     std::cout << "-----testing clear list------" <<endl;
     testArraylist->clearList();
     printAssertEquals("[]",testArraylist->toString());
+    delete testSong1; delete testSong2;
 
     std::cout << "======DONE======" <<endl;
 
