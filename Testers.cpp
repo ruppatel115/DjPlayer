@@ -409,7 +409,7 @@ void playListArrayListTesters(){
 
 
     std::cout<<listOfPlaylists.toString() <<std::endl;
-
+    cout << "playlist5 toString test (it has two songs in it)" <<endl;
     cout << playlist5->toString() <<endl;
 
 
@@ -493,8 +493,6 @@ void commandHandlerTesters(){
         outf << testSong3->getTitle()+", "+testSong3->getArtist()+", "+std::to_string(testSong3->getLength())+", "+std::to_string(testSong3->getYear())+'\n';
         outf << testSong4->getTitle()+", "+testSong4->getArtist()+", "+std::to_string(testSong4->getLength())+", "+std::to_string(testSong4->getYear())+'\n';
         outf << testSong4->getTitle()+", "+testSong4->getArtist()+", "+std::to_string(testSong4->getLength())+", "+std::to_string(testSong4->getYear())+'\n';
-
-
 
         outf.close();
     }else{
@@ -582,16 +580,6 @@ void forrestPlaylistTests(){
 
 
     std::cout << "======DONE======" <<endl;
-
-
-
-
-
-
-
-
-
-
 
 }
 void forrestPlaylistArrayListTest(){

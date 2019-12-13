@@ -34,36 +34,36 @@ Playlist::Playlist(std::string titleIn) {
  * @param playlistToCopy
  */
 
-Playlist::Playlist(const Playlist& playlistToCopy){
-    Playlist playlist(title);
-
-    playlist.title=playlistToCopy.title;
-    duration=playlistToCopy.duration;
-    for(int i=0;i<numOfSongs;i++){
-        playlist.insertAtEnd(playlistToCopy.front->getSong());
-    }
-}
+//Playlist::Playlist(const Playlist& playlistToCopy){
+//    Playlist playlist(title);
+//
+//    playlist.title=playlistToCopy.title;
+//    duration=playlistToCopy.duration;
+//    for(int i=0;i<numOfSongs;i++){
+//        playlist.insertAtEnd(playlistToCopy.front->getSong());
+//    }
+//}
 /***
  * Assignment operator
  * @param playlistToCopy
  * @return
  */
-Playlist& Playlist:: operator=(const Playlist* playlistToCopy){
-    Playlist playlist(title);
-    if(this != playlistToCopy) {
-        while (front != nullptr) {
-            LinkedNode *temp = front;
-            Song *song = temp->getSong();
-            front = front->getNext();
-            delete song;
-            delete temp;
-        }
-        title = playlistToCopy->title;
-        duration = playlistToCopy->duration;
-    }
-
-    return *this;
-}
+//Playlist& Playlist:: operator=(const Playlist* playlistToCopy){
+//    Playlist playlist(title);
+//    if(this != playlistToCopy) {
+//        while (front != nullptr) {
+//            LinkedNode *temp = front;
+//            Song *song = temp->getSong();
+//            front = front->getNext();
+//            delete song;
+//            delete temp;
+//        }
+//        title = playlistToCopy->title;
+//        duration = playlistToCopy->duration;
+//    }
+//
+//    return *this;
+//}
 
 //Destructor
 
@@ -109,6 +109,7 @@ std::string Playlist::toString() { //TODO this prints an extra comma with multip
     int i = 0;
     while (temp!= nullptr){
         if (temp != nullptr && temp!=end){
+            std::string temptitle = temp->getSong()->getTitle();
         result += std::to_string(i)+": " + temp->getSong()->getTitle() + " (Artist: "+temp->getSong()->getArtist()+"; "
          "Length: "+std::to_string(temp->getSong()->getLength())+" secs; Year: "+std::to_string(temp->getSong()->getYear())+"), ";
         }
