@@ -10,7 +10,7 @@
 
 CommandHandler::CommandHandler() {
     songLibrary = new ArtistMap();
-    PlaylistList = new PlaylistArrayList(2);
+    PlaylistList = new PlaylistArrayList(20);
     Playlist playlist1;
     numOfSongs = 0;
     numOfPlaylists = 0;
@@ -43,7 +43,7 @@ void CommandHandler::readSaveFiles(){
         }
     }
     else {
-        std::cerr <<"save Playlsit file  not found." << std::endl;
+        std::cerr <<"save Playlist file  not found." << std::endl;
     }
 
 }
@@ -309,28 +309,34 @@ void CommandHandler::createRandomPlaylist(int playDuration, std::string playlist
             throw std::invalid_argument("Playlist already exists");
         }
     }
-    srand(time(NULL));
-
-    Playlist *newRandPlaylist = new Playlist(playlistName);
-    PlaylistList->insertAtEnd(newRandPlaylist);
-
+    if (playDuration <= 0){
+        throw std::invalid_argument("playDuration must be greater than 0");
+    }
     int artistCount = songLibrary->getArtistCount();
     if (artistCount <= 0){
         throw std::out_of_range("Library is empty");
     }
 
-    //int songCount = songLibrary->getSongCount();
+    srand(time(NULL));
+
+    Playlist *newRandPlaylist = new Playlist(playlistName);
+    PlaylistList->insertAtEnd(newRandPlaylist);
+    int duplicateCounter = 0;
+
     int randArtistIndex;
     if (artistCount-1 > 0) {
         randArtistIndex =rand() % (artistCount - 1);
-    }
-    else{
+    }else{
         randArtistIndex = 0;
     }
 
     int randSongIndex; // = rand() % (songCount-1); //do this after getting the artist node
     int randPlaylistDuration = 0;
     while (randPlaylistDuration <= playDuration){
+        if (duplicateCounter > 10){
+            cout <<"Unable to add another song" <<endl;
+            break;
+        }
 
         //Goes to the random artist then picks one of their songs with rand song index
        ArtistMapNode* artistHolder = songLibrary->getArtistAt(randArtistIndex);
@@ -344,20 +350,29 @@ void CommandHandler::createRandomPlaylist(int playDuration, std::string playlist
        }
 
        Song* songHolder = songListHolder->getValueAt(randSongIndex);
-       //TODO getValueAt in songArrayList returns a copy not a pointer
        for(int i=0; i<songListHolder->itemCount();i++){
         int comparison = songHolder->getTitle().compare(songListHolder->getValueAt(i)->getTitle());
            if(comparison < 0){
-               //cout<<song.getTitle()<<" orgininal: "<<songList->getValueAt(i).getTitle()<<endl;
                songListHolder->insertAt(*songHolder,i);
            }else if (comparison == 0){
-               //cout<<"in duplicate "<<song.getTitle()<<" orgininal: "<<songList->getValueAt(i).getTitle()<<endl;
 
                cout<<"duplicate song: "<< songHolder->getTitle()<<endl;
+               duplicateCounter++;
                break;
            }
        }
-        newRandPlaylist->insertAtEnd(songHolder);
+       if (songHolder->getLength() + randPlaylistDuration >= playDuration){ //if song being added will cause playlist to go over playDuration
+           break; //leave the while loop, which ends the function, but this might end a smaller song
+       }else{
+           if (newRandPlaylist->findSong(songHolder->getTitle(),songHolder->getArtist()) == -1) { //another check for duplicate songs
+               newRandPlaylist->insertAtEnd(songHolder); //finally add the song
+           }
+           else {
+               cout<<"duplicate song: "<< songHolder->getTitle()<<endl;
+               duplicateCounter++;
+           }
+       }
+
 
         if (artistCount-1 > 0) {
             randArtistIndex =rand() % (artistCount - 1);
@@ -407,7 +422,7 @@ string CommandHandler::song(std::string artist, std::string title, bool test){
     }
      */
 }
-string CommandHandler::listPlaylists(bool test){
+std::string CommandHandler::listPlaylists(bool test){
     return PlaylistList->toString();
 
 }
