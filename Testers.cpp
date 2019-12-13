@@ -518,7 +518,9 @@ void commandHandlerTesters(){
     cout<<"-----testing newPlaylist-----\n";
     testHandler->import("../Save.txt");
     testHandler->newPlaylist("TestPlaylist1");
-    //printAssertEquals("TestPlaylist1", testHandler->listPlaylists());
+    //printAssertEquals("TestPlaylist1",
+    //Playlist("TestPlaylist1").insertAtEnd(testSong2);
+    testHandler->listPlaylists();
 
 
     std::cout << "======DONE======" <<endl;
@@ -615,6 +617,8 @@ void forrestPlaylistArrayListTest(){
     //cout<<testPlaylist->toString()<<endl;
 
     Playlist* testPlaylist2 = new Playlist("testlist2");
+    Playlist* testPlaylist3 = new Playlist("testlist3");
+
     testArraylist->insertAtEnd(testPlaylist);
     //cout<<testPlaylist->toString()<<endl;
     printAssertEquals("{duration = 212 seconds, songs left: here comes the sun}",testArraylist->getArray()[0]->toString());
@@ -623,14 +627,22 @@ void forrestPlaylistArrayListTest(){
     printAssertEquals("{}",testArraylist->getArray()[1]->toString());
     testArraylist->getArray()[0]->insertAtEnd(testSong2);
     printAssertEquals("{duration = 568 seconds, songs left: here comes the sun, Billie Jean}",testArraylist->getArray()[0]->toString());
+    testArraylist->insertAtEnd(testPlaylist3);
+    printAssertEquals("{}",testArraylist->getArray()[2]->toString());
+    //cout<<testArraylist->getArray()[2]->getTitle();
 
 
 
     std::cout << "-----testing tostring------" <<endl;
     PlaylistArrayList* testArraylist2 = new PlaylistArrayList();
-    printAssertEquals("[testlist1 {duration = 568 seconds, songs left: here comes the sun, Billie Jean} testlist2 {empty playlist}]",testArraylist->toString());
+    printAssertEquals("[testlist1 {duration = 568 seconds, songs left: here comes the sun, Billie Jean}, testlist2 {empty playlist}, testlist3 {empty playlist}]",testArraylist->toString());
     printAssertEquals("[]",testArraylist2->toString());
+    testArraylist->insertAtEnd(testPlaylist2);
+    printAssertEquals("[testlist1 {duration = 568 seconds, songs left: here comes the sun, Billie Jean}, testlist2 {empty playlist}, testlist3 {empty playlist}]",testArraylist->toString());
 
+
+    std::cout << "-----testing getValueAt------" <<endl;
+    printAssertEquals("{duration = 568 seconds, songs left: here comes the sun, Billie Jean}",testArraylist->getValueAt(0)->toString());
 
 
 
@@ -649,7 +661,7 @@ void forrestPlaylistArrayListTest(){
 int main(){
     forrestPlaylistTests();
     forrestPlaylistArrayListTest();
-//    //commandHandlerTesters();
+//commandHandlerTesters();
 //    songTesters(); //working
 //    playlistTesters(); //working
 //    rupPlaylistTesters(); //working without delete song in ~Playlist

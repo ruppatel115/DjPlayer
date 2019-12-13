@@ -65,7 +65,7 @@ PlaylistArrayList::~PlaylistArrayList() {
 void PlaylistArrayList::doubleCapacity() {
     currCapacity = currCapacity*2;
     Playlist** holder = new Playlist*[currCapacity];
-    for(int i=0; i<currPlaylistCount-1; i++){
+    for(int i=0; i<currPlaylistCount; i++){
         holder[i] = this->array[i];
     }
     delete[] array;
@@ -79,12 +79,13 @@ void PlaylistArrayList::doubleCapacity() {
  * count should be increased by 1
  */
 void PlaylistArrayList::insertAtEnd(Playlist* playlistToAdd) {
-    if (currPlaylistCount>=currCapacity) {      //if the arraylist is full
-        doubleCapacity();
+    if(find(playlistToAdd->getTitle()) == -1) {
+        if (currPlaylistCount >= currCapacity) {      //if the arraylist is full
+            doubleCapacity();
+        }
+        array[currPlaylistCount] = playlistToAdd;
+        currPlaylistCount++;
     }
-    array[currPlaylistCount] = playlistToAdd;
-    currPlaylistCount++;
-
 }
 
 /***
@@ -93,7 +94,7 @@ void PlaylistArrayList::insertAtEnd(Playlist* playlistToAdd) {
  * @return playlist at specified index
  */
 Playlist* PlaylistArrayList::getValueAt(int index) {
-    std::cout<<"index = "<<index<<" current count = "<<currPlaylistCount<<"\n";
+    //std::cout<<"index = "<<index<<" current count = "<<currPlaylistCount<<"\n";
     if (index > currPlaylistCount-1 || index < 0 || isEmpty()){
         throw std::out_of_range ("Bad index given to getValueAt: " + std::to_string(index));
     }
@@ -109,9 +110,10 @@ std::string PlaylistArrayList::toString() { //Prints a list of the names of all 
         return "[]";
     }
     std::string result = "[";
-    for (int i = 0; i < playlistCount(); i++) {
+    for (int i = 0; i <playlistCount(); i++) {
+
         if(i!= 0){
-            result+=" ";
+            result+=", ";
         }
         if (!array[i]->isEmpty()) {
 //            if (i < currPlaylistCount-1) {
@@ -121,7 +123,7 @@ std::string PlaylistArrayList::toString() { //Prints a list of the names of all 
 //            }
         }else{ //if the playlist at the current index of the arraylist is empty, do this instead
             if (i < currPlaylistCount - 1) {
-                result += array[i]->getTitle() + " {empty playlist}, ";
+                result += array[i]->getTitle() + " {empty playlist}";
             }
             else{
                 result += array[i]->getTitle() + " {empty playlist}";
@@ -159,11 +161,15 @@ void PlaylistArrayList::clearList() {
  * @return where the playlist was found in the list of playlists or returns -1 if not found
  */
 int PlaylistArrayList::find(std::string playlistToFind) {
+   //std::cout<<currPlaylistCount<<"in find\n";
     for (int i = 0; i < currPlaylistCount; i++){
+        //std::cout<<currPlaylistCount<<i<<"\n";
         if (array[i]->getTitle() == playlistToFind){
             return i;
         }
     }
+    //std::cout<<"about to return -1 "<<"\n";
+
     return -1;
 }
 
