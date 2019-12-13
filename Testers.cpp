@@ -393,8 +393,53 @@ void commandHandlerTesters(){
     testHandler->newPlaylist("TestPlaylist3");
     printAssertEquals("[TestPlaylist1 {empty playlist}, TestPlaylist2 {empty playlist}, TestPlaylist3 {empty playlist}]", testHandler->listPlaylists(true));
 
+    cout<<"\n-----testing add to playlist-----\n\n";
+    cout << "Expected: song not found, actual: ";
+    //testHandler->addToPlaylist("testDisplayPlaylist1","blah","beep");
+
+    testHandler->newPlaylist("tester");
+    testHandler->listPlaylists();
 
     //TODO not done?
+    cout<<"\n-----testing list playlists-----\n\n";
+
+    printAssertEquals("[TestPlaylist1 {empty playlist}]",testHandler->listPlaylists(true));
+    testHandler->newPlaylist("listplaylist1");
+    testHandler->addToPlaylist("listplaylist1", "rap god", "eminem");
+    printAssertEquals("[TestPlaylist1 {empty playlist}, listplaylist1 {duration = 309 seconds, songs left: rap god}]",testHandler->listPlaylists(true));
+
+    testHandler->addToPlaylist("listplaylist1", "Billie Jean", "Michael Jackson");
+
+    printAssertEquals("[TestPlaylist1 {empty playlist}, listplaylist1 {duration = 665 seconds, songs left: rap god, Billie Jean}]",testHandler->listPlaylists(true));
+    testHandler->newPlaylist("playlist3");
+    printAssertEquals("[TestPlaylist1 {empty playlist}, listplaylist1 {duration = 665 seconds, songs left: rap god, Billie Jean}, playlist3 {empty playlist}]",testHandler->listPlaylists(true));
+
+    cout<<"\n-----testing playlist (displays playlist with given name)-----\n\n";
+    cout << "Expected: playlist not found. Actual: ";
+    testHandler->playlist("testDisplayPlaylist1");
+    testHandler->newPlaylist("testDisplayPlaylist1");
+    cout << "Expected: Playlist testDisplayPlaylist1: Duration: 0 \nSongs: {}, Actual: ";
+    testHandler->playlist("testDisplayPlaylist1");
+    testHandler->addToPlaylist("testDisplayPlaylist1","here comes the sun","beatles");
+    testHandler->addToPlaylist("testDisplayPlaylist1","rap god","eminem");
+    cout << "Expected: Playlist testDisplayPlaylist1: Duration: 521 \nSongs: {duration = 521 seconds, songs left: here comes the sun, rap god}, Actual: " <<endl;
+    testHandler->playlist("testDisplayPlaylist1");
+
+
+
+
+    cout<<"\n-----testing remove from playlist-----\n\n";
+    CommandHandler* testHandler5 = new CommandHandler();
+    testHandler5->newPlaylist("tester1");
+    testHandler5->newPlaylist("tester2");
+    testHandler5->addToPlaylist("tester2", "rap god", "eminem");
+    testHandler5->addToPlaylist("tester2", "Billie Jean", "Michael Jackson");
+    testHandler5->listPlaylists();
+    testHandler5->removeFromPlaylist("tester2","Billie Jean", "Michael Jackson");
+    testHandler5->listPlaylists();
+
+
+
 
     cout<<"\n-----testing discontinue-----\n\n";
     /*
@@ -430,50 +475,6 @@ void commandHandlerTesters(){
     //printAssertEquals("TestPlaylist1",
     //Playlist("TestPlaylist1").insertAtEnd(testSong2);
     testHandler->listPlaylists();
-
-    cout<<"\n-----testing list playlists-----\n\n";
-
-
-    printAssertEquals("[TestPlaylist1 {empty playlist}]",testHandler->listPlaylists(true));
-    testHandler->newPlaylist("listplaylist1");
-    testHandler->addToPlaylist("listplaylist1", "rap god", "eminem");
-    printAssertEquals("[TestPlaylist1 {empty playlist}, listplaylist1 {duration = 309 seconds, songs left: rap god}]",testHandler->listPlaylists(true));
-
-    testHandler->addToPlaylist("listplaylist1", "Billie Jean", "Michael Jackson");
-
-    printAssertEquals("[TestPlaylist1 {empty playlist}, listplaylist1 {duration = 665 seconds, songs left: rap god, Billie Jean}]",testHandler->listPlaylists(true));
-    testHandler->newPlaylist("playlist3");
-    printAssertEquals("[TestPlaylist1 {empty playlist}, listplaylist1 {duration = 665 seconds, songs left: rap god, Billie Jean}, playlist3 {empty playlist}]",testHandler->listPlaylists(true));
-
-    cout<<"\n-----testing playlist (displays playlist with given name)-----\n\n";
-        cout << "Expected: playlist not found. Actual: ";
-        testHandler->playlist("testDisplayPlaylist1");
-        testHandler->newPlaylist("testDisplayPlaylist1");
-        cout << "Expected: Playlist testDisplayPlaylist1: Duration: 0 \nSongs: {}, Actual: ";
-        testHandler->playlist("testDisplayPlaylist1");
-        testHandler->addToPlaylist("testDisplayPlaylist1","here comes the sun","beatles");
-        testHandler->addToPlaylist("testDisplayPlaylist1","rap god","eminem");
-        cout << "Expected: Playlist testDisplayPlaylist1: Duration: 521 \nSongs: {duration = 521 seconds, songs left: here comes the sun, rap god}, Actual: " <<endl;
-        testHandler->playlist("testDisplayPlaylist1");
-
-    cout<<"\n-----testing add to playlist-----\n\n";
-        cout << "Expected: song not found, actual: ";
-        //testHandler->addToPlaylist("testDisplayPlaylist1","blah","beep");
-
-        testHandler->newPlaylist("tester");
-        testHandler->listPlaylists();
-
-
-    cout<<"\n-----testing remove from playlist-----\n\n";
-    CommandHandler* testHandler5 = new CommandHandler();
-    testHandler5->newPlaylist("tester1");
-    testHandler5->newPlaylist("tester2");
-    testHandler5->addToPlaylist("tester2", "rap god", "eminem");
-    testHandler5->addToPlaylist("tester2", "Billie Jean", "Michael Jackson");
-    testHandler5->listPlaylists();
-    testHandler5->removeFromPlaylist("tester2","Billie Jean", "Michael Jackson");
-    testHandler5->listPlaylists();
-
 
 
     //TODO
