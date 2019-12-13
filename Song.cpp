@@ -53,8 +53,8 @@ Song::Song(std::string songStr) {
         playcount = std::stoi(yearStr.substr(yearStr.rfind(":")+1));
     }else{
         year = std::stoi(yearStr);
+        playcount = 0;
     }
-    //TODO add error handling for when all info is not there? assuming user inputs correct stuff?
     //std::cout<<"full string  "<<lengthStr<<std::endl;
     //std::cout<<"part 1 "<<lengthStr.substr(0,lengthStr.rfind(":"))<<std::endl;
     if(lengthStr.find(":") != lengthStr.npos){
