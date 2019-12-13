@@ -744,13 +744,13 @@ void forrestPlaylistArrayListTest(){
 
 
 int main(){
-    forrestPlaylistTests();
-    forrestPlaylistArrayListTest();
-   songTesters(); //working
-    artistMapNodeTesters(); //working
-    ArtistMapTesters(); //working
-    songArrayListTesters(); //working
-    //commandHandlerTesters();
+    //forrestPlaylistTests();
+    //forrestPlaylistArrayListTest();
+   //songTesters(); //working
+    //artistMapNodeTesters(); //working
+    //ArtistMapTesters(); //working
+    //songArrayListTesters(); //working
+    commandHandlerTesters();
 
 
     return 0;
