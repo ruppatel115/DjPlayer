@@ -409,7 +409,7 @@ void playListArrayListTesters(){
 
 
     std::cout<<listOfPlaylists.toString() <<std::endl;
-
+    cout << "playlist5 toString test (it has two songs in it)" <<endl;
     cout << playlist5->toString() <<endl;
 
 
@@ -493,8 +493,6 @@ void commandHandlerTesters(){
         outf << testSong3->getTitle()+", "+testSong3->getArtist()+", "+std::to_string(testSong3->getLength())+", "+std::to_string(testSong3->getYear())+'\n';
         outf << testSong4->getTitle()+", "+testSong4->getArtist()+", "+std::to_string(testSong4->getLength())+", "+std::to_string(testSong4->getYear())+'\n';
         outf << testSong4->getTitle()+", "+testSong4->getArtist()+", "+std::to_string(testSong4->getLength())+", "+std::to_string(testSong4->getYear())+'\n';
-
-
 
         outf.close();
     }else{
@@ -585,30 +583,20 @@ void forrestPlaylistTests(){
 
     std::cout << "======DONE======" <<endl;
 
-
-
-
-
-
-
-
-
-
-
 }
 
 
 int main(){
     forrestPlaylistTests();
-//    //commandHandlerTesters();
-//    songTesters(); //working
-//    playlistTesters(); //working
-//    rupPlaylistTesters(); //working without delete song in ~Playlist
-//    //playListArrayListTesters();
-//
-//    artistMapNodeTesters(); //working
-//    ArtistMapTesters(); //working
-//    songArrayListTesters(); //working
+    //commandHandlerTesters();
+    songTesters(); //working
+    playlistTesters(); //working
+    rupPlaylistTesters(); //working without delete song in ~Playlist
+    playListArrayListTesters();
+
+    artistMapNodeTesters(); //working
+    ArtistMapTesters(); //working
+    songArrayListTesters(); //working
 
     return 0;
 }
