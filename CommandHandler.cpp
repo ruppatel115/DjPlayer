@@ -229,6 +229,7 @@ void CommandHandler::removeFromPlaylist(std::string playlist, std::string title,
     if (songIndex != -1) {
         temp->removeSong(songIndex);
         std::cout << "Removed song "+title+"." << std::endl;
+
     }
     else{
         cout << "No such song "+title+" in playlist or playlist is empty" <<endl;
