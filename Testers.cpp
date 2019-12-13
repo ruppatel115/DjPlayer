@@ -410,13 +410,14 @@ void playListArrayListTesters(){
 
     std::cout<<listOfPlaylists.toString() <<std::endl;
 
+    cout << playlist5->toString() <<endl;
 
 
+
+
+
+    delete playlist1; delete playlist2; delete playlist3; delete playlist4; delete playlist5;
     cout << "=======DONE=======" << endl;
-
-
-    //delete playlist1; delete playlist2; delete playlist3; delete playlist4; delete playlist5;
-
 }
 
 
@@ -517,23 +518,7 @@ void commandHandlerTesters(){
     cout<<"-----testing newPlaylist-----\n";
     testHandler->import("../Save.txt");
     testHandler->newPlaylist("TestPlaylist1");
-    printAssertEquals("TestPlaylist1", testHandler->listPlaylists());
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    //printAssertEquals("TestPlaylist1", testHandler->listPlaylists());
 
 
     std::cout << "======DONE======" <<endl;
@@ -542,16 +527,16 @@ void commandHandlerTesters(){
 
 
 int main(){
-    commandHandlerTesters();
-//    songTesters();
-//    playlistTesters();
-    //rupPlaylistTesters();
-    //playListArrayListTesters();
-//
-//    artistMapNodeTesters();
-//    ArtistMapTesters();
-//    songTesters();
-//    songArrayListTesters();
-//    artistMapNodeTesters();
+    //commandHandlerTesters();
+    songTesters();
+    playlistTesters();
+    rupPlaylistTesters();
+    playListArrayListTesters();
+
+    artistMapNodeTesters();
+    ArtistMapTesters();
+    songTesters();
+    songArrayListTesters();
+    artistMapNodeTesters();
     return 0;
 }

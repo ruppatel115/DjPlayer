@@ -27,6 +27,7 @@ Song::Song(){
     this->artist = "default";
     this->title = "default";
     this->length = 0;
+    this->year = 0;
     playcount = 0;
 }
 

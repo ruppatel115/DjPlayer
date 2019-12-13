@@ -90,27 +90,6 @@ public:
     int find(std::string playlistToFind);
 
     /**
-     * Searches an int array for a certain value
-     * @return the index of the last occurrence of numToFind if it is present, otherwise returns -1
-     */
-    int findLast(std::string playlistToFind);
-    /**
-     * removes the playlist at the end of the list, and returns a copy of that playlist
-     * @post the playlist at the end is removed from the list
-     * @return a copy of the playlist at the end
-     * @throws out_of_range exception if there is no playlist to remove
-     */
-    //Playlist removeAtEnd();
-
-    /**
-     * removes the playlist at the front of the list, and returns a copy of that playlist
-     * @post the playlist at the front is removed from the list, everything else is shifted down one
-     * @return a copy of the playlist at index
-     * @throws out_of_range exception if there is no playlist to remove
-     */
-    //Playlist removeAtFront();
-
-    /**
      * removes the playlist at index from the list, and returns a copy of that playlist
      * @param index the location from which to get the value
      * @post the playlist at index is removed from the list, everything else is shifted down one

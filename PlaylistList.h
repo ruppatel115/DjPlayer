@@ -69,44 +69,6 @@ public:
     virtual int find(std::string playlistToFind)=0;
 
     /**
-     * Searches the list for a certain playlist
-     * @return the index of the last occurrence of playlistToFind if it is present, otherwise returns -1
-     */
-    virtual int findLast(std::string playlistToFind)=0;
-
-    /**
-     * appends the new playlist to the beginning of the list
-     * @post the list has an additional value in it, at the beginning
-     *    all other playlists are shifted down by one index
-     */
-    //virtual void insertAtFront(Playlist playlistToAdd)=0;
-
-    /**
-     * inserts the playlist into the list so that it can be found with get(index)
-     * @param index the location in which to insert this playlist
-     * @post the list has an additional value in it at the specified index,
-     *        all further values have been shifted down by one index
-     * @throws out_of_range exception if index is invalid (< 0 or > currPlaylistCount)
-     */
-    //virtual void insertAt(Playlist playlistToAdd, int index)=0;
-
-    /**
-     * removes the item at the end of the list, and returns a copy of that playlist
-     * @post the playlist at the end is removed from the list
-     * @return a copy of the playlist at the end
-     * @throws out_of_range exception if there is no playlist to remove
-     */
-    //virtual Playlist removeAtEnd()=0;
-
-    /**
-     * removes the playlist at the front of the list, and returns a copy of that playlist
-     * @post the playlist at the front is removed from the list, everything else is shifted down one
-     * @return a copy of the playlist at index
-     * @throws out_of_range exception if there is no playlist to remove
-     */
-    //virtual Playlist removeAtFront()=0;
-
-    /**
      * removes the playlist at index from the list, and returns a copy of that playlist
      * @param index the location from which to get the playlist
      * @post the playlist at index is removed from the list, everything else is shifted down one

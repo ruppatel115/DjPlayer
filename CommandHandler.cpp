@@ -15,7 +15,6 @@ CommandHandler::CommandHandler() {
     numOfSongs = 0;
     numOfPlaylists = 0;
     length = 0;
-    //promptUser();
     readSaveFiles();
 }
 

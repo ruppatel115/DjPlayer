@@ -7,8 +7,8 @@
 
 
 /**
-     * Default Constructor
-     */
+* Default Constructor
+*/
 Playlist::Playlist() {
     front = nullptr;
     end = nullptr;
@@ -70,14 +70,6 @@ Playlist& Playlist:: operator=(const Playlist* playlistToCopy){
 Playlist::~Playlist() {
     LinkedNode *temp = front;
 
-//    while(temp != nullptr){
-//        LinkedNode *temp2 = temp;
-//        temp = temp->getNext();
-//        delete temp2;
-//    }
-//    front = nullptr;
-//    end = nullptr;
-//}
     while (front != nullptr) {
         LinkedNode *temp = front;
         Song *song = temp->getSong();
@@ -145,26 +137,6 @@ int Playlist::findSong(std::string title, std::string artist) {
     if (isEmpty()){
         return -1;
     }
-//    LinkedNode* temp = front;
-//    if (temp == end){
-//        if(temp->getSong()->getTitle() == title && temp->getSong()->getArtist()==artist){
-//            return 0;
-//        }
-//
-//    }
-//    else {
-//        int i = 0;
-//        while (temp->getNext() != nullptr) {
-//            if (temp->getSong()->getTitle() == title && temp->getSong()->getArtist() == artist) {
-//                return i;
-//            } else {
-//                i++;
-//                temp = temp->getNext();
-//            }
-//        }
-//    }
-//
-//    return -1; //returns -1 by default if nothing found
 
     int index = 0;
     LinkedNode *temp;

@@ -20,7 +20,6 @@ private:
 
 public:
     //TODO function comments? destructor
-    //void promptUser();
     CommandHandler();
     void help();
     void library();
