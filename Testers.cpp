@@ -316,7 +316,7 @@ void commandHandlerTesters(){
     wipeFile("../Save.txt");
     wipeFile("../savedPlaylists.txt");
     CommandHandler* testHandler = new CommandHandler();//constructor calls save files
-    cout<<"-----testing Library-----\n";
+    cout<<"\n-----testing Library-----\n\n";
     testHandler->getSongLibrary()->put(*testSong1);
     testHandler->getSongLibrary()->put(*testSong2);
     testHandler->getSongLibrary()->put(*testSong3);
@@ -324,7 +324,7 @@ void commandHandlerTesters(){
     testHandler->getSongLibrary()->put(*testSong1);
     printAssertEquals("[\nbeatles: {here comes the sun, lucy in thr sky with diamonds}\neminem: {rap god}\nMichael Jackson: {Billie Jean}\n]\n",testHandler->getSongLibrary()->toString());
     cout << "Testing list playlists when empty: "; testHandler->listPlaylists();
-    cout<<"-----testing import-----\n";
+    cout<<"\n-----testing import-----\n\n";
     std::ofstream outf("../Save.txt");
     if (outf){
         outf << testSong1->getTitle()+", "+testSong1->getArtist()+", "+std::to_string(testSong1->getLength())+", "+std::to_string(testSong1->getYear())+'\n';
@@ -343,7 +343,7 @@ void commandHandlerTesters(){
     testHandler->import("../Save.txt");
     printAssertEquals("[\nbeatles: {here comes the sun, lucy in thr sky with diamonds}\neminem: {rap god}\nMichael Jackson: {Billie Jean}\n]\n",testHandler->getSongLibrary()->toString());
 
-    cout<<"-----testing create random playlist-----\n";
+    cout<<"\n-----testing create random playlist-----\n\n";
     CommandHandler* testHandlerRand = new CommandHandler();
     testHandlerRand->getSongLibrary()->put(*testSong2);
     testHandlerRand->getSongLibrary()->put(*testSong4);
@@ -360,27 +360,34 @@ void commandHandlerTesters(){
     testHandlerRand->createRandomPlaylist(1500,"testRandPlaylist2");
     testHandlerRand->listPlaylists();   //TODO something wrong with songs being added but otherwise it works, just can't find the other songs
 
-    cout<<"-----testing display artist-----\n";
+    cout<<"\n-----testing display artist-----\n\n";
     // the actual get artist function was tested in artist map
-    cout<<"expecting 'artist not found' actual: ";
-    testHandler->displayArtist("not an artist");
-   // cout << "Expected: playlist not found. Actual: ";
+    //cout<<"expecting 'artist not found' actual: ";
+    //testHandler->displayArtist("not an artist");
+    printAssertEquals("artist not found\n", testHandler->displayArtist("not an artist", true));
+    printAssertEquals("{here comes the sun, lucy in thr sky with diamonds}\n", testHandler->displayArtist("beatles", true));
+    printAssertEquals("{rap god}\n", testHandler->displayArtist("eminem", true));
+
+    // cout << "Expected: playlist not found. Actual: ";
  //   testHandler->addToPlaylist("nonexistentplaylist","blah","beep");
 
-    cout<<"-----testing song (displays song with given artist and title)-----\n";
+    cout<<"\n-----testing song (displays song with given artist and title)-----\n\n";
     testHandler->getSongLibrary()->removeAll();
     testHandler->import("../Save.txt");
-    cout<<"Expecting: rap god, by eminem, 309 seconds, came out in 2013, actual: ";
-    testHandler->song("eminem","rap god");
+    printAssertEquals("rap god, by eminem, 309 seconds, came out in 2013\n",testHandler->song("eminem","rap god", true));
+    //cout<<"Expecting: rap god, by eminem, 309 seconds, came out in 2013, actual: ";
+    //testHandler->song("eminem","rap god");
 
 
-    cout<<"-----testing newPlaylist-----\n";
+    cout<<"\n-----testing newPlaylist-----\n\n";
+    testHandler->getSongLibrary()->removeAll();
     testHandler->import("../Save.txt");
     testHandler->newPlaylist("TestPlaylist1");
     //printAssertEquals("TestPlaylist1", testHandler->listPlaylists());
     //TODO not done?
 
-    cout<<"-----testing discontinue-----\n";
+    cout<<"\n-----testing discontinue-----\n\n";
+    /*
     CommandHandler* testHandlerD = new CommandHandler();
     testHandlerD->import("../importTest.txt"); //TODO fix file path?
     testHandlerD->newPlaylist("testList");
@@ -389,7 +396,32 @@ void commandHandlerTesters(){
     testHandlerD->addToPlaylist("testList","here comes the sun", "beatles");
     testHandlerD->discontinue("../discontinueTest.txt"); //TODO file path working?
     testHandlerD->library();
-    cout<<"-----testing list playlists-----\n";
+     */
+    //TODO
+    wipeFile("../Save.txt");
+    wipeFile("../savedPlaylists.txt");
+    std::ofstream outf2("../Save.txt");
+    if (outf2){
+        outf2 << testSong1->getTitle()+", "+testSong1->getArtist()+", "+std::to_string(testSong1->getLength())+", "+std::to_string(testSong1->getYear())+'\n';
+        outf2 << testSong2->getTitle()+", "+testSong2->getArtist()+", "+std::to_string(testSong2->getLength())+", "+std::to_string(testSong2->getYear())+'\n';
+        outf2 << testSong3->getTitle()+", "+testSong3->getArtist()+", "+std::to_string(testSong3->getLength())+", "+std::to_string(testSong3->getYear())+'\n';
+        outf2 << testSong4->getTitle()+", "+testSong4->getArtist()+", "+std::to_string(testSong4->getLength())+", "+std::to_string(testSong4->getYear())+'\n';
+        outf2 << testSong4->getTitle()+", "+testSong4->getArtist()+", "+std::to_string(testSong4->getLength())+", "+std::to_string(testSong4->getYear())+'\n';
+        outf.close();
+    }else{
+        cout<<"file "<<"Save.txt"<<" cant be found \n";
+    }
+
+    CommandHandler* testHandler3 = new CommandHandler();
+    testHandler->library();
+    testHandler3->discontinue("../discontinueTest.txt");
+    printAssertEquals("idk",testHandler3->library(true));
+
+    //printAssertEquals("TestPlaylist1",
+    //Playlist("TestPlaylist1").insertAtEnd(testSong2);
+    testHandler->listPlaylists();
+
+    cout<<"\n-----testing list playlists-----\n\n";
 
 
     printAssertEquals("[TestPlaylist1 {empty playlist}]",testHandler->listPlaylists(true));
@@ -403,7 +435,7 @@ void commandHandlerTesters(){
     testHandler->newPlaylist("playlist3");
     printAssertEquals("[TestPlaylist1 {empty playlist}, listplaylist1 {duration = 665 seconds, songs left: rap god, Billie Jean}, playlist3 {empty playlist}]",testHandler->listPlaylists(true));
 
-    cout<<"-----testing playlist (displays playlist with given name)-----\n";
+    cout<<"\n-----testing playlist (displays playlist with given name)-----\n\n";
         cout << "Expected: playlist not found. Actual: ";
         testHandler->playlist("testDisplayPlaylist1");
         testHandler->newPlaylist("testDisplayPlaylist1");
@@ -414,7 +446,7 @@ void commandHandlerTesters(){
         cout << "Expected: Playlist testDisplayPlaylist1: Duration: 521 \nSongs: {duration = 521 seconds, songs left: here comes the sun, rap god}, Actual: " <<endl;
         testHandler->playlist("testDisplayPlaylist1");
 
-    cout<<"\n-----testing add to playlist-----\n";
+    cout<<"\n-----testing add to playlist-----\n\n";
         cout << "Expected: song not found, actual: ";
         //testHandler->addToPlaylist("testDisplayPlaylist1","blah","beep");
 
@@ -422,21 +454,21 @@ void commandHandlerTesters(){
         testHandler->listPlaylists();
 
 
-    cout<<"-----testing remove from playlist-----\n";
-    CommandHandler* testHandler3 = new CommandHandler();
-    testHandler3->newPlaylist("tester1");
-    testHandler3->newPlaylist("tester2");
-    testHandler3->addToPlaylist("tester2", "rap god", "eminem");
-    testHandler3->addToPlaylist("tester2", "Billie Jean", "Michael Jackson");
-    testHandler3->listPlaylists();
-    testHandler3->removeFromPlaylist("tester2","Billie Jean", "Michael Jackson");
-    testHandler3->listPlaylists();
+    cout<<"\n-----testing remove from playlist-----\n\n";
+    CommandHandler* testHandler5 = new CommandHandler();
+    testHandler5->newPlaylist("tester1");
+    testHandler5->newPlaylist("tester2");
+    testHandler5->addToPlaylist("tester2", "rap god", "eminem");
+    testHandler5->addToPlaylist("tester2", "Billie Jean", "Michael Jackson");
+    testHandler5->listPlaylists();
+    testHandler5->removeFromPlaylist("tester2","Billie Jean", "Michael Jackson");
+    testHandler5->listPlaylists();
 
 
 
     //TODO
 
-    cout<<"-----testing play next-----\n";
+    cout<<"-----testing play next-----\n\n";
     //TODO
     CommandHandler* testHandler4 = new CommandHandler();
     testHandler4->newPlaylist("test5");
@@ -454,10 +486,10 @@ void commandHandlerTesters(){
 
 
 
-    cout<<"-----testing create random playlist-----\n";
+    cout<<"-----testing create random playlist-----\n\n";
     //TODO
 
-    cout<<"-----testing quit-----\n";
+    cout<<"-----testing quit-----\n\n";
     //TODO
 
     std::cout << "======DONE======" <<endl;
@@ -473,7 +505,7 @@ void forrestPlaylistTests(){
     Song* testSong2 = new Song(song2);
     Song* testSong3 = new Song(song3);
     Song* testSong4 = new Song(song4);
-    std::cout << "======forrest playlsit tests======" <<endl;
+    std::cout << "======forrest playlsit tests======\n\n" <<endl;
     cout<<"-----testing insert at end-----\n";
 
     Playlist* testlist = new Playlist("testList1");
@@ -585,12 +617,12 @@ void forrestPlaylistArrayListTest(){
 
 
 int main(){
-    //forrestPlaylistTests();
-    //forrestPlaylistArrayListTest();
-   //songTesters(); //working
-    //artistMapNodeTesters(); //working
-    //ArtistMapTesters(); //working
-    //songArrayListTesters(); //working
+//    forrestPlaylistTests();
+//    forrestPlaylistArrayListTest();
+//   songTesters(); //working
+//    artistMapNodeTesters(); //working
+//    ArtistMapTesters(); //working
+//    songArrayListTesters(); //working
     commandHandlerTesters();
 
 

@@ -125,7 +125,6 @@ void CommandHandler::import(std::string fileName){
 void CommandHandler::discontinue(std::string fileName){
     std::ifstream infile(fileName);
     if (infile) {
-
         while (infile) {
             std::string strInput;
             getline(infile, strInput);
@@ -385,24 +384,24 @@ void CommandHandler::createRandomPlaylist(int playDuration, std::string playlist
 }
 ////TEST VERSION =====================================================
 string CommandHandler::library(bool test){
-    std::cout << songLibrary->toString() << std::endl;
+   return songLibrary->toString();
 }
 
 string CommandHandler::displayArtist(std::string artist, bool test){
     //std::cout << mainLibrary->getArtistSongs(artist) << std::endl;
     if(songLibrary->getArtist(artist) == nullptr){
-        std::cout<<"artist not found\n";
+        return "artist not found\n";
     }else {
-        std::cout << songLibrary->getArtist(artist)->toString() << std::endl;
+        return songLibrary->getArtist(artist)->toString()+"\n";
     }
 }
 
 string CommandHandler::song(std::string artist, std::string title, bool test){
     Song* song = songLibrary->getSong(title,artist);
     if(song != nullptr){
-        std::cout<<song->getTitle()<<", by "<<song->getArtist()<<", "<<song->getLength()<<" seconds, came out in "<<song->getYear()<<std::endl;
+        return song->getTitle()+", by "+song->getArtist()+", "+to_string(song->getLength())+" seconds, came out in "+to_string(song->getYear())+"\n";
     }else{
-        std::cout<<"song not found in library\n";
+        return "song not found in library\n";
 
     };
     /*
@@ -422,7 +421,84 @@ string CommandHandler::song(std::string artist, std::string title, bool test){
     }
      */
 }
-std::string CommandHandler::listPlaylists(bool test){
+string CommandHandler::listPlaylists(bool test){
     return PlaylistList->toString();
 
 }
+string CommandHandler::playlist(std::string name, bool test) {
+    /*
+    int index = PlaylistList->find(name);
+    if (index >= 0) {
+        Playlist *temp = PlaylistList->getValueAt(index);
+        //TODO something wrong in here
+
+        std::string songList = "";
+        std::cout << "item count = " << temp->getNumSongs() << std::endl;
+
+        for (int i = 0; i < temp->getNumSongs(); i++) {
+
+            std::string title = temp->getSong(i)->getTitle();
+            std::string artist = temp->getSong(i)->getArtist();
+            int duration = temp->getSong(i)->getLength();
+            songList += title + ", " + artist + ", " + std::to_string(duration);;
+
+        }
+        std::cout << songList << std::endl;
+
+
+//        std::cout << "Playlist" + name + ": \nDuration: " + std::to_string(temp.calcDuration()) << std::endl;
+//        std::cout << "Songs: " + temp.toString();
+    } else {
+        std::cout << "playlist not found\n";
+    }
+     */
+}
+string CommandHandler::addToPlaylist(std::string playlist, std::string title, std::string artist, bool test) {
+    //std::cout <<"at the begining "<<artist<< std::endl;
+
+    int index = PlaylistList->find(playlist);
+    Playlist* temp = PlaylistList->getValueAt(index);
+    Song *songToAdd = this->songLibrary->getSong(title, artist);
+    //std::cout << this->songLibrary->getSong(title,artist)->getTitle();
+    if (temp != nullptr) {
+        cout<<"song or artist could not be found\n";
+        temp->insertAtEnd(songToAdd);
+        cout<<"artsit = "<<temp->getSong(0)->getArtist()<<"\n";
+        std::cout << "Added new song " + title  + "." << std::endl;
+    }
+    else{
+        throw std::invalid_argument("Playlist does not exist");
+    }
+
+}
+string CommandHandler::removeFromPlaylist(std::string playlist, std::string title, std::string artist, bool test){
+    int playlistIndex = PlaylistList->find(playlist);
+    Playlist* temp = PlaylistList->getValueAt(playlistIndex);
+    int songIndex = temp->findSong(title, artist);
+    if (songIndex != -1) {
+        temp->removeSong(songIndex);
+        std::cout << "Removed song "+title+"." << std::endl;
+
+    }
+    else{
+        cout << "No such song "+title+" in playlist or playlist is empty" <<endl;
+    }
+
+
+}
+string CommandHandler::playNext(std::string playlist, bool test) {
+    int playlistIndex = PlaylistList->find(playlist);
+    Playlist *temp = PlaylistList->getValueAt(playlistIndex);
+    if (temp->isEmpty()) {
+        PlaylistList->removeAt(playlistIndex);
+    } else {
+        temp->getSong(0)->incrementPlaycount();
+        std::cout << "Next song to be played: " + temp->removeSong(0) << std::endl;
+        if (temp->isEmpty()) {
+            PlaylistList->removeAt(playlistIndex);
+        }
+    }
+}
+
+
+
