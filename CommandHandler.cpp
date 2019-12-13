@@ -353,4 +353,42 @@ void CommandHandler::createRandomPlaylist(int playDuration, std::string playlist
        randPlaylistDuration = newRandPlaylist->getDuration();
     }
 }
+////TEST VERSION =====================================================
+string CommandHandler::library(bool test){
+    std::cout << songLibrary->toString() << std::endl;
+}
 
+string CommandHandler::displayArtist(std::string artist, bool test){
+    //std::cout << mainLibrary->getArtistSongs(artist) << std::endl;
+    if(songLibrary->getArtist(artist) == nullptr){
+        std::cout<<"artist not found\n";
+    }else {
+        std::cout << songLibrary->getArtist(artist)->toString() << std::endl;
+    }
+}
+
+string CommandHandler::song(std::string artist, std::string title, bool test){
+    Song* song = songLibrary->getSong(title,artist);
+    if(song != nullptr){
+        std::cout<<song->getTitle()<<", by "<<song->getArtist()<<", "<<song->getLength()<<" seconds, came out in "<<song->getYear()<<std::endl;
+    }else{
+        std::cout<<"song not found in library\n";
+
+    };
+    /*
+    ArtistMapNode* artistNode = songLibrary->getArtist(artist);
+    if(artistNode != nullptr){
+       int songIndex = artistNode->getSongList()->find(artist);
+       if(songIndex >-1){
+           Song* song = artistNode->getSongList()->getValueAt(songIndex);
+           std::cout<<song->getTitle()<<", by  "<<song->getArtist()<<", "<<song->getLength()<<" seconds, year "<<song->getYear()<<std::endl;
+       }else{
+           std::cout<< title<<" not found for "<<artist<<"\n";
+       }
+
+    }else{
+        std::cout<<artist<<" not found in library\n";
+
+    }
+     */
+}

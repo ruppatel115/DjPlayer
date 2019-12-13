@@ -44,9 +44,34 @@ public:
     void removeFromPlaylist(std::string playlist, std::string title, std::string artist);
     void playNext(std::string playlist);
     ArtistMap *getSongLibrary();
-    void quit();
-
     void createRandomPlaylist(int playDuration, std::string playlistName);
+    void quit();
+////TEST VERSIONS=========================================
+    //void createRandomPlaylist(int playDuration, std::string playlistName);
+    string library(bool test);
+    string displayArtist(std::string  artist, bool test);
+    string song(std::string artist, std::string title, bool test);
+    //void import(std::string fileName);
+    //void discontinue(std::string fileName);
+
+    string listPlaylists(bool test);
+    /**
+    * Displays all songs left in the given playlist and its duration
+    * @param name of the playlist
+    */
+    string playlist(std::string  name,bool test);
+    /**
+    * Creates a new playlist with
+    * @param name of the new playlist
+    */
+    string newPlaylist(std::string  name, bool test);
+
+    string addToPlaylist(std::string  playlist, std::string title, std::string artist, bool test);
+    string removeFromPlaylist(std::string playlist, std::string title, std::string artist, bool test);
+    string playNext(std::string playlist, bool);
+    //ArtistMap *getSongLibrary();
+    //void quit();
+
 };
 
 #endif //DJPLAYER_COMMANDHANDLER_H
