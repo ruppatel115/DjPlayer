@@ -507,8 +507,8 @@ void commandHandlerTesters(){
     // the actual get artist function was tested in artist map
     cout<<"expecting 'artist not found' actual: ";
     testHandler->displayArtist("not an artist");
-    cout << "Expected: playlist not found. Actual: ";
-    testHandler->addToPlaylist("nonexistentplaylist","blah","beep");
+   // cout << "Expected: playlist not found. Actual: ";
+ //   testHandler->addToPlaylist("nonexistentplaylist","blah","beep");
 
     cout<<"-----testing song (displays song with given artist and title)-----\n";
     testHandler->getSongLibrary()->removeAll();
@@ -552,13 +552,31 @@ void commandHandlerTesters(){
 
     cout<<"\n-----testing add to playlist-----\n";
         cout << "Expected: song not found, actual: ";
-        testHandler->addToPlaylist("testDisplayPlaylist1","blah","beep");
+        //testHandler->addToPlaylist("testDisplayPlaylist1","blah","beep");
+
+        testHandler->newPlaylist("tester");
+        testHandler->listPlaylists();
+
 
     cout<<"-----testing remove from playlist-----\n";
+
     //TODO
 
     cout<<"-----testing play next-----\n";
     //TODO
+    CommandHandler* testHandler2 = new CommandHandler();
+    testHandler2->newPlaylist("tester2");
+    testHandler2->newPlaylist("tester3");
+    testHandler2->addToPlaylist("tester2", "rap god", "eminem");
+    //testHandler2->addToPlaylist("tester2", "hey jude", "eminem");
+
+
+    testHandler2->listPlaylists();
+
+
+
+
+
 
     cout<<"-----testing create random playlist-----\n";
     //TODO
@@ -707,17 +725,17 @@ void forrestPlaylistArrayListTest(){
 
 
 int main(){
-    forrestPlaylistTests();
-    forrestPlaylistArrayListTest();
-    //commandHandlerTesters();
-   songTesters(); //working
+    //forrestPlaylistTests();
+    //forrestPlaylistArrayListTest();
+commandHandlerTesters();
+//    songTesters(); //working
 //    playlistTesters(); //working
 //    rupPlaylistTesters(); //working without delete song in ~Playlist
-     // playListArrayListTesters();
-
-    artistMapNodeTesters(); //working
-    ArtistMapTesters(); //working
-    songArrayListTesters(); //working
+   // playListArrayListTesters();
+//
+//    artistMapNodeTesters(); //working
+//    ArtistMapTesters(); //working
+//    songArrayListTesters(); //working
 
     return 0;
 }
