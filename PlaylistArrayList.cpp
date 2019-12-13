@@ -192,5 +192,8 @@ Playlist PlaylistArrayList::removeAt(int index) {
 
     return removedPlaylist;
 }
+Playlist* PlaylistArrayList::getArray() {
+    return array;
+}
 
 

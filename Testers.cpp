@@ -547,7 +547,7 @@ void forrestPlaylistTests(){
     printAssertEquals("rap god",testlist->getFront()->getNext()->getNext()->getSong()->getTitle());
     cout<<"-----testing to string-----\n";
     printAssertEquals("{duration = 877 seconds, songs left: here comes the sun, Billie Jean, rap god}",testlist->toString());
-    Playlist* testlist2 = new Playlist("testList1");
+    Playlist* testlist2 = new Playlist("testList2");
     printAssertEquals("{}",testlist2->toString());
     cout<<"-----testing calc duration-----\n";
     printAssertEquals(0,testlist2->getDuration());
@@ -583,6 +583,7 @@ void forrestPlaylistTests(){
 
 
 
+
     std::cout << "======DONE======" <<endl;
 
 
@@ -596,18 +597,42 @@ void forrestPlaylistTests(){
 
 
 }
-//void forrestPlaylistArrayListTest(){
-//    std::cout << "======forrest playlsit tests======" <<endl;
-//
-//
-//    std::cout << "======DONE======" <<endl;
-//
-//}
+void forrestPlaylistArrayListTest(){
+    string song1 = "here comes the sun, beatles, 3:32, 1967";
+    string song2 = "Billie Jean, Michael Jackson, 5:56, 1980";
+    string song3 = "rap god, eminem, 5:09, 2013";
+    string song4 = "lucy in thr sky with diamonds, beatles, 3:45, 1967";
+
+    Song* testSong1 = new Song(song1);
+    Song* testSong2 = new Song(song2);
+    Song* testSong3 = new Song(song3);
+    Song* testSong4 = new Song(song4);
+    std::cout << "======forrest playlsit arraylist tests======" <<endl;
+    PlaylistArrayList* testlist = new PlaylistArrayList();
+    cout<<"-----testing insert at end-----\n";
+    Playlist* testPlaylist = new Playlist("testlist1");
+    testPlaylist->insertAtEnd(testSong1);
+    cout<<testPlaylist->toString()<<endl;
+
+    Playlist* testPlaylist2 = new Playlist("testlist2");
+    testlist->insertAtEnd(*testPlaylist);
+    cout<<"here"<<endl;
+    cout<<testPlaylist->toString()<<endl;
+    printAssertEquals("{duration 212 seconds, songs left: here comes the sun}}",testlist->toString());
+    testlist->insertAtEnd(*testPlaylist2);
+    printAssertEquals("testlist2",testlist->getArray()->getTitle());
+
+
+
+
+    std::cout << "======DONE======" <<endl;
+
+}
 
 
 int main(){
     forrestPlaylistTests();
-    //forrestPlaylistArrayListTest();
+    forrestPlaylistArrayListTest();
 //    //commandHandlerTesters();
 //    songTesters(); //working
 //    playlistTesters(); //working

@@ -98,6 +98,8 @@ public:
      */
     Playlist removeAt(int index);
 
+    Playlist* getArray();
+
 };
 
 
