@@ -405,3 +405,7 @@ string CommandHandler::song(std::string artist, std::string title, bool test){
     }
      */
 }
+string CommandHandler::listPlaylists(bool test){
+    std::cout << PlaylistList->toString() <<std::endl;
+
+}
