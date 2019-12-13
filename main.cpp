@@ -379,7 +379,6 @@ void runInterface(){
             std::cout << "Enter filename:" << std::endl;
             std::string filename = "";
             getline(std::cin, filename);
-
             handler->discontinue(filename);
 
         }else if(mystr == "list playlists"){
