@@ -15,6 +15,7 @@ CommandHandler::CommandHandler() {
     numOfSongs = 0;
     numOfPlaylists = 0;
     length = 0;
+    //promptUser();
     readSaveFiles();
 }
 
@@ -88,29 +89,20 @@ void CommandHandler::displayArtist(std::string artist){
 }
 
 void CommandHandler::song(std::string artist, std::string title){
-    Song* song = songLibrary->getSong(title,artist);
-    if(song != nullptr){
-        std::cout<<song->getTitle()<<", by "<<song->getArtist()<<", "<<song->getLength()<<" seconds, came out in "<<song->getYear()<<std::endl;
-    }else{
-        std::cout<<"song not found in library\n";
-
-    };
-    /*
     ArtistMapNode* artistNode = songLibrary->getArtist(artist);
     if(artistNode != nullptr){
        int songIndex = artistNode->getSongList()->find(artist);
        if(songIndex >-1){
            Song* song = artistNode->getSongList()->getValueAt(songIndex);
-           std::cout<<song->getTitle()<<", by  "<<song->getArtist()<<", "<<song->getLength()<<" seconds, year "<<song->getYear()<<std::endl;
+           std::cout<<song->getTitle()<<", "<<song->getArtist()<<", "<<song->getLength()<<", "<<song->getLength()<<std::endl;
        }else{
-           std::cout<< title<<" not found for "<<artist<<"\n";
+           std::cout<< title<<" not found for"<<artist<<"\n";
        }
 
     }else{
         std::cout<<artist<<" not found in library\n";
 
     }
-     */
 }
 
 void CommandHandler::import(std::string fileName){
@@ -168,10 +160,26 @@ void CommandHandler::playlist(std::string name){
     int index = PlaylistList->find(name);
     if(index >=0) {
         Playlist* temp = PlaylistList->getValueAt(index);
+        //TODO something wrong in here
 
-       std::cout << "Playlist " + name + ": Duration: " + std::to_string(temp->getDuration()) + "\nSongs: " + temp->toString();
+        std::string songList="";
+        std::cout <<"item count = "<<temp->getNumSongs() << std::endl;
+
+        for(int i=0; i<temp->getNumSongs();i++){
+
+            std::string title=temp->getSong(i)->getTitle();
+            std::string artist=temp->getSong(i)->getArtist();
+            int duration =temp->getSong(i)->getLength();
+            songList +=  title + ", " + artist + ", "+ std::to_string(duration); ;
+
+        }
+        std::cout <<songList << std::endl;
+
+
+//        std::cout << "Playlist" + name + ": \nDuration: " + std::to_string(temp.calcDuration()) << std::endl;
+//        std::cout << "Songs: " + temp.toString();
     }else{
-        std::cout << "playlist not found" <<std::endl;
+        std::cout << "playlist not found\n";
     }
 }
 
@@ -189,26 +197,25 @@ void CommandHandler::newPlaylist(std::string name){
     PlaylistList->insertAtEnd(newPlaylist);
 
     std::cout << "Created new playlist: "+ name << std::endl;
-    std::cout << "Total playlists: " + to_string(PlaylistList->playlistCount()) << std::endl;
+    std::cout << PlaylistList->playlistCount() << std::endl;
 
 }
 
 void CommandHandler::addToPlaylist(std::string playlist, std::string title, std::string artist) {
+    //std::cout <<"at the begining "<<artist<< std::endl;
 
-        int index = PlaylistList->find(playlist);
-
-        if (index > 0) {
-            Playlist* temp = PlaylistList->getValueAt(index);
-            Song *songToAdd = this->songLibrary->getSong(title, artist);
-            if (songToAdd != nullptr) {
-                temp->insertAtEnd(songToAdd);
-                std::cout << "Added new song " + title + "." << std::endl;
-
-            } else {
-                cout << "Song not found, use add command to add new song to library" << endl;
-            }
-        } else{
-            cout << "Playlist not found, use new command to add new playlist" <<endl;
+    int index = PlaylistList->find(playlist);
+    Playlist* temp = PlaylistList->getValueAt(index);
+    Song *songToAdd = this->songLibrary->getSong(title, artist);
+        //std::cout << this->songLibrary->getSong(title,artist)->getTitle();
+        if (temp != nullptr) {
+            cout<<"song or artist could not be found\n";
+            temp->insertAtEnd(songToAdd);
+            cout<<"artsit = "<<temp->getSong(0)->getArtist()<<"\n";
+            std::cout << "Added new song " + title  + "." << std::endl;
+        }
+        else{
+            throw std::invalid_argument("Playlist does not exist");
         }
 
 }
@@ -233,13 +240,17 @@ void CommandHandler::removeFromPlaylist(std::string playlist, std::string title,
 
 void CommandHandler::playNext(std::string playlist) {
     int playlistIndex = PlaylistList->find(playlist);
-    Playlist* temp = PlaylistList->getValueAt(playlistIndex);
-    temp->getSong(0)->incrementPlaycount();
-    std::cout << "Next song to be played: " + temp->removeSong(0) << std::endl;
-    if (temp->isEmpty()){
+    Playlist *temp = PlaylistList->getValueAt(playlistIndex);
+    if (temp->isEmpty()) {
         PlaylistList->removeAt(playlistIndex);
-    }
+    } else {
+        temp->getSong(0)->incrementPlaycount();
+        std::cout << "Next song to be played: " + temp->removeSong(0) << std::endl;
+        if (temp->isEmpty()) {
+            PlaylistList->removeAt(playlistIndex);
+        }
 
+    }
 }
 
 
@@ -280,7 +291,7 @@ void CommandHandler::quit(){
     }
 
 
-    //TODO this needs to call destructor?
+    //TODO this needs to call destructor
     //delete [] songLibrary;
     //songLibrary = nullptr;
 }
@@ -288,6 +299,7 @@ void CommandHandler::quit(){
  * Get random songs from the library in the while loop and add that song to
  * the playlist
  */
+
 void CommandHandler::createRandomPlaylist(int playDuration, std::string playlistName) {
     for(int i=0;i<numOfPlaylists;i++){
         if(playlistName==PlaylistList->getValueAt(i)->getTitle()){
@@ -329,7 +341,7 @@ void CommandHandler::createRandomPlaylist(int playDuration, std::string playlist
        }
 
        Song* songHolder = songListHolder->getValueAt(randSongIndex);
-
+       //TODO getValueAt in songArrayList returns a copy not a pointer
        for(int i=0; i<songListHolder->itemCount();i++){
         int comparison = songHolder->getTitle().compare(songListHolder->getValueAt(i)->getTitle());
            if(comparison < 0){
