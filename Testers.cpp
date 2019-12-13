@@ -394,11 +394,17 @@ void commandHandlerTesters(){
     printAssertEquals("[TestPlaylist1 {empty playlist}, TestPlaylist2 {empty playlist}, TestPlaylist3 {empty playlist}]", testHandler->listPlaylists(true));
 
     cout<<"\n-----testing add to playlist-----\n\n";
-    cout << "Expected: song not found, actual: ";
+    //cout << "Expected: song not found, actual: ";
     //testHandler->addToPlaylist("testDisplayPlaylist1","blah","beep");
 
-    testHandler->newPlaylist("tester");
-    testHandler->listPlaylists();
+    //testHandler->newPlaylist("tester");
+    printAssertEquals("song or artist could not be found\n",testHandler->addToPlaylist("TestPlaylist1","rap god","beep", true));
+    printAssertEquals("song or artist could not be found\n",testHandler->addToPlaylist("TestPlaylist1","blah","eminem", true));
+    printAssertEquals("palylist does not exist\n",testHandler->addToPlaylist("not a playlist","rap god","eminem", true));
+    printAssertEquals("Added song rap god to playlist TestPlaylist1\n",testHandler->addToPlaylist("TestPlaylist1","rap god","eminem", true));
+
+
+    //testHandler->listPlaylists();
 
     //TODO not done?
     cout<<"\n-----testing list playlists-----\n\n";

@@ -204,18 +204,24 @@ void CommandHandler::addToPlaylist(std::string playlist, std::string title, std:
     //std::cout <<"at the begining "<<artist<< std::endl;
 
     int index = PlaylistList->find(playlist);
-    Playlist* temp = PlaylistList->getValueAt(index);
-    Song *songToAdd = this->songLibrary->getSong(title, artist);
+    if(index>=0) {
+        Playlist *temp = PlaylistList->getValueAt(index);
+        Song *songToAdd = this->songLibrary->getSong(title, artist);
         //std::cout << this->songLibrary->getSong(title,artist)->getTitle();
-        if (temp != nullptr) {
-            cout<<"song or artist could not be found\n";
+        if (songToAdd != nullptr) {
+            //cout<<"song or artist could not be found\n";
             temp->insertAtEnd(songToAdd);
-            cout<<"artsit = "<<temp->getSong(0)->getArtist()<<"\n";
-            std::cout << "Added new song " + title  + "." << std::endl;
+            //cout << "artsit = " << temp->getSong(0)->getArtist() << "\n";
+            cout<< "Added song " + title + " to playlist "+playlist+"\n";
+        } else {
+            cout<< "song or artist could not be found\n";
+            //throw std::invalid_argument("Playlist does not exist");
         }
-        else{
-            throw std::invalid_argument("Playlist does not exist");
-        }
+    }else{
+        cout<< "palylist does not exist\n";
+
+    }
+
 
 }
 
@@ -457,17 +463,22 @@ string CommandHandler::addToPlaylist(std::string playlist, std::string title, st
     //std::cout <<"at the begining "<<artist<< std::endl;
 
     int index = PlaylistList->find(playlist);
-    Playlist* temp = PlaylistList->getValueAt(index);
-    Song *songToAdd = this->songLibrary->getSong(title, artist);
-    //std::cout << this->songLibrary->getSong(title,artist)->getTitle();
-    if (temp != nullptr) {
-        cout<<"song or artist could not be found\n";
-        temp->insertAtEnd(songToAdd);
-        cout<<"artsit = "<<temp->getSong(0)->getArtist()<<"\n";
-        std::cout << "Added new song " + title  + "." << std::endl;
-    }
-    else{
-        throw std::invalid_argument("Playlist does not exist");
+    if(index>=0) {
+        Playlist *temp = PlaylistList->getValueAt(index);
+        Song* songToAdd = this->songLibrary->getSong(title, artist);
+        //std::cout << this->songLibrary->getSong(title,artist)->getTitle();
+        if (songToAdd != nullptr ) {
+            //cout<<"song or artist could not be found\n";
+            temp->insertAtEnd(songToAdd);
+            //cout << "artsit = " << temp->getSong(0)->getArtist() << "\n";
+            return "Added song " + title + " to playlist "+playlist+"\n";
+        } else {
+            return "song or artist could not be found\n";
+            //throw std::invalid_argument("Playlist does not exist");
+        }
+    }else{
+        return "palylist does not exist\n";
+
     }
 
 }
