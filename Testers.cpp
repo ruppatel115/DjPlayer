@@ -402,8 +402,8 @@ void commandHandlerTesters(){
     printAssertEquals("song or artist could not be found\n",testHandler->addToPlaylist("TestPlaylist1","blah","eminem", true));
     printAssertEquals("palylist does not exist\n",testHandler->addToPlaylist("not a playlist","rap god","eminem", true));
     printAssertEquals("Added song rap god to playlist TestPlaylist1\n",testHandler->addToPlaylist("TestPlaylist1","rap god","eminem", true));
-
-
+    printAssertEquals("song already in playlist\n",testHandler->addToPlaylist("TestPlaylist1","rap god","eminem", true));
+    //testHandler->listPlaylists();
     //testHandler->listPlaylists();
 
     //TODO not done?
