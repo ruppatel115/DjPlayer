@@ -332,9 +332,6 @@ void commandHandlerTesters(){
         outf << testSong3->getTitle()+", "+testSong3->getArtist()+", "+std::to_string(testSong3->getLength())+", "+std::to_string(testSong3->getYear())+'\n';
         outf << testSong4->getTitle()+", "+testSong4->getArtist()+", "+std::to_string(testSong4->getLength())+", "+std::to_string(testSong4->getYear())+'\n';
         outf << testSong4->getTitle()+", "+testSong4->getArtist()+", "+std::to_string(testSong4->getLength())+", "+std::to_string(testSong4->getYear())+'\n';
-
-
-
         outf.close();
     }else{
         cout<<"file "<<"Save.txt"<<" cant be found \n";
@@ -455,10 +452,14 @@ cout<<"here\n";
     printAssertEquals("[tester1 {empty playlist}, tester2 {empty playlist}]",testHandler9->listPlaylists(true));
     testHandler9->addToPlaylist("tester1", "rap god", "eminem");
     testHandler9->addToPlaylist("tester1", "Billie Jean", "Michael Jackson");
+    testHandler9->listPlaylists();
     printAssertEquals("[tester1 {duration = 665 seconds, songs left: rap god, Billie Jean}, tester2 {empty playlist}]",testHandler9->listPlaylists(true));
+    testHandler9->listPlaylists();//TODO this whre the problem is wont remove first song
+
     printAssertEquals("Removed song rap god.", testHandler9->removeFromPlaylist("tester1", "rap god", "eminem", true));
     printAssertEquals("[tester1 {duration = 356 seconds, songs left: Billie Jean}, tester2 {empty playlist}]",testHandler9->listPlaylists(true));
 
+    //testHandler9->listPlaylists();//TODO this whre the problem is wont remove first song
 
 
 
@@ -470,7 +471,7 @@ cout<<"here\n";
 
 
     cout<<"\n-----testing discontinue-----\n\n";
-
+/*
     CommandHandler* testHandlerD = new CommandHandler();
     testHandlerD->import("../importTest.txt"); //TODO fix file path?
     testHandlerD->newPlaylist("testList");
@@ -481,24 +482,18 @@ cout<<"here\n";
     testHandlerD->library();
 
     //TODO
-    wipeFile("../Save.txt");
-    wipeFile("../savedPlaylists.txt");
-    std::ofstream outf2("../Save.txt");
-    if (outf2){
-        outf2 << testSong1->getTitle()+", "+testSong1->getArtist()+", "+std::to_string(testSong1->getLength())+", "+std::to_string(testSong1->getYear())+'\n';
-        outf2 << testSong2->getTitle()+", "+testSong2->getArtist()+", "+std::to_string(testSong2->getLength())+", "+std::to_string(testSong2->getYear())+'\n';
-        outf2 << testSong3->getTitle()+", "+testSong3->getArtist()+", "+std::to_string(testSong3->getLength())+", "+std::to_string(testSong3->getYear())+'\n';
-        outf2 << testSong4->getTitle()+", "+testSong4->getArtist()+", "+std::to_string(testSong4->getLength())+", "+std::to_string(testSong4->getYear())+'\n';
-        outf2 << testSong4->getTitle()+", "+testSong4->getArtist()+", "+std::to_string(testSong4->getLength())+", "+std::to_string(testSong4->getYear())+'\n';
-        outf.close();
-    }else{
-        cout<<"file "<<"Save.txt"<<" cant be found \n";
-    }
 
-    CommandHandler* testHandler3 = new CommandHandler();
-    testHandler->library();
-    testHandler3->discontinue("../discontinueTest.txt");
-    printAssertEquals("[]",testHandler3->library(true)); //TODO is expected right?
+*/
+
+    CommandHandler* testHandlerDiscontinue = new CommandHandler();
+    //testHandlerDiscontinue->import("../Save.txt");
+    testHandlerDiscontinue->library();
+    testHandlerDiscontinue->discontinue("../discontinueTest.txt");
+    printAssertEquals("[\n"
+                      "beatles: {lucy in thr sky with diamonds}\n"
+                      "Michael Jackson: {Billie Jean}\n"
+                      "]",testHandlerDiscontinue->library(true));
+    printAssertEquals("[]",testHandlerDiscontinue->library(true)); //TODO is expected right?
 
     //printAssertEquals("TestPlaylist1",
     //Playlist("TestPlaylist1").insertAtEnd(testSong2);
@@ -682,6 +677,7 @@ void forrestPlaylistArrayListTest(){
 
 int main(){
 //    forrestPlaylistTests();
+  //  forrestPlaylistTests();
 //    forrestPlaylistArrayListTest();
 //   songTesters(); //working
 //    artistMapNodeTesters(); //working

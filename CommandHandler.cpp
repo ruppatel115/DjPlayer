@@ -130,15 +130,15 @@ void CommandHandler::discontinue(std::string fileName){
             getline(infile, strInput);
             if(strInput != "") {
                 Song tempSong(strInput);
-
                 for(int i=0; i<PlaylistList->playlistCount();i++){
                     int index = PlaylistList->getValueAt(i)->findSong(tempSong.getTitle(),tempSong.getArtist());
                     if(index>-1){
                         PlaylistList->getValueAt(i)->removeSong(index);
                     }
                 }
+                cout<<"song to be removed"<<tempSong.getTitle()<<endl;
+                songLibrary->remove( tempSong.getTitle(),tempSong.getArtist());
 
-                songLibrary->remove(tempSong.getArtist(), tempSong.getTitle());
 
             }
         }
@@ -493,6 +493,8 @@ string CommandHandler::removeFromPlaylist(std::string playlist, std::string titl
     Playlist* temp = PlaylistList->getValueAt(playlistIndex);
     int songIndex = temp->findSong(title, artist);
     if (songIndex != -1) {
+        //cout<<"index ="<<songIndex<<endl;
+        //cout<<"playlist ="<<temp->getTitle()<<endl;
         temp->removeSong(songIndex);
         return "Removed song "+title+".";
 
