@@ -14,7 +14,7 @@ class ArtistMapNode{
 private:
     ArtistMapNode* next; //pointer to the next map node
     std::string artist; //the name of the artist of the songs in songlist, this is the node's key
-    SongArrayList* songList; //array list of songs made by the artist
+    SongList* songList; //array list of songs made by the artist
 public:
     /**
      * Destructor
@@ -41,7 +41,7 @@ public:
      * gets the song array list object
      * @return songarraylist pointer
      */
-    SongArrayList* getSongList();
+    SongList* getSongList();
     /**
      * Adds a song to the song list
      * @param song object

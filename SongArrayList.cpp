@@ -25,7 +25,7 @@ SongArrayList::SongArrayList() {
 
 }
 
-SongArrayList::SongArrayList(const SongArrayList &arrayListToCopy) {
+SongArrayList::SongArrayList(const SongArrayList &arrayListToCopy)  : SongList(arrayListToCopy) {
 
 
 }

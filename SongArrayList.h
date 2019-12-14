@@ -13,7 +13,7 @@
 
 
 
-class SongArrayList {
+class SongArrayList : public SongList{
 private:
     //pointer to the start of the array
      //Song array;
@@ -31,6 +31,8 @@ private:
      */
     void doubleCapacity();
 
+    SongArrayList& operator=(const SongArrayList& arrayListToCopy);
+
 public:
     /**
      * Constructor
@@ -42,7 +44,7 @@ public:
     SongArrayList(const SongArrayList& arrayListToCopy);
 
     //Overloaded Assignment Operator
-    SongArrayList& operator=(const SongArrayList& arrayListToCopy);
+
 
     //Destructor
     ~SongArrayList();

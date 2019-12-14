@@ -12,16 +12,33 @@
 
 class SongList {
 private:
-    //Private to disable copying and assigning from outside class, don't implement these methods
-    SongList(const SongList& listToCopy);
-    SongList& operator=(const SongList& listToCopy);
+    //pointer to the start of the array
+    //Song array;
+    //Song* array;
+    //count of the number of valid items currently stored in the array
+    int currItemCount;
+    //size of the current array
+    int currCapacity;
+
+    /**
+     * replaces the old array with an array twice the size
+     * private method only called within ArrayList when necessary
+     * @post: array points to a new array of twice the size with values copied from the old one,
+     *        the old array is deleted.
+     */
+    virtual void doubleCapacity()=0;
 
 public:
-    //constructor
-    SongList() {}
+    /**
+     * Constructor
+     * @throws an std::invalid_argument exception if size < 1
+     */
+   // SongList();
+
+
 
     //Destructor
-    virtual ~SongList() {}
+   // ~SongList();
 
     /**
      * appends the new item to the end of the list
@@ -35,7 +52,7 @@ public:
      * @return a copy of the item at index
      * @throws out_of_range exception if index is invalid
      */
-    virtual Song getValueAt(int index)=0;
+    virtual Song* getValueAt(int index)=0;
 
     /**
      * gives a string representation of the current list
@@ -66,45 +83,16 @@ public:
      * Searches an int array for a certain value
      * @return the index of the first occurrence of numToFind if it is present, otherwise returns -1
      */
-    virtual int find(std::string songToFind)=0;
-
-    /**
-     * Searches an int array for a certain value
-     * @return the index of the last occurrence of numToFind if it is present, otherwise returns -1
-     */
-    virtual int findLast(std::string songToFind)=0;
-
-    /**
-     * appends the new item to the beginning of the list
-     * @post the list has an additional value in it, at the beginning
-     *    all other items are shifted down by one index
-     */
-    virtual void insertAtFront(Song itemToAdd)=0;
+    virtual int find(std::string songTitleToFind)=0;
 
     /**
      * inserts the item into the list so that it can be found with get(index)
      * @param index the location in which to insert this item
      * @post the list has an additional value in it at the specified index,
      *        all further values have been shifted down by one index
-     * @throws out_of_range exception if index is invalid (< 0 or > currSongCount)
+     * @throws out_of_range exception if index is invalid (< 0 or > currItemCount)
      */
     virtual void insertAt(Song itemToAdd, int index)=0;
-
-    /**
-     * removes the item at the end of the list, and returns a copy of that item
-     * @post the item at the end is removed from the list
-     * @return a copy of the item at the end
-     * @throws out_of_range exception if there is no item to remove
-     */
-    virtual Song removeValueAtEnd()=0;
-
-    /**
-     * removes the item at the front of the list, and returns a copy of that item
-     * @post the item at the front is removed from the list, everything else is shifted down one
-     * @return a copy of the item at index
-     * @throws out_of_range exception if there is no item to remove
-     */
-    virtual Song removeValueAtFront()=0;
 
     /**
      * removes the item at index from the list, and returns a copy of that item
@@ -115,7 +103,20 @@ public:
      */
     virtual Song removeValueAt(int index)=0;
 
+    /**
+     * Gets a pointer to song with given title
+     * @param songToFind the title of the song to get
+     * @return a pointer to the song
+     */
+    virtual Song* getSong(std::string songToFind)=0;
+
+    /**
+     * Gets the number of songs in the array list, or currItemCount
+     * @return number of songs in the arraylist, currItemCount
+     */
+    virtual int getSongCount()=0;
 };
+
 
 
 #endif //COMP220_LIST_H

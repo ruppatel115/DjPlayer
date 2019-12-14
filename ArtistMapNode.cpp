@@ -19,7 +19,7 @@ ArtistMapNode::ArtistMapNode(Song song){
     this->songList  = new SongArrayList();
     songList->insertAtEnd(song);
 }
-SongArrayList* ArtistMapNode::getSongList() {
+SongList* ArtistMapNode::getSongList() {
     return songList;
 }
 std::string ArtistMapNode::getArtist() {

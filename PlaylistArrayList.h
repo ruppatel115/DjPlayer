@@ -10,7 +10,7 @@
 #include "PlaylistList.h"
 
 
-class PlaylistArrayList  {
+class PlaylistArrayList :public PlaylistList{
 private:
     //pointer to the start of the array
     Playlist** array;

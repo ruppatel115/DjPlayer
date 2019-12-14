@@ -27,20 +27,18 @@ public:
      * appends the new playlist to the end of the list
      * @post the list has an additional value/playlist in it, at the end
      */
-    virtual void insertAtEnd(Playlist playlistToAdd)=0;
+    virtual void insertAtEnd(Playlist* playlistToAdd)=0;
 
     /**
      * gets the playlist/playlist name
      * @param index the location from which to get the name
-     * @return a copy of the playlist at index
+     * @return a pointer to the playlist at index
      * @throws out_of_range exception if index is invalid
      */
     virtual Playlist* getValueAt(int index)=0;
 
     /**
      * gives a string representation of the current list
-     * @returns a string representing the given list in the exact format shown below
-     * {1, 2, 3, 4, 5}
      */
     virtual std::string toString()=0;
 
@@ -75,7 +73,9 @@ public:
      * @return a copy of the playlist at index
      * @throws out_of_range exception if index is invalid
      */
-    virtual Playlist* removeAt(int index)=0;
+    virtual void removeAt(int index)=0;
+
+    virtual Playlist** getArray()=0;
 
 };
 

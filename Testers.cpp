@@ -583,7 +583,7 @@ void forrestPlaylistArrayListTest(){
     Song* testSong1 = new Song(song1);
     Song* testSong2 = new Song(song2);
     std::cout << "======forrest playlsit arraylist tests======" <<endl;
-    PlaylistArrayList* testArraylist = new PlaylistArrayList();
+    PlaylistList* testArraylist = new PlaylistArrayList();
     cout<<"-----testing insert at end-----\n";
     Playlist* testPlaylist = new Playlist("testlist1");
     testPlaylist->insertAtEnd(testSong1);

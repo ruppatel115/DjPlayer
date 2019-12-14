@@ -339,7 +339,7 @@ void CommandHandler::createRandomPlaylist(int playDuration, std::string playlist
 
         //Goes to the random artist then picks one of their songs with rand song index
         ArtistMapNode *artistHolder = songLibrary->getArtistAt(randArtistIndex);
-        SongArrayList *songListHolder = artistHolder->getSongList();
+        SongList *songListHolder = artistHolder->getSongList();
 
         if (songListHolder->getSongCount() - 1 > 0) {
             randSongIndex = rand() % (songListHolder->getSongCount() - 1);

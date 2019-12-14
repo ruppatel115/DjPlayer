@@ -12,7 +12,7 @@
 class CommandHandler {
 private:
     ArtistMap* songLibrary;
-    PlaylistArrayList* PlaylistList;
+    PlaylistList* PlaylistList;
     int numOfPlaylists;
     int numOfSongs;
     int length;
