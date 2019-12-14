@@ -456,15 +456,11 @@ void runInterface(){
 
 
 int main() {
-    //std::cout<<"Hello";
-    //runAllTests();
 
+    //To run Testers, replace main.cpp in CMakeLists.txt with Testers.cpp
     runInterface();
 
-    /*
-    //CommandHandler* test = new CommandHandler();
-    //test->import("/Users/forrest/Google Drive/College Fall 2019/Data Structures/DjPlayer/importTest.txt");
-    */
+
     return 0;
     }
 

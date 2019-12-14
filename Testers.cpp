@@ -635,6 +635,8 @@ void forrestPlaylistArrayListTest(){
 
 
 int main(){
+    //To run user interface, replace Testers.cpp in CMakeLists.txt with main.cpp
+
     cout <<"======RUNNING ALL TESTS IN Testers.cpp======"<<endl; //all working
     forrestPlaylistTests();
     forrestPlaylistArrayListTest();

@@ -333,8 +333,8 @@ void CommandHandler::createRandomPlaylist(int playDuration, std::string playlist
     int randSongIndex; // = rand() % (songCount-1); //do this after getting the artist node
     int randPlaylistDuration = 0;
     while (randPlaylistDuration <= playDuration) {
-        if (duplicateCounter > 200) {
-            cout << "Unable to add another song" << endl;
+        if (duplicateCounter > 100) {
+            cout << "Unable to add another song, done making playlists" << endl;
             break;
         }
 
