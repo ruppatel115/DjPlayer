@@ -359,8 +359,8 @@ void commandHandlerTesters(){
 
     testHandler->getSongLibrary()->removeAll();
     testHandler->import("../Save.txt");
-    printAssertEquals("rap god, by eminem, 309 seconds, came out in 2013\n",testHandler->song("eminem","rap god", true));
-    printAssertEquals("Billie Jean, by Michael Jackson, 356 seconds, came out in 1980\n",testHandler->song("Michael Jackson","Billie Jean",true));
+    printAssertEquals("rap god, by eminem, 309 seconds, came out in 2013, play count: 0\n",testHandler->song("eminem","rap god", true));
+    printAssertEquals("Billie Jean, by Michael Jackson, 356 seconds, came out in 1980, play count: 0\n",testHandler->song("Michael Jackson","Billie Jean",true));
     printAssertEquals("song not found in library\n",testHandler->song("somebody","take on me",true));
 
     cout<<"\n-----testing newPlaylist-----\n\n";\
@@ -431,7 +431,6 @@ void commandHandlerTesters(){
     printAssertEquals("Removed song Billie Jean.",testHandler9->removeFromPlaylist("tester2","Billie Jean", "Michael Jackson", true));
     printAssertEquals("[tester1 {empty playlist}, tester2 {duration = 309 seconds, songs left: rap god}]",testHandler9->listPlaylists(true));
     printAssertEquals("Removed song rap god.", testHandler9->removeFromPlaylist("tester2", "rap god", "eminem", true));
-cout<<"here\n";
     printAssertEquals("[tester1 {empty playlist}, tester2 {empty playlist}]",testHandler9->listPlaylists(true));
     testHandler9->addToPlaylist("tester1", "rap god", "eminem");
     testHandler9->addToPlaylist("tester1", "Billie Jean", "Michael Jackson");

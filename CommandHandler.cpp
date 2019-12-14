@@ -91,7 +91,7 @@ void CommandHandler::displayArtist(std::string artist){
 void CommandHandler::song(std::string artist, std::string title){
     Song* song = songLibrary->getSong(title,artist);
     if(song != nullptr){
-        cout<<song->getTitle()+", by "+song->getArtist()+", "+to_string(song->getLength())+" seconds, came out in "+to_string(song->getYear())+"\n";
+        cout<< song->getTitle()+", by "+song->getArtist()+", "+to_string(song->getLength())+" seconds, came out in "+to_string(song->getYear())+", play count: "+to_string(song->getPlaycount())+"\n";
     }else{
         cout<< "song not found in library\n";
 
@@ -398,7 +398,7 @@ string CommandHandler::displayArtist(std::string artist, bool test){
 string CommandHandler::song(std::string artist, std::string title, bool test){
     Song* song = songLibrary->getSong(title,artist);
     if(song != nullptr){
-        return song->getTitle()+", by "+song->getArtist()+", "+to_string(song->getLength())+" seconds, came out in "+to_string(song->getYear())+to_string(song->getPlaycount());
+        return song->getTitle()+", by "+song->getArtist()+", "+to_string(song->getLength())+" seconds, came out in "+to_string(song->getYear())+", play count: "+to_string(song->getPlaycount())+"\n";
     }else{
         return "song not found in library\n";
 
