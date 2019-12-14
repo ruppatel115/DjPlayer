@@ -68,7 +68,10 @@ public:
      * @return an int, value of playcount
      */
     virtual int getPlaycount();
-
+    /**
+     * Custom to_string function that turns all the song's data into a string and
+     * @return that resulting string
+     */
     virtual std::string toString();
 
 

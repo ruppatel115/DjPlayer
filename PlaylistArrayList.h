@@ -97,7 +97,10 @@ public:
      * @throws out_of_range exception if index is invalid
      */
     void removeAt(int index);
-
+    /**
+     *
+     * @return pointer to the array
+     */
     Playlist** getArray();
 
 };

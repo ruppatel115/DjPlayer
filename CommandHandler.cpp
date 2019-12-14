@@ -15,7 +15,6 @@ CommandHandler::CommandHandler() {
     numOfSongs = 0;
     numOfPlaylists = 0;
     length = 0;
-    //promptUser();
     readSaveFiles();
 }
 
@@ -388,7 +387,6 @@ string CommandHandler::library(bool test){
 }
 
 string CommandHandler::displayArtist(std::string artist, bool test){
-    //std::cout << mainLibrary->getArtistSongs(artist) << std::endl;
     if(songLibrary->getArtist(artist) == nullptr){
         return "artist not found\n";
     }else {
@@ -403,23 +401,7 @@ string CommandHandler::song(std::string artist, std::string title, bool test){
     }else{
         return "song not found in library\n";
 
-    };
-    /*
-    ArtistMapNode* artistNode = songLibrary->getArtist(artist);
-    if(artistNode != nullptr){
-       int songIndex = artistNode->getSongList()->find(artist);
-       if(songIndex >-1){
-           Song* song = artistNode->getSongList()->getValueAt(songIndex);
-           std::cout<<song->getTitle()<<", by  "<<song->getArtist()<<", "<<song->getLength()<<" seconds, year "<<song->getYear()<<std::endl;
-       }else{
-           std::cout<< title<<" not found for "<<artist<<"\n";
-       }
-
-    }else{
-        std::cout<<artist<<" not found in library\n";
-
     }
-     */
 }
 string CommandHandler::listPlaylists(bool test){
     return PlaylistList->toString();
@@ -431,46 +413,26 @@ string CommandHandler::playlist(std::string name, bool test) {
         Playlist* temp = PlaylistList->getValueAt(index);
 
         std::string songList = temp->toString();
-        //std::cout <<"item count = "<<temp->getNumSongs() << std::endl;
-/*
-        for(int i=0; i<temp->getNumSongs();i++){
-
-            std::string title=temp->getSong(i)->getTitle();
-            std::string artist=temp->getSong(i)->getArtist();
-            int duration =temp->getSong(i)->getLength();
-            songList +=  title + ", " + artist + ", "+ std::to_string(duration); ;
-
-        }
-        */
         return songList+"\n";
-
-
-//        std::cout << "Playlist" + name + ": \nDuration: " + std::to_string(temp.calcDuration()) << std::endl;
-//        std::cout << "Songs: " + temp.toString();
     }else{
         return "playlist not found\n";
     }
 }
 string CommandHandler::addToPlaylist(std::string playlist, std::string title, std::string artist, bool test) {
-    //std::cout <<"at the begining "<<artist<< std::endl;
 
     int index = PlaylistList->find(playlist);
     if(index>=0) {
         Playlist *temp = PlaylistList->getValueAt(index);
         Song* songToAdd = this->songLibrary->getSong(title, artist);
-        //std::cout << this->songLibrary->getSong(title,artist)->getTitle();
         if (songToAdd != nullptr ) {
-            //cout<<"song or artist could not be found\n";
             if(temp->findSong(title, artist)==-1) {
                 temp->insertAtEnd(songToAdd);
-                //cout << "artsit = " << temp->getSong(0)->getArtist() << "\n";
                 return "Added song " + title + " to playlist " + playlist + "\n";
             }else{
                 return "song already in playlist\n";
             }
         } else {
             return "song or artist could not be found\n";
-            //throw std::invalid_argument("Playlist does not exist");
         }
     }else{
         return "palylist does not exist\n";
@@ -483,8 +445,7 @@ string CommandHandler::removeFromPlaylist(std::string playlist, std::string titl
     Playlist* temp = PlaylistList->getValueAt(playlistIndex);
     int songIndex = temp->findSong(title, artist);
     if (songIndex != -1) {
-        //cout<<"index ="<<songIndex<<endl;
-        //cout<<"playlist ="<<temp->getTitle()<<endl;
+
         temp->removeSong(songIndex);
         return "Removed song "+title+".";
 
@@ -503,7 +464,6 @@ std::string CommandHandler::playNext(std::string playlist, bool test) {
         return "Removed playlist (was empty): " + playlist;
     } else {
         temp->getSong(0)->incrementPlaycount();
-        //cout << "Played song: " + temp->getSong(0)->toString() + " and removed from playlist "+playlist << endl;
         std::string result = "Played song: " + temp->getSong(0)->toString() + " and removed from playlist "+playlist+"\n";
         temp->removeSong(0);
         if (temp->isEmpty()) {

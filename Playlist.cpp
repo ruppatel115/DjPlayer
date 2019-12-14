@@ -29,41 +29,6 @@ Playlist::Playlist(std::string titleIn) {
     duration=0;
 
 }
-/***
- * Copy Constructor
- * @param playlistToCopy
- */
-
-//Playlist::Playlist(const Playlist& playlistToCopy){
-//    Playlist playlist(title);
-//
-//    playlist.title=playlistToCopy.title;
-//    duration=playlistToCopy.duration;
-//    for(int i=0;i<numOfSongs;i++){
-//        playlist.insertAtEnd(playlistToCopy.front->getSong());
-//    }
-//}
-/***
- * Assignment operator
- * @param playlistToCopy
- * @return
- */
-//Playlist& Playlist:: operator=(const Playlist* playlistToCopy){
-//    Playlist playlist(title);
-//    if(this != playlistToCopy) {
-//        while (front != nullptr) {
-//            LinkedNode *temp = front;
-//            Song *song = temp->getSong();
-//            front = front->getNext();
-//            delete song;
-//            delete temp;
-//        }
-//        title = playlistToCopy->title;
-//        duration = playlistToCopy->duration;
-//    }
-//
-//    return *this;
-//}
 
 //Destructor
 
@@ -72,12 +37,8 @@ Playlist::~Playlist() {
 
     while (front != nullptr) {
         LinkedNode *temp = front;
-        //Song *song = temp->getSong();
         front = front->getNext();
-        //delete song;
         delete temp;
-//fixed
-
 
     }
     end = nullptr;
@@ -141,12 +102,7 @@ int Playlist::findSong(std::string title, std::string artist) {
             temp = temp->getNext();
             index++;
         }
-
-
     }
-
-
-
     return -1;
 }
 
@@ -177,59 +133,8 @@ int Playlist::getNumSongs(){
  */
 
 std::string Playlist::removeSong(int index) { //returns song information
-
-//    //throw exceptions if playlist empty
-//    if (getNumSongs() < index +1 || index < 0 || front == nullptr) {
-//        throw std::out_of_range("no song to remove");
-//    }
-//
-//    if (index == 0) {
-//        LinkedNode *node = front;
-//        end = nullptr;
-//        std::string item = node->getSong()->getTitle() + ", " + node->getSong()->getArtist() + ", " +
-//                           std::to_string(node->getSong()->getLength()) + ", " +
-//                           std::to_string(node->getSong()->getYear());
-//
-//        duration-=node->getSong()->getLength();
-//        delete node;
-//        front = nullptr;
-//
-//        numOfSongs--;
-//        return item;
-//    }
-//    if (index == 1) {
-//        LinkedNode *node = front->getNext();
-//        front = node->getNext();
-//        std::string item = node->getSong()->getTitle() + ", " + node->getSong()->getArtist() + ", " +
-//                           std::to_string(node->getSong()->getLength()) + ", " +
-//                           std::to_string(node->getSong()->getYear());
-//        delete node;
-//        duration-=node->getSong()->getLength();
-//        numOfSongs--;
-//        return item;
-//
-//    }
-//
-//    else {
-//        LinkedNode *node = front;
-//
-//        for (int i = 0; i < index ; i++) {
-//            node = node->getNext();
-//        }
-//        LinkedNode *temp = node->getNext();
-//        std::string item = node->getSong()->getTitle() + ", " + node->getSong()->getArtist() + ", " +
-//                           std::to_string(node->getSong()->getLength()) + ", " +
-//                           std::to_string(node->getSong()->getYear());
-//
-//        delete temp;
-//        node->setNext(temp->getNext());
-//        duration-=node->getSong()->getLength();
-//        numOfSongs--;
-//        return item;
-//    }
     if (this->isEmpty()){
         return "no songs";
-        throw std::out_of_range("playlist is empty");
     }
     if(index >= numOfSongs || index <0){
         return "out of bounds";
@@ -282,21 +187,14 @@ void Playlist::insertAtEnd(Song* song) {
         end=newNode;
 
         duration+=song->getLength();
-
     }
-
-    //end->setNext(nullptr);
     numOfSongs++;
-
-
 }
 /**
  *
  * @param index
  * @return gets pointer to the song at the specified index
  */
-
-
 Song* Playlist::getSong(int index){
     if (this->isEmpty()){
         throw std::out_of_range("playlist is empty");
@@ -309,18 +207,6 @@ Song* Playlist::getSong(int index){
     for(int i=0; i<index; i++){
         temp = temp->getNext();
     }
-    return temp->getSong();
-//    LinkedNode *temp = front;
-//    int i = 0;
-//    while (temp->getNext() != nullptr) {
-//        if (i == index) {
-//            return temp->getSong();
-//        }
-//        else {
-//            temp = temp->getNext();
-//            i++;
-//        }
-//    }
     return temp->getSong();
 }
 

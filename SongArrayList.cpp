@@ -146,7 +146,8 @@ void SongArrayList::insertAt(Song itemToAdd, int index) {
     for(int i=0;i<currCapacity;i++){
         array[i] = holder[i];
     }
-    holder = nullptr;
+
+    holder = nullptr; //this was just a backup
 
 
 }

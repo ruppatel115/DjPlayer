@@ -119,6 +119,7 @@ public:
 /**
  * These functions are all used for automatic testing. When adding a bool to the end of the call, it will change to returning a string
  * which is useful for printAssertEquals(str,str)
+ * Not all of them needed to be used.
  */
     string library(bool test);
     string displayArtist(std::string  artist, bool test);

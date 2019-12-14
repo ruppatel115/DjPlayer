@@ -16,7 +16,6 @@
 class SongArrayList : public SongList{
 private:
     //pointer to the start of the array
-     //Song array;
      Song* array;
     //count of the number of valid items currently stored in the array
     int currItemCount;
@@ -42,9 +41,6 @@ public:
 
     //Copy Constructor
     SongArrayList(const SongArrayList& arrayListToCopy);
-
-    //Overloaded Assignment Operator
-
 
     //Destructor
     ~SongArrayList();

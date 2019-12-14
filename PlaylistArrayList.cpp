@@ -94,12 +94,8 @@ void PlaylistArrayList::insertAtEnd(Playlist* playlistToAdd) {
  * @return playlist at specified index
  */
 Playlist* PlaylistArrayList::getValueAt(int index) {
-    //std::cout<<"index = "<<index<<" current count = "<<currPlaylistCount<<"\n";
-
-
     if (index > currPlaylistCount-1 || index < 0 || isEmpty()){
         return nullptr;
-        throw std::out_of_range ("Bad index given to getValueAt: " + std::to_string(index));
     }
     return array[index];
 }
@@ -119,11 +115,7 @@ std::string PlaylistArrayList::toString() { //Prints a list of the names of all 
             result+=", ";
         }
         if (!array[i]->isEmpty()) {
-//            if (i < currPlaylistCount-1) {
-              result += array[i]->getTitle() + " "+array[i]->toString();//array[i]->getTitle() + "(duration: " + std::to_string(array[i]->getDuration()) + "), ";
-//            } else { //No comma at the end
-//                result += array[i]->getTitle() + "(duration: " + std::to_string(array[i]->getDuration()) + ")";
-//            }
+              result += array[i]->getTitle() + " "+array[i]->toString();
         }else{ //if the playlist at the current index of the arraylist is empty, do this instead
             if (i < currPlaylistCount - 1) {
                 result += array[i]->getTitle() + " {empty playlist}";
@@ -167,15 +159,11 @@ void PlaylistArrayList::clearList() {
  * @return where the playlist was found in the list of playlists or returns -1 if not found
  */
 int PlaylistArrayList::find(std::string playlistToFind) {
-   //std::cout<<currPlaylistCount<<"in find\n";
     for (int i = 0; i < currPlaylistCount; i++){
-        //std::cout<<currPlaylistCount<<i<<"\n";
         if (array[i]->getTitle() == playlistToFind){
             return i;
         }
     }
-    //std::cout<<"about to return -1 "<<"\n";
-
     return -1;
 }
 
@@ -195,32 +183,8 @@ void PlaylistArrayList::removeAt(int index) {
         }
         currPlaylistCount--;
     }
-    /*
-    if (index > currPlaylistCount-1 || index < 0){
-        throw std::out_of_range ("Bad index given to removeValueAt: " + std::to_string(index));
-    }
-    Playlist* removedPlaylist = array[index];
-
-    Playlist * tempArr = new Playlist[currCapacity];
-    int j = 0;
-    for (int i = index+1;i<currPlaylistCount;i++){
-        tempArr[j] = array+i;
-        j++;
-    }
-
-    currPlaylistCount--;
-    j=0;
-    for (int i = index; i< currPlaylistCount;i++){
-        array[i]=tempArr[j];
-        j++;
-
-    }
-
-    return removedPlaylist;
-     */
-
-
 }
+
 Playlist** PlaylistArrayList::getArray() {
     return array;
 }

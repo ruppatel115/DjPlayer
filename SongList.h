@@ -12,14 +12,6 @@
 
 class SongList {
 private:
-    //pointer to the start of the array
-    //Song array;
-    //Song* array;
-    //count of the number of valid items currently stored in the array
-    int currItemCount;
-    //size of the current array
-    int currCapacity;
-
     /**
      * replaces the old array with an array twice the size
      * private method only called within ArrayList when necessary
@@ -29,16 +21,6 @@ private:
     virtual void doubleCapacity()=0;
 
 public:
-    /**
-     * Constructor
-     * @throws an std::invalid_argument exception if size < 1
-     */
-   // SongList();
-
-
-
-    //Destructor
-   // ~SongList();
 
     /**
      * appends the new item to the end of the list

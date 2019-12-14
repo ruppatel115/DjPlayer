@@ -18,15 +18,11 @@ private:
 
     LinkedNode *front;
     LinkedNode *end;
-    //Playlist(const Playlist& playlistToCopy);
-    //Playlist& operator=(const Playlist& playlistToCopy);
     std::string title;
     int numOfSongs;
     int duration;
 
 public:
-    //Playlist(const Playlist& playlistToCopy);
-    //Playlist& operator=(const Playlist* playlistToCopy);
     /**
     * Default Constructor
     * Initializes front and end to nullptr, title of playlist to 'Untitled Playlist', numOfSongs and Duration to 0

@@ -74,7 +74,9 @@ public:
      * @throws out_of_range exception if index is invalid
      */
     virtual void removeAt(int index)=0;
-
+    /**
+     * @return pointer to the list/array
+     */
     virtual Playlist** getArray()=0;
 
 };

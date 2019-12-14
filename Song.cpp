@@ -37,7 +37,7 @@ Song::Song(){
  * @param songStr
  */
 Song::Song(std::string songStr) {
-    //song string should be in form: title, artist, length, year
+    //song string should be in form: title, artist, length, year, playcount
     std::stringstream splitter (songStr);
     std::string yearStr, lengthStr, space;
 
@@ -55,20 +55,13 @@ Song::Song(std::string songStr) {
         year = std::stoi(yearStr);
         playcount = 0;
     }
-    //std::cout<<"full string  "<<lengthStr<<std::endl;
-    //std::cout<<"part 1 "<<lengthStr.substr(0,lengthStr.rfind(":"))<<std::endl;
     if(lengthStr.find(":") != lengthStr.npos){
         length = std::stoi(lengthStr.substr(0,lengthStr.rfind(":")))*60;
-        //std::cout<<"part 2 "<<lengthStr.substr(lengthStr.rfind(":")+1)<<std::endl;
-
         length += std::stoi(lengthStr.substr(lengthStr.rfind(":")+1));
     }else{
         length = std::stoi(lengthStr);
 
     }
-
-    //length = std::stoi(lengthStr);
-
 }
 
 std::string Song::toString() {
@@ -106,14 +99,16 @@ int Song::getYear() const {
     return year;
 }
 
-
 /***
  * increases count of song played
  */
 void Song::incrementPlaycount() {
     playcount++;
 }
-
+/**
+ * gets playCount of the song
+ * @return playcount (int)
+ */
 int Song::getPlaycount() {
     return playcount;
 }

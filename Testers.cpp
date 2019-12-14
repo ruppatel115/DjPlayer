@@ -48,8 +48,6 @@ void songTesters(){
 }
 
 
-
-
 void songArrayListTesters(){
     cout<<"=====SONG ARRAY LIST TESTS=======\n";
     SongArrayList testList = SongArrayList();
@@ -185,24 +183,18 @@ void ArtistMapTesters(){
     delete mapTest;
     mapTest = new ArtistMap();
     printAssertEquals(0,mapTest->getArtistCount());
-    //printAssertEquals(0,mapTest->getSongCount());
     mapTest->put(*testSong1);
     printAssertEquals(1,mapTest->getArtistCount());
-    //printAssertEquals(1,mapTest->getSongCount());
     mapTest->put(*testSong2);
     printAssertEquals(2,mapTest->getArtistCount());
-    //printAssertEquals(2,mapTest->getSongCount());
     mapTest->put(*testSong3);
     printAssertEquals(3,mapTest->getArtistCount());
-    //printAssertEquals(3,mapTest->getSongCount());
     //testing with a duplicate song
     mapTest->put(*testSong3);
     printAssertEquals(3,mapTest->getArtistCount());
-    //printAssertEquals(3,mapTest->getSongCount());
     //testing with a song from an artist already in map
     mapTest->put(*testSong4);
     printAssertEquals(3,mapTest->getArtistCount());
-    //printAssertEquals(4,mapTest->getSongCount());
 
     cout<<"-----testing removeAll-----\n";
     mapTest->removeAll();
@@ -346,14 +338,10 @@ void commandHandlerTesters(){
 
     cout<<"\n-----testing display artist-----\n\n";
     // the actual get artist function was tested in artist map
-    //cout<<"expecting 'artist not found' actual: ";
-    //testHandler->displayArtist("not an artist");
     printAssertEquals("artist not found\n", testHandler->displayArtist("not an artist", true));
     printAssertEquals("{here comes the sun, lucy in thr sky with diamonds}\n", testHandler->displayArtist("beatles", true));
     printAssertEquals("{rap god}\n", testHandler->displayArtist("eminem", true));
 
-    // cout << "Expected: playlist not found. Actual: ";
- //   testHandler->addToPlaylist("nonexistentplaylist","blah","beep");
 
     cout<<"\n-----testing song (displays song with given artist and title)-----\n\n";
 
@@ -488,7 +476,6 @@ void commandHandlerTesters(){
 
     cout<<"-----testing quit-----\n";
     CommandHandler* testHandler10 = new CommandHandler();
-    //testHandler10->import("../importTest.txt");
     testHandler10->newPlaylist("tester1");
     testHandler10->newPlaylist("tester2");
 

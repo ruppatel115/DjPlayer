@@ -9,7 +9,7 @@ using namespace std;
 
 ArtistMapNode::~ArtistMapNode(){
     delete songList;
-    next = nullptr; //make sure this is fine
+    next = nullptr;
 }
 
 
@@ -28,17 +28,13 @@ std::string ArtistMapNode::getArtist() {
 void ArtistMapNode::addSong(Song song){
 bool songAdded = false;
     for(int i=0; i<songList->itemCount();i++){
-        //cout<<song.getTitle()<<endl;
         int comparison = song.getTitle().compare(songList->getValueAt(i)->getTitle());
-        //cout<<"comparison: "<<comparison<<" "<< song.getTitle()<<" "<<songList->getValueAt(i).getTitle()<<endl;
         if(comparison < 0){
-            //cout<<song.getTitle()<<" orgininal: "<<songList->getValueAt(i).getTitle()<<endl;
             songList->insertAt(song,i);
             songAdded = true;
             break;
 
         }else if (comparison == 0){
-            //cout<<"in duplicate "<<song.getTitle()<<" orgininal: "<<songList->getValueAt(i).getTitle()<<endl;
 
             cout<<"duplicate song: "<< song.getTitle()<<endl;
             songAdded = true;
@@ -61,21 +57,6 @@ ArtistMapNode* ArtistMapNode::getNext() {
 
 std::string ArtistMapNode::toString(){
     return songList->toString();
-    /*
-
-    std::string songString = "{";
-    for(int i=0; i<songList->itemCount(); i++){
-        //std::cout<<"here\n";
-        songString += " "+songList->getValueAt(i)->getTitle();
-        //std::cout<<songString;
-        if(i+1 < songList->itemCount()){
-            songString+=",";
-        }
-    }
-    songString.erase(1,1);
-    songString += "}";
-    return songString;
-*/
 }
 int ArtistMapNode::getSongCount() {
     return songList->getSongCount();
