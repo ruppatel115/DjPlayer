@@ -133,6 +133,8 @@ void runInterface(){
     }
     std::cout << "Saving and quitting program..." <<endl;
     handler->quit();
+    delete handler;
+
 
 }
 
