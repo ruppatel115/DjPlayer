@@ -58,6 +58,7 @@ void runInterface(){
             handler->import(filename);
 
         }else if(mystr == "discontinue"){
+            std::cout << "Warning: discontinue command may crash program. Enter invalid filename to cancel this command." <<std::endl;
             std::cout << "Enter filename (for files in this project/directory, put '../' before the filename):" << std::endl;
             std::string filename = "";
             getline(std::cin, filename);

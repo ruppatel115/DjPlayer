@@ -153,22 +153,8 @@ void CommandHandler::playlist(std::string name){
         Playlist* temp = PlaylistList->getValueAt(index);
 
         std::string songList = temp->toString();
-        //std::cout <<"item count = "<<temp->getNumSongs() << std::endl;
-/*
-        for(int i=0; i<temp->getNumSongs();i++){
-
-            std::string title=temp->getSong(i)->getTitle();
-            std::string artist=temp->getSong(i)->getArtist();
-            int duration =temp->getSong(i)->getLength();
-            songList +=  title + ", " + artist + ", "+ std::to_string(duration); ;
-
-        }
-        */
         cout<< songList+"\n";
 
-
-//        std::cout << "Playlist" + name + ": \nDuration: " + std::to_string(temp.calcDuration()) << std::endl;
-//        std::cout << "Songs: " + temp.toString();
     }else{
         cout<< "playlist not found\n";
     }

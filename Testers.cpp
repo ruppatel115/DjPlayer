@@ -1,12 +1,12 @@
+/**
+ * Comprehensive test functions for all the data structures and commands in this project
+ * @author Forrest Wargo, Elias Platt, Rup Patel
+ */
 #include <fstream>
 #include "Song.h"
 #include "TestLib.h"
 #include "CommandHandler.h"
 
-
-//
-// Created by Forrest Wargo on 12/11/19.
-//
 
 using namespace std;
 /*
