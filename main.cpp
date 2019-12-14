@@ -51,14 +51,14 @@ void runInterface(){
             handler->song(artist, title);
 
         }else if(mystr == "import"){
-            std::cout << "Enter filename:" << std::endl;
+            std::cout << "Enter filename (for files in this project/directory, put '../' before the filename):" << std::endl;
             std::string filename = "";
             getline(std::cin, filename);
 
             handler->import(filename);
 
         }else if(mystr == "discontinue"){
-            std::cout << "Enter filename:" << std::endl;
+            std::cout << "Enter filename (for files in this project/directory, put '../' before the filename):" << std::endl;
             std::string filename = "";
             getline(std::cin, filename);
             handler->discontinue(filename);
